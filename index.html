@@ -3,201 +3,456 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Wall — Directory</title>
-<meta name="description" content="A directory of companies that solve sales, marketing, thought leadership, and creative problems for established businesses.">
+<title>The Wall — Operations Atlas</title>
+<meta name="description" content="An operations atlas of companies that solve marketing, SEO, thought leadership, creative, automation, and demand generation problems for established businesses.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧱</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #f7f7f8;
-    --surface: #ffffff;
-    --text: #17181c;
-    --muted: #6b7080;
-    --border: #e6e7eb;
-    --accent: #17181c;
-    --sales: #2563eb;
-    --marketing: #db2777;
-    --thought: #d97706;
-    --creative: #7c3aed;
-    --shadow: 0 1px 2px rgba(20,20,30,.04);
-    --shadow-hover: 0 10px 24px rgba(20,20,30,.08);
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #101114;
-      --surface: #17181d;
-      --text: #f2f3f5;
-      --muted: #9aa0ad;
-      --border: #262830;
-      --accent: #f2f3f5;
-      --shadow: 0 1px 2px rgba(0,0,0,.3);
-      --shadow-hover: 0 10px 24px rgba(0,0,0,.4);
-    }
+    --porcelain: #FAF9F6;
+    --stone: #E8E4DC;
+    --stone-lt: #F3F1EC;
+    --cobalt: #1B4FD8;
+    --oxblood: #6E1423;
+    --ink: #0E1B33;
+    --chrome: #85898F;
+    --serif: 'Newsreader', Georgia, serif;
+    --sans: 'IBM Plex Sans', -apple-system, sans-serif;
+    --mono: 'IBM Plex Mono', ui-monospace, monospace;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    -webkit-font-smoothing: antialiased;
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--porcelain); color: var(--ink); -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 0 28px; }
+  a { color: inherit; }
+
+  /* ---------- top bar ---------- */
+  .topbar { border-bottom: 1px solid var(--stone); background: var(--porcelain); position: sticky; top: 0; z-index: 40; }
+  .topbar-in { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+  .wordmark { font-family: var(--serif); font-weight: 700; font-size: 21px; letter-spacing: -0.01em; text-decoration: none; display: flex; align-items: baseline; gap: 12px; }
+  .wordmark small { font-family: var(--mono); font-weight: 500; font-size: 9.5px; letter-spacing: .14em; color: var(--chrome); }
+  .topbar-actions { display: flex; align-items: center; gap: 18px; }
+  .btn-submit {
+    font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: .1em;
+    color: var(--cobalt); border: 1px solid var(--cobalt); background: transparent;
+    padding: 8px 14px; border-radius: 4px; cursor: pointer; transition: all .15s;
   }
-  .wrap { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
-  header { padding: 28px 0 0; }
-  .brand { display: flex; align-items: baseline; gap: 8px; font-weight: 800; font-size: 18px; letter-spacing: -0.02em; }
-  .brand span { font-weight: 500; color: var(--muted); }
-  .hero { padding: 56px 0 8px; max-width: 720px; }
-  .hero h1 { font-size: clamp(30px, 5vw, 44px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.08; }
-  .hero p { margin-top: 14px; font-size: 16px; line-height: 1.6; color: var(--muted); }
-  .controls { padding: 28px 0 8px; position: sticky; top: 0; background: var(--bg); z-index: 10; }
-  .search {
-    display: flex; align-items: center; gap: 10px;
-    background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
-    padding: 14px 18px; box-shadow: var(--shadow);
+  .btn-submit:hover { background: var(--cobalt); color: #fff; }
+  .admin-link { font-family: var(--mono); font-size: 10px; letter-spacing: .12em; color: var(--chrome); text-decoration: none; }
+  .admin-link:hover { color: var(--ink); }
+
+  /* ---------- hero ---------- */
+  .hero { display: grid; grid-template-columns: minmax(0,1fr) 470px; gap: 40px; align-items: center; padding: 56px 0 30px; }
+  .hero h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(36px, 4.6vw, 56px); line-height: 1.04; letter-spacing: -0.015em; }
+  .hero h1 em { font-style: italic; color: var(--oxblood); }
+  .hero .lede { margin-top: 18px; font-size: 15.5px; line-height: 1.65; color: #3C4658; max-width: 520px; }
+  .hero .lede strong { color: var(--ink); font-weight: 600; }
+  .searchbox { margin-top: 26px; display: flex; align-items: center; gap: 12px; background: #fff; border: 1px solid var(--stone); border-radius: 6px; padding: 14px 16px; max-width: 560px; }
+  .searchbox:focus-within { border-color: var(--cobalt); box-shadow: 0 0 0 3px rgba(27,79,216,.08); }
+  .searchbox svg { color: var(--chrome); flex-shrink: 0; }
+  .searchbox input { border: 0; outline: 0; width: 100%; font-family: var(--mono); font-size: 13.5px; color: var(--ink); background: transparent; }
+  .searchbox input::placeholder { color: var(--chrome); }
+
+  /* ---------- radial dial ---------- */
+  .dial-holder { position: relative; width: 470px; height: 470px; justify-self: end; }
+  .dial-svg { position: absolute; inset: 0; }
+  .dial-node {
+    position: absolute; transform: translate(-50%, -50%);
+    font-family: var(--mono); text-align: center; cursor: pointer;
+    background: var(--porcelain); border: 1px solid var(--stone); border-radius: 5px;
+    padding: 7px 9px; min-width: 86px; transition: all .15s; z-index: 2;
   }
-  .search svg { flex-shrink: 0; color: var(--muted); }
-  .search input {
-    border: 0; outline: 0; background: transparent; width: 100%;
-    font: inherit; font-size: 16px; color: var(--text);
+  .dial-node b { display: block; font-size: 9px; font-weight: 600; letter-spacing: .08em; }
+  .dial-node span { display: block; font-size: 9px; color: var(--chrome); margin-top: 2px; }
+  .dial-node:hover { border-color: var(--node-c, var(--cobalt)); color: var(--node-c, var(--cobalt)); }
+  .dial-node.active { background: var(--node-c, var(--cobalt)); border-color: var(--node-c, var(--cobalt)); color: #fff; }
+  .dial-node.active span { color: rgba(255,255,255,.75); }
+  .dial-hub {
+    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+    width: 116px; height: 116px; border-radius: 50%; cursor: pointer; z-index: 2;
+    background: var(--ink); color: #fff; border: 0; font-family: var(--mono); transition: all .15s;
   }
-  .search input::placeholder { color: var(--muted); }
-  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .dial-hub b { display: block; font-size: 11px; font-weight: 600; letter-spacing: .14em; }
+  .dial-hub span { display: block; font-size: 10px; color: rgba(255,255,255,.6); margin-top: 4px; }
+  .dial-hub:hover { background: var(--cobalt); }
+  .dial-hub.active { background: var(--cobalt); }
+
+  /* ---------- index strip (mobile / fallback) ---------- */
+  .index-strip { display: none; flex-wrap: wrap; gap: 8px; padding: 6px 0 4px; }
   .chip {
-    border: 1px solid var(--border); background: var(--surface); color: var(--text);
-    border-radius: 999px; padding: 7px 14px; font: inherit; font-size: 13.5px; font-weight: 600;
-    cursor: pointer; transition: all .15s ease;
+    font-family: var(--mono); font-size: 10.5px; font-weight: 600; letter-spacing: .06em;
+    border: 1px solid var(--stone); background: #fff; color: var(--ink);
+    border-radius: 999px; padding: 7px 13px; cursor: pointer; transition: all .15s;
   }
-  .chip small { font-weight: 500; color: var(--muted); margin-left: 4px; }
-  .chip:hover { border-color: var(--muted); }
-  .chip.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
-  .chip.active small { color: inherit; opacity: .7; }
-  .meta { padding: 18px 0 6px; font-size: 13.5px; color: var(--muted); }
-  .grid {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 16px; padding: 10px 0 60px;
-  }
+  .chip small { color: var(--chrome); margin-left: 5px; font-weight: 500; }
+  .chip.active { background: var(--ink); border-color: var(--ink); color: #fff; }
+  .chip.active small { color: rgba(255,255,255,.6); }
+
+  /* ---------- meta rule ---------- */
+  .meta-rule { border-top: 1px solid var(--stone); margin-top: 26px; padding: 12px 0 0; display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+  .meta-rule span { font-family: var(--mono); font-size: 10px; letter-spacing: .12em; color: var(--chrome); }
+
+  /* ---------- sections & grid ---------- */
+  .section { padding: 34px 0 8px; }
+  .section-head { display: flex; align-items: baseline; gap: 14px; border-bottom: 1px solid var(--stone); padding-bottom: 12px; margin-bottom: 20px; }
+  .section-head .no { font-family: var(--mono); font-size: 11px; font-weight: 600; color: var(--sec-c, var(--cobalt)); letter-spacing: .1em; }
+  .section-head h2 { font-family: var(--serif); font-weight: 600; font-size: 25px; letter-spacing: -0.01em; }
+  .section-head .cnt { font-family: var(--mono); font-size: 11px; color: var(--chrome); }
+  .section-head .more { margin-left: auto; font-family: var(--mono); font-size: 10.5px; font-weight: 600; letter-spacing: .08em; color: var(--cobalt); background: none; border: 0; cursor: pointer; }
+  .section-head .more:hover { text-decoration: underline; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(285px, 1fr)); gap: 14px; padding-bottom: 22px; }
   .card {
-    background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
-    padding: 20px; display: flex; flex-direction: column; gap: 12px;
-    box-shadow: var(--shadow); transition: all .18s ease;
+    background: #fff; border: 1px solid var(--stone); border-radius: 10px; padding: 18px;
+    cursor: pointer; transition: all .16s; display: flex; flex-direction: column; gap: 10px;
+    content-visibility: auto; contain-intrinsic-size: 172px;
   }
-  .card:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
-  .card-top { display: flex; align-items: center; gap: 12px; }
-  .logo, .logo-fallback {
-    width: 44px; height: 44px; border-radius: 10px; flex-shrink: 0;
-    border: 1px solid var(--border); background: #fff; object-fit: contain; padding: 6px;
+  .card:hover { border-color: var(--cobalt); box-shadow: 0 8px 22px rgba(14,27,51,.07); transform: translateY(-1px); }
+  .card-top { display: flex; align-items: center; gap: 11px; }
+  .logo, .logo-fb {
+    width: 40px; height: 40px; border-radius: 8px; flex-shrink: 0; border: 1px solid var(--stone);
+    background: #fff; object-fit: contain; padding: 5px;
   }
-  .logo-fallback {
-    display: flex; align-items: center; justify-content: center;
-    font-weight: 700; font-size: 17px; color: #fff; border: 0; padding: 0;
+  .logo-fb { display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-weight: 600; font-size: 15px; color: #fff; border: 0; padding: 0; }
+  .card h3 { font-family: var(--serif); font-weight: 600; font-size: 17.5px; line-height: 1.15; letter-spacing: -0.005em; }
+  .sublabel { font-family: var(--mono); font-size: 9px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; margin-top: 3px; display: block; }
+  .card p { font-size: 13px; line-height: 1.55; color: #4A5468; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; flex-grow: 1; }
+  .card-foot { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--stone-lt); padding-top: 10px; }
+  .card-foot .dom { font-family: var(--mono); font-size: 10px; color: var(--chrome); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .card-foot .open { font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: .08em; color: var(--cobalt); flex-shrink: 0; }
+  .empty { padding: 70px 0; text-align: center; font-family: var(--mono); font-size: 12px; color: var(--chrome); letter-spacing: .06em; }
+
+  /* ---------- detail view ---------- */
+  .detail { display: none; padding: 44px 0 70px; }
+  .backlink { font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: .1em; color: var(--chrome); background: none; border: 0; cursor: pointer; }
+  .backlink:hover { color: var(--cobalt); }
+  .detail-grid { display: grid; grid-template-columns: minmax(0,1fr) 320px; gap: 54px; margin-top: 30px; }
+  .d-head { display: flex; align-items: center; gap: 20px; }
+  .d-logo, .d-logo-fb { width: 76px; height: 76px; border-radius: 14px; border: 1px solid var(--stone); background: #fff; object-fit: contain; padding: 10px; }
+  .d-logo-fb { display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-weight: 600; font-size: 30px; color: #fff; border: 0; }
+  .detail h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(30px, 3.5vw, 42px); letter-spacing: -0.015em; line-height: 1.05; }
+  .d-desc { margin-top: 24px; font-size: 16.5px; line-height: 1.7; color: #333D50; max-width: 640px; }
+  .d-cta { display: inline-block; margin-top: 30px; font-family: var(--mono); font-size: 12px; font-weight: 600; letter-spacing: .1em; color: #fff; background: var(--cobalt); border-radius: 5px; padding: 14px 24px; text-decoration: none; transition: background .15s; }
+  .d-cta:hover { background: var(--oxblood); }
+  .spec { border: 1px solid var(--stone); border-radius: 10px; background: #fff; padding: 6px 18px; height: fit-content; }
+  .spec-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 13px 0; border-bottom: 1px solid var(--stone-lt); }
+  .spec-row:last-child { border-bottom: 0; }
+  .spec-row dt { font-family: var(--mono); font-size: 9.5px; letter-spacing: .12em; color: var(--chrome); }
+  .spec-row dd { font-family: var(--mono); font-size: 11px; font-weight: 600; text-align: right; overflow-wrap: anywhere; }
+  .related-head { margin-top: 54px; }
+
+  /* ---------- submit modal ---------- */
+  dialog { border: 1px solid var(--stone); border-radius: 12px; padding: 0; max-width: 480px; width: calc(100% - 40px); background: var(--porcelain); }
+  dialog::backdrop { background: rgba(14,27,51,.45); }
+  .modal-in { padding: 28px; }
+  .modal-in h3 { font-family: var(--serif); font-weight: 600; font-size: 24px; }
+  .modal-in .note { font-family: var(--mono); font-size: 10px; color: var(--chrome); letter-spacing: .06em; margin-top: 6px; }
+  .field { margin-top: 16px; }
+  .field label { display: block; font-family: var(--mono); font-size: 9.5px; font-weight: 600; letter-spacing: .12em; color: var(--chrome); margin-bottom: 6px; }
+  .field input, .field select, .field textarea {
+    width: 100%; font-family: var(--sans); font-size: 14px; color: var(--ink);
+    background: #fff; border: 1px solid var(--stone); border-radius: 5px; padding: 10px 12px; outline: 0;
   }
-  .card h3 { font-size: 16px; font-weight: 700; letter-spacing: -0.01em; }
-  .pill {
-    display: inline-block; margin-top: 4px; font-size: 11.5px; font-weight: 600;
-    padding: 3px 9px; border-radius: 999px; width: fit-content;
+  .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--cobalt); }
+  .field textarea { resize: vertical; min-height: 84px; }
+  .modal-actions { display: flex; gap: 10px; margin-top: 22px; }
+  .btn-primary { font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: .1em; background: var(--cobalt); color: #fff; border: 0; border-radius: 5px; padding: 12px 20px; cursor: pointer; }
+  .btn-primary:hover { background: var(--oxblood); }
+  .btn-ghost { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; background: none; border: 0; color: var(--chrome); cursor: pointer; }
+  .form-msg { margin-top: 14px; font-family: var(--mono); font-size: 11px; letter-spacing: .04em; }
+
+  footer { border-top: 1px solid var(--stone); margin-top: 40px; padding: 26px 0 46px; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  footer span, footer a { font-family: var(--mono); font-size: 10px; letter-spacing: .08em; color: var(--chrome); }
+  footer a:hover { color: var(--ink); }
+
+  @media (max-width: 1020px) {
+    .hero { grid-template-columns: 1fr; padding-top: 40px; }
+    .dial-holder { display: none; }
+    .index-strip { display: flex; margin-top: 22px; }
+    .detail-grid { grid-template-columns: 1fr; gap: 30px; }
   }
-  .card p { font-size: 14px; line-height: 1.55; color: var(--muted); flex-grow: 1;
-    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-  .card a {
-    font-size: 13.5px; font-weight: 600; color: var(--text); text-decoration: none;
-    display: inline-flex; align-items: center; gap: 4px; width: fit-content;
-  }
-  .card a:hover { text-decoration: underline; }
-  .empty, .loading { padding: 60px 0; text-align: center; color: var(--muted); font-size: 15px; }
-  footer { border-top: 1px solid var(--border); padding: 28px 0 40px; font-size: 13px; color: var(--muted); line-height: 1.7; }
-  footer a { color: var(--text); }
 </style>
 </head>
 <body>
-<header class="wrap">
-  <div class="brand">The Wall <span>Directory</span></div>
-</header>
 
-<section class="hero wrap">
-  <h1>Hit a wall? Someone here gets you over it.</h1>
-  <p>A growing directory of companies that solve sales, marketing, thought leadership, and creative problems for established businesses — the ones with real revenue, real teams, and leadership that wants the problem handled.</p>
-</section>
-
-<section class="controls wrap">
-  <div class="search">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-    <input id="q" type="search" placeholder="Search companies, categories, specialties…" autocomplete="off">
+<nav class="topbar">
+  <div class="wrap topbar-in">
+    <a class="wordmark" href="./">The Wall <small>OPERATIONS ATLAS</small></a>
+    <div class="topbar-actions">
+      <a class="admin-link" href="admin.html">ADMIN</a>
+      <button class="btn-submit" onclick="openSubmit()">SUBMIT A LISTING</button>
+    </div>
   </div>
-  <div class="chips" id="chips"></div>
-</section>
+</nav>
 
-<div class="meta wrap" id="meta"></div>
-<main class="grid wrap" id="grid"><div class="loading">Loading directory…</div></main>
+<main id="home">
+  <section class="hero wrap">
+    <div>
+      <h1>Hit a wall?<br>Find who gets you <em>over it.</em></h1>
+      <p class="lede">An atlas of <strong id="lede-count">—</strong> companies that solve growth problems for established businesses — marketing, SEO, thought leadership, creative, automation, and demand generation. Built for operators who want the problem <strong>handled</strong>.</p>
+      <div class="searchbox">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input id="q" type="search" placeholder="SEARCH THE ATLAS…" autocomplete="off">
+      </div>
+      <div class="index-strip" id="strip"></div>
+    </div>
+    <div class="dial-holder" id="dial"></div>
+  </section>
+
+  <div class="wrap meta-rule">
+    <span id="meta-left">INDEX / LOADING…</span>
+    <span>DATA · LIVE FROM POSTGRES</span>
+  </div>
+
+  <div class="wrap" id="sections"><div class="empty">LOADING THE ATLAS…</div></div>
+</main>
+
+<section class="detail wrap" id="detail"></section>
+
+<dialog id="submit-modal">
+  <form class="modal-in" id="submit-form">
+    <h3>Submit a listing</h3>
+    <p class="note">REVIEWED BEFORE PUBLICATION. NO ENDORSEMENT IMPLIED.</p>
+    <div class="field"><label>COMPANY NAME</label><input name="name" required maxlength="90"></div>
+    <div class="field"><label>WEBSITE URL</label><input name="website" type="url" required placeholder="https://"></div>
+    <div class="field"><label>CATEGORY</label><select name="category" id="submit-cat" required></select></div>
+    <div class="field"><label>SPECIALTY</label><input name="subcategory" required maxlength="60" placeholder="e.g. PR Agency, SEO Software"></div>
+    <div class="field"><label>ONE-LINE DESCRIPTION</label><textarea name="description" required maxlength="280"></textarea></div>
+    <div class="modal-actions">
+      <button type="submit" class="btn-primary">SUBMIT FOR REVIEW</button>
+      <button type="button" class="btn-ghost" onclick="document.getElementById('submit-modal').close()">CANCEL</button>
+    </div>
+    <div class="form-msg" id="form-msg"></div>
+  </form>
+</dialog>
 
 <footer>
   <div class="wrap">
-    Independent directory. Listings are seeded editorially and are not endorsements or rankings.<br>
-    Missing a company? <a href="mailto:support@misspepper.ai?subject=The%20Wall%20Directory%20—%20listing%20submission">Submit a listing</a>.
+    <span>INDEPENDENT DIRECTORY · LISTINGS ARE NOT ENDORSEMENTS OR RANKINGS</span>
+    <span><a href="mailto:support@misspepper.ai?subject=The%20Wall%20Directory">CONTACT</a> · <a href="admin.html">ADMIN</a></span>
   </div>
 </footer>
 
 <script>
 const SUPABASE_URL = 'https://kdvuewhbinmhmrysusbd.supabase.co';
-const SUPABASE_KEY = 'sb_publishable_0d971sHEyPT6eL0lvIp99Q_UDoaxSBZ';
-const CATS = ['Sales', 'Marketing', 'Thought Leadership', 'Creative'];
-const COLORS = { 'Sales': '#2563eb', 'Marketing': '#db2777', 'Thought Leadership': '#d97706', 'Creative': '#7c3aed' };
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtkdnVld2hiaW5taG1yeXN1c2JkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM0MzM2NjUsImV4cCI6MjA5OTAwOTY2NX0.8YF8O_iaCp5C9z8gr8dfEPmW7B8fZCcZ4pIRTwxwsPU';
+const CATS = ['Marketing','SEO','Thought Leadership','Creative Strategy','Automation','Demand Gen','Content Marketing','Social Media Marketing','AI Marketing'];
+const COLORS = {
+  'Marketing':'#1B4FD8','SEO':'#16389B','Thought Leadership':'#6E1423','Creative Strategy':'#93202F',
+  'Automation':'#5A6472','Demand Gen':'#0E1B33','Content Marketing':'#4A6BD8','Social Media Marketing':'#274690','AI Marketing':'#3B4C7A'
+};
+const PREVIEW_N = 24;
 
 let all = [], activeCat = 'All';
 const $ = id => document.getElementById(id);
-const esc = s => s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const hdrs = { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` };
 
 async function load() {
   try {
-    const r = await fetch(`${SUPABASE_URL}/rest/v1/directory_companies?select=name,domain,category,subcategory,description&order=name.asc`, {
-      headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` }
-    });
-    if (!r.ok) throw new Error(r.status);
-    all = await r.json();
-    renderChips();
-    render();
+    let rows = [], from = 0;
+    while (true) {
+      const r = await fetch(`${SUPABASE_URL}/rest/v1/directory_companies?select=name,domain,category,subcategory,description&status=eq.approved&order=name.asc`, {
+        headers: { ...hdrs, Range: `${from}-${from + 999}`, 'Range-Unit': 'items' }
+      });
+      if (!r.ok) throw new Error(r.status);
+      const page = await r.json();
+      rows = rows.concat(page);
+      if (page.length < 1000) break;
+      from += 1000;
+    }
+    all = rows;
+    buildDial(); buildStrip(); buildSubmitCats();
+    route();
   } catch (e) {
-    $('grid').innerHTML = '<div class="empty">Could not load the directory. Refresh to retry.</div>';
+    $('sections').innerHTML = '<div class="empty">COULD NOT LOAD THE ATLAS. REFRESH TO RETRY.</div>';
   }
 }
 
-function renderChips() {
-  const counts = { All: all.length };
-  CATS.forEach(c => counts[c] = all.filter(x => x.category === c).length);
-  $('chips').innerHTML = ['All', ...CATS].map(c =>
-    `<button class="chip${c === activeCat ? ' active' : ''}" data-cat="${c}">${c}<small>${counts[c]}</small></button>`
-  ).join('');
-  $('chips').querySelectorAll('.chip').forEach(b =>
-    b.onclick = () => { activeCat = b.dataset.cat; renderChips(); render(); });
+/* ---------- radial dial ---------- */
+function buildDial() {
+  const size = 470, cx = size/2, cy = size/2, r = 178;
+  const spokes = CATS.map((c, i) => {
+    const a = (i * 2 * Math.PI / CATS.length) - Math.PI / 2;
+    return `<line x1="${cx}" y1="${cy}" x2="${cx + r * Math.cos(a)}" y2="${cy + r * Math.sin(a)}" stroke="#E8E4DC" stroke-width="1"/>`;
+  }).join('');
+  let html = `<svg class="dial-svg" viewBox="0 0 ${size} ${size}">
+    <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#E8E4DC"/>
+    <circle cx="${cx}" cy="${cy}" r="${r-58}" fill="none" stroke="#F3F1EC"/>
+    <circle cx="${cx}" cy="${cy}" r="${r+42}" fill="none" stroke="#F3F1EC"/>
+    ${spokes}</svg>`;
+  html += `<button class="dial-hub ${activeCat==='All'?'active':''}" onclick="setCat('All')"><b>ALL</b><span>${all.length} CO.</span></button>`;
+  CATS.forEach((c, i) => {
+    const a = (i * 2 * Math.PI / CATS.length) - Math.PI / 2;
+    const x = cx + r * Math.cos(a), y = cy + r * Math.sin(a);
+    const n = all.filter(x => x.category === c).length;
+    html += `<button class="dial-node ${activeCat===c?'active':''}" style="left:${x}px;top:${y}px;--node-c:${COLORS[c]}" onclick="setCat('${c}')"><b>${esc(c.toUpperCase())}</b><span>${n}</span></button>`;
+  });
+  $('dial').innerHTML = html;
 }
 
-function render() {
-  const q = $('q').value.trim().toLowerCase();
-  const rows = all.filter(x =>
-    (activeCat === 'All' || x.category === activeCat) &&
-    (!q || [x.name, x.description, x.category, x.subcategory].join(' ').toLowerCase().includes(q))
-  );
-  $('meta').textContent = `${rows.length} ${rows.length === 1 ? 'company' : 'companies'}`;
-  if (!rows.length) { $('grid').innerHTML = '<div class="empty">No matches. Try a different search.</div>'; return; }
-  $('grid').innerHTML = rows.map(x => {
-    const color = COLORS[x.category];
-    return `<article class="card">
-      <div class="card-top">
-        <img class="logo" loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=${encodeURIComponent(x.domain)}&sz=128"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="logo-fallback" style="display:none;background:${color}">${esc(x.name[0])}</div>
-        <div>
-          <h3>${esc(x.name)}</h3>
-          <span class="pill" style="color:${color};background:color-mix(in srgb, ${color} 12%, transparent)">${esc(x.subcategory)}</span>
-        </div>
-      </div>
-      <p>${esc(x.description)}</p>
-      <a href="https://${esc(x.domain)}" target="_blank" rel="noopener nofollow">Visit website →</a>
-    </article>`;
+function buildStrip() {
+  $('strip').innerHTML = ['All', ...CATS].map(c => {
+    const n = c === 'All' ? all.length : all.filter(x => x.category === c).length;
+    return `<button class="chip ${activeCat===c?'active':''}" onclick="setCat('${c}')">${esc(c.toUpperCase())}<small>${n}</small></button>`;
   }).join('');
 }
 
-$('q').addEventListener('input', render);
+function buildSubmitCats() {
+  $('submit-cat').innerHTML = CATS.map(c => `<option>${esc(c)}</option>`).join('');
+}
+
+function setCat(c) {
+  activeCat = c;
+  buildDial(); buildStrip(); renderSections();
+  const top = document.querySelector('.meta-rule');
+  if (top) top.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+/* ---------- sections ---------- */
+function matches(x, q) {
+  return !q || [x.name, x.description, x.category, x.subcategory, x.domain].join(' ').toLowerCase().includes(q);
+}
+
+function cardHTML(x) {
+  const color = COLORS[x.category] || '#1B4FD8';
+  return `<article class="card" onclick="openDetail('${esc(x.domain)}')">
+    <div class="card-top">
+      <img class="logo" loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=${encodeURIComponent(x.domain)}&sz=128"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="logo-fb" style="display:none;background:${color}">${esc(x.name[0] || '?')}</div>
+      <div style="min-width:0">
+        <h3>${esc(x.name)}</h3>
+        <span class="sublabel" style="color:${color}">${esc(x.subcategory)}</span>
+      </div>
+    </div>
+    <p>${esc(x.description)}</p>
+    <div class="card-foot"><span class="dom">${esc(x.domain)}</span><span class="open">OPEN →</span></div>
+  </article>`;
+}
+
+function renderSections() {
+  const q = $('q').value.trim().toLowerCase();
+  const el = $('sections');
+  let total = 0, html = '';
+
+  if (activeCat === 'All' && !q) {
+    CATS.forEach((c, i) => {
+      const rows = all.filter(x => x.category === c);
+      if (!rows.length) return;
+      total += rows.length;
+      const preview = rows.slice(0, PREVIEW_N);
+      html += `<section class="section" style="--sec-c:${COLORS[c]}">
+        <div class="section-head">
+          <span class="no">${String(i+1).padStart(2,'0')}</span>
+          <h2>${esc(c)}</h2><span class="cnt">${rows.length} COMPANIES</span>
+          ${rows.length > PREVIEW_N ? `<button class="more" onclick="setCat('${c}')">VIEW ALL ${rows.length} →</button>` : ''}
+        </div>
+        <div class="grid">${preview.map(cardHTML).join('')}</div>
+      </section>`;
+    });
+  } else {
+    const rows = all.filter(x => (activeCat === 'All' || x.category === activeCat) && matches(x, q));
+    total = rows.length;
+    const title = activeCat === 'All' ? 'Search results' : activeCat;
+    const color = COLORS[activeCat] || '#1B4FD8';
+    html = rows.length
+      ? `<section class="section" style="--sec-c:${color}">
+          <div class="section-head"><span class="no">▣</span><h2>${esc(title)}</h2><span class="cnt">${rows.length} COMPANIES</span>
+          ${activeCat !== 'All' || q ? `<button class="more" onclick="clearFilters()">CLEAR ✕</button>` : ''}</div>
+          <div class="grid">${rows.map(cardHTML).join('')}</div>
+        </section>`
+      : '<div class="empty">NO MATCHES IN THE ATLAS. TRY ANOTHER SEARCH.</div>';
+  }
+  $('meta-left').textContent = `INDEX / ${total} COMPANIES SHOWN / ${all.length} LISTED`;
+  $('lede-count').textContent = all.length.toLocaleString();
+  el.innerHTML = html;
+}
+
+function clearFilters() { $('q').value = ''; activeCat = 'All'; buildDial(); buildStrip(); renderSections(); }
+
+/* ---------- detail route ---------- */
+function openDetail(domain, push = true) {
+  const x = all.find(r => r.domain === domain);
+  if (!x) return;
+  if (push) history.pushState({ c: domain }, '', `?c=${encodeURIComponent(domain)}`);
+  document.title = `${x.name} — The Wall`;
+  const color = COLORS[x.category] || '#1B4FD8';
+  const related = all.filter(r => r.subcategory === x.subcategory && r.domain !== x.domain).slice(0, 6);
+  $('home').style.display = 'none';
+  const d = $('detail');
+  d.style.display = 'block';
+  d.innerHTML = `
+    <button class="backlink" onclick="closeDetail()">← BACK TO INDEX</button>
+    <div class="detail-grid">
+      <div>
+        <div class="d-head">
+          <img class="d-logo" alt="" src="https://www.google.com/s2/favicons?domain=${encodeURIComponent(x.domain)}&sz=128"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="d-logo-fb" style="display:none;background:${color}">${esc(x.name[0] || '?')}</div>
+          <div>
+            <h1>${esc(x.name)}</h1>
+            <span class="sublabel" style="color:${color};font-size:10.5px">${esc(x.category.toUpperCase())} / ${esc(x.subcategory.toUpperCase())}</span>
+          </div>
+        </div>
+        <p class="d-desc">${esc(x.description)}</p>
+        <a class="d-cta" href="https://${esc(x.domain)}" target="_blank" rel="noopener nofollow">VISIT WEBSITE ↗</a>
+      </div>
+      <dl class="spec">
+        <div class="spec-row"><dt>DOMAIN</dt><dd>${esc(x.domain)}</dd></div>
+        <div class="spec-row"><dt>CATEGORY</dt><dd style="color:${color}">${esc(x.category.toUpperCase())}</dd></div>
+        <div class="spec-row"><dt>SPECIALTY</dt><dd>${esc(x.subcategory.toUpperCase())}</dd></div>
+        <div class="spec-row"><dt>STATUS</dt><dd>LISTED</dd></div>
+      </dl>
+    </div>
+    ${related.length ? `
+    <div class="related-head section-head" style="--sec-c:${color}">
+      <span class="no">≡</span><h2>Also in ${esc(x.subcategory)}</h2><span class="cnt">${related.length}</span>
+    </div>
+    <div class="grid">${related.map(cardHTML).join('')}</div>` : ''}
+  `;
+  window.scrollTo({ top: 0 });
+}
+
+function closeDetail(push = true) {
+  if (push) history.pushState({}, '', location.pathname);
+  document.title = 'The Wall — Operations Atlas';
+  $('detail').style.display = 'none';
+  $('detail').innerHTML = '';
+  $('home').style.display = 'block';
+  renderSections();
+}
+
+function route() {
+  const c = new URLSearchParams(location.search).get('c');
+  if (c && all.some(r => r.domain === c)) { openDetail(c, false); } else { $('home').style.display = 'block'; renderSections(); }
+}
+window.addEventListener('popstate', route);
+
+/* ---------- submit ---------- */
+function openSubmit() { $('form-msg').textContent = ''; $('submit-modal').showModal(); }
+$('submit-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const f = new FormData(e.target);
+  let domain = '';
+  try { domain = new URL(f.get('website')).hostname.replace(/^www\./, ''); } catch { $('form-msg').textContent = 'INVALID WEBSITE URL.'; return; }
+  const body = [{
+    name: f.get('name').trim(), domain, category: f.get('category'),
+    subcategory: f.get('subcategory').trim(), description: f.get('description').trim(), status: 'pending'
+  }];
+  const msg = $('form-msg');
+  msg.textContent = 'SUBMITTING…';
+  const r = await fetch(`${SUPABASE_URL}/rest/v1/directory_companies`, {
+    method: 'POST', headers: { ...hdrs, 'Content-Type': 'application/json', Prefer: 'return=minimal' }, body: JSON.stringify(body)
+  });
+  if (r.ok) { msg.style.color = '#1B4FD8'; msg.textContent = 'SUBMITTED FOR REVIEW. THANK YOU.'; e.target.reset(); setTimeout(() => $('submit-modal').close(), 1600); }
+  else if (r.status === 409) { msg.style.color = '#6E1423'; msg.textContent = 'THIS DOMAIN IS ALREADY LISTED OR PENDING.'; }
+  else { msg.style.color = '#6E1423'; msg.textContent = 'SUBMISSION FAILED. TRY AGAIN.'; }
+});
+
+$('q').addEventListener('input', () => { if ($('detail').style.display === 'block') closeDetail(); renderSections(); });
 load();
 </script>
 </body>
