@@ -141,6 +141,20 @@
   .spec-row dt { font-family: var(--mono); font-size: 9.5px; letter-spacing: .12em; color: var(--chrome); }
   .spec-row dd { font-family: var(--mono); font-size: 11px; font-weight: 600; text-align: right; overflow-wrap: anywhere; }
   .related-head { margin-top: 54px; }
+  .d-about { margin-top: 34px; max-width: 640px; }
+  .d-about h2, .qa-wrap h2, .qf-wrap h2 { font-family: var(--serif); font-weight: 600; font-size: 21px; margin-bottom: 12px; }
+  .d-about p { font-size: 14.5px; line-height: 1.7; color: #333D50; margin-bottom: 12px; }
+  .qf-wrap { margin-top: 30px; border: 1px solid var(--stone); border-radius: 10px; background: #fff; padding: 18px 20px 8px; max-width: 640px; }
+  .qf-row { display: flex; gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--stone-lt); }
+  .qf-row:last-child { border-bottom: 0; }
+  .qf-row dt { font-family: var(--mono); font-size: 9.5px; font-weight: 600; letter-spacing: .1em; color: var(--chrome); min-width: 110px; padding-top: 2px; }
+  .qf-row dd { font-size: 13px; line-height: 1.55; color: #333D50; }
+  .qa-wrap { margin-top: 34px; max-width: 640px; }
+  .qa-wrap details { border: 1px solid var(--stone); border-radius: 8px; background: #fff; margin-bottom: 8px; }
+  .qa-wrap summary { cursor: pointer; padding: 13px 16px; font-size: 13.5px; font-weight: 600; list-style: none; display: flex; justify-content: space-between; gap: 10px; }
+  .qa-wrap summary::after { content: '+'; font-family: var(--mono); color: var(--cobalt); }
+  .qa-wrap details[open] summary::after { content: '–'; }
+  .qa-wrap details p { padding: 0 16px 14px; font-size: 13px; line-height: 1.6; color: #4A5468; }
 
   /* ---------- submit modal ---------- */
   dialog { border: 1px solid var(--stone); border-radius: 12px; padding: 0; max-width: 480px; width: calc(100% - 40px); background: var(--porcelain); }
@@ -254,7 +268,7 @@ async function load() {
   try {
     let rows = [], from = 0;
     while (true) {
-      const r = await fetch(`${SUPABASE_URL}/rest/v1/directory_companies?select=name,domain,category,subcategory,description&status=eq.approved&order=name.asc`, {
+      const r = await fetch(`${SUPABASE_URL}/rest/v1/directory_companies?select=name,domain,category,subcategory,description,listing_type,bottleneck_solved,target_executive_icp,client_revenue_fit&status=eq.approved&order=name.asc`, {
         headers: { ...hdrs, Range: `${from}-${from + 999}`, 'Range-Unit': 'items' }
       });
       if (!r.ok) throw new Error(r.status);
@@ -373,6 +387,108 @@ function renderSections() {
 
 function clearFilters() { $('q').value = ''; activeCat = 'All'; buildDial(); buildStrip(); renderSections(); }
 
+/* ---------- enrichment content (deterministic — built from stored fields only) ---------- */
+function aboutHTML(x) {
+  const type = x.listing_type || 'Marketing Agency';
+  const noun = type === 'Software Provider' ? 'platform' : type === 'Business Service' ? 'firm' : 'agency';
+  const p1 = `${esc(x.name)} is a ${esc(x.subcategory.toLowerCase())} ${noun} listed in the ${esc(x.category)} section of The Wall, a directory of providers that serve established businesses — typically companies at $5M+ in revenue with 25 or more employees. ${esc(x.description)}`;
+  const p2 = `Providers in this section are typically engaged by leadership roles such as ${esc(x.target_executive_icp || 'senior executives')} to address ${esc((x.bottleneck_solved || 'growth bottlenecks').toLowerCase())}. Engagement structures across this category commonly include monthly retainers, project-based contracts, and ongoing advisory arrangements; specific pricing and scope come directly from the provider.`;
+  const p3 = `To evaluate ${esc(x.name)}, review the capabilities described on its official website, request relevant case material for your revenue band, and initiate contact through the provider's own intake process — most firms in this category begin with a discovery or strategy call. This profile is compiled from public sources and is not an endorsement; verify current offerings directly with the provider at ${esc(x.domain)}.`;
+  return `<div class="d-about"><h2>About ${esc(x.name)}</h2><p>${p1}</p><p>${p2}</p><p>${p3}</p></div>`;
+}
+
+function quickFactsHTML(x) {
+  return `<div class="qf-wrap"><h2>Quick facts</h2><dl>
+    <div class="qf-row"><dt>BEST FOR</dt><dd>Executives at $5M+ companies working through ${esc((x.bottleneck_solved || 'growth roadblocks').toLowerCase())}.</dd></div>
+    <div class="qf-row"><dt>FOCUS</dt><dd>${esc(x.category)} — ${esc(x.subcategory)}.</dd></div>
+    <div class="qf-row"><dt>FEE STRUCTURE</dt><dd>Retainer, project, or custom quote — confirmed directly by the provider.</dd></div>
+    <div class="qf-row"><dt>ACCESS</dt><dd>Consultations and audits are requested through the provider's website.</dd></div>
+  </dl></div>`;
+}
+
+const QA_STANDARD = [
+  ['What is {name} and what does it offer?', '{name} is a {sub} {noun} in the {cat} category. This profile summarizes its focus and links to the official website, where capabilities, team, and current offers can be reviewed in full.'],
+  ['Do I need an appointment or consultation to start?', 'Providers in this category typically begin with a scheduled discovery or strategy conversation rather than walk-in engagement. Use the website contact or booking flow to initiate.'],
+  ['What are typical working hours for providers like this?', 'Most firms in this category operate Monday through Friday during standard business hours, with dedicated account coverage during active engagements.'],
+  ['How is an initial engagement usually priced?', 'Pricing depends on scope, complexity, and team allocation. Firms in this category generally provide a detailed proposal after an initial audit or discovery call; this directory does not list private pricing.'],
+  ['Who is a fit for this provider?', 'The Wall indexes providers that serve established organizations — commonly $5M+ in revenue with 25 or more employees — though each firm sets its own client criteria.'],
+  ['Is weekend support common?', 'Client management in this category typically runs on business weekdays, while automated systems and live campaigns continue running continuously.'],
+  ['Where is this provider located?', 'Location details, where known, appear in the profile description and on the provider website. Many providers in this directory serve clients nationwide regardless of headquarters.'],
+  ['Who leads this company?', 'Leadership details are published on the provider website and professional profiles. This directory does not maintain executive rosters.'],
+  ['How current is this profile?', 'Profiles are compiled from public sources and refreshed as the directory is updated. The provider website is always the authoritative source.'],
+  ['How do I contact {name}?', 'Use the Visit Website button on this page to reach the official site, then use its inquiry form or listed contact channels.']
+];
+const QA_TYPE = {
+  'Marketing Agency': [
+    ['What marketing bottlenecks do agencies like {name} solve?', 'Agencies in this category address stagnant lead flow, misaligned messaging, ineffective spend, and outdated positioning for mid-market clients.'],
+    ['Is account-based marketing common in this category?', 'Many firms in this space run ABM programs that target high-value accounts through personalized multi-channel campaigns; confirm specifics with the provider.'],
+    ['How is pipeline impact usually reported?', 'Typical reporting covers qualified leads, pipeline velocity, acquisition cost, and closed-won attribution on a monthly cadence.'],
+    ['What industries do these agencies commonly serve?', 'Common verticals include B2B SaaS, professional services, financial services, manufacturing, and healthcare — check the provider site for its focus.'],
+    ['Will we get a dedicated strategist?', 'Mid-market engagements commonly include a dedicated account lead and senior strategist; team structure varies by firm and tier.'],
+    ['Is creative and content production handled in-house?', 'Many agencies produce thought leadership, video, ad creative, and messaging internally; others partner for production. Verify with the provider.'],
+    ['How long does onboarding usually take?', 'Strategic alignment, audits, and technical setup in this category generally run two to four weeks before full campaign deployment.'],
+    ['Do these agencies manage omni-channel paid media?', 'Paid programs commonly span search, LinkedIn, programmatic, and industry placements depending on the client motion.'],
+    ['Is AI search visibility (AEO) part of modern scopes?', 'Increasingly yes — many firms now include optimization for AI answer engines and search overviews alongside classic SEO.'],
+    ['How do I request a proposal from {name}?', 'Request a discovery call through the provider website; most firms respond with a preliminary audit and proposal.']
+  ],
+  'Software Provider': [
+    ['What roadblocks does software like this clear for $5M+ companies?', 'Platforms in this category streamline workflows, unify customer data, automate touchpoints, and accelerate deal or campaign velocity.'],
+    ['Can leadership get a demo or trial?', 'Most platforms offer a demonstration tailored to your stack; some provide sandbox trials. Request through the provider site.'],
+    ['What integrations are typical?', 'Common integrations include major CRMs such as Salesforce and HubSpot plus data warehouse and marketing stack connections; check the provider integration directory.'],
+    ['How is enterprise pricing structured?', 'Licensing is commonly structured on seats, usage volume, and feature modules. Exact pricing comes from the vendor.'],
+    ['Is onboarding and customer success included?', 'Enterprise tiers typically include dedicated success management, implementation support, and priority SLAs.'],
+    ['What about security and compliance?', 'Established vendors publish their security posture — encryption, SOC 2 status, and role-based permissions — on their trust or security pages.'],
+    ['Can multiple departments use it?', 'Most platforms support role-based access across sales, marketing, operations, and leadership teams.'],
+    ['How often is the product updated?', 'Cloud platforms in this category ship enhancements and security updates continuously.'],
+    ['Is there mobile access for executives?', 'Many platforms provide mobile dashboards for monitoring KPIs; confirm availability with the vendor.'],
+    ['How does data migration work?', 'Vendors typically provide guided migration tooling and technical support for moving off legacy systems.']
+  ],
+  'Business Service': [
+    ['What business bottlenecks do firms like {name} resolve?', 'Firms in this category work on stalled revenue, leadership positioning, team effectiveness, and operational drag.'],
+    ['Are programs tailored to our revenue scale?', 'Providers serving this directory’s audience structure engagements around the realities of $5M+ organizations; confirm fit directly.'],
+    ['What backgrounds do senior practitioners have?', 'Firms publish practitioner credentials on their sites — typically senior operating experience and specialized certifications.'],
+    ['How are engagements billed?', 'Common structures include milestone retainers, project deliverables, and performance-aligned schedules.'],
+    ['Can they move quickly on urgent bottlenecks?', 'Many firms offer accelerated audits or workshops for immediate issues; ask about rapid-start options.'],
+    ['What regions and company sizes are served?', 'Most providers here serve clients across North America at the $5M+ / 25+ employee scale; each firm sets its own criteria.'],
+    ['How is confidentiality handled?', 'Reputable firms execute mutual NDAs before reviewing performance data or financials.'],
+    ['What is needed to start a consultation?', 'Typically a high-level overview of the business, team structure, and target outcomes.'],
+    ['Is long-term implementation support available?', 'Both short alignment sprints and multi-quarter advisory arrangements are common in this category.'],
+    ['How do I schedule an initial session with {name}?', 'Contact the firm through its website to request a confidential diagnostic or strategy session.']
+  ]
+};
+
+function qaPairs(x) {
+  const type = QA_TYPE[x.listing_type] ? x.listing_type : 'Marketing Agency';
+  const fill = s => s.replaceAll('{name}', x.name).replaceAll('{sub}', x.subcategory.toLowerCase()).replaceAll('{cat}', x.category)
+    .replaceAll('{noun}', x.listing_type === 'Software Provider' ? 'platform' : x.listing_type === 'Business Service' ? 'firm' : 'agency');
+  return [...QA_STANDARD, ...QA_TYPE[type]].map(([q, a]) => [fill(q), fill(a)]);
+}
+
+function qaHTML(x) {
+  return `<div class="qa-wrap"><h2>Questions &amp; answers</h2>${qaPairs(x).map(([q, a]) =>
+    `<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}</div>`;
+}
+
+function injectJSONLD(x) {
+  const pairs = qaPairs(x);
+  const ld = [{
+    '@context': 'https://schema.org', '@type': x.listing_type === 'Software Provider' ? 'SoftwareApplication' : 'ProfessionalService',
+    name: x.name, url: `https://${x.domain}`, description: x.description,
+    ...(x.listing_type === 'Software Provider' ? { applicationCategory: x.subcategory, operatingSystem: 'Web' } : {}),
+    knowsAbout: [x.category, x.subcategory]
+  }, {
+    '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: pairs.slice(0, 10).map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } }))
+  }, {
+    '@context': 'https://schema.org', '@type': 'WebPage',
+    speakable: { '@type': 'SpeakableSpecification', cssSelector: ['.d-desc', '.qf-wrap'] },
+    name: `${x.name} — The Wall Directory`
+  }];
+  let el = document.getElementById('jsonld');
+  if (!el) { el = document.createElement('script'); el.type = 'application/ld+json'; el.id = 'jsonld'; document.head.appendChild(el); }
+  el.textContent = JSON.stringify(ld);
+}
+
 /* ---------- detail route ---------- */
 function openDetail(domain, push = true) {
   const x = all.find(r => r.domain === domain);
@@ -399,11 +515,18 @@ function openDetail(domain, push = true) {
         </div>
         <p class="d-desc">${esc(x.description)}</p>
         <a class="d-cta" href="https://${esc(x.domain)}" target="_blank" rel="noopener nofollow">VISIT WEBSITE ↗</a>
+        ${aboutHTML(x)}
+        ${quickFactsHTML(x)}
+        ${qaHTML(x)}
       </div>
       <dl class="spec">
         <div class="spec-row"><dt>DOMAIN</dt><dd>${esc(x.domain)}</dd></div>
         <div class="spec-row"><dt>CATEGORY</dt><dd style="color:${color}">${esc(x.category.toUpperCase())}</dd></div>
         <div class="spec-row"><dt>SPECIALTY</dt><dd>${esc(x.subcategory.toUpperCase())}</dd></div>
+        <div class="spec-row"><dt>TYPE</dt><dd>${esc((x.listing_type || 'PROVIDER').toUpperCase())}</dd></div>
+        <div class="spec-row"><dt>SOLVES</dt><dd>${esc((x.bottleneck_solved || '—').toUpperCase())}</dd></div>
+        <div class="spec-row"><dt>TYPICAL BUYER</dt><dd>${esc((x.target_executive_icp || '—').toUpperCase())}</dd></div>
+        <div class="spec-row"><dt>CLIENT FIT</dt><dd>${esc(x.client_revenue_fit || '$5M-$50M+')}</dd></div>
         <div class="spec-row"><dt>STATUS</dt><dd>LISTED</dd></div>
       </dl>
     </div>
@@ -413,11 +536,13 @@ function openDetail(domain, push = true) {
     </div>
     <div class="grid">${related.map(cardHTML).join('')}</div>` : ''}
   `;
+  injectJSONLD(x);
   window.scrollTo({ top: 0 });
 }
 
 function closeDetail(push = true) {
   if (push) history.pushState({}, '', location.pathname);
+  document.getElementById('jsonld')?.remove();
   document.title = 'The Wall — Operations Atlas';
   $('detail').style.display = 'none';
   $('detail').innerHTML = '';
