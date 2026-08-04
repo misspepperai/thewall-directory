@@ -373,3 +373,44 @@ layer (skipped per Dan — this is a referral engine, not a directory business).
 
 **When first Miss Pepper referral win lands:** publish takes 30 min not a week.
 **When a journalist wants a stat:** they cite the Data Corner not a competitor.
+
+## Tier D shipped (2026-08-04, commit 4e2430e)
+
+**Category × State programmatic (83 pages) + Press page + 2 syndication-ready releases.**
+
+**`/find/` — category × state programmatic** (`build-find.mjs`):
+- 83 pages combining 7 commercially-searched pillars × top 20 US states
+- Skips (pillar, state) combos with < 3 in-state vendors
+- Pillar slug map matches actual buyer search phrases:
+  - Marketing → `marketing-agencies`
+  - SEO → `seo-agencies`
+  - Creative Strategy → `creative-agencies`
+  - Content Marketing → `content-marketing-agencies`
+  - Social Media Marketing → `social-media-marketing-agencies`
+  - Thought Leadership → `pr-agencies` (search-term match)
+  - Automation → `marketing-automation-services`
+- Each page: kicker, statline (count / modal rate / disclosure rate), full vendor
+  table with rate + city, in-state city clustering breakdown, editorial "how to
+  read a state-scoped shortlist" section, cross-links to pillar / state / atlas
+  filter deep-link (`?cat=X&state=Y`)
+- `CollectionPage` + `BreadcrumbList` + `ItemList` JSON-LD per page
+- `/find/index.html` grouped by category, states ordered by vendor count
+
+**`/press.html` — media kit** (single root file):
+- Positioning one-liner (ink-black call-out card)
+- 8-tile key-stats grid (2,286 vendors / 10 pillars / 47 states / etc.)
+- What The Wall is / what it isn't
+- Publisher (Miss Pepper AI) + byline (Editorial Team) + editorial policy +
+  AI disclosure + independence disclosure
+- Data licensing terms + canonical citation string (free with attribution)
+- "Available for comment" topic list (6 domains) with 24-hour turnaround pledge
+- Editorial-resources index (report + 22 briefings + Data Corner + entities + compare)
+- Downloadable assets (SVG favicon, badge kit) + press contact + "recent coverage" placeholder
+- `Organization` + `BreadcrumbList` JSON-LD
+
+**`docs/press-releases/` — syndication-ready** (Markdown, submission-safe):
+- `01-launch-2026-08.md` — launch announcement, Dan quote, boilerplate
+- `02-reference-library-2026-08.md` — reference-library expansion (send T+10)
+- Both formatted for OpenPR / PRLog / PR.com free-tier submission
+
+**Sitemap: 2,588 URLs.** Footer nav adds "Find by state" and "Press & media".
