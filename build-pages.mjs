@@ -86,6 +86,44 @@ function jsonld(x, pairs, sp) {
 }
 
 // ---- static page shell (trimmed atlas design system) ----
+// "Is this your firm?" block — the only conversion path on a /c/ page.
+// Vendors land here by self-searching; this turns that into a Weapon 1 reply.
+function claimHTML(x) {
+  const mail = (subject, body) =>
+    `mailto:support@misspepper.ai?subject=${encodeURIComponent(subject)}&amp;body=${encodeURIComponent(body)}`;
+  const claim = mail(
+    `Claim listing: ${x.domain}`,
+    `Hi — I'm with ${x.name} (${x.domain}).\n\n`
+    + `I'd like to claim our listing on The Wall and I'm in on the two-way referral deal:\n`
+    + `we keep 20% of what we send you, you take 10% of what you send us.\n\n`
+    + `Name:\nRole:\nBest email:\nAnything on the listing that needs fixing:\n`
+  );
+  const fix = mail(
+    `Correction: ${x.domain}`,
+    `Hi — I'm with ${x.name} (${x.domain}).\n\n`
+    + `Something on our listing at ${SITE}/c/${x.domain}.html needs correcting:\n\n`
+    + `What's wrong:\nWhat it should say:\nSource we can verify it against:\n`
+  );
+  return `<section class="claim">
+    <div class="claim-k">IS THIS YOUR FIRM?</div>
+    <h2>Claim this listing — and keep 20% of every client you send us</h2>
+    <p>${esc(x.name)} is listed here for free, compiled from public sources. There is no fee to
+    claim it and no pay-to-play tier. Claiming lets you correct the record and opens a two-way
+    referral arrangement that runs in your favour by design.</p>
+    <div class="deal">
+      <div><b>You keep 20%</b><span>Of any client you send to Miss Pepper AI.</span></div>
+      <div><b>We take 10%</b><span>Of any client we send to ${esc(x.name)}.</span></div>
+    </div>
+    <div class="claim-acts">
+      <a class="a-pri" href="${claim}">CLAIM &amp; COUNT ME IN →</a>
+      <a class="a-sec" href="${fix}">CORRECT THIS LISTING</a>
+      <a class="a-sec" href="../partner.html">READ THE FULL TERMS</a>
+    </div>
+    <p class="claim-fine">NO COST TO CLAIM · NO EXCLUSIVITY · CANCEL BY REPLYING &ldquo;STOP&rdquo; ·
+    LISTING STAYS UP EITHER WAY &mdash; INCLUSION IS EDITORIAL, NOT PURCHASED</p>
+  </section>`;
+}
+
 function pageHTML(x, pairs, sp) {
   const color = COLORS[x.category] || '#1B4FD8';
   const metaDesc = esc(((x.site_description || x.description) + '').slice(0, 158));
@@ -165,6 +203,19 @@ function pageHTML(x, pairs, sp) {
   footer{border-top:1px solid var(--stone);margin-top:44px;padding:22px 0 40px}
   footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   footer span,footer a{font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:var(--chrome)}
+  .claim{margin-top:40px;border:1px solid var(--stone);border-left:3px solid var(--cobalt);border-radius:10px;background:#fff;padding:22px 24px}
+  .claim-k{font-family:var(--mono);font-size:8.5px;font-weight:600;letter-spacing:.16em;color:var(--cobalt)}
+  .claim h2{margin:8px 0 10px;font-size:22px}
+  .claim p{font-size:14px;line-height:1.7;color:var(--body)}
+  .deal{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 4px}
+  .deal div{flex:1 1 220px;border:1px solid var(--stone);border-radius:8px;background:var(--stone-lt);padding:13px 15px}
+  .deal b{display:block;font-family:var(--mono);font-size:19px;font-weight:600;color:var(--oxblood)}
+  .deal span{display:block;margin-top:4px;font-size:12.5px;line-height:1.55;color:var(--body)}
+  .claim-acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+  .claim-acts a{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.1em;text-decoration:none;border-radius:5px;padding:12px 18px}
+  .a-pri{color:#fff;background:var(--cobalt)} .a-pri:hover{background:var(--oxblood)}
+  .a-sec{color:var(--ink);background:#fff;border:1px solid var(--stone)} .a-sec:hover{border-color:var(--cobalt);color:var(--cobalt)}
+  .claim-fine{margin-top:14px;font-family:var(--mono);font-size:9px;letter-spacing:.06em;color:var(--chrome);line-height:1.7}
 </style>
 </head>
 <body>
@@ -199,6 +250,8 @@ function pageHTML(x, pairs, sp) {
 
   <h2>Data sheet</h2>
   <dl class="spec">${specRows.map(([t, d]) => `<div><dt>${esc(t)}</dt><dd>${esc(String(d))}</dd></div>`).join('')}</dl>
+
+  ${claimHTML(x)}
 </main>
 <footer><div class="wrap">
   <span>INDEPENDENT DIRECTORY · COMPILED FROM PUBLIC SOURCES · NOT AN ENDORSEMENT</span>
