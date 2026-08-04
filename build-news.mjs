@@ -310,7 +310,7 @@ ${bodyHTML}
 </main>
 <footer><div class="wrap">
   <span>© ${BRAND} · INDEPENDENT DIRECTORY · NOT AN ENDORSEMENT ENGINE</span>
-  <span><a href="${base}about.html">ABOUT</a> · <a href="index.html">BRIEFINGS</a> · <a href="${base}editorial-policy.html">EDITORIAL</a> · <a href="${base}privacy.html">PRIVACY</a> · <a href="${base}contact.html">CONTACT</a></span>
+  <span><a href="${base}about.html">ABOUT</a> · <a href="index.html">BRIEFINGS</a> · <a href="${base}glossary.html">GLOSSARY</a> · <a href="${base}editorial-policy.html">EDITORIAL</a> · <a href="${base}privacy.html">PRIVACY</a> · <a href="${base}contact.html">CONTACT</a></span>
 </div></footer>
 </body>
 </html>`;

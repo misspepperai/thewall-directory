@@ -67,7 +67,7 @@ ${bodyHTML}
 </main>
 <footer><div class="wrap">
   <span>© ${BRAND} · INDEPENDENT DIRECTORY · NOT AN ENDORSEMENT ENGINE</span>
-  <span><a href="about.html">ABOUT</a> · <a href="news/">BRIEFINGS</a> · <a href="editorial-policy.html">EDITORIAL</a> · <a href="privacy.html">PRIVACY</a> · <a href="terms.html">TERMS</a> · <a href="contact.html">CONTACT</a></span>
+  <span><a href="about.html">ABOUT</a> · <a href="news/">BRIEFINGS</a> · <a href="glossary.html">GLOSSARY</a> · <a href="editorial-policy.html">EDITORIAL</a> · <a href="privacy.html">PRIVACY</a> · <a href="terms.html">TERMS</a> · <a href="contact.html">CONTACT</a></span>
 </div></footer>
 </body>
 </html>`;

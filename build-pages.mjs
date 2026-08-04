@@ -246,11 +246,14 @@ const run = async () => {
   const today = new Date().toISOString().slice(0, 10);
   const TRUST = ['about','contact','editorial-policy','ai-policy','disclosures','privacy','terms','accessibility'];
   const NEWS = existsSync(join(ROOT, 'news')) ? readdirSync(join(ROOT, 'news')).filter(f => f.endsWith('.html')) : [];
+  const PILLARS = existsSync(join(ROOT, 'pillars')) ? readdirSync(join(ROOT, 'pillars')).filter(f => f.endsWith('.html')) : [];
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
     `<url><loc>${SITE}/</loc><lastmod>${today}</lastmod><changefreq>daily</changefreq></url>\n` +
     `<url><loc>${SITE}/sitemap.html</loc><lastmod>${today}</lastmod></url>\n` +
     TRUST.map(s => `<url><loc>${SITE}/${s}.html</loc><lastmod>${today}</lastmod></url>`).join('\n') + '\n' +
     NEWS.map(f => `<url><loc>${SITE}/news/${f === 'index.html' ? '' : f}</loc><lastmod>${today}</lastmod>${f === 'index.html' ? '<changefreq>weekly</changefreq>' : ''}</url>`).join('\n') + '\n' +
+    (existsSync(join(ROOT, 'glossary.html')) ? `<url><loc>${SITE}/glossary.html</loc><lastmod>${today}</lastmod></url>\n` : '') +
+    PILLARS.map(f => `<url><loc>${SITE}/pillars/${f}</loc><lastmod>${today}</lastmod></url>`).join('\n') + '\n' +
     urls.map(u => `<url><loc>${u}</loc><lastmod>${today}</lastmod></url>`).join('\n') + '\n</urlset>';
   writeFileSync(join(ROOT, 'sitemap.xml'), sitemap);
   writeFileSync(join(ROOT, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`);

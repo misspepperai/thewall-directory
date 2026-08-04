@@ -325,6 +325,7 @@
       <a href="admin.html">Admin console</a>
       <a href="contact.html">Contact</a>
       <a href="news/">Briefings</a>
+      <a href="glossary.html">Glossary</a>
       <a href="sitemap.html">Site index</a>
     </div>
     <div>
@@ -425,7 +426,7 @@ function buildSubmitCats() {
 }
 
 function buildFooter() {
-  $('foot-cats').innerHTML = CATS.map(c => `<a href="#" onclick="setCat('${c}');return false">${esc(c)}</a>`).join('');
+  $('foot-cats').innerHTML = CATS.map(c => `<a href="pillars/${c.toLowerCase().replace(/ /g, '-')}.html">${esc(c)}</a>`).join('');
   $('foot-meta').textContent = `COMPILED FROM PUBLIC SOURCES · ${all.length.toLocaleString()} ENTRIES · UPDATED LIVE`;
 }
 
@@ -755,8 +756,12 @@ function closeDetail(push = true) {
 }
 
 function route() {
-  const c = new URLSearchParams(location.search).get('c');
-  if (c && all.some(r => r.domain === c)) { openDetail(c, false); } else { $('home').style.display = 'block'; renderSections(); }
+  const qs = new URLSearchParams(location.search);
+  const c = qs.get('c');
+  if (c && all.some(r => r.domain === c)) { openDetail(c, false); return; }
+  $('home').style.display = 'block';
+  const cat = qs.get('cat');
+  if (cat && CATS.includes(cat)) { setCat(cat); } else { renderSections(); }
 }
 window.addEventListener('popstate', route);
 

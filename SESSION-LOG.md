@@ -86,10 +86,20 @@ blocklist. All removed rows backed up in session scratchpad (`nonus_backup.json`
   ai-policy (honest automation disclosure), disclosures (ads/affiliate pre-labeling), privacy
   (truthful: no cookies), terms, accessibility. HTML sitemap. Organization+WebSite schema sitewide.
   Footer trust column. Wayback fingerprints on core pages.
-- ⏭ **Next:** authorship decision (recommended: single curator/editor persona, Calvin-Whitlock-style,
-  light per directory profile — Dan hasn't answered), then **aa-google-news** (Phase 1 master gate,
-  unblocked once domain live), then Phase 2 topical (category glossary/entity pages into the static
-  pipeline), Phase 3 catalyst, Phase 5 monetization (claimed listings = "listing upgrades").
+- ✅ **Authorship decision (Dan, 2026-08-03): option 2 — NO persona.** Byline everywhere is
+  "The Wall Editorial Team" as an Organization (never a Person). Do not create personas later
+  without a new decision from Dan.
+- ✅ **Phase 1 site-side SHIPPED (commit c851771):** `news/` Briefings section — 14 original
+  data-journalism articles (all figures computed live from directory_companies via Supabase MCP
+  execute_sql; no fabricated numbers), each with NewsArticle + Breadcrumb JSON-LD, Editorial Team
+  org byline, method card, related links. `build-news.mjs` generates (articles hardcoded in file —
+  dated snapshots, correct to freeze). Wired: sitemap.xml (build-pages.mjs globs news/*.html),
+  index.html footer OPERATIONS → Briefings, trust-page footers → BRIEFINGS (build-trust regen).
+- ⏭ **Phase 1 Dan-side:** submit at publishercenter.google.com (needs his Google login + GSC
+  domain verification first). Post-approval: keep publishing cadence (weekly briefing runbook —
+  re-run aggregates, add article object to build-news.mjs ARTICLES, rebuild, push).
+- ⏭ **Then:** Phase 2 topical (category glossary/entity pages + PAA), Phase 3 catalyst
+  (data studies from index), Phase 5 monetization (claimed listings = "listing upgrades").
 - **Dan's checklist:** GSC + GA setup & sitemap submit (post-domain), social fortress accounts
   (X/LinkedIn/FB/YT → schema sameAs), DMCA badge account, ScoreDetect account, optional NAP
   address/phone for contact page.

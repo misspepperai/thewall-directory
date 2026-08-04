@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automation — vendors, pricing, and the wall they solve — The Wall</title>
+<meta name="description" content="Marketing-automation platforms and the implementation firms that make them work: 59 US vendors covering workflows, lifecycle email, CRM integration, and operations.">
+<link rel="canonical" href="https://hitthewall.net/pillars/automation.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧱</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"The Wall","url":"https://hitthewall.net/","email":"support@misspepper.ai","description":"An operations atlas of US-based companies that solve sales, marketing, SEO, thought leadership, creative, automation, and demand generation problems for established businesses."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is marketing automation in simple terms?","acceptedAnswer":{"@type":"Answer","text":"Marketing automation is software that executes repetitive marketing tasks by rule: when a prospect does X, the system does Y — sends the email, updates the CRM, alerts sales, adjusts the segment. It replaces memory and manual effort with triggers, so follow-up happens every time, at scale."}},{"@type":"Question","name":"What is a common example of marketing automation?","acceptedAnswer":{"@type":"Answer","text":"The classic is the abandoned-action sequence: a prospect downloads a guide or leaves a signup half-finished, and the system automatically sends a timed follow-up series. Welcome sequences, lead-nurture tracks, post-purchase follow-ups, and lead scoring that alerts sales when interest spikes are equally standard."}},{"@type":"Question","name":"Which platforms dominate marketing automation?","acceptedAnswer":{"@type":"Answer","text":"The market ranges from all-in-one suites (HubSpot, Salesforce Marketing Cloud, Adobe Marketo) to focused engines (ActiveCampaign, Klaviyo for e-commerce, Brevo at the budget tier). Platform choice matters less than fit with the CRM and the team’s capacity to run it — which is why implementation partners exist as a category."}},{"@type":"Question","name":"Is marketing automation hard to implement?","acceptedAnswer":{"@type":"Answer","text":"The tools are approachable; the system design is not. Mapping lifecycle stages, defining triggers that reflect real buying behavior, integrating the CRM, and keeping data clean is operations work, and it is where most self-service implementations stall. Firms in this category exist mostly to do that design and integration work."}},{"@type":"Question","name":"What is the difference between marketing automation and marketing operations?","acceptedAnswer":{"@type":"Answer","text":"Marketing operations is the discipline — the people and process that own systems, data quality, and measurement. Marketing automation is one of its instruments. An operations practice decides what should happen and why; the automation platform executes it."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"The Wall","item":"https://hitthewall.net/"},{"@type":"ListItem","position":2,"name":"Disciplines","item":"https://hitthewall.net/glossary.html"},{"@type":"ListItem","position":3,"name":"Automation"}]}</script>
+<style>
+  :root{--porcelain:#FAF9F6;--stone:#E7E3DA;--stone-lt:#F2F0EA;--cobalt:#1B4FD8;--oxblood:#6E1423;--ink:#0E1B33;--chrome:#85898F;--body:#3B4557;--serif:'Newsreader',Georgia,serif;--sans:'IBM Plex Sans',sans-serif;--mono:'IBM Plex Mono',monospace}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:var(--sans);background:var(--porcelain);color:var(--ink);-webkit-font-smoothing:antialiased}
+  .wrap{max-width:820px;margin:0 auto;padding:0 24px}
+  a{color:var(--cobalt)}
+  .topbar{border-bottom:1px solid var(--stone)}
+  .topbar::before{content:'';display:block;height:2px;background:linear-gradient(90deg,var(--cobalt) 0 62%,var(--oxblood) 62% 84%,var(--ink) 84% 100%)}
+  .topbar-in{display:flex;align-items:center;justify-content:space-between;height:56px}
+  .wordmark{font-family:var(--serif);font-weight:700;font-size:20px;text-decoration:none;color:var(--ink);display:flex;align-items:baseline;gap:10px}
+  .wordmark small{font-family:var(--mono);font-weight:600;font-size:8.5px;letter-spacing:.18em;color:var(--chrome)}
+  .back{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.1em;color:var(--cobalt);text-decoration:none}
+  .kicker{font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:.16em;color:var(--oxblood);padding:34px 0 0}
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(28px,4.5vw,40px);letter-spacing:-.02em;line-height:1.15;padding:10px 0 6px}
+  .dek{font-family:var(--serif);font-style:italic;font-size:17.5px;line-height:1.55;color:var(--body);padding:8px 0 4px;max-width:680px}
+  h2{font-family:var(--serif);font-weight:600;font-size:21px;letter-spacing:-.01em;margin:30px 0 10px}
+  h3{font-family:var(--serif);font-weight:600;font-size:16.5px;margin:20px 0 6px}
+  p,li{font-size:14.5px;line-height:1.75;color:var(--body);margin-bottom:12px}
+  ul,ol{padding-left:22px;margin-bottom:12px}
+  li{margin-bottom:6px}
+  .statline{display:flex;gap:26px;flex-wrap:wrap;border:1px solid var(--stone);border-radius:10px;background:#fff;padding:16px 22px;margin:18px 0}
+  .statline div b{display:block;font-family:var(--mono);font-size:20px;font-weight:600;color:var(--ink)}
+  .statline div span{font-family:var(--mono);font-size:8.5px;letter-spacing:.14em;color:var(--chrome)}
+  .cta{display:inline-block;font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.1em;color:#fff;background:var(--cobalt);border-radius:7px;padding:10px 16px;text-decoration:none;margin:6px 0 4px}
+  .faq-item{border:1px solid var(--stone);border-radius:10px;background:#fff;padding:16px 22px;margin:12px 0}
+  .faq-item h3{margin:0 0 6px;font-size:15.5px}
+  .faq-item p{margin:0;font-size:13.5px}
+  .fn{font-size:12px;color:var(--chrome)}
+  .rel{margin:34px 0 0;border-top:1px solid var(--stone);padding-top:18px}
+  .rel h3{font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:.16em;color:var(--oxblood);margin:0 0 10px}
+  .rel a{display:block;font-family:var(--serif);font-size:16px;font-weight:600;color:var(--ink);text-decoration:none;margin-bottom:8px}
+  .rel a:hover{color:var(--cobalt)}
+  .gl-nav{font-family:var(--mono);font-size:11px;letter-spacing:.08em;margin:14px 0 6px}
+  .gl-nav a{margin-right:10px;text-decoration:none}
+  .gl-letter{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.16em;color:var(--oxblood);border-bottom:1px solid var(--stone);padding:26px 0 6px;margin-bottom:4px}
+  dl dt{font-family:var(--serif);font-weight:600;font-size:16px;margin-top:14px}
+  dl dd{font-size:13.5px;line-height:1.7;color:var(--body);margin:3px 0 0}
+  footer{border-top:1px solid var(--stone);margin-top:50px;padding:22px 0 40px}
+  footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;max-width:820px}
+  footer span,footer a{font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:var(--chrome);text-decoration:none}
+  footer a:hover{color:var(--ink)}
+</style>
+</head>
+<body>
+<nav class="topbar"><div class="wrap topbar-in">
+  <a class="wordmark" href=".././">The Wall <small>OPERATIONS ATLAS</small></a>
+  <a class="back" href=".././">BROWSE THE ATLAS →</a>
+</div></nav>
+<main class="wrap">
+
+<div class="kicker">DISCIPLINE · SECTOR 06</div>
+<h1>Automation</h1>
+<p class="dek">Marketing-automation platforms and the implementation firms that make them work: 59 US vendors covering workflows, lifecycle email, CRM integration, and operations.</p>
+<h2>The wall</h2>
+<p>The automation wall: growth created manual work faster than headcount can absorb it. Leads sit untouched for days, follow-up depends on memory, the email platform and the CRM disagree about who a customer is, and reporting means exporting spreadsheets. The company bought tools; nobody made them into a system.</p>
+<h2>What the discipline is</h2>
+<p>The Automation category covers marketing-automation software and the consultancies and agencies that implement it: lifecycle and drip email, trigger-based workflows, lead scoring and routing, CRM integration, and the marketing-operations practice that keeps the machine coherent. It is the systems pillar — the connective tissue under every other discipline.</p>
+<h2>How vendors in this category work</h2>
+<p>Software here is sold as subscriptions tiered by contacts or features; implementation partners sell setup projects and ongoing operations retainers. The pattern buyers should price in: platform license fees are usually the smaller half of the real cost, with configuration, integration, and ongoing management being where automation succeeds or quietly dies.</p>
+<h2>The category in numbers</h2>
+<div class="statline">
+    <div><b>59</b><span>US LISTINGS</span></div>
+    <div><b>18</b><span>PUBLICLY RATED</span></div>
+    <div><b>4.88</b><span>AVG RATING /5</span></div>
+    <div><b>302</b><span>CLIENT REVIEWS</span></div>
+  </div>
+<a class="cta" href="../?cat=Automation">BROWSE ALL 59 AUTOMATION LISTINGS →</a>
+<h2>Questions buyers ask</h2>
+<p class="fn">Questions sourced from live Google "People Also Ask" data for this discipline (harvested August 2026); answers are The Wall's own.</p>
+<div class="faq-item"><h3>What is marketing automation in simple terms?</h3><p>Marketing automation is software that executes repetitive marketing tasks by rule: when a prospect does X, the system does Y — sends the email, updates the CRM, alerts sales, adjusts the segment. It replaces memory and manual effort with triggers, so follow-up happens every time, at scale.</p></div>
+<div class="faq-item"><h3>What is a common example of marketing automation?</h3><p>The classic is the abandoned-action sequence: a prospect downloads a guide or leaves a signup half-finished, and the system automatically sends a timed follow-up series. Welcome sequences, lead-nurture tracks, post-purchase follow-ups, and lead scoring that alerts sales when interest spikes are equally standard.</p></div>
+<div class="faq-item"><h3>Which platforms dominate marketing automation?</h3><p>The market ranges from all-in-one suites (HubSpot, Salesforce Marketing Cloud, Adobe Marketo) to focused engines (ActiveCampaign, Klaviyo for e-commerce, Brevo at the budget tier). Platform choice matters less than fit with the CRM and the team’s capacity to run it — which is why implementation partners exist as a category.</p></div>
+<div class="faq-item"><h3>Is marketing automation hard to implement?</h3><p>The tools are approachable; the system design is not. Mapping lifecycle stages, defining triggers that reflect real buying behavior, integrating the CRM, and keeping data clean is operations work, and it is where most self-service implementations stall. Firms in this category exist mostly to do that design and integration work.</p></div>
+<div class="faq-item"><h3>What is the difference between marketing automation and marketing operations?</h3><p>Marketing operations is the discipline — the people and process that own systems, data quality, and measurement. Marketing automation is one of its instruments. An operations practice decides what should happen and why; the automation platform executes it.</p></div>
+<div class="rel"><h3>RELATED BRIEFINGS</h3>
+<a href="../news/agencies-vs-software-mix-2026.html">86% services, 11% software: how the US growth-vendor market splits</a>
+<a href="../news/ai-marketing-thinnest-category-2026.html">AI Marketing is the thinnest pillar in the index</a>
+</div>
+<div class="rel"><h3>ADJACENT DISCIPLINES</h3>
+<a href="ai-marketing.html">AI Marketing — 34 listings</a>
+<a href="sales.html">Sales — 103 listings</a>
+<a href="demand-gen.html">Demand Gen — 48 listings</a>
+</div>
+<div class="rel"><h3>REFERENCE</h3>
+<a href="../glossary.html">The Wall glossary — 70 growth-vendor terms defined</a>
+</div>
+</main>
+<footer><div class="wrap">
+  <span>© The Wall · INDEPENDENT DIRECTORY · NOT AN ENDORSEMENT ENGINE</span>
+  <span><a href="../about.html">ABOUT</a> · <a href="../news/">BRIEFINGS</a> · <a href="../glossary.html">GLOSSARY</a> · <a href="../editorial-policy.html">EDITORIAL</a> · <a href="../contact.html">CONTACT</a></span>
+</div></footer>
+</body>
+</html>
