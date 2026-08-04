@@ -117,6 +117,24 @@ function wallContext() {
     var el = document.querySelector('.claim .a-pri') || document.querySelector('.nav-main a');
     add('clickable element found', !!el);
 
+    // Intercept every outbound transport GA4 can use, so we can prove whether the
+    // hit actually LEFT THE BROWSER. dataLayer + gtag.js loaded is not sufficient:
+    // a filter, consent setting or misconfigured stream can still swallow the hit.
+    var hits = [];
+    var origBeacon = navigator.sendBeacon;
+    var origFetch = window.fetch;
+    var origOpen = window.XMLHttpRequest && window.XMLHttpRequest.prototype.open;
+    function note(u) {
+      u = String(u || '');
+      if (u.indexOf('google-analytics.com') > -1 || u.indexOf('/g/collect') > -1 ||
+          u.indexOf('analytics.google.com') > -1) hits.push(u.split('?')[0]);
+    }
+    try {
+      if (origBeacon) navigator.sendBeacon = function (u, d) { note(u); return origBeacon.call(navigator, u, d); };
+      if (origFetch) window.fetch = function (u) { note(u && u.url ? u.url : u); return origFetch.apply(window, arguments); };
+      if (origOpen) window.XMLHttpRequest.prototype.open = function (m, u) { note(u); return origOpen.apply(this, arguments); };
+    } catch (e) { /* interception is best-effort */ }
+
     var before = hasDL ? window.dataLayer.length : 0;
     if (el) {
       try {
@@ -142,13 +160,40 @@ function wallContext() {
     console.log('page_type context:', typeof wallContext === 'function' ? wallContext() : 'n/a');
     console.log('events pushed by this test:', sent);
 
-    var msg;
-    if (!hasTrack) msg = 'STALE CACHED nav.js. Hard-reload with Ctrl+Shift+R (Cmd+Shift+R on Mac), then run wallDiag() again.';
-    else if (!loaded) msg = 'gtag.js is BLOCKED - ad blocker, Brave Shields, or strict tracking protection. Events fire correctly but never reach Google. Turn the blocker off for this site, or retest in an incognito window with extensions disabled.';
-    else if (!fired) msg = 'Tracking loaded but no event fired. Send this table to Claude.';
-    else msg = 'ALL GOOD - the event was sent. If GA4 Realtime still looks empty, scroll to the "Event count by Event name" card, and check Admin > Data Streams > Configure tag settings > Define internal traffic for an Active filter on your own IP.';
-    console.log('%cDIAGNOSIS: ' + msg, 'font-weight:bold');
-    return msg;
+    var early;
+    if (!hasTrack) early = 'STALE CACHED nav.js. Hard-reload with Ctrl+Shift+R (Cmd+Shift+R on Mac), then run wallDiag() again.';
+    else if (!loaded) early = 'gtag.js is BLOCKED - ad blocker, Brave Shields, or strict tracking protection. Events fire correctly but never reach Google. Turn the blocker off for this site, or retest in an incognito window with extensions disabled.';
+    else if (!fired) early = 'Tracking loaded but no event fired. Send this table to Claude.';
+    if (early) {
+      console.log('%cDIAGNOSIS: ' + early, 'font-weight:bold');
+      return early;
+    }
+
+    // Network confirmation is asynchronous - gtag batches and flushes.
+    console.log('Checking whether the hit leaves the browser... (2s)');
+    setTimeout(function () {
+      try {
+        navigator.sendBeacon = origBeacon;
+        if (origFetch) window.fetch = origFetch;
+        if (origOpen) window.XMLHttpRequest.prototype.open = origOpen;
+      } catch (e) { /* restore is best-effort */ }
+
+      var msg;
+      if (hits.length) {
+        msg = 'CONFIRMED SENT - ' + hits.length + ' hit(s) went to Google: ' + hits.join(', ')
+          + '. The tag is fully working, so the problem is on the GA4 REPORTING side. Check, in order: '
+          + '(1) Realtime -> scroll to the "Event count by Event name" card, custom events are not in the top tiles; '
+          + '(2) Admin > Data Streams > your stream > Configure tag settings > Define internal traffic - if your IP is listed AND the matching data filter is Active, your own events are excluded from all reporting; '
+          + '(3) Admin > Data Settings > Data Filters - look for an Active "Internal Traffic" or "Developer Traffic" filter.';
+      } else {
+        msg = 'Event reached dataLayer and gtag.js is loaded, but NO network hit to Google was observed. '
+          + 'Likely a consent/deny setting or the stream Measurement ID not matching. Open DevTools > Network, '
+          + 'filter for "collect", run wallDiag() again and report what you see.';
+      }
+      console.log('%cDIAGNOSIS: ' + msg, 'font-weight:bold');
+    }, 2000);
+
+    return 'running network check - diagnosis prints in ~2s';
   };
 
   document.addEventListener('click', function (ev) {
