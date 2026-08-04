@@ -608,3 +608,61 @@ of the blind spot closed on 2026-08-04.
 - ~3-7 days: pull first GSC coverage + query data, fix whatever is excluded.
 - Deferred until there's data: 3 unbuilt hub opportunities in the keyword pipeline. Deliberately
   held back so we can measure whether hubs work before building more of them.
+
+## Site-wide click + event tracking (2026-08-04) — GSC sitemap confirmed
+
+**Sitemap submission confirmed by Dan: 2,588 URLs showing in GSC.** Measurement stack
+complete — Domain property verified, sitemap submitted, GA4 live, events firing.
+
+**14 events shipped in `nav.js`** — all ~2,590 pages, **no rebuild** (this is the payoff of
+putting the loader in nav.js rather than in the page shells).
+
+Architecture: delegated listeners on `document`, **capture phase** so a page handler calling
+`stopPropagation` can't suppress them. Every handler try/catch wrapped — a tracking bug can
+never break a page. No per-page markup required.
+
+- **Funnel:** `claim_click`, `correction_click`, `partner_terms_click` (with `link_location`:
+  claim_block / nav / homepage_cta / vendor_strip / footer / inline), `vendor_outbound`
+  (traffic we send OUT = the 10% side of the deal), `mailto_click`
+- **Engagement:** `faq_open` (open only, not close), `nav_click`, `listing_open`,
+  `atlas_filter`, `atlas_search` (debounced 900ms, ≥3 chars), `compare_toggle`,
+  `compare_action`, `cite_copy` (journalist signal), `tool_use`
+- **Every event carries `page_type`** (19 values) via the gtag config call, plus
+  `vendor_domain` / `vendor_name` / `vendor_category` on `/c/` pages — all derived from URL
+  and DOM, so zero per-page markup and zero rebuild.
+
+**VERIFIED BY EXECUTION, NOT INSPECTION.** Puppeteer's Chrome still can't launch (missing
+`libnss3`, needs sudo), so built a jsdom harness instead: `docs/track-test.mjs` loads real
+repo pages, runs the real nav.js, fires real events, asserts on actual `gtag()` payloads.
+**40/40 passing.** Live nav.js diffed byte-identical to the tested repo file.
+
+**Three real bugs the tests caught — all would have shipped silently:**
+1. `.wall-nav` did not exist. The nav container is `.nav-main`. `nav_click` would never
+   have fired.
+2. rate-benchmark is `<button type="button" onclick="run()">`, NOT a form submit. The
+   `submit` listener would never have fired.
+3. `cite_copy` passed `closest(...) || {}` into the text helper, which threw on the empty
+   object — and the try/catch swallowed it, so the event silently never fired. **This is the
+   argument for executing tracking code rather than reading it**: a try/catch that protects
+   the page also hides your own bugs.
+
+**Also learned — `.filterbar`, `.card`, `.cmpbar`, `.chart-cite` are all SPA/JS-rendered**
+and absent from the static HTML. Tests inject the real markup (copied from the actual
+template strings at index.html:593 and data/index.html:185) to prove the delegated listeners
+catch dynamically inserted elements. Any future selector work must account for this.
+
+**⚠️ `docs/ga4-setup-2026-08-04.md` — DAN-SIDE, ~10 MIN, TIME-SENSITIVE.** Custom event
+params do NOT appear in GA4 reports until registered as custom dimensions, and **GA4 does
+not backfill** — a dimension registered Aug 10 shows nothing for Aug 4-9 even though the
+data was collected. Doc lists all 14 dimensions to register, which 3 events to mark as key
+events (`claim_click` is the money event; explicitly do NOT mark `vendor_outbound` — it's
+traffic leaving, measure it but don't optimise for it), the full event reference, 5 reports
+worth building, and how to verify via Realtime + DebugView.
+
+**Maintenance rule:** tracking lives in `/nav.js` which every page loads — a syntax error
+there breaks the nav site-wide. Run `node docs/track-test.mjs` before pushing any nav.js
+change. Needs `npm install jsdom` in the run directory.
+
+**⏭ Next:** (a) Dan registers the 14 custom dimensions — do this before data accumulates,
+(b) ~3-7 days: first GSC coverage + query data, (c) then decide on the 3 unbuilt hubs using
+`page_type` conversion data rather than guesswork.
