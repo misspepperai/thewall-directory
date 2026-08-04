@@ -98,8 +98,18 @@ blocklist. All removed rows backed up in session scratchpad (`nonus_backup.json`
 - ⏭ **Phase 1 Dan-side:** submit at publishercenter.google.com (needs his Google login + GSC
   domain verification first). Post-approval: keep publishing cadence (weekly briefing runbook —
   re-run aggregates, add article object to build-news.mjs ARTICLES, rebuild, push).
-- ⏭ **Then:** Phase 2 topical (category glossary/entity pages + PAA), Phase 3 catalyst
-  (data studies from index), Phase 5 monetization (claimed listings = "listing upgrades").
+- ✅ **Phase 2 topical SHIPPED (commit 98db169):** `pillars/{slug}.html` — 10 discipline hub pages
+  (the wall / what it is / how vendors work / real index stats / 5-question FAQ with FAQPage
+  schema). FAQ questions harvested from LIVE Google People-Also-Ask via mcp-scraper harvest_paa
+  (10 queries, 2026-08-03; service flaky — retry on service_unavailable); answers are original
+  prose. `glossary.html` — 70 terms, DefinedTermSet/DefinedTerm schema, links into pillar pages.
+  Generator: `build-pillars.mjs` (PILLARS + TERMS arrays hardcoded; stats are 2026-08-03 index
+  snapshots — refresh numbers if regenerating much later). Wiring: index.html footer INDEX column
+  now links pillar pages (slug = category lowercased, spaces→hyphens); `?cat=<Category>` SPA deep
+  links added to route() (verified: ?cat=SEO renders exactly the 226 SEO cards); glossary link in
+  all footers; sitemap globs pillars/ + glossary.
+- ⏭ **Then:** Phase 3 catalyst (data studies from index — briefings already seed this; next is
+  distribution/roundups), Phase 5 monetization (claimed listings = "listing upgrades").
 - **Dan's checklist:** GSC + GA setup & sitemap submit (post-domain), social fortress accounts
   (X/LinkedIn/FB/YT → schema sameAs), DMCA badge account, ScoreDetect account, optional NAP
   address/phone for contact page.
