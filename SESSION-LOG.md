@@ -299,3 +299,29 @@ via `node build-questions.mjs` without re-harvesting.
 **Next AA moves (unstarted):** author-persona shift (Dan blocked), Phase 3 catalyst-content
 outreach (blocked on Dan's Publisher Center + sending-domain), fresh-feed automation, monetization
 layer (skipped per Dan — this is a referral engine, not a directory business).
+
+## Tier B shipped (2026-08-04, commit 2406cc2)
+
+**Phase 4 cadence upkeep — 4 new briefings + automated monthly briefing pipeline.**
+
+**4 new briefings** (all real DB aggregates, no fabricated figures):
+- `the-single-founder-tail-agencies-pre-2000-2026` — 182 pre-2000 survivors
+- `seo-rate-spread-inside-one-discipline-2026` — SEO's $275 spread ($25→$300+)
+- `sales-pillar-hourly-blackout-2026` — 0 of 103 US Sales firms disclose hourly
+- `category-leaders-thirty-entities-2026` — 30 entity-reference platforms by pillar
+
+**Total briefings: 22** (was 18) + 1 update + 1 report + 2 badge = 26 editorial URLs.
+
+**Monthly briefing pipeline** (`generate-monthly-briefing.mjs`):
+- Queries `directory_companies` for total, category, state, rate, listing_type breakdowns
+- Baselines against `data/last-snapshot.json` — first run captures snapshot, subsequent runs
+  diff (added/removed/category shifts)
+- Drafts a code-block for `build-updates.mjs` at `data/draft-briefing-YYYY-MM.txt`
+  (gitignored — ephemeral)
+- **Runbook:** `node generate-monthly-briefing.mjs [YYYY-MM]` → review draft → paste into
+  `build-updates.mjs` UPDATES array → edit the TODO editorial paragraph → `node build-updates.mjs`
+  → `node build-pages.mjs --pages-only` → commit
+- **Google News cadence:** 12 automated briefings/year minimum with no manual data pulls.
+- **First-run baseline captured today (2026-08-04):** 2286 approved listings, 10 pillars, 47 states.
+
+**Sitemap: 2,501 URLs.**
