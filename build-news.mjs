@@ -253,6 +253,85 @@ ${table(['City', 'Listings'], [
 <p>${BRAND}'s directory is built for a specific reader: US companies past $5M in revenue with 25 or more employees. Companies below that line are outside the core ICP, and the directory does not attempt to serve small-business buyers directly. But many of the 2,286 US firms listed do serve smaller operators, particularly in the <a href="../pillars/automation.html">Automation</a> and <a href="../pillars/ai-marketing.html">AI Marketing</a> pillars — where platform-shaped listings concentrate — and increasingly in the <a href="../pillars/marketing.html">Marketing</a> pillar, where a growing subset of full-service agencies now package their own platform alongside their services.</p>
 <p>${BRAND} does not currently track which platforms individual listed firms use or resell — that is provider-declared data the index does not yet collect. What the search trend suggests, and what future briefings will test against actual listing data as it becomes available, is that "platform for small business" is stopping being a market segment marketing-technology firms flee from and becoming one they build for.</p>`,
   rel: ['the-wall-launches-2286-us-growth-vendors', 'ai-marketing-thinnest-category-2026', 'agencies-vs-software-mix-2026']
+},
+{
+  slug: 'rate-transparency-by-category-2026', date: D,
+  h: 'The transparency map: SEO firms publish rates 87% of the time, Demand Gen firms 60%',
+  dek: 'Across the 1,738 US growth vendors with public engagement data in The Wall’s index, rate-disclosure rates cluster tightly at the top and fall off sharply at the bottom — and where a category lands on the scale tells buyers something more useful than the rates themselves.',
+  body: `
+<p>Rate transparency in the US growth-vendor market is not evenly distributed. Across the ten categories in ${BRAND}'s index, the share of firms with public engagement data that publish an hourly rate ranges from 87.4% at the top to 0% in one specific corner. The full ranking, computed against the subset of listings in each category that publish any provider data at all:</p>
+${table(['Category', 'Rate disclosure', 'Minimum project disclosure'], [
+  ['SEO', '87.4%', '95.6%'],
+  ['Creative Strategy', '86.5%', '95.8%'],
+  ['Content Marketing', '81.6%', '93.1%'],
+  ['Marketing', '80.9%', '94.1%'],
+  ['Social Media Marketing', '78.7%', '97.3%'],
+  ['Automation', '75.0%', '95.0%'],
+  ['Thought Leadership', '68.0%', '90.2%'],
+  ['Demand Gen', '60.0%', '93.3%'],
+  ['AI Marketing', '0%*', '0%*'],
+  ['Sales', '—*', '—*']
+])}
+<p class="fn">* AI Marketing and Sales are compiled from curated sources rather than public agency-review data; disclosure rates are not comparable.</p>
+<h2>Why the top of the ranking clusters so tightly</h2>
+<p>SEO, Creative Strategy, Content Marketing, Marketing, and Social Media Marketing all sit within a seven-point band — 78.7% to 87.4%. These are the categories where the client-services model is fully mature: buyers expect a rate band, sellers know that publishing one pre-qualifies inbound and saves discovery-call time on both sides, and the reference-review platforms these firms use make the disclosure explicit. A firm operating in these categories that <em>doesn't</em> publish an hourly rate is deliberately opting out of a market norm.</p>
+<h2>Why Thought Leadership and Demand Gen lag</h2>
+<p>The bottom of the ranking is a signal of a different market shape. Thought Leadership work (68% disclosure) is often priced per-engagement — a book program, a podcast series, a keynote push — rather than per-hour, so an hourly rate is genuinely a poor unit for what's being sold. Demand Gen (60% disclosure) is heavily performance-priced — cost per meeting, cost per SQL, revenue share — and traditional hourly rate cards misrepresent the commercial model.</p>
+<p>Buyers reading these numbers should interpret them accordingly: an undisclosed rate in SEO or Marketing is a question worth asking; an undisclosed rate in Thought Leadership or Demand Gen is often just a reflection of how those disciplines commercially operate. What matters is that the firm can articulate <em>some</em> pricing structure by the first substantive conversation — not that it fits the hourly-rate mold.</p>
+<h2>What "0%" in AI Marketing actually says</h2>
+<p>AI Marketing's zero-disclosure figure is not a transparency failing. The category is young enough that most of its 34 US listings are compiled from curated industry sources rather than from the agency-review platforms where structured engagement data lives. That's information too: a buyer evaluating an AI-marketing firm should expect to rely more on direct evaluation and less on public engagement data than in any other pillar of the index.</p>`,
+  rel: ['rate-transparency-gap-2026', 'us-agency-hourly-rates-2026', 'ai-marketing-thinnest-category-2026']
+},
+{
+  slug: 'agency-age-by-category-2026', date: D,
+  h: 'Category age is a career-cohort map: automation firms were founded a decade after creative agencies',
+  dek: 'Median founding years across The Wall’s 1,734 US growth vendors with declared founding data range from 2009 (Thought Leadership) to 2018 (Automation) — a nine-year spread that tells buyers when each discipline’s current commercial shape actually formed.',
+  body: `
+<p>Every one of ${BRAND}'s ten pillars has a different median founding year, and the spread is meaningful. Firms in the older categories were formed in a world that predates programmatic advertising, marketing automation, and social platforms. Firms in the youngest categories were formed after all three were mature. The full ranking of medians, from oldest category to newest, computed across the 1,734 US listings in the index that declare a founding year:</p>
+${table(['Category', 'Median founding year', 'Firms w/ year', 'Since 2020', '2010s', '2000s', 'Pre-2000'], [
+  ['Thought Leadership', '2009', '120', '11', '48', '40', '21'],
+  ['Creative Strategy', '2011', '766', '80', '374', '217', '95'],
+  ['Marketing', '2013', '444', '72', '227', '118', '27'],
+  ['Content Marketing', '2013', '87', '10', '51', '21', '5'],
+  ['Demand Gen', '2014', '15', '2', '7', '4', '2'],
+  ['SEO', '2015', '206', '45', '110', '45', '6'],
+  ['Social Media Marketing', '2015', '75', '6', '53', '15', '1'],
+  ['AI Marketing', '2017', '1', '0', '1', '0', '0'],
+  ['Automation', '2018', '20', '5', '10', '5', '0']
+])}
+<h2>What the spread reflects</h2>
+<p>The nine-year gap between the oldest and newest category medians tracks the emergence of each discipline as a hire-able commercial category. Creative Strategy (median 2011) and Thought Leadership (median 2009) both have institutional continuity into the 1990s and earlier — 95 creative firms and 21 thought-leadership firms in the index predate 2000. These are established disciplines with generations of practitioner lineage.</p>
+<p>Marketing (median 2013), Content Marketing (2013), and Demand Gen (2014) came of age as content marketing and inbound became mainstream disciplines. SEO (2015) and Social Media Marketing (2015) coincide with the professionalization of those channels away from generalist agencies into specialist shops. Automation (2018) and AI Marketing (2017) reflect categories that barely existed as commercial buyers understand them today until the late 2010s.</p>
+<h2>What buyers should do with this</h2>
+<p>Category age is not a quality metric. A Creative Strategy firm founded in 1998 has weathered more market cycles than most, and continuity is a real signal. But a Demand Gen or Automation firm being younger than the ABM tactics they run is a feature, not a bug — a 2020-founded automation shop grew up native to the current-generation platforms; a 2005-founded generalist agency that added automation as a service line probably did not.</p>
+<p>The practical read: in the older categories, favor longevity if you can; in the younger categories, favor category-native firms over generalists who bolted the discipline on. The index publishes the declared founding year on every profile that carries one so the question is answerable before the first conversation.</p>`,
+  rel: ['agency-founding-years-2026', 'ai-marketing-thinnest-category-2026', 'creative-strategy-largest-category-2026']
+},
+{
+  slug: 'the-three-software-first-pillars-2026', date: D,
+  h: 'Where the software concentrates: Sales, Automation, and AI Marketing are the three software-first pillars',
+  dek: 'Across The Wall’s ten pillars, seven are 90%+ services and three are software-first — Sales (54% software), AI Marketing (74%), and Automation (53%). Where a category leans decides whether buyers are shopping for teams or licenses.',
+  body: `
+<p>${BRAND}'s directory classifies every listing as one of three types — Marketing/Creative Agency, Software Provider, or Business Service. Overall, 85.9% of listings are agencies, 10.8% are software, and 3.3% are services. But that mix inverts sharply in three specific pillars:</p>
+${table(['Category', 'Agencies', 'Software', 'Services', 'Software share'], [
+  ['AI Marketing', '9', '25', '0', '73.5%'],
+  ['Sales', '12', '56', '35', '54.4%'],
+  ['Automation', '26', '31', '2', '52.5%'],
+  ['Marketing', '491', '55', '4', '10.0%'],
+  ['Social Media Marketing', '77', '13', '0', '14.4%'],
+  ['Thought Leadership', '153', '13', '27', '6.7%'],
+  ['Demand Gen', '30', '12', '6', '25.0%'],
+  ['SEO', '214', '12', '0', '5.3%'],
+  ['Content Marketing', '100', '11', '2', '9.7%'],
+  ['Creative Strategy', '852', '18', '0', '2.1%']
+])}
+<h2>Why the split matters at buy-time</h2>
+<p>The pillar mix determines what a buyer's shortlist actually looks like. In Creative Strategy — 852 agencies, 18 software providers — the decision is which team you want producing the work. Software plays a supporting role but the purchase is fundamentally services. In AI Marketing — 25 software providers, 9 agencies — the decision is which platform you want to standardize on; agencies exist to implement and operate the platforms, not to substitute for them.</p>
+<p>Sales sits in the middle of this map for structural reasons: it's the one pillar where all three types are meaningfully represented (12 agencies for training and consulting, 56 software providers for CRM and sales-engagement platforms, 35 business services for sales-data and recruiting). A "sales vendor" shortlist genuinely needs to be three different shortlists.</p>
+<h2>What this tells buyers about the disciplines themselves</h2>
+<p>The three software-first pillars are the technology-forward disciplines. Sales has been the most systematized function in growth for a decade — CRM, enablement, engagement, intent — and it shows in the software concentration. Marketing Automation is definitionally the tooling layer of the entire marketing function. AI Marketing is where the tooling is the entire proposition, so far.</p>
+<p>The seven services-first pillars are the disciplines where human judgment and craft remain the durable value: creative and design, thought leadership, content, social, SEO. Every one has been declared automation-vulnerable by someone in the last three years. So far, the buying data has not budged: 90%+ of the listings buyers are actually paying to solve these problems are teams, not licenses.</p>`,
+  rel: ['agencies-vs-software-mix-2026', 'ai-marketing-thinnest-category-2026', 'sales-pillar-brief-2026']
 }
 ];
 
