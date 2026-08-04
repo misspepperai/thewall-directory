@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://misspepperai.github.io/thewall-directory/sitemap.xml

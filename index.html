@@ -640,6 +640,9 @@ function injectJSONLD(x) {
   let el = document.getElementById('jsonld');
   if (!el) { el = document.createElement('script'); el.type = 'application/ld+json'; el.id = 'jsonld'; document.head.appendChild(el); }
   el.textContent = JSON.stringify(ld);
+  let can = document.getElementById('canon');
+  if (!can) { can = document.createElement('link'); can.rel = 'canonical'; can.id = 'canon'; document.head.appendChild(can); }
+  can.href = `c/${x.domain}.html`;
 }
 
 /* ---------- detail route ---------- */
@@ -703,6 +706,7 @@ async function openDetail(domain, push = true) {
           ${has(x.phone_number) ? `<div class="spec-row"><dt>PHONE</dt><dd>${esc(x.phone_number)}</dd></div>` : ''}
           ${has(x.clutch_rating) ? `<div class="spec-row"><dt>CLUTCH RATING</dt><dd>${esc(String(x.clutch_rating))}/5${has(x.clutch_reviews) ? ` · ${esc(String(x.clutch_reviews))} REVIEWS` : ''}</dd></div>` : ''}
           <div class="spec-row"><dt>STATUS</dt><dd>LISTED</dd></div>
+          <div class="spec-row"><dt>PERMALINK</dt><dd><a href="c/${esc(x.domain)}.html" style="color:var(--cobalt);text-decoration:none">STATIC PAGE →</a></dd></div>
         </dl>
       </div>
       ${related.length ? `
@@ -719,6 +723,7 @@ async function openDetail(domain, push = true) {
 function closeDetail(push = true) {
   if (push) history.pushState({}, '', location.pathname);
   document.getElementById('jsonld')?.remove();
+  document.getElementById('canon')?.remove();
   document.title = 'The Wall — Operations Atlas';
   vt(() => {
     $('detail').style.display = 'none';
