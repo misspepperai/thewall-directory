@@ -3,7 +3,7 @@
 *Last updated: 2026-08-03 (end of build session 1). This file is the canonical resume point —
 read it fully before continuing work in a fresh session.*
 
-**Live site:** https://misspepperai.github.io/thewall-directory/ (cutover to **hitthewall.net** in flight — see "In flight" below)
+**Live site:** http://hitthewall.net (HTTPS cert pending — see "In flight" below; old github.io URLs 301 here)
 **Repo:** github.com/misspepperai/thewall-directory · **Local:** `C:\Users\danku\Documents\directory-thewall`
 
 ---
@@ -94,21 +94,21 @@ blocklist. All removed rows backed up in session scratchpad (`nonus_backup.json`
   (X/LinkedIn/FB/YT → schema sameAs), DMCA badge account, ScoreDetect account, optional NAP
   address/phone for contact page.
 
-## In flight RIGHT NOW (session end state)
+## In flight RIGHT NOW (domain cutover — mostly DONE)
 
-1. **Domain cutover to hitthewall.net** (bought at Namecheap, DNS records being set by Dan):
-   - Required records: A @ → 185.199.108.153 / .109.153 / .110.153 / .111.153; CNAME www →
-     misspepperai.github.io. (As of last check: still Namecheap parking 162.255.119.20.)
-   - **PR #1 open:** https://github.com/misspepperai/thewall-directory/pull/1 — branch
-     `domain-retrofit` holds the ENTIRE cutover (SITE constants flipped, all pages rebuilt on
-     hitthewall.net, CNAME file). **Merging the PR = deploying the domain binding. Do not merge
-     before DNS resolves to GitHub IPs.**
-   - **DNS watcher armed** in session (Monitor task): fires when nslookup shows 185.199.*.
-   - **On DNS live:** merge PR #1 → confirm Pages custom domain (gh api repos/misspepperai/
-     thewall-directory/pages shows cname) → wait for cert → enforce HTTPS (`gh api -X PUT ...
-     -F https_enforced=true`) → verify https://hitthewall.net end to end → re-stamp Wayback on new
-     URLs → update this log + memory. Old github.io URLs 301 automatically.
-2. **main branch** still serves github.io version — correct until merge.
+1. **Domain cutover to hitthewall.net — deployed 2026-08-03:**
+   - PR #1 MERGED (squash commit `4d4b8a2`) — SITE constants flipped, all 2,286 pages rebuilt on
+     hitthewall.net canonicals, CNAME file live. Pages shows `cname: hitthewall.net`, status built.
+   - DNS CONFIRMED globally: authoritative (dns1.registrar-servers.com), Cloudflare 1.1.1.1, and
+     Google 8.8.8.8 all return the 4 GitHub A records. Apex verified serving The Wall (HTTP 200,
+     `curl --resolve hitthewall.net:80:185.199.108.153`). github.io and www both 301 → hitthewall.net.
+   - **Gotcha:** some resolvers still cache Namecheap parking `162.255.119.20` (TTL lag, ≤~30 min) —
+     symptom is a 404 with `X-Served-By: Namecheap URL Forward`. Harmless; expires on its own.
+     `Clear-DnsClientCache` doesn't fix it (upstream resolver cache, not local).
+   - **REMAINING:** cert state `approved` → waiting for `issued` (background poll armed, 90 min max).
+     On issued: `gh api -X PUT repos/misspepperai/thewall-directory/pages -F https_enforced=true`,
+     verify https end to end (homepage + /c/ page + sitemap.xml + www + github.io 301), re-stamp
+     Wayback fingerprints on new-domain core URLs, update this log + memory, report to Dan.
 
 ## Session ledger
 
