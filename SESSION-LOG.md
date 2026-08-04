@@ -534,3 +534,41 @@ added `.gitattributes` with `* text=auto eol=lf` so it can't recur.
 **⏭ Next:** Dan does the 3 tasks in the unblock doc. On GSC green I pull coverage/query data
 and fix whatever is excluded. Still unbuilt from the keyword pipeline: 3 named hub
 opportunities — deliberately deferred until we can measure whether hubs are working.
+
+## GSC verified + GA4 pre-staged (2026-08-04)
+
+**GSC Domain property is LIVE.** Dan added the TXT record; verified end to end:
+- `google-site-verification=aWF_pAVd9Xwi6MmuxdmHQjcuXkhBeV-F6ugNi7O7WB0` resolving at apex
+- SPF record intact alongside it (`v=spf1 include:spf.efwd.registrar-servers.com ~all`) —
+  the add-don't-replace warning held
+- `sc-domain:hitthewall.net` now returned by SEO Gets `list_sites` (Domain property, correct type)
+
+**No data yet, and that is expected.** `get_gsc_performance` for 2026-07-05 → 2026-08-02
+returns empty. The domain has only served The Wall since 2026-08-03, so there is no pre-
+verification history to backfill. `get_indexing_overview` is unavailable — SEO Gets gates it
+behind "super site" status, which this property does not have. First useful numbers 3-7 days
+after crawling starts. **Do not read the empty response as a problem.**
+
+**⚠️ OPEN — needs confirming with Dan:** whether the sitemap was actually submitted
+(`sitemap.xml`, 2,588 URLs) in GSC → Sitemaps. Verification and sitemap submission are two
+separate steps and only the first is externally observable. Search Console API needs OAuth
+this environment doesn't have, so this cannot be checked or done from here.
+
+**GA4 pre-staged, still OFF — blocked on the Measurement ID from Dan's GA account.**
+The flip is now a three-file coordinated change with no thinking required:
+1. `nav.js` — set `GA4_MEASUREMENT_ID = 'G-XXXXXXXXXX'`
+2. `build-trust.mjs` — set `GA4_ENABLED = true` and `EFFECTIVE_ANALYTICS = '<date>'`
+3. `node build-trust.mjs`, commit all three together
+
+Privacy copy written and tested in both states. ON-state names the `_ga`/`_ga_*` cookies and
+what they actually do, states no ad trackers / no remarketing / no ad audiences, links
+Google's opt-out add-on, and notes nothing on the site breaks if you block it; "Your rights"
+records the date analytics went live and that no cookies were set before it. **Verified the
+OFF state is byte-identical to the live page** (`diff` clean) so the pre-stage is a true no-op.
+
+**Standing rule established:** `GA4_MEASUREMENT_ID` (nav.js) and `GA4_ENABLED` (build-trust.mjs)
+must move in the same commit. Guard comments in both files. Shipping the tag without the copy
+would put a false statement on the privacy page.
+
+**⏭ Next:** (a) Dan confirms sitemap submitted, (b) Dan sends `G-XXXXXXXXXX`, (c) ~3-7 days
+later pull first coverage + query data and fix whatever is excluded.
