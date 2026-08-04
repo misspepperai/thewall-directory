@@ -167,6 +167,26 @@ blocklist. All removed rows backed up in session scratchpad (`nonus_backup.json`
 - ⏭ **Waiting on Dan (Teamwork project 1305672, due 8/15):** GSC verify + sitemap submit,
   GA4 setup, Publisher Center submission, admin account, socials, DMCA/ScoreDetect, NAP,
   Phase 3 outreach channel decision.
+- 🎯 **Business model clarified (2026-08-04):** The Wall is a **credibility asset for Miss Pepper
+  AI's vendor referral partnership**. Not directory monetization. Play: cold-email the 2,286
+  listed vendors offering 20% of retainer for referred clients that sign with Miss Pepper AI.
+- ✅ **Tier 2 pivot SHIPPED (commit ce43b... approx, 2026-08-04):**
+  - `partner.html` — noindex landing page with the 20% referral pitch. Every cold email CTAs here.
+    Public URL but excluded from sitemap (correct — recipients should feel "found" not "targeted").
+  - `report/state-of-the-us-growth-vendor-market-2026.html` — 14-chapter compilation of the
+    18 briefings, print CSS for save-as-PDF. Sendable as cold-email icebreaker.
+  - `docs/cold-email-vendor-referral-pack.md` — 5-touch sequences × 4 segments, reply-handling
+    templates, deliverability rules, mail-merge variables. Ready for Instantly/Smartlead import.
+  - `docs/contact-enrichment-plan.md` — the missing piece: DB has no email column. Recommends
+    Apollo + Apify combo (~$580 for 90-95% coverage). Needs Dan's green-light + Apollo signup.
+  - Compare tool in atlas — checkbox per card, floating bar, side-by-side view.
+  - Advanced filtering — rate band, team size, min, state, listing type. URL-synced.
+- ⏭ **Sitemap: 2,353 URLs** (report added; partner deliberately excluded).
+- ⏭ **Cold-email play kickoff sequence:**
+  1. Dan approves contact-enrichment plan + signs up for Apollo
+  2. Claude applies DB migration + runs Apollo enrichment (~1 week end-to-end)
+  3. Dan sets up cold-email sending infrastructure (dedicated domain, warmed for 2-4 weeks)
+  4. First 200-vendor batch of Sequence D (highest-fit) begins
 - **Dan's checklist:** GSC + GA setup & sitemap submit (post-domain), social fortress accounts
   (X/LinkedIn/FB/YT → schema sameAs), DMCA badge account, ScoreDetect account, optional NAP
   address/phone for contact page.
