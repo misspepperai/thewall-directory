@@ -167,16 +167,24 @@ blocklist. All removed rows backed up in session scratchpad (`nonus_backup.json`
 - ⏭ **Waiting on Dan (Teamwork project 1305672, due 8/15):** GSC verify + sitemap submit,
   GA4 setup, Publisher Center submission, admin account, socials, DMCA/ScoreDetect, NAP,
   Phase 3 outreach channel decision.
-- 🎯 **Business model clarified (2026-08-04):** The Wall is a **credibility asset for Miss Pepper
-  AI's vendor referral partnership**. Not directory monetization. Play: cold-email the 2,286
-  listed vendors offering 20% of retainer for referred clients that sign with Miss Pepper AI.
+- 🎯 **Business model clarified (2026-08-04, updated with Dan's actual playbook OP 3/3):**
+  The Wall is a **wedge** — not a directory. Play: blast free-listing acknowledgment to
+  every vendor (Weapon 1). Non-competitors reply yes fastest. Auto-flip on reply to a two-way
+  affiliate deal: **they keep 20% of what they send us; we take 10% of what we send them.**
+  Their side is bigger on purpose so signing takes 10 seconds. Expect ~10% of signed partners
+  to actually send clients — those are the easiest deals we'll ever close. Memory:
+  `thewall-partnership-playbook.md`.
 - ✅ **Tier 2 pivot SHIPPED (commit ce43b... approx, 2026-08-04):**
-  - `partner.html` — noindex landing page with the 20% referral pitch. Every cold email CTAs here.
-    Public URL but excluded from sitemap (correct — recipients should feel "found" not "targeted").
+  - `partner.html` — noindex landing page. **Rewritten v2 (commit after 81eedeb) to match
+    two-way 10/20 playbook** — visual 10↔20 deal card as hero, terms collapsed to 4 bullets,
+    one-click "I'm in" mailto. Public URL but excluded from sitemap.
   - `report/state-of-the-us-growth-vendor-market-2026.html` — 14-chapter compilation of the
     18 briefings, print CSS for save-as-PDF. Sendable as cold-email icebreaker.
-  - `docs/cold-email-vendor-referral-pack.md` — 5-touch sequences × 4 segments, reply-handling
-    templates, deliverability rules, mail-merge variables. Ready for Instantly/Smartlead import.
+  - `docs/cold-email-vendor-referral-pack.md` — **v2 rewrite matches Dan's playbook**:
+    Weapon 1 (free-listing acknowledgment + 2 follow-ups max) + Weapon 2 (reply-triggered
+    two-way affiliate flip). Reply-handling templates, co-marketing hooks, deliverability.
+    Blast wide, not picky. Expected: 8-12% Weapon 1 replies → 70%+ Weapon 2 conversion → ~10%
+    of signed partners send actual clients.
   - `docs/contact-enrichment-plan.md` — the missing piece: DB has no email column. Recommends
     Apollo + Apify combo (~$580 for 90-95% coverage). Needs Dan's green-light + Apollo signup.
   - Compare tool in atlas — checkbox per card, floating bar, side-by-side view.
