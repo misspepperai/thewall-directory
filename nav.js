@@ -2,6 +2,31 @@
 // Detects .topbar-in on the page and replaces its contents with the full nav menu.
 // Also injects the hover-menu CSS. Single-file source of truth for the nav.
 // Update this file to change the menu across every page — no per-page edits needed.
+// ---- GA4 ----
+// nav.js is already on all ~2,590 pages, so tagging here tags the whole site with
+// no rebuild. To switch analytics on: paste the Measurement ID (G-XXXXXXXXXX) below,
+// commit, push. Empty string = no tag loaded, no requests, no cookies.
+//
+// !! DO NOT set this without doing the privacy-page edit in the same commit. !!
+// privacy.html (generated from build-trust.mjs, ~line 156) currently states
+// "the site sets no cookies and runs no advertising trackers". GA4 sets _ga /
+// _ga_* first-party cookies, so that sentence becomes false the moment this is
+// filled in. Edit build-trust.mjs, re-run `node build-trust.mjs`, commit both.
+var GA4_MEASUREMENT_ID = '';
+
+(function () {
+  if (!GA4_MEASUREMENT_ID || window._ga4Injected) return;
+  window._ga4Injected = true;
+  var s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA4_MEASUREMENT_ID;
+  document.head.appendChild(s);
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function () { window.dataLayer.push(arguments); };
+  window.gtag('js', new Date());
+  window.gtag('config', GA4_MEASUREMENT_ID);
+})();
+
 (function () {
   if (window._navInjected) return; // idempotent
   window._navInjected = true;
