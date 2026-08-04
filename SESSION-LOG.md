@@ -148,6 +148,25 @@ blocklist. All removed rows backed up in session scratchpad (`nonus_backup.json`
   digital-marketing-platform-for-small-businesses (40,500/mo, KD 13), social-media-management-
   platforms (22,200/mo, KD 39), local-service-ads (40,500/mo, KD 15).
 - **Sitemap: 2,329 URLs** (10 pillars + 3 hubs + 19 news + glossary + trust + 2,286 listings).
+- ✅ **Tier 1 AA SHIPPED (commit 15b3c65, 2026-08-04):**
+  - **6 hubs total** (+3): social-media-management-platforms, local-service-ads,
+    digital-marketing-platform-for-small-businesses. Plus a hubs/index.html.
+  - **Rate-benchmarking calculator** at `tools/rate-benchmark.html` — interactive JS widget with
+    real per-category distribution data, percentile lookup, and WebApplication schema. First
+    interactive tool on the site; textbook Phase 3 catalyst content (linkable asset).
+  - **15 entity pages** at `entities/` via `build-entities.mjs` — HubSpot, Salesforce, Marketo,
+    ActiveCampaign, Klaviyo, Mailchimp, Google Ads, Meta Ads, LinkedIn Ads, The Trade Desk, Ahrefs,
+    Semrush, Segment, GA4, Outreach. SoftwareApplication + FAQPage + Breadcrumb schema; per-entity
+    factbox, pricing, alternatives cross-linking, editorial disclaimer.
+  - **Fresh feed** at `news/updates/` via `build-updates.mjs` — monthly "state of the index"
+    briefings. First edition published (August 2026). Pattern: UPDATES array in the script (not
+    DB-derived) so historical briefings persist. Monthly cadence unlocks Google News eligibility
+    freshness signal.
+  - Sitemap wired: entities/, tools/, news/updates/ now globbed. Homepage footer updated.
+- **Sitemap: 2,352 URLs** (10 pillars + 7 hubs + 16 entities + 1 tool + 21 news + 2 updates + 2,286 listings + trust + glossary).
+- ⏭ **Waiting on Dan (Teamwork project 1305672, due 8/15):** GSC verify + sitemap submit,
+  GA4 setup, Publisher Center submission, admin account, socials, DMCA/ScoreDetect, NAP,
+  Phase 3 outreach channel decision.
 - **Dan's checklist:** GSC + GA setup & sitemap submit (post-domain), social fortress accounts
   (X/LinkedIn/FB/YT → schema sameAs), DMCA badge account, ScoreDetect account, optional NAP
   address/phone for contact page.
