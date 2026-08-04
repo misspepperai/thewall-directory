@@ -572,3 +572,39 @@ would put a false statement on the privacy page.
 
 **⏭ Next:** (a) Dan confirms sitemap submitted, (b) Dan sends `G-XXXXXXXXXX`, (c) ~3-7 days
 later pull first coverage + query data and fix whatever is excluded.
+
+## GA4 LIVE (2026-08-04) — measurement stack complete
+
+**Measurement ID `G-7EVW8MX8Z9` shipped.** All three files in one commit, as designed:
+`nav.js` (ID set) + `build-trust.mjs` (`GA4_ENABLED=true`, `EFFECTIVE_ANALYTICS=2026-08-04`)
++ regenerated `privacy.html`. Because nav.js already loads on all ~2,590 pages, the entire
+site was tagged **with no page rebuild** — this was the whole point of pre-wiring it there.
+
+**Verified live:**
+- `nav.js` on hitthewall.net serves `GA4_MEASUREMENT_ID = 'G-7EVW8MX8Z9'`
+- `privacy.html` serves the GA4 disclosure + "Analytics were added on 2026-08-04; before that
+  date the site set no cookies at all"
+- **Swept all 8 trust pages for the stale "sets no cookies" claim — zero hits.** The old
+  zero-cookie statement exists nowhere on the live site.
+- `https://www.googletagmanager.com/gtag/js?id=G-7EVW8MX8Z9` returns a real ~496KB payload
+  with the ID echoed back, confirming the property is live and active on Google's side
+  (a bad ID returns a small stub with no ID configured).
+- Only privacy.html changed of the 8 trust pages — the GA4_ENABLED branch is correctly scoped.
+
+**NOT verified — needs Dan, 30 seconds:** that the tag actually *fires in a browser*. Chrome
+can't launch in this environment (puppeteer's binary is missing `libnss3`, needs sudo), so the
+loader logic is verified by reading, not by execution. Confirm at GA4 → Reports → **Realtime**
+while loading hitthewall.net. Expect a visit inside ~30s.
+
+**Note on GA4 data latency:** Realtime is instant, but standard reports take 24-48h to
+populate. An empty Reports view tomorrow morning is normal, not a broken tag.
+
+**Measurement stack is now complete:** GSC Domain property verified + GA4 live. Both halves
+of the blind spot closed on 2026-08-04.
+
+**⏭ Still open:**
+- Confirm the GSC sitemap submission actually happened (`sitemap.xml`, 2,588 URLs) — separate
+  step from verification, not observable from outside, needs OAuth this env lacks.
+- ~3-7 days: pull first GSC coverage + query data, fix whatever is excluded.
+- Deferred until there's data: 3 unbuilt hub opportunities in the keyword pipeline. Deliberately
+  held back so we can measure whether hubs work before building more of them.
