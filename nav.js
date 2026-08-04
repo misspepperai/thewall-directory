@@ -98,6 +98,59 @@ function wallContext() {
   }
   function txt(el) { return el ? el.textContent.replace(/\s+/g, ' ').trim().slice(0, 100) : ''; }
 
+  // ---- self-diagnostic ----
+  // Type wallDiag() in the browser console. Lives here so there is nothing to paste
+  // (pasted snippets get mangled by terminals and smart quotes). Deliberately written
+  // in plain ES5 with no arrow functions or template literals so it runs anywhere.
+  // If wallDiag is "not defined", that is itself the answer: stale cached nav.js.
+  window.wallDiag = function () {
+    var rows = [];
+    function add(k, v) { rows.push({ check: k, result: v ? 'PASS' : 'FAIL' }); return v; }
+
+    var hasTrack = add('nav.js has tracking build', typeof window.wallTrack === 'function');
+    add('gtag() defined', typeof window.gtag === 'function');
+    var hasDL = add('dataLayer exists', Object.prototype.toString.call(window.dataLayer) === '[object Array]');
+    // google_tag_manager only exists if gtag.js genuinely downloaded and ran.
+    // Our own gtag() stub exists either way, so this is the real blocker test.
+    var loaded = add('gtag.js actually LOADED', !!window.google_tag_manager);
+
+    var el = document.querySelector('.claim .a-pri') || document.querySelector('.nav-main a');
+    add('clickable element found', !!el);
+
+    var before = hasDL ? window.dataLayer.length : 0;
+    if (el) {
+      try {
+        el.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
+      } catch (e) {
+        var ev = document.createEvent('MouseEvents');
+        ev.initEvent('click', true, true);
+        el.dispatchEvent(ev);
+      }
+    }
+    var sent = [], fired = false;
+    if (hasDL) {
+      for (var i = before; i < window.dataLayer.length; i++) {
+        var a = Array.prototype.slice.call(window.dataLayer[i]);
+        sent.push(a);
+        if (a[0] === 'event') fired = true;
+      }
+    }
+    add('event pushed to dataLayer', fired);
+
+    if (console.table) console.table(rows);
+    else console.log(rows);
+    console.log('page_type context:', typeof wallContext === 'function' ? wallContext() : 'n/a');
+    console.log('events pushed by this test:', sent);
+
+    var msg;
+    if (!hasTrack) msg = 'STALE CACHED nav.js. Hard-reload with Ctrl+Shift+R (Cmd+Shift+R on Mac), then run wallDiag() again.';
+    else if (!loaded) msg = 'gtag.js is BLOCKED - ad blocker, Brave Shields, or strict tracking protection. Events fire correctly but never reach Google. Turn the blocker off for this site, or retest in an incognito window with extensions disabled.';
+    else if (!fired) msg = 'Tracking loaded but no event fired. Send this table to Claude.';
+    else msg = 'ALL GOOD - the event was sent. If GA4 Realtime still looks empty, scroll to the "Event count by Event name" card, and check Admin > Data Streams > Configure tag settings > Define internal traffic for an Active filter on your own IP.';
+    console.log('%cDIAGNOSIS: ' + msg, 'font-weight:bold');
+    return msg;
+  };
+
   document.addEventListener('click', function (ev) {
     try {
       var a = closest(ev.target, 'a');
