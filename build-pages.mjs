@@ -259,6 +259,8 @@ const run = async () => {
   const QUESTIONS = existsSync(join(ROOT, 'questions')) ? readdirSync(join(ROOT, 'questions')).filter(f => f.endsWith('.html')) : [];
   const WINS = existsSync(join(ROOT, 'wins')) ? readdirSync(join(ROOT, 'wins')).filter(f => f.endsWith('.html')) : [];
   const DATA_HAS_INDEX = existsSync(join(ROOT, 'data', 'index.html'));
+  const FIND = existsSync(join(ROOT, 'find')) ? readdirSync(join(ROOT, 'find')).filter(f => f.endsWith('.html')) : [];
+  const PRESS_HAS = existsSync(join(ROOT, 'press.html'));
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
     `<url><loc>${SITE}/</loc><lastmod>${today}</lastmod><changefreq>daily</changefreq></url>\n` +
     `<url><loc>${SITE}/sitemap.html</loc><lastmod>${today}</lastmod></url>\n` +
@@ -278,6 +280,8 @@ const run = async () => {
     QUESTIONS.map(f => `<url><loc>${SITE}/questions/${f === 'index.html' ? '' : f}</loc><lastmod>${today}</lastmod></url>`).join('\n') + '\n' +
     WINS.map(f => `<url><loc>${SITE}/wins/${f === 'index.html' ? '' : f}</loc><lastmod>${today}</lastmod></url>`).join('\n') + '\n' +
     (DATA_HAS_INDEX ? `<url><loc>${SITE}/data/</loc><lastmod>${today}</lastmod><changefreq>daily</changefreq></url>\n` : '') +
+    FIND.map(f => `<url><loc>${SITE}/find/${f === 'index.html' ? '' : f}</loc><lastmod>${today}</lastmod></url>`).join('\n') + '\n' +
+    (PRESS_HAS ? `<url><loc>${SITE}/press.html</loc><lastmod>${today}</lastmod></url>\n` : '') +
     urls.map(u => `<url><loc>${u}</loc><lastmod>${today}</lastmod></url>`).join('\n') + '\n</urlset>';
   writeFileSync(join(ROOT, 'sitemap.xml'), sitemap);
   writeFileSync(join(ROOT, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`);
