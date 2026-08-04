@@ -1,7 +1,7 @@
 // Build static, schema-complete pages for every approved record: c/{domain}.html
 // + sitemap.xml + robots.txt. Also persists per-record qa jsonb + speakable fields to Supabase.
 // The Q&A/about engine is EXTRACTED from index.html at build time so the SPA stays the single source of truth.
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, readdirSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -245,10 +245,12 @@ const run = async () => {
   // sitemap.xml + HTML sitemap + robots + .nojekyll
   const today = new Date().toISOString().slice(0, 10);
   const TRUST = ['about','contact','editorial-policy','ai-policy','disclosures','privacy','terms','accessibility'];
+  const NEWS = existsSync(join(ROOT, 'news')) ? readdirSync(join(ROOT, 'news')).filter(f => f.endsWith('.html')) : [];
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
     `<url><loc>${SITE}/</loc><lastmod>${today}</lastmod><changefreq>daily</changefreq></url>\n` +
     `<url><loc>${SITE}/sitemap.html</loc><lastmod>${today}</lastmod></url>\n` +
     TRUST.map(s => `<url><loc>${SITE}/${s}.html</loc><lastmod>${today}</lastmod></url>`).join('\n') + '\n' +
+    NEWS.map(f => `<url><loc>${SITE}/news/${f === 'index.html' ? '' : f}</loc><lastmod>${today}</lastmod>${f === 'index.html' ? '<changefreq>weekly</changefreq>' : ''}</url>`).join('\n') + '\n' +
     urls.map(u => `<url><loc>${u}</loc><lastmod>${today}</lastmod></url>`).join('\n') + '\n</urlset>';
   writeFileSync(join(ROOT, 'sitemap.xml'), sitemap);
   writeFileSync(join(ROOT, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`);
