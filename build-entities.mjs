@@ -571,7 +571,6 @@ ${ld.map(o => `<script type="application/ld+json">${JSON.stringify(o)}</script>`
   footer span,footer a{font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:var(--chrome);text-decoration:none}
   footer a:hover{color:var(--ink)}
 </style>
-<script src="/nav.js" defer></script>
 </head>
 <body>
 <nav class="topbar"><div class="wrap topbar-in">
@@ -585,6 +584,7 @@ ${bodyHTML}
   <span>© ${BRAND} · INDEPENDENT DIRECTORY · NOT AN ENDORSEMENT ENGINE</span>
   <span><a href="${base}about.html">ABOUT</a> · <a href="${base}news/">BRIEFINGS</a> · <a href="${base}glossary.html">GLOSSARY</a> · <a href="${base}editorial-policy.html">EDITORIAL</a> · <a href="${base}contact.html">CONTACT</a></span>
 </div></footer>
+<script src="/nav.js"></script>
 </body>
 </html>`;
 }

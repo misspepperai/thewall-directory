@@ -130,7 +130,6 @@ ${ld.map(o => `<script type="application/ld+json">${JSON.stringify(o)}</script>`
   footer a:hover{color:var(--ink)}
   @media (max-width:640px){.fact{grid-template-columns:1fr}.fact-side{border-right:none;border-bottom:1px solid var(--stone)}.fact-side:last-child{border-bottom:none}.outcome{grid-template-columns:1fr}}
 </style>
-<script src="/nav.js" defer></script>
 </head>
 <body>
 <nav class="topbar"><div class="wrap topbar-in">
@@ -144,6 +143,7 @@ ${bodyHTML}
   <span>© ${BRAND} · INDEPENDENT DIRECTORY · NOT AN ENDORSEMENT ENGINE</span>
   <span><a href="../about.html">ABOUT</a> · <a href="../news/">BRIEFINGS</a> · <a href="../glossary.html">GLOSSARY</a> · <a href="../editorial-policy.html">EDITORIAL</a> · <a href="../contact.html">CONTACT</a></span>
 </div></footer>
+<script src="/nav.js"></script>
 </body>
 </html>`;
 }

@@ -3,6 +3,8 @@
 // Also injects the hover-menu CSS. Single-file source of truth for the nav.
 // Update this file to change the menu across every page — no per-page edits needed.
 (function () {
+  if (window._navInjected) return; // idempotent
+  window._navInjected = true;
   var bar = document.querySelector('.topbar-in');
   if (!bar) return;
 

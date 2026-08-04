@@ -61,7 +61,6 @@
   .pager { display:flex; gap:10px; align-items:center; margin-top:10px; }
   @media (max-width:640px){ .editor .grid2 { grid-template-columns:1fr; } .row-top { flex-wrap:wrap; } .row-actions { margin-left:0; } }
 </style>
-<script src="/nav.js" defer></script>
 </head>
 <body>
 
@@ -253,5 +252,6 @@ async function signOut() { await sb.auth.signOut(); }
 $('admin-q').addEventListener('input', () => { shown = 50; renderRows(); });
 init();
 </script>
+<script src="/nav.js"></script>
 </body>
 </html>
