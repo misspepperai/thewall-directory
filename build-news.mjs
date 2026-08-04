@@ -237,6 +237,22 @@ ${table(['City', 'Listings'], [
 <h2>Reading the city map</h2>
 <p>As with the <a href="where-us-growth-vendors-cluster-2026.html">state-level data</a>, headquarters city is a supply-side fact — virtually every firm in the index sells nationally. The mid-table pattern is still informative: growth-services firms have followed talent migration into Austin, Denver, and Miami, and buyers who last built a vendor shortlist a decade ago are drawing from a map that no longer exists.</p>`,
   rel: ['where-us-growth-vendors-cluster-2026', 'the-wall-launches-2286-us-growth-vendors', 'agency-team-sizes-2026']
+},
+{
+  slug: 'small-business-platform-search-1015-percent-2026', date: D,
+  h: 'The 1,015% search: US operators are suddenly asking Google for "digital marketing platforms for small businesses"',
+  dek: 'Google search volume for "digital marketing platform for small businesses" is up 1,015% year-over-year to 40,500 monthly searches — a rare signal that the smaller end of the operator market is actively hunting for tooling, not just tolerating it.',
+  body: `
+<p>Search for the exact phrase <em>digital marketing platform for small businesses</em> has climbed to 40,500 US searches per month, according to Google keyword data — a 1,015% jump from the same month a year earlier. The sibling query <em>online marketing platform for small businesses</em> shows the same shape at 9,900 monthly searches. Both are commercial-intent phrases (the searcher is shopping, not researching), and both carry low competition in Google's keyword-difficulty scoring — an unusual combination.</p>
+<h2>Why the trend matters more than the number</h2>
+<p>Absolute volume is not the story. 40,500 searches is a mid-sized keyword by SaaS category standards. What is unusual is the shape of the growth: monthly volume was in the low thousands as recently as ten months ago and passed 100,000 in a single spike during ${BRAND}'s data window. A rise that steep on a specific commercial phrase is not organic drift — it is a market being told, by someone or something, that this is the phrase to use.</p>
+<p>The most defensible read: buyers below the $5M revenue threshold — the segment the enterprise marketing-technology market has spent a decade ignoring or overcharging — are now shopping for tooling explicitly framed as "for us." That framing appears to be a reaction to sticker shock on the standard platforms, and to a wave of new offerings that price and position specifically for the sub-$5M operator.</p>
+<h2>What the data source is, and is not</h2>
+<p>These figures come from DataForSEO's Google keyword-planner data, which reflects search volume on Google.com in the United States by month. The 1,015% year-over-year figure compares July 2026 to July 2025. Search volume is not the same as revenue, adoption, or intent-to-purchase; it is the count of times a phrase was searched. What it reliably measures is <em>attention</em> — and attention on a commercial phrase is the leading indicator most reliably ahead of purchase behavior.</p>
+<h2>What ${BRAND} publishes about this segment — and what it does not</h2>
+<p>${BRAND}'s directory is built for a specific reader: US companies past $5M in revenue with 25 or more employees. Companies below that line are outside the core ICP, and the directory does not attempt to serve small-business buyers directly. But many of the 2,286 US firms listed do serve smaller operators, particularly in the <a href="../pillars/automation.html">Automation</a> and <a href="../pillars/ai-marketing.html">AI Marketing</a> pillars — where platform-shaped listings concentrate — and increasingly in the <a href="../pillars/marketing.html">Marketing</a> pillar, where a growing subset of full-service agencies now package their own platform alongside their services.</p>
+<p>${BRAND} does not currently track which platforms individual listed firms use or resell — that is provider-declared data the index does not yet collect. What the search trend suggests, and what future briefings will test against actual listing data as it becomes available, is that "platform for small business" is stopping being a market segment marketing-technology firms flee from and becoming one they build for.</p>`,
+  rel: ['the-wall-launches-2286-us-growth-vendors', 'ai-marketing-thinnest-category-2026', 'agencies-vs-software-mix-2026']
 }
 ];
 

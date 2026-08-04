@@ -1,0 +1,222 @@
+// Generates target-keyword landing pages under hubs/{slug}.html.
+// Each hub is a definitional/editorial page optimized for one commercial search term,
+// with FAQPage + Article + Breadcrumb JSON-LD, funneling to the atlas.
+// Run: node build-hubs.mjs
+import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const ROOT = dirname(fileURLToPath(import.meta.url));
+const SITE = 'https://hitthewall.net';
+const BRAND = 'The Wall';
+const TODAY = '2026-08-03';
+
+const ORG_LD = {
+  '@context': 'https://schema.org', '@type': 'Organization',
+  name: BRAND, url: `${SITE}/`, email: 'support@misspepper.ai',
+  description: 'An operations atlas of US-based companies that solve sales, marketing, SEO, thought leadership, creative, automation, and demand generation problems for established businesses.'
+};
+
+const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+const strip = h => h.replace(/<[^>]+>/g, ' ').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/\s+/g, ' ').trim();
+
+// ---------------------------------------------------------------- hubs
+const HUBS = [
+{
+  slug: 'marketing-consultant',
+  headTerm: 'marketing consultant',
+  title: `Marketing Consultants: How They Work, What They Cost, When to Hire One — The Wall`,
+  metaDesc: `What a marketing consultant does, how they differ from a marketing agency, when to hire one, and what independent US marketing consultants charge — grounded in The Wall's directory data on 550 US marketing firms.`,
+  h1: `Marketing Consultant`,
+  dek: `A marketing consultant is a senior independent advisor a company hires for strategy, diagnosis, or a defined engagement — the alternative to hiring an agency when the wall is a decision problem, not a capacity problem. Here is when that trade actually works, what to expect it to cost, and how the choice fits into a broader vendor shortlist.`,
+  sections: [
+    {
+      h2: `The difference between a marketing consultant and a marketing agency`,
+      body: `A <strong>marketing consultant</strong> sells expertise, judgment, and a defined deliverable — a strategy, an audit, a decision framework, a two-week engagement, a monthly advisory retainer. A <strong>marketing agency</strong> sells ongoing execution — the team that runs the campaigns, produces the content, manages the media, ships the work. Consultants are typically one to three senior people; agencies are typically ten to fifty. The wrong choice is the common failure mode: buying execution when the real problem was that nobody had decided what to execute, or buying strategy when the real problem was that nothing was getting shipped.
+<br><br>
+A consultant is the right hire when the diagnosis is unclear, when leadership can't agree on positioning or channel priority, when an existing agency is delivering activity without outcomes, or when the company is between agencies and needs a plan before hiring the next one. An agency is the right hire when the strategy is settled and the wall is capacity: the plan exists, and nobody has the hours or the specialized skill to run it.`
+    },
+    {
+      h2: `When companies actually hire a marketing consultant`,
+      body: `Four situations account for the majority of independent-consultant engagements at the operator level ${BRAND} serves — US companies past $5M in revenue with 25+ employees:
+<br><br>
+<strong>1. The founder handed off marketing and the new leader inherited a mess.</strong> A consultant runs a diagnostic — reviews the funnel, the tech stack, the campaigns in flight, the agency contracts — and produces a one-page current-state and a prioritized rework plan. The engagement is measured in weeks, not quarters, and the deliverable is a decision document, not a campaign.
+<br><br>
+<strong>2. Growth flattened and nobody agrees why.</strong> A consultant runs a channel and offer audit, interviews sales, and returns with a defensible position on where the leaks are. Because the consultant is outside the room, they can say the things internal marketers can't.
+<br><br>
+<strong>3. The company is about to spend seven figures on an agency and wants a second opinion.</strong> A consultant reviews the shortlist, sits in on pitches, and delivers a vendor-selection memo. The fee is a fraction of what a bad twelve-month contract would cost.
+<br><br>
+<strong>4. Leadership wants a permanent CMO but not yet.</strong> A fractional CMO — a consultant on a fixed monthly retainer, one to two days a week — carries the function until the hiring decision is right to make.`
+    },
+    {
+      h2: `What US marketing consultants actually cost`,
+      body: `Independent marketing consultants at the seniority mid-market operators need typically price at the upper end of the US agency market. Across the ${BRAND} directory's 1,440 US agencies that publish an hourly rate, two-thirds cluster between $100 and $199 per hour; senior specialists reach $200–$300, and the top few percent price above $300. Independent consultants working with $5M+ companies commonly quote in the $200–$400 hourly range for defined project work, or $8,000–$25,000 per month for a fractional advisory retainer scoped to a specific outcome.
+<br><br>
+Project fees are the more common structure: a strategy diagnostic runs $10,000–$30,000; a full brand or positioning engagement, $25,000–$75,000; a vendor-selection or agency-review memo, $5,000–$15,000. The right question isn't "what does a consultant cost" but "what does this specific engagement cost, and what would getting the decision wrong cost more".`
+    },
+    {
+      h2: `How to shortlist a marketing consultant`,
+      body: `Three filters do most of the work:
+<br><br>
+<strong>Specialty match.</strong> A consultant whose last five engagements looked like yours is worth several with impressive but adjacent resumes. Ask for three references at your company size and stage — not their biggest logos.
+<br><br>
+<strong>Diagnosis before prescription.</strong> A consultant who arrives at the first call with "what I usually recommend" is selling a template. The competent ones ask questions for the first hour and don't commit to an approach until they understand the situation.
+<br><br>
+<strong>A scoped exit.</strong> The best consulting engagements have a defined end: a deliverable, a decision, a hire. If the pitch is an open-ended retainer with no exit condition, you're being sold an agency in consultant packaging.
+<br><br>
+Once the shortlist is real, <a href="../?cat=Marketing">browse the 550 US marketing agencies in The Wall's directory</a> — a consultant's post-engagement recommendation is usually to hire one of these next, and the same structured data (rate band, minimum, team size, specialty) that helps evaluate a consultant helps evaluate the firm they hand off to.`
+    }
+  ],
+  faq: [
+    {
+      q: `What does a marketing consultant do?`,
+      a: `A marketing consultant advises on strategy, diagnoses what's wrong with an existing marketing operation, and produces defined deliverables — audits, positioning documents, channel plans, vendor recommendations, fractional-CMO oversight. They do not typically execute the work themselves; that's what a marketing agency is for.`
+    },
+    {
+      q: `How much does a marketing consultant cost?`,
+      a: `US marketing consultants at the seniority mid-market operators typically hire quote $200–$400 per hour for project work, or $8,000–$25,000 per month for a fractional retainer. Defined projects run $10,000–$75,000 depending on scope. Pricing sits at the upper end of the agency market because you're paying for judgment, not team hours.`
+    },
+    {
+      q: `Should I hire a marketing consultant or a marketing agency?`,
+      a: `A consultant when the wall is a decision problem — you don't know what to do, or an agency is executing without outcomes. An agency when the wall is a capacity problem — the plan exists and nobody has the hours or the specialty to run it. Buying execution before the decision is made is the most common way marketing budgets get wasted.`
+    },
+    {
+      q: `What is a fractional CMO?`,
+      a: `A fractional CMO is a marketing consultant on a fixed retainer who serves as the company's marketing leader for one or two days a week. It's the standard bridge between "we need real marketing leadership" and "we're ready to hire a full-time CMO" — typically a 6–18 month arrangement.`
+    },
+    {
+      q: `How is a marketing consultant different from a fractional CMO?`,
+      a: `A marketing consultant is usually engaged for a defined project — a diagnostic, a plan, a decision. A fractional CMO is engaged as an ongoing part-time executive who owns the marketing function's outcomes for the duration. Same person often does both; different engagement shapes.`
+    }
+  ],
+  relPillars: ['marketing', 'demand-gen', 'thought-leadership']
+}
+];
+
+// ---------------------------------------------------------------- shell (mirrors build-pillars.mjs styling)
+function shell({ title, metaDesc, canonical, ld, bodyHTML, base }) {
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>${esc(title)}</title>
+<meta name="description" content="${esc(metaDesc)}">
+<link rel="canonical" href="${canonical}">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧱</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+${ld.map(o => `<script type="application/ld+json">${JSON.stringify(o)}</script>`).join('\n')}
+<style>
+  :root{--porcelain:#FAF9F6;--stone:#E7E3DA;--stone-lt:#F2F0EA;--cobalt:#1B4FD8;--oxblood:#6E1423;--ink:#0E1B33;--chrome:#85898F;--body:#3B4557;--serif:'Newsreader',Georgia,serif;--sans:'IBM Plex Sans',sans-serif;--mono:'IBM Plex Mono',monospace}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:var(--sans);background:var(--porcelain);color:var(--ink);-webkit-font-smoothing:antialiased}
+  .wrap{max-width:820px;margin:0 auto;padding:0 24px}
+  a{color:var(--cobalt)}
+  .topbar{border-bottom:1px solid var(--stone)}
+  .topbar::before{content:'';display:block;height:2px;background:linear-gradient(90deg,var(--cobalt) 0 62%,var(--oxblood) 62% 84%,var(--ink) 84% 100%)}
+  .topbar-in{display:flex;align-items:center;justify-content:space-between;height:56px}
+  .wordmark{font-family:var(--serif);font-weight:700;font-size:20px;text-decoration:none;color:var(--ink);display:flex;align-items:baseline;gap:10px}
+  .wordmark small{font-family:var(--mono);font-weight:600;font-size:8.5px;letter-spacing:.18em;color:var(--chrome)}
+  .back{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.1em;color:var(--cobalt);text-decoration:none}
+  .kicker{font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:.16em;color:var(--oxblood);padding:34px 0 0}
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(28px,4.5vw,40px);letter-spacing:-.02em;line-height:1.15;padding:10px 0 6px}
+  .dek{font-family:var(--serif);font-style:italic;font-size:17.5px;line-height:1.55;color:var(--body);padding:8px 0 4px;max-width:680px}
+  h2{font-family:var(--serif);font-weight:600;font-size:21px;letter-spacing:-.01em;margin:30px 0 10px}
+  h3{font-family:var(--serif);font-weight:600;font-size:16.5px;margin:20px 0 6px}
+  p,li{font-size:14.5px;line-height:1.75;color:var(--body);margin-bottom:12px}
+  strong{color:var(--ink);font-weight:600}
+  .cta{display:inline-block;font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.1em;color:#fff;background:var(--cobalt);border-radius:7px;padding:10px 16px;text-decoration:none;margin:14px 0 8px}
+  .faq-item{border:1px solid var(--stone);border-radius:10px;background:#fff;padding:16px 22px;margin:12px 0}
+  .faq-item h3{margin:0 0 6px;font-size:15.5px}
+  .faq-item p{margin:0;font-size:13.5px}
+  .rel{margin:34px 0 0;border-top:1px solid var(--stone);padding-top:18px}
+  .rel h3{font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:.16em;color:var(--oxblood);margin:0 0 10px}
+  .rel a{display:block;font-family:var(--serif);font-size:16px;font-weight:600;color:var(--ink);text-decoration:none;margin-bottom:8px}
+  .rel a:hover{color:var(--cobalt)}
+  footer{border-top:1px solid var(--stone);margin-top:50px;padding:22px 0 40px}
+  footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;max-width:820px}
+  footer span,footer a{font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:var(--chrome);text-decoration:none}
+  footer a:hover{color:var(--ink)}
+</style>
+</head>
+<body>
+<nav class="topbar"><div class="wrap topbar-in">
+  <a class="wordmark" href="${base}./">${BRAND} <small>OPERATIONS ATLAS</small></a>
+  <a class="back" href="${base}./">BROWSE THE ATLAS →</a>
+</div></nav>
+<main class="wrap">
+${bodyHTML}
+</main>
+<footer><div class="wrap">
+  <span>© ${BRAND} · INDEPENDENT DIRECTORY · NOT AN ENDORSEMENT ENGINE</span>
+  <span><a href="${base}about.html">ABOUT</a> · <a href="${base}news/">BRIEFINGS</a> · <a href="${base}glossary.html">GLOSSARY</a> · <a href="${base}editorial-policy.html">EDITORIAL</a> · <a href="${base}contact.html">CONTACT</a></span>
+</div></footer>
+</body>
+</html>`;
+}
+
+// ---------------------------------------------------------------- render
+mkdirSync(join(ROOT, 'hubs'), { recursive: true });
+
+// need pillar cat/n for the "related" section — pull from build-pillars.mjs
+const pillarsSrc = readFileSync(join(ROOT, 'build-pillars.mjs'), 'utf8');
+const pillarLookup = {};
+for (const m of pillarsSrc.matchAll(/slug: '([^']+)', cat: '([^']+)'/g)) pillarLookup[m[1]] = m[2];
+const pillarN = {};
+for (const m of pillarsSrc.matchAll(/slug: '([^']+)'[^}]*?stats: \{ n: (\d+)/gs)) pillarN[m[1]] = m[2];
+
+for (const h of HUBS) {
+  const canonical = `${SITE}/hubs/${h.slug}.html`;
+  const bodyText = [h.dek, ...h.sections.map(s => `${s.h2}. ${strip(s.body)}`), ...h.faq.map(f => `${f.q} ${f.a}`)].join(' ');
+
+  const ld = [ORG_LD,
+    {
+      '@context': 'https://schema.org', '@type': 'Article',
+      headline: h.h1, description: h.metaDesc,
+      datePublished: TODAY, dateModified: TODAY,
+      author: { '@type': 'Organization', name: `${BRAND} Editorial Team`, url: `${SITE}/about.html` },
+      publisher: { '@type': 'Organization', name: BRAND, url: `${SITE}/` },
+      mainEntityOfPage: canonical, url: canonical, articleBody: bodyText.slice(0, 5000)
+    },
+    {
+      '@context': 'https://schema.org', '@type': 'FAQPage',
+      mainEntity: h.faq.map(f => ({
+        '@type': 'Question', name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a }
+      }))
+    },
+    {
+      '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: BRAND, item: `${SITE}/` },
+        { '@type': 'ListItem', position: 2, name: 'Reference', item: `${SITE}/glossary.html` },
+        { '@type': 'ListItem', position: 3, name: h.h1 }
+      ]
+    }];
+
+  const relPillarsHTML = h.relPillars?.length
+    ? `<div class="rel"><h3>RELATED DISCIPLINES</h3>
+${h.relPillars.map(s => pillarLookup[s] ? `<a href="../pillars/${s}.html">${esc(pillarLookup[s])}${pillarN[s] ? ` — ${pillarN[s]} listings` : ''}</a>` : '').join('\n')}
+</div>` : '';
+
+  const body = `
+<div class="kicker">REFERENCE · HUB</div>
+<h1>${esc(h.h1)}</h1>
+<p class="dek">${h.dek}</p>
+${h.sections.map(s => `<h2>${esc(s.h2)}</h2>\n<p>${s.body}</p>`).join('\n')}
+<a class="cta" href="../?cat=Marketing">BROWSE ${pillarN.marketing || ''} US MARKETING FIRMS →</a>
+<h2>Frequently asked</h2>
+${h.faq.map(f => `<div class="faq-item"><h3>${esc(f.q)}</h3><p>${esc(f.a)}</p></div>`).join('\n')}
+${relPillarsHTML}
+<div class="rel"><h3>REFERENCE</h3>
+<a href="../glossary.html">The Wall glossary — growth-vendor terms defined</a>
+<a href="../news/">Data briefings on the US growth-vendor market</a>
+</div>`;
+
+  writeFileSync(join(ROOT, 'hubs', `${h.slug}.html`),
+    shell({ title: h.title, metaDesc: h.metaDesc, canonical, ld, bodyHTML: body, base: '../' }));
+}
+
+console.log(`hub pages written: ${HUBS.length}`);

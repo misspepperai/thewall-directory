@@ -1,0 +1,1738 @@
+{
+  "generated": "2026-08-03",
+  "source": "DataForSEO Labs keyword_ideas",
+  "filter": "KD<=30, volume>=500, non-navigational, junk-terms excluded",
+  "total": 171,
+  "byPillar": {
+    "Sales": [
+      {
+        "pillar": "Sales",
+        "keyword": "retail jobs",
+        "volume": 40500,
+        "kd": 8,
+        "cpc": 2.2,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": 22
+      },
+      {
+        "pillar": "Sales",
+        "keyword": "clothing sales",
+        "volume": 27100,
+        "kd": 10,
+        "cpc": 0.69,
+        "competition": "HIGH",
+        "intent": "commercial",
+        "trend_yoy": -18
+      },
+      {
+        "pillar": "Sales",
+        "keyword": "sales representative jobs",
+        "volume": 14800,
+        "kd": 1,
+        "cpc": 2.79,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -70
+      },
+      {
+        "pillar": "Sales",
+        "keyword": "soupy sales",
+        "volume": 14800,
+        "kd": 4,
+        "cpc": 0.02,
+        "competition": "LOW",
+        "intent": "commercial",
+        "trend_yoy": -18
+      },
+      {
+        "pillar": "Sales",
+        "keyword": "nyc sample sales",
+        "volume": 14800,
+        "kd": 7,
+        "cpc": 0.51,
+        "competition": "MEDIUM",
+        "intent": "commercial",
+        "trend_yoy": -33
+      },
+      {
+        "pillar": "Sales",
+        "keyword": "pacific sales",
+        "volume": 14800,
+        "kd": 8,
+        "cpc": 2.57,
+        "competition": "HIGH",
+        "intent": "commercial",
+        "trend_yoy": -18
+      },
+      {
+        "pillar": "Sales",
+        "keyword": "sales representative",
+        "volume": 14800,
+        "kd": 8,
+        "cpc": 15.09,
+        "competition": "LOW",
+        "intent": "commercial",
+        "trend_yoy": -33
+      },
+      {
+        "pillar": "Sales",
+        "keyword": "medical device sales",
+        "volume": 12100,
+        "kd": 9,
+        "cpc": 5.13,
+        "competition": "LOW",
+        "intent": "transactional",
+        "trend_yoy": -18
+      },
+      {
+        "pillar": "Sales",
+        "keyword": "sales engineer",
+        "volume": 9900,
+        "kd": 4,
+        "cpc": 5.63,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -18
+      },
+      {
+        "pillar": "Sales",
+        "keyword": "b2b sales",
+        "volume": 14800,
+        "kd": 15,
+        "cpc": 10.88,
+        "competition": "LOW",
+        "intent": "commercial",
+        "trend_yoy": null
+      },
+      {
+        "pillar": "Sales",
+        "keyword": "enterprise sales",
+        "volume": 12100,
+        "kd": 11,
+        "cpc": 1.12,
+        "competition": "HIGH",
+        "intent": "commercial",
+        "trend_yoy": 124
+      },
+      {
+        "pillar": "Sales",
+        "keyword": "clothing and sales",
+        "volume": 12100,
+        "kd": 14,
+        "cpc": 1.73,
+        "competition": "LOW",
+        "intent": "commercial",
+        "trend_yoy": -33
+      },
+      {
+        "pillar": "Sales",
+        "keyword": "travelling sales person problem",
+        "volume": 8100,
+        "kd": 11,
+        "cpc": 1.78,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -33
+      },
+      {
+        "pillar": "Sales",
+        "keyword": "furniture sales",
+        "volume": 18100,
+        "kd": 25,
+        "cpc": 2.39,
+        "competition": "HIGH",
+        "intent": "commercial",
+        "trend_yoy": 22
+      },
+      {
+        "pillar": "Sales",
+        "keyword": "free ri",
+        "volume": 9900,
+        "kd": 18,
+        "cpc": 20.94,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -21
+      },
+      {
+        "pillar": "Sales",
+        "keyword": "hardware sales",
+        "volume": 6600,
+        "kd": 10,
+        "cpc": 0.61,
+        "competition": "LOW",
+        "intent": "commercial",
+        "trend_yoy": -18
+      },
+      {
+        "pillar": "Sales",
+        "keyword": "what is b2b sales",
+        "volume": 8100,
+        "kd": 15,
+        "cpc": 14.89,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": null
+      },
+      {
+        "pillar": "Sales",
+        "keyword": "sks sales",
+        "volume": 5400,
+        "kd": 5,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "commercial",
+        "trend_yoy": 23
+      },
+      {
+        "pillar": "Sales",
+        "keyword": "customer relations training",
+        "volume": 8100,
+        "kd": 16,
+        "cpc": 16.57,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": 110233
+      },
+      {
+        "pillar": "Sales",
+        "keyword": "ocala obs sales",
+        "volume": 8100,
+        "kd": 17,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "commercial",
+        "trend_yoy": 22
+      },
+      {
+        "pillar": "Sales",
+        "keyword": "whole foods sales",
+        "volume": 8100,
+        "kd": 17,
+        "cpc": 0.31,
+        "competition": "LOW",
+        "intent": "commercial",
+        "trend_yoy": -18
+      },
+      {
+        "pillar": "Sales",
+        "keyword": "motivational sales quotes",
+        "volume": 5400,
+        "kd": 9,
+        "cpc": 0.77,
+        "competition": "HIGH",
+        "intent": "informational",
+        "trend_yoy": -33
+      },
+      {
+        "pillar": "Sales",
+        "keyword": "customer service training",
+        "volume": 8100,
+        "kd": 18,
+        "cpc": 16.57,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": 652
+      },
+      {
+        "pillar": "Sales",
+        "keyword": "o b s sales",
+        "volume": 8100,
+        "kd": 19,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": 22
+      },
+      {
+        "pillar": "Sales",
+        "keyword": "obs sales",
+        "volume": 8100,
+        "kd": 19,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "commercial",
+        "trend_yoy": 22
+      },
+      {
+        "pillar": "Sales",
+        "keyword": "kroger sales",
+        "volume": 6600,
+        "kd": 16,
+        "cpc": 0.68,
+        "competition": "MEDIUM",
+        "intent": "commercial",
+        "trend_yoy": null
+      },
+      {
+        "pillar": "Sales",
+        "keyword": "cellular sales",
+        "volume": 6600,
+        "kd": 16,
+        "cpc": 1.48,
+        "competition": "MEDIUM",
+        "intent": "commercial",
+        "trend_yoy": -33
+      },
+      {
+        "pillar": "Sales",
+        "keyword": "dollar general sales ad",
+        "volume": 8100,
+        "kd": 21,
+        "cpc": 0.64,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": null
+      },
+      {
+        "pillar": "Sales",
+        "keyword": "trailer sales",
+        "volume": 18100,
+        "kd": 29,
+        "cpc": 3.03,
+        "competition": "HIGH",
+        "intent": "transactional",
+        "trend_yoy": -18
+      },
+      {
+        "pillar": "Sales",
+        "keyword": "publix sales",
+        "volume": 8100,
+        "kd": 22,
+        "cpc": 0.22,
+        "competition": "LOW",
+        "intent": "commercial",
+        "trend_yoy": null
+      },
+      {
+        "pillar": "Sales",
+        "keyword": "driven auto sales",
+        "volume": 5400,
+        "kd": 16,
+        "cpc": 1.94,
+        "competition": "HIGH",
+        "intent": "commercial",
+        "trend_yoy": -18
+      },
+      {
+        "pillar": "Sales",
+        "keyword": "b2b sales meaning",
+        "volume": 5400,
+        "kd": 18,
+        "cpc": 7.12,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": null
+      },
+      {
+        "pillar": "Sales",
+        "keyword": "appliance sales",
+        "volume": 12100,
+        "kd": 28,
+        "cpc": 3.27,
+        "competition": "HIGH",
+        "intent": "commercial",
+        "trend_yoy": -33
+      },
+      {
+        "pillar": "Sales",
+        "keyword": "cyber monday sales",
+        "volume": 9900,
+        "kd": 28,
+        "cpc": 3.07,
+        "competition": "LOW",
+        "intent": "commercial",
+        "trend_yoy": -94
+      },
+      {
+        "pillar": "Sales",
+        "keyword": "walmart sales",
+        "volume": 8100,
+        "kd": 29,
+        "cpc": 0.4,
+        "competition": "MEDIUM",
+        "intent": "commercial",
+        "trend_yoy": 22
+      }
+    ],
+    "Marketing": [
+      {
+        "pillar": "Marketing",
+        "keyword": "digital marketing platform for small businesses",
+        "volume": 40500,
+        "kd": 13,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "commercial",
+        "trend_yoy": 1015
+      },
+      {
+        "pillar": "Marketing",
+        "keyword": "seo agency",
+        "volume": 27100,
+        "kd": 19,
+        "cpc": 44.12,
+        "competition": "LOW",
+        "intent": "commercial",
+        "trend_yoy": -63
+      },
+      {
+        "pillar": "Marketing",
+        "keyword": "marketing manager",
+        "volume": 12100,
+        "kd": 5,
+        "cpc": 14.93,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -33
+      },
+      {
+        "pillar": "Marketing",
+        "keyword": "social media optimisation",
+        "volume": 14800,
+        "kd": 12,
+        "cpc": 1.22,
+        "competition": "LOW",
+        "intent": "commercial",
+        "trend_yoy": -18
+      },
+      {
+        "pillar": "Marketing",
+        "keyword": "online marketing platform for small businesses",
+        "volume": 9900,
+        "kd": 11,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "commercial",
+        "trend_yoy": null
+      },
+      {
+        "pillar": "Marketing",
+        "keyword": "modeling agencies",
+        "volume": 33100,
+        "kd": 28,
+        "cpc": 3.7,
+        "competition": "LOW",
+        "intent": "commercial",
+        "trend_yoy": null
+      },
+      {
+        "pillar": "Marketing",
+        "keyword": "instagram marketing services",
+        "volume": 12100,
+        "kd": 17,
+        "cpc": 8.09,
+        "competition": "LOW",
+        "intent": "commercial",
+        "trend_yoy": -89
+      },
+      {
+        "pillar": "Marketing",
+        "keyword": "website conversion optimization tools",
+        "volume": 8100,
+        "kd": 9,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "commercial",
+        "trend_yoy": -99
+      },
+      {
+        "pillar": "Marketing",
+        "keyword": "marketing mix",
+        "volume": 14800,
+        "kd": 21,
+        "cpc": 27.64,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -45
+      },
+      {
+        "pillar": "Marketing",
+        "keyword": "social print studio",
+        "volume": 8100,
+        "kd": 10,
+        "cpc": 4.61,
+        "competition": "HIGH",
+        "intent": "commercial",
+        "trend_yoy": null
+      },
+      {
+        "pillar": "Marketing",
+        "keyword": "social media influencers",
+        "volume": 9900,
+        "kd": 15,
+        "cpc": 12.43,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -33
+      },
+      {
+        "pillar": "Marketing",
+        "keyword": "pinterest affiliate marketing",
+        "volume": 18100,
+        "kd": 26,
+        "cpc": 2.96,
+        "competition": "LOW",
+        "intent": "commercial",
+        "trend_yoy": null
+      },
+      {
+        "pillar": "Marketing",
+        "keyword": "onlyfans agency",
+        "volume": 5400,
+        "kd": 10,
+        "cpc": 6.06,
+        "competition": "MEDIUM",
+        "intent": "commercial",
+        "trend_yoy": -38
+      },
+      {
+        "pillar": "Marketing",
+        "keyword": "4 ps of marketing",
+        "volume": 12100,
+        "kd": 24,
+        "cpc": 1.29,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -18
+      },
+      {
+        "pillar": "Marketing",
+        "keyword": "digital marketing platforms",
+        "volume": 6600,
+        "kd": 15,
+        "cpc": 19.58,
+        "competition": "LOW",
+        "intent": "commercial",
+        "trend_yoy": -70
+      },
+      {
+        "pillar": "Marketing",
+        "keyword": "reminder media",
+        "volume": 9900,
+        "kd": 24,
+        "cpc": 1.04,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -33
+      },
+      {
+        "pillar": "Marketing",
+        "keyword": "google digital marketing & e-commerce certificate",
+        "volume": 5400,
+        "kd": 15,
+        "cpc": 15.25,
+        "competition": "LOW",
+        "intent": "commercial",
+        "trend_yoy": -46
+      },
+      {
+        "pillar": "Marketing",
+        "keyword": "content marketing services",
+        "volume": 6600,
+        "kd": 20,
+        "cpc": 11.54,
+        "competition": "LOW",
+        "intent": "commercial",
+        "trend_yoy": -70
+      },
+      {
+        "pillar": "Marketing",
+        "keyword": "social media marketing tools",
+        "volume": 6600,
+        "kd": 21,
+        "cpc": 27.69,
+        "competition": "LOW",
+        "intent": "commercial",
+        "trend_yoy": -76
+      },
+      {
+        "pillar": "Marketing",
+        "keyword": "b2b marketing agency",
+        "volume": 5400,
+        "kd": 18,
+        "cpc": 63.29,
+        "competition": "LOW",
+        "intent": "commercial",
+        "trend_yoy": -46
+      },
+      {
+        "pillar": "Marketing",
+        "keyword": "what are the 4 ps of marketing",
+        "volume": 8100,
+        "kd": 24,
+        "cpc": 1.34,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -34
+      },
+      {
+        "pillar": "Marketing",
+        "keyword": "online marketing platforms",
+        "volume": 12100,
+        "kd": 29,
+        "cpc": 27.4,
+        "competition": "LOW",
+        "intent": "commercial",
+        "trend_yoy": -72
+      },
+      {
+        "pillar": "Marketing",
+        "keyword": "marketing degree",
+        "volume": 6600,
+        "kd": 24,
+        "cpc": 41.66,
+        "competition": "MEDIUM",
+        "intent": "informational",
+        "trend_yoy": -33
+      },
+      {
+        "pillar": "Marketing",
+        "keyword": "experiential marketing",
+        "volume": 5400,
+        "kd": 22,
+        "cpc": 9.42,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": 22
+      },
+      {
+        "pillar": "Marketing",
+        "keyword": "seo marketing services",
+        "volume": 5400,
+        "kd": 28,
+        "cpc": 17.83,
+        "competition": "LOW",
+        "intent": "commercial",
+        "trend_yoy": -84
+      },
+      {
+        "pillar": "Marketing",
+        "keyword": "affiliate marketing platform",
+        "volume": 6600,
+        "kd": 30,
+        "cpc": 24.95,
+        "competition": "LOW",
+        "intent": "commercial",
+        "trend_yoy": -45
+      },
+      {
+        "pillar": "Marketing",
+        "keyword": "ai marketing",
+        "volume": 5400,
+        "kd": 29,
+        "cpc": 40.81,
+        "competition": "MEDIUM",
+        "intent": "commercial",
+        "trend_yoy": -33
+      }
+    ],
+    "SEO": [
+      {
+        "pillar": "SEO",
+        "keyword": "local service ads",
+        "volume": 40500,
+        "kd": 15,
+        "cpc": 7.81,
+        "competition": "MEDIUM",
+        "intent": "informational",
+        "trend_yoy": 49
+      },
+      {
+        "pillar": "SEO",
+        "keyword": "marketing consultant",
+        "volume": 18100,
+        "kd": 4,
+        "cpc": 19.15,
+        "competition": "LOW",
+        "intent": "commercial",
+        "trend_yoy": -33
+      },
+      {
+        "pillar": "SEO",
+        "keyword": "dark horizons website",
+        "volume": 22200,
+        "kd": 14,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": null,
+        "trend_yoy": 22
+      },
+      {
+        "pillar": "SEO",
+        "keyword": "apa citation website 2 authors",
+        "volume": 14800,
+        "kd": 14,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": 175
+      },
+      {
+        "pillar": "SEO",
+        "keyword": "url meaning",
+        "volume": 33100,
+        "kd": 27,
+        "cpc": 3.49,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -18
+      }
+    ],
+    "Thought Leadership": [
+      {
+        "pillar": "Thought Leadership",
+        "keyword": "smart synonym",
+        "volume": 33100,
+        "kd": 2,
+        "cpc": 0.06,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -33
+      },
+      {
+        "pillar": "Thought Leadership",
+        "keyword": "smartest person in the world",
+        "volume": 22200,
+        "kd": 7,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -45
+      },
+      {
+        "pillar": "Thought Leadership",
+        "keyword": "knowledgeable synonym",
+        "volume": 14800,
+        "kd": 2,
+        "cpc": 0.07,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -18
+      },
+      {
+        "pillar": "Thought Leadership",
+        "keyword": "brand ambassador",
+        "volume": 14800,
+        "kd": 15,
+        "cpc": 9.09,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -18
+      },
+      {
+        "pillar": "Thought Leadership",
+        "keyword": "company synonym",
+        "volume": 8100,
+        "kd": 2,
+        "cpc": 0.03,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -33
+      },
+      {
+        "pillar": "Thought Leadership",
+        "keyword": "amazon leadership principles",
+        "volume": 22200,
+        "kd": 24,
+        "cpc": 2.66,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -33
+      },
+      {
+        "pillar": "Thought Leadership",
+        "keyword": "sole proprietorship examples",
+        "volume": 8100,
+        "kd": 6,
+        "cpc": 9.13,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -47
+      },
+      {
+        "pillar": "Thought Leadership",
+        "keyword": "sole executive agreements",
+        "volume": 6600,
+        "kd": 5,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -12
+      },
+      {
+        "pillar": "Thought Leadership",
+        "keyword": "examples of monopolies",
+        "volume": 8100,
+        "kd": 11,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -16
+      },
+      {
+        "pillar": "Thought Leadership",
+        "keyword": "entrepreneurship courses",
+        "volume": 14800,
+        "kd": 25,
+        "cpc": 16.28,
+        "competition": "MEDIUM",
+        "intent": "informational",
+        "trend_yoy": -97
+      },
+      {
+        "pillar": "Thought Leadership",
+        "keyword": "business coach",
+        "volume": 9900,
+        "kd": 21,
+        "cpc": 17.14,
+        "competition": "LOW",
+        "intent": "commercial",
+        "trend_yoy": -33
+      },
+      {
+        "pillar": "Thought Leadership",
+        "keyword": "entrepreneur examples",
+        "volume": 8100,
+        "kd": 19,
+        "cpc": 11.06,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -32
+      },
+      {
+        "pillar": "Thought Leadership",
+        "keyword": "average iq in the world",
+        "volume": 9900,
+        "kd": 23,
+        "cpc": 2.71,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -45
+      },
+      {
+        "pillar": "Thought Leadership",
+        "keyword": "mind map examples",
+        "volume": 9900,
+        "kd": 23,
+        "cpc": 2.05,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -19
+      },
+      {
+        "pillar": "Thought Leadership",
+        "keyword": "acting agencies",
+        "volume": 8100,
+        "kd": 22,
+        "cpc": 3.21,
+        "competition": "MEDIUM",
+        "intent": "informational",
+        "trend_yoy": -33
+      },
+      {
+        "pillar": "Thought Leadership",
+        "keyword": "executive coaching",
+        "volume": 8100,
+        "kd": 26,
+        "cpc": 16.78,
+        "competition": "MEDIUM",
+        "intent": "informational",
+        "trend_yoy": -80
+      }
+    ],
+    "Creative Strategy": [
+      {
+        "pillar": "Creative Strategy",
+        "keyword": "video editing tips",
+        "volume": 301000,
+        "kd": 4,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -100
+      },
+      {
+        "pillar": "Creative Strategy",
+        "keyword": "tutorial video",
+        "volume": 301000,
+        "kd": 7,
+        "cpc": 8.86,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -99
+      },
+      {
+        "pillar": "Creative Strategy",
+        "keyword": "pink video chat",
+        "volume": 165000,
+        "kd": 11,
+        "cpc": 3.65,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": 22
+      },
+      {
+        "pillar": "Creative Strategy",
+        "keyword": "black screen video",
+        "volume": 40500,
+        "kd": 8,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": 49
+      },
+      {
+        "pillar": "Creative Strategy",
+        "keyword": "video to gif",
+        "volume": 110000,
+        "kd": 26,
+        "cpc": 1.07,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": null
+      },
+      {
+        "pillar": "Creative Strategy",
+        "keyword": "creami video",
+        "volume": 27100,
+        "kd": 1,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": null
+      },
+      {
+        "pillar": "Creative Strategy",
+        "keyword": "video link",
+        "volume": 22200,
+        "kd": 7,
+        "cpc": 2.68,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -70
+      },
+      {
+        "pillar": "Creative Strategy",
+        "keyword": "design synonym",
+        "volume": 22200,
+        "kd": 8,
+        "cpc": 4.85,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -33
+      },
+      {
+        "pillar": "Creative Strategy",
+        "keyword": "graphic designer jobs",
+        "volume": 27100,
+        "kd": 13,
+        "cpc": 2.25,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -63
+      },
+      {
+        "pillar": "Creative Strategy",
+        "keyword": "feature-sliced design",
+        "volume": 27100,
+        "kd": 15,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -35
+      },
+      {
+        "pillar": "Creative Strategy",
+        "keyword": "handbrake video compressor",
+        "volume": 40500,
+        "kd": 22,
+        "cpc": 2.77,
+        "competition": "LOW",
+        "intent": "transactional",
+        "trend_yoy": 173
+      },
+      {
+        "pillar": "Creative Strategy",
+        "keyword": "video killed the radio star",
+        "volume": 40500,
+        "kd": 24,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -18
+      },
+      {
+        "pillar": "Creative Strategy",
+        "keyword": "handbrake video converter",
+        "volume": 22200,
+        "kd": 15,
+        "cpc": 3.02,
+        "competition": "LOW",
+        "intent": "transactional",
+        "trend_yoy": 23
+      },
+      {
+        "pillar": "Creative Strategy",
+        "keyword": "human design",
+        "volume": 33100,
+        "kd": 22,
+        "cpc": 1.08,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -18
+      },
+      {
+        "pillar": "Creative Strategy",
+        "keyword": "principles of design",
+        "volume": 27100,
+        "kd": 20,
+        "cpc": 0.89,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -18
+      },
+      {
+        "pillar": "Creative Strategy",
+        "keyword": "video killed the radio star video",
+        "volume": 40500,
+        "kd": 25,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -18
+      },
+      {
+        "pillar": "Creative Strategy",
+        "keyword": "t shirt design",
+        "volume": 27100,
+        "kd": 21,
+        "cpc": 4.88,
+        "competition": "HIGH",
+        "intent": "commercial",
+        "trend_yoy": -33
+      },
+      {
+        "pillar": "Creative Strategy",
+        "keyword": "creative planning",
+        "volume": 22200,
+        "kd": 20,
+        "cpc": 5.49,
+        "competition": "MEDIUM",
+        "intent": "informational",
+        "trend_yoy": 23
+      },
+      {
+        "pillar": "Creative Strategy",
+        "keyword": "engineering design process",
+        "volume": 27100,
+        "kd": 24,
+        "cpc": 6.08,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -18
+      },
+      {
+        "pillar": "Creative Strategy",
+        "keyword": "how to use video",
+        "volume": 33100,
+        "kd": 26,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": 10900
+      },
+      {
+        "pillar": "Creative Strategy",
+        "keyword": "video promo",
+        "volume": 27100,
+        "kd": 25,
+        "cpc": 4.43,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": null
+      },
+      {
+        "pillar": "Creative Strategy",
+        "keyword": "face swap video",
+        "volume": 18100,
+        "kd": 23,
+        "cpc": 2.89,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -55
+      },
+      {
+        "pillar": "Creative Strategy",
+        "keyword": "video transcription",
+        "volume": 27100,
+        "kd": 27,
+        "cpc": 3.87,
+        "competition": "MEDIUM",
+        "intent": "informational",
+        "trend_yoy": 23
+      },
+      {
+        "pillar": "Creative Strategy",
+        "keyword": "define video",
+        "volume": 22200,
+        "kd": 26,
+        "cpc": 5.01,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -18
+      },
+      {
+        "pillar": "Creative Strategy",
+        "keyword": "brand identity design",
+        "volume": 18100,
+        "kd": 30,
+        "cpc": 20.5,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -66
+      }
+    ],
+    "Automation": [
+      {
+        "pillar": "Automation",
+        "keyword": "paid advertising platforms",
+        "volume": 14800,
+        "kd": 6,
+        "cpc": 81.24,
+        "competition": "LOW",
+        "intent": "commercial",
+        "trend_yoy": 42208
+      },
+      {
+        "pillar": "Automation",
+        "keyword": "freelance writing platforms",
+        "volume": 18100,
+        "kd": 23,
+        "cpc": 4.34,
+        "competition": "LOW",
+        "intent": "commercial",
+        "trend_yoy": -97
+      },
+      {
+        "pillar": "Automation",
+        "keyword": "online market research tools",
+        "volume": 8100,
+        "kd": 11,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "commercial",
+        "trend_yoy": -92
+      },
+      {
+        "pillar": "Automation",
+        "keyword": "pay-per-click advertising platforms",
+        "volume": 5400,
+        "kd": 21,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "commercial",
+        "trend_yoy": 2994
+      }
+    ],
+    "Demand Gen": [
+      {
+        "pillar": "Demand Gen",
+        "keyword": "compulsory meaning",
+        "volume": 22200,
+        "kd": 1,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -18
+      },
+      {
+        "pillar": "Demand Gen",
+        "keyword": "flatbread company",
+        "volume": 33100,
+        "kd": 14,
+        "cpc": 0.53,
+        "competition": "LOW",
+        "intent": "commercial",
+        "trend_yoy": null
+      },
+      {
+        "pillar": "Demand Gen",
+        "keyword": "web stories ads",
+        "volume": 22200,
+        "kd": 6,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "commercial",
+        "trend_yoy": null
+      },
+      {
+        "pillar": "Demand Gen",
+        "keyword": "priority notification meaning",
+        "volume": 22200,
+        "kd": 7,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": 50
+      },
+      {
+        "pillar": "Demand Gen",
+        "keyword": "vital meaning",
+        "volume": 18100,
+        "kd": 5,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -18
+      },
+      {
+        "pillar": "Demand Gen",
+        "keyword": "sog company",
+        "volume": 18100,
+        "kd": 8,
+        "cpc": 0.62,
+        "competition": "HIGH",
+        "intent": "informational",
+        "trend_yoy": -18
+      },
+      {
+        "pillar": "Demand Gen",
+        "keyword": "meaning vital",
+        "volume": 18100,
+        "kd": 8,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -18
+      },
+      {
+        "pillar": "Demand Gen",
+        "keyword": "meaning of indispensable",
+        "volume": 18100,
+        "kd": 9,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": null
+      },
+      {
+        "pillar": "Demand Gen",
+        "keyword": "indispensable meaning",
+        "volume": 18100,
+        "kd": 9,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": null
+      },
+      {
+        "pillar": "Demand Gen",
+        "keyword": "c r i t i q u e meaning",
+        "volume": 22200,
+        "kd": 14,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": null
+      },
+      {
+        "pillar": "Demand Gen",
+        "keyword": "pre-requisite meaning",
+        "volume": 14800,
+        "kd": 4,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": null
+      },
+      {
+        "pillar": "Demand Gen",
+        "keyword": "essentialities meaning",
+        "volume": 14800,
+        "kd": 8,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -33
+      },
+      {
+        "pillar": "Demand Gen",
+        "keyword": "manufacturing companies",
+        "volume": 18100,
+        "kd": 16,
+        "cpc": 8.36,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -18
+      },
+      {
+        "pillar": "Demand Gen",
+        "keyword": "cleaning company",
+        "volume": 27100,
+        "kd": 29,
+        "cpc": 8.65,
+        "competition": "MEDIUM",
+        "intent": "commercial",
+        "trend_yoy": -18
+      }
+    ],
+    "Content Marketing": [
+      {
+        "pillar": "Content Marketing",
+        "keyword": "writing jobs",
+        "volume": 74000,
+        "kd": 21,
+        "cpc": 2.45,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": 1258
+      },
+      {
+        "pillar": "Content Marketing",
+        "keyword": "anecdote meaning",
+        "volume": 60500,
+        "kd": 18,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -18
+      },
+      {
+        "pillar": "Content Marketing",
+        "keyword": "synopses meaning",
+        "volume": 27100,
+        "kd": 2,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": 124
+      },
+      {
+        "pillar": "Content Marketing",
+        "keyword": "memoir meaning",
+        "volume": 27100,
+        "kd": 7,
+        "cpc": 0.03,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": null
+      },
+      {
+        "pillar": "Content Marketing",
+        "keyword": "post-scriptum meaning",
+        "volume": 27100,
+        "kd": 11,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -18
+      },
+      {
+        "pillar": "Content Marketing",
+        "keyword": "post scriptum meaning",
+        "volume": 27100,
+        "kd": 11,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -18
+      },
+      {
+        "pillar": "Content Marketing",
+        "keyword": "narration meaning",
+        "volume": 22200,
+        "kd": 7,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -18
+      },
+      {
+        "pillar": "Content Marketing",
+        "keyword": "brief on meaning",
+        "volume": 18100,
+        "kd": 3,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -18
+      },
+      {
+        "pillar": "Content Marketing",
+        "keyword": "bibliography meaning",
+        "volume": 14800,
+        "kd": 4,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": 128
+      },
+      {
+        "pillar": "Content Marketing",
+        "keyword": "non fiction meaning",
+        "volume": 33100,
+        "kd": 22,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": null
+      },
+      {
+        "pillar": "Content Marketing",
+        "keyword": "expository writing",
+        "volume": 12100,
+        "kd": 2,
+        "cpc": 0.13,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -19
+      },
+      {
+        "pillar": "Content Marketing",
+        "keyword": "documentation meaning",
+        "volume": 18100,
+        "kd": 14,
+        "cpc": 9.27,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -18
+      },
+      {
+        "pillar": "Content Marketing",
+        "keyword": "meaning of manuscript",
+        "volume": 12100,
+        "kd": 4,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": null
+      },
+      {
+        "pillar": "Content Marketing",
+        "keyword": "work quotes",
+        "volume": 12100,
+        "kd": 4,
+        "cpc": 1.75,
+        "competition": "MEDIUM",
+        "intent": "informational",
+        "trend_yoy": -18
+      },
+      {
+        "pillar": "Content Marketing",
+        "keyword": "parchment transcript services",
+        "volume": 14800,
+        "kd": 10,
+        "cpc": 0.4,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": null
+      },
+      {
+        "pillar": "Content Marketing",
+        "keyword": "manuscripts meaning",
+        "volume": 12100,
+        "kd": 5,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": null
+      },
+      {
+        "pillar": "Content Marketing",
+        "keyword": "manuscript meaning",
+        "volume": 12100,
+        "kd": 5,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": null
+      },
+      {
+        "pillar": "Content Marketing",
+        "keyword": "meaning of manuscripts",
+        "volume": 12100,
+        "kd": 5,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": null
+      },
+      {
+        "pillar": "Content Marketing",
+        "keyword": "bibliographical meaning",
+        "volume": 14800,
+        "kd": 11,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": 128
+      },
+      {
+        "pillar": "Content Marketing",
+        "keyword": "summaries meaning",
+        "volume": 12100,
+        "kd": 6,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -33
+      },
+      {
+        "pillar": "Content Marketing",
+        "keyword": "editorial meaning",
+        "volume": 12100,
+        "kd": 7,
+        "cpc": 9.05,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -33
+      },
+      {
+        "pillar": "Content Marketing",
+        "keyword": "anecdotal meaning",
+        "volume": 12100,
+        "kd": 7,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": 83
+      },
+      {
+        "pillar": "Content Marketing",
+        "keyword": "chronicled meaning",
+        "volume": 9900,
+        "kd": 2,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": null
+      },
+      {
+        "pillar": "Content Marketing",
+        "keyword": "blurb meaning",
+        "volume": 9900,
+        "kd": 7,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": null
+      },
+      {
+        "pillar": "Content Marketing",
+        "keyword": "work study",
+        "volume": 12100,
+        "kd": 13,
+        "cpc": 21.51,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -18
+      },
+      {
+        "pillar": "Content Marketing",
+        "keyword": "case study meaning",
+        "volume": 9900,
+        "kd": 10,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -46
+      },
+      {
+        "pillar": "Content Marketing",
+        "keyword": "narrative meaning",
+        "volume": 22200,
+        "kd": 24,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -18
+      },
+      {
+        "pillar": "Content Marketing",
+        "keyword": "chronicling meaning",
+        "volume": 9900,
+        "kd": 11,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": null
+      },
+      {
+        "pillar": "Content Marketing",
+        "keyword": "life list",
+        "volume": 14800,
+        "kd": 20,
+        "cpc": 0.03,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -80
+      },
+      {
+        "pillar": "Content Marketing",
+        "keyword": "op-ed meaning",
+        "volume": 9900,
+        "kd": 14,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -33
+      },
+      {
+        "pillar": "Content Marketing",
+        "keyword": "list of",
+        "volume": 9900,
+        "kd": 14,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": null
+      },
+      {
+        "pillar": "Content Marketing",
+        "keyword": "biography meaning",
+        "volume": 9900,
+        "kd": 16,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": null
+      },
+      {
+        "pillar": "Content Marketing",
+        "keyword": "blog meaning",
+        "volume": 9900,
+        "kd": 24,
+        "cpc": 3.18,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": null
+      },
+      {
+        "pillar": "Content Marketing",
+        "keyword": "chronicle meaning",
+        "volume": 9900,
+        "kd": 28,
+        "cpc": 0,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": null
+      },
+      {
+        "pillar": "Content Marketing",
+        "keyword": "creative writing prompts",
+        "volume": 8100,
+        "kd": 29,
+        "cpc": 3.65,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": null
+      }
+    ],
+    "Social Media Marketing": [
+      {
+        "pillar": "Social Media Marketing",
+        "keyword": "google local ads",
+        "volume": 6600,
+        "kd": 28,
+        "cpc": 8.45,
+        "competition": "MEDIUM",
+        "intent": "commercial",
+        "trend_yoy": 22
+      }
+    ],
+    "AI Marketing": [
+      {
+        "pillar": "AI Marketing",
+        "keyword": "spicy chat ai",
+        "volume": 368000,
+        "kd": 8,
+        "cpc": 4.8,
+        "competition": "LOW",
+        "intent": "transactional",
+        "trend_yoy": -76
+      },
+      {
+        "pillar": "AI Marketing",
+        "keyword": "chatgpt caricature",
+        "volume": 33100,
+        "kd": 4,
+        "cpc": 0.27,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": 4043
+      },
+      {
+        "pillar": "AI Marketing",
+        "keyword": "chatgpt logo",
+        "volume": 33100,
+        "kd": 8,
+        "cpc": 2.2,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": null
+      },
+      {
+        "pillar": "AI Marketing",
+        "keyword": "chatgpt alternative",
+        "volume": 22200,
+        "kd": 1,
+        "cpc": 3.63,
+        "competition": "MEDIUM",
+        "intent": "commercial",
+        "trend_yoy": -55
+      },
+      {
+        "pillar": "AI Marketing",
+        "keyword": "chatgpt agent",
+        "volume": 27100,
+        "kd": 13,
+        "cpc": 11.79,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": 132
+      },
+      {
+        "pillar": "AI Marketing",
+        "keyword": "who owns chatgpt",
+        "volume": 33100,
+        "kd": 20,
+        "cpc": 0.39,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": 23
+      },
+      {
+        "pillar": "AI Marketing",
+        "keyword": "chatgpt price plans",
+        "volume": 33100,
+        "kd": 21,
+        "cpc": 3.8,
+        "competition": "LOW",
+        "intent": "commercial",
+        "trend_yoy": 12590
+      },
+      {
+        "pillar": "AI Marketing",
+        "keyword": "gemini vs chatgpt",
+        "volume": 14800,
+        "kd": 11,
+        "cpc": 4.06,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -33
+      },
+      {
+        "pillar": "AI Marketing",
+        "keyword": "chatgpt unblocked",
+        "volume": 18100,
+        "kd": 21,
+        "cpc": 4.85,
+        "competition": "LOW",
+        "intent": "informational",
+        "trend_yoy": -70
+      }
+    ]
+  }
+}

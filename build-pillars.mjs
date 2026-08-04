@@ -23,6 +23,9 @@ const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(
 const PILLARS = [
 {
   slug: 'sales', cat: 'Sales', no: '01',
+  title: `US Sales Training, Enablement & RevOps Firms: 103 Verified Providers`,
+  metaDesc:`103 verified US sales-capability providers — sales training, enablement software, CRM and sales-data platforms, and revenue-operations consulting for companies past $5M in revenue whose selling has outgrown the founder.`,
+  mktH2: `The US sales-capability market at a glance`,
   dek: 'The selling-capability market: sales training, enablement software, CRM and data providers, recruiting, and revenue operations — for companies that have outgrown founder-led selling.',
   stats: { n: 103, rated: 0, reviews: 0, note: 'This pillar is compiled from curated industry sources rather than agency-review marketplaces, so listings here carry no review data.' },
   wall: `The sales wall looks like this: revenue plateaus while headcount grows, the founder is still the best closer in the building, win rates sag when anyone else runs the deal, and the CRM is a graveyard of half-entered opportunities nobody trusts for a forecast. A company at $5M+ with 25 or more employees usually hits it when the informal selling motion that got it there stops scaling.`,
@@ -40,6 +43,9 @@ const PILLARS = [
 },
 {
   slug: 'marketing', cat: 'Marketing', no: '02',
+  title: `US Marketing Agencies: 550 Verified Full-Service Firms`,
+  metaDesc:`550 verified US marketing agencies — full-service strategy, campaigns, digital execution, and analytics for companies past $5M in revenue. Structured data on rates, minimum project sizes, team size, and specialties on every listing.`,
+  mktH2: `The US marketing agency market at a glance`,
   dek: 'Full-service and specialist marketing agencies — strategy, campaigns, digital execution, and analytics — the index’s second-largest category at 550 US firms.',
   stats: { n: 550, rated: 416, reviews: 8714, rating: '4.91' },
   wall: `The marketing wall is rarely a lack of activity — it is activity without compounding. Campaigns run, content ships, budgets get spent, and the pipeline stays flat. Companies hit it when the generalist who ran marketing at $2M cannot orchestrate the specialist channels required at $10M, or when a first agency delivered deliverables instead of outcomes.`,
@@ -57,6 +63,9 @@ const PILLARS = [
 },
 {
   slug: 'seo', cat: 'SEO', no: '03',
+  title: `US SEO Agencies & SEO Services: 226 Verified Firms`,
+  metaDesc:`226 verified US SEO agencies and SEO services firms — technical health, content, authority-building, and AI-search presence. Real hourly bands, minimum project sizes, and team data on every listing.`,
+  mktH2: `The US SEO agency market at a glance`,
   dek: 'Search engine optimization agencies and consultancies: 226 US firms that build organic visibility — technical health, content, authority, and now AI-search presence.',
   stats: { n: 226, rated: 190, reviews: 4810, rating: '4.94' },
   wall: `The SEO wall announces itself quietly: organic traffic flat for six quarters, competitors outranking the company for its own category terms, a site that was rebuilt for looks and lost its rankings, and a blog nobody reads because it answers questions nobody asks. It compounds slowly — which is why it is usually noticed years late.`,
@@ -74,6 +83,9 @@ const PILLARS = [
 },
 {
   slug: 'thought-leadership', cat: 'Thought Leadership', no: '04',
+  title: `US Thought Leadership Agencies & Executive Branding Firms: 193 Verified`,
+  metaDesc:`193 verified US thought-leadership vendors — executive ghostwriting, LinkedIn programs, PR placement, book programs, speaking-circuit development, and personal-brand agencies for named authorities.`,
+  mktH2: `The US thought leadership market at a glance`,
   dek: 'Firms that turn executive expertise into market position: ghostwriting, PR, executive branding, books, and speaking — 193 US vendors in the index.',
   stats: { n: 193, rated: 118, reviews: 1636, rating: '4.92' },
   wall: `The thought-leadership wall: the company is genuinely good at what it does, and nobody outside its client list knows it. Competitors with weaker delivery get the podcast invitations, the conference slots, and the inbound deals, because their executives are visible and yours are not. Expertise without an audience is a wall that referrals alone cannot climb.`,
@@ -91,6 +103,9 @@ const PILLARS = [
 },
 {
   slug: 'creative-strategy', cat: 'Creative Strategy', no: '05',
+  title: `US Creative Agencies: 870 Verified Branding, Design & Video Firms`,
+  metaDesc:`870 verified US creative agencies — branding and identity firms, design studios, video and production houses, and full-service creative shops. The largest category in The Wall's index; structured data makes the shortlist workable.`,
+  mktH2: `The US creative agency market at a glance`,
   dek: 'The index’s largest pillar: 870 branding, design, video, and full-service creative firms — 38% of all listings, and the hardest selection problem in the market.',
   stats: { n: 870, rated: 716, reviews: 13478, rating: '4.94' },
   wall: `The creative wall: the product outgrew the brand. The website undersells the work, the deck looks like 2018, every channel has its own visual dialect, and enterprise buyers hesitate because the company looks smaller than it is. Creative debt behaves like technical debt — invisible day to day, expensive at exactly the moments that matter.`,
@@ -108,6 +123,9 @@ const PILLARS = [
 },
 {
   slug: 'automation', cat: 'Automation', no: '06',
+  title: `US Marketing Automation Platforms & Implementation Firms: 59 Verified`,
+  metaDesc:`59 verified US marketing-automation vendors — lifecycle email platforms, workflow and trigger systems, CRM integration, and the marketing-operations consultancies that install and run them.`,
+  mktH2: `The US marketing automation market at a glance`,
   dek: 'Marketing-automation platforms and the implementation firms that make them work: 59 US vendors covering workflows, lifecycle email, CRM integration, and operations.',
   stats: { n: 59, rated: 18, reviews: 302, rating: '4.88' },
   wall: `The automation wall: growth created manual work faster than headcount can absorb it. Leads sit untouched for days, follow-up depends on memory, the email platform and the CRM disagree about who a customer is, and reporting means exporting spreadsheets. The company bought tools; nobody made them into a system.`,
@@ -125,6 +143,9 @@ const PILLARS = [
 },
 {
   slug: 'demand-gen', cat: 'Demand Gen', no: '07',
+  title: `US Demand Generation Agencies: 48 Verified Pipeline Specialists`,
+  metaDesc:`48 verified US demand-generation vendors — outbound and cold-email agencies, ABM programs, intent-data services, and paid-acquisition specialists whose deliverable is qualified sales pipeline, not clicks.`,
+  mktH2: `The US demand generation market at a glance`,
   dek: 'Pipeline-generation specialists: outbound agencies, ABM and intent-data services, and paid-acquisition firms — 48 US vendors whose product is qualified opportunity flow.',
   stats: { n: 48, rated: 15, reviews: 698, rating: '4.89' },
   wall: `The demand wall is the bluntest one: not enough qualified pipeline. Referrals and word of mouth carried the company to its current size and have flattened; the sales team is good but under-fed; growth has become a function of luck rather than a number that can be planned. This is the wall companies usually feel first and understand last.`,
@@ -142,6 +163,9 @@ const PILLARS = [
 },
 {
   slug: 'content-marketing', cat: 'Content Marketing', no: '08',
+  title: `US Content Marketing Agencies & Services: 113 Verified Firms`,
+  metaDesc:`113 verified US content-marketing agencies — editorial strategy, article and video production, resource and pillar-content programs, and distribution. Structured data on rates and team sizes on every listing.`,
+  mktH2: `The US content marketing services market at a glance`,
   dek: 'Editorial engines for demand: 113 US content agencies and studios producing the articles, video, and resources that earn attention and compound into organic growth.',
   stats: { n: 113, rated: 78, reviews: 1019, rating: '4.89' },
   wall: `The content wall: publishing happens, compounding does not. A blog with three years of posts and no rankings, videos with two-digit view counts, a newsletter written when someone has time. Content produced without a strategy for who it serves and how it gets found is cost, not asset — and the difference is invisible until the traffic report.`,
@@ -159,6 +183,9 @@ const PILLARS = [
 },
 {
   slug: 'social-media-marketing', cat: 'Social Media Marketing', no: '09',
+  title: `US Social Media Marketing Agencies: 90 Verified Firms`,
+  metaDesc:`90 verified US social media marketing agencies — organic presence, community management, creator and influencer programs, and paid social. Structured pricing and team-size data on every listing.`,
+  mktH2: `The US social media marketing agency market at a glance`,
   dek: 'Social channel specialists: 90 US agencies running organic presence, community, creator programs, and paid social for brands that need to matter where audiences actually are.',
   stats: { n: 90, rated: 71, reviews: 1286, rating: '4.88' },
   wall: `The social wall: the company posts and nothing happens. Accounts updated out of obligation, engagement from employees and competitors, a feed that reads like a press-release archive — while competitors’ short-form video reaches the exact buyers the company wants. Presence without strategy is the most visible form of marketing debt because it is public.`,
@@ -176,6 +203,9 @@ const PILLARS = [
 },
 {
   slug: 'ai-marketing', cat: 'AI Marketing', no: '10',
+  title: `US AI Marketing Agencies: 34 Verified Firms`,
+  metaDesc:`34 verified US AI-marketing vendors — AI-driven content systems, personalization and predictive analytics, and consultancies that install AI-first marketing operations. The index's newest and fastest-changing pillar.`,
+  mktH2: `The US AI marketing agency market at a glance`,
   dek: 'The newest pillar: 34 US vendors applying AI to marketing execution — content systems, personalization, analytics, and automation — a young category the index expects to grow fastest.',
   stats: { n: 34, rated: 1, reviews: 1, note: 'Only one listing in this young pillar carries a public rating — too small a sample for a category average.' },
   wall: `The AI wall is new and already common: leadership knows AI should be compressing marketing cost and cycle time, a few tools got adopted, and nothing structural changed. Pilots without integration, content volume without quality control, and vendor claims impossible to evaluate from the outside. The capability gap is real; so is the noise.`,
@@ -237,6 +267,7 @@ G('Lead nurturing', 'The automated sequence of useful touches that keeps not-yet
 G('Lead scoring', 'Ranking leads by fit and behavior so sales works the likeliest buyers first; typically automated from CRM and engagement data.'),
 G('LTV (lifetime value)', 'The total revenue a customer generates over the relationship. LTV against CAC is the ratio that determines whether growth spend is sane.'),
 G('Marketing automation', 'Software that executes marketing by rule — triggers, sequences, scoring, routing — replacing manual follow-up with a system.', 'pillars/automation.html'),
+G('Marketing consultant', 'A senior independent advisor a company hires for strategy, diagnosis, or a defined engagement rather than ongoing execution — the alternative to hiring an agency when the wall is a decision problem, not a capacity problem.', 'hubs/marketing-consultant.html'),
 G('Marketing operations', 'The discipline that owns marketing’s systems, data quality, and measurement — the function that keeps the stack coherent.', 'pillars/automation.html'),
 G('Martech stack', 'The collection of software a marketing team runs — CRM, automation, analytics, content tools — and the integrations holding it together.'),
 G('Media buying', 'Purchasing advertising placement — search, social, programmatic, traditional — at the best combination of audience and price.'),
@@ -387,7 +418,7 @@ for (const p of PILLARS) {
 <p>${p.what}</p>
 <h2>How vendors in this category work</h2>
 <p>${p.vendors}</p>
-<h2>The category in numbers</h2>
+<h2>${p.mktH2 || 'The category in numbers'}</h2>
 ${statHTML}
 <a class="cta" href="../?cat=${encodeURIComponent(p.cat)}">BROWSE ALL ${stats.n} ${esc(p.cat.toUpperCase())} LISTINGS →</a>
 <h2>Questions buyers ask</h2>
@@ -403,7 +434,11 @@ ${p.relPillars.map(s => { const t = PILLARS.find(x => x.slug === s); return `<a 
 <a href="../glossary.html">The Wall glossary — ${TERMS.length} growth-vendor terms defined</a>
 </div>`;
   writeFileSync(join(ROOT, 'pillars', `${p.slug}.html`),
-    shell({ title: `${p.cat} — vendors, pricing, and the wall they solve`, metaDesc: p.dek.replace(/<[^>]+>/g, ''), canonical, ld, bodyHTML: body, base: '../' }));
+    shell({
+      title: p.title || `${p.cat} — vendors, pricing, and the wall they solve`,
+      metaDesc: p.metaDesc || p.dek.replace(/<[^>]+>/g, ''),
+      canonical, ld, bodyHTML: body, base: '../'
+    }));
 }
 
 // ---------------------------------------------------------------- glossary
