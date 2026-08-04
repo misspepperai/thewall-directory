@@ -231,3 +231,17 @@ blocklist. All removed rows backed up in session scratchpad (`nonus_backup.json`
   from `blocked_domains` first (trigger blocks otherwise).
 - Static pages: fully regenerable — `node build-pages.mjs --pages-only` needs only the DB.
 - The DB is the single source of truth for data; index.html is the single source for the Q&A engine.
+
+## Tier 3 SHIPPED (2026-08-04, commit 2aaa9e2)
+
+- 14 additional entity pages (29 total): Pipedrive, Zoho, ZoomInfo, Apollo.io, Instantly, Zapier,
+  Make, Customer.io, Beehiiv, Substack, OpenAI/ChatGPT, Anthropic/Claude, Perplexity, Jasper.
+- `badge/index.html` — "Featured in The Wall" embed kit. Vendor search → light/dark HTML +
+  Markdown + text snippets, UTM-tagged reciprocal backlink.
+- DB schema: `partners`, `referrals`, `referral_payments` + `partner_stats` view, admin-RLS.
+- `export-outreach-csvs.mjs` — 4 segmented CSVs + pending-enrichment + suppressed. Ready for
+  Instantly/Smartlead the moment enrichment lands. `.gitignore` excludes `exports/`.
+- Contact enrichment BLOCKED on Dan's Apify actor rental (Teamwork task 48628058, $29/mo).
+  All infra + probe input prepared; enrichment runs end-to-end in ~1 hour after "actor rented".
+
+**Sitemap: 2,368 URLs.**
