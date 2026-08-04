@@ -24,7 +24,211 @@ var GA4_MEASUREMENT_ID = 'G-7EVW8MX8Z9';
   window.dataLayer = window.dataLayer || [];
   window.gtag = function () { window.dataLayer.push(arguments); };
   window.gtag('js', new Date());
-  window.gtag('config', GA4_MEASUREMENT_ID);
+  // page_type + vendor context ride on every event via config, so you can segment
+  // any report by page type without adding params at each call site.
+  window.gtag('config', GA4_MEASUREMENT_ID, wallContext());
+})();
+
+// ---- page context ----
+// Derived from the URL and DOM, so it works on all ~2,590 pages with no rebuild
+// and no per-page markup. Exposed for the tracking IIFE below.
+function wallContext() {
+  var p = location.pathname, t = 'other';
+  if (p === '/' || /\/index\.html$/.test(p) && p.split('/').length === 2) t = 'atlas';
+  else if (/^\/c\//.test(p)) t = 'listing';
+  else if (/^\/pillars\//.test(p)) t = 'pillar';
+  else if (/^\/hubs\//.test(p)) t = 'hub';
+  else if (/^\/find\//.test(p)) t = 'find';
+  else if (/^\/states\//.test(p)) t = 'state';
+  else if (/^\/cities\//.test(p)) t = 'city';
+  else if (/^\/compare\//.test(p)) t = 'compare';
+  else if (/^\/questions\//.test(p)) t = 'question';
+  else if (/^\/entities\//.test(p)) t = 'entity';
+  else if (/^\/news\/updates\//.test(p)) t = 'update';
+  else if (/^\/news\//.test(p)) t = 'briefing';
+  else if (/^\/report\//.test(p)) t = 'report';
+  else if (/^\/tools\//.test(p)) t = 'tool';
+  else if (/^\/data\//.test(p)) t = 'data_corner';
+  else if (/^\/wins\//.test(p)) t = 'win';
+  else if (/^\/badge\//.test(p)) t = 'badge';
+  else if (/^\/(partner|press)\.html$/.test(p)) t = 'funnel';
+  else if (/^\/(about|contact|privacy|terms|editorial-policy|ai-policy|disclosures|accessibility|glossary|sitemap)\.html$/.test(p)) t = 'trust';
+  var ctx = { page_type: t };
+  if (t === 'listing') {
+    var m = p.match(/^\/c\/(.+)\.html$/);
+    if (m) ctx.vendor_domain = decodeURIComponent(m[1]).slice(0, 100);
+    var sub = document.querySelector('.sub');
+    if (sub) ctx.vendor_category = sub.textContent.split('/')[0].trim().slice(0, 100);
+    var h1 = document.querySelector('h1');
+    if (h1) ctx.vendor_name = h1.textContent.trim().slice(0, 100);
+  }
+  return ctx;
+}
+
+// ---- click + event tracking ----
+// One delegated listener set on `document`, capture phase, so it fires even when a
+// page's own handler calls stopPropagation. Nothing here depends on per-page markup
+// beyond the selectors verified against the live DOM, and every handler is wrapped
+// so a tracking bug can never break a page.
+(function () {
+  if (!GA4_MEASUREMENT_ID || window._wallTrackInjected) return;
+  window._wallTrackInjected = true;
+
+  function track(name, params) {
+    try {
+      if (typeof window.gtag !== 'function') return;
+      var out = {};
+      for (var k in params) {
+        if (!Object.prototype.hasOwnProperty.call(params, k)) continue;
+        var v = params[k];
+        if (v === undefined || v === null || v === '') continue;
+        out[k] = typeof v === 'number' ? v : String(v).slice(0, 100);
+      }
+      window.gtag('event', name, out);
+    } catch (e) { /* tracking must never break the page */ }
+  }
+  window.wallTrack = track;
+
+  function closest(el, sel) {
+    while (el && el.nodeType === 1) {
+      if (el.matches && el.matches(sel)) return el;
+      el = el.parentElement;
+    }
+    return null;
+  }
+  function txt(el) { return el ? el.textContent.replace(/\s+/g, ' ').trim().slice(0, 100) : ''; }
+
+  document.addEventListener('click', function (ev) {
+    try {
+      var a = closest(ev.target, 'a');
+
+      // --- the money events: vendor claim funnel on /c/ pages ---
+      if (a && closest(a, '.claim')) {
+        var href = a.getAttribute('href') || '';
+        if (a.matches('.a-pri')) track('claim_click', {});                    // "CLAIM & COUNT ME IN"
+        else if (/^mailto:/i.test(href)) track('correction_click', {});       // "CORRECT THIS LISTING"
+        else if (/partner\.html/.test(href)) track('partner_terms_click', { link_location: 'claim_block' });
+        return;
+      }
+
+      // --- partner funnel from anywhere else (nav, homepage CTA, footer) ---
+      if (a && /partner\.html/.test(a.getAttribute('href') || '')) {
+        track('partner_terms_click', {
+          link_location: closest(a, '.nav-main') ? 'nav'
+            : closest(a, '.partner-cta') ? 'homepage_cta'
+            : closest(a, '.vendor-strip') ? 'vendor_strip'
+            : closest(a, 'footer') ? 'footer' : 'inline'
+        });
+        return;
+      }
+
+      // --- traffic we send OUT to a vendor (this is the 10% side of the deal) ---
+      if (a && a.matches('.cta') && /^https?:/i.test(a.getAttribute('href') || '')) {
+        track('vendor_outbound', { link_url: a.getAttribute('href') });
+        return;
+      }
+
+      // --- nav usage: which menus actually get used ---
+      var navLink = a && closest(a, '.nav-main');
+      if (navLink) {
+        var grp = closest(a, '.nav-group');
+        track('nav_click', {
+          nav_group: txt(grp && grp.querySelector('.nav-trigger')) || 'top',
+          nav_label: txt(a),
+          link_url: a.getAttribute('href')
+        });
+        return;
+      }
+
+      // --- journalist signal: CITE button on Data Corner charts ---
+      var cite = closest(ev.target, '.chart-cite, .cite, [data-cite]');
+      if (cite) {
+        var chart = closest(cite, '.chart, figure, section');
+        track('cite_copy', {
+          chart: txt(chart && chart.querySelector('h3')) || (chart && chart.getAttribute('data-chart')) || ''
+        });
+        return;
+      }
+
+      // --- atlas: opening a listing from a card ---
+      if (closest(ev.target, '.card-body')) {
+        var dom = txt(closest(ev.target, '.card') && closest(ev.target, '.card').querySelector('.dom'));
+        track('listing_open', { vendor_domain: dom, open_method: 'card' });
+        return;
+      }
+
+      // --- compare tool ---
+      if (closest(ev.target, '.cmpbar .btn')) {
+        track('compare_action', { action: txt(closest(ev.target, '.btn')) });
+        return;
+      }
+
+      // --- generic mailto (GA4 enhanced measurement does NOT track these) ---
+      if (a && /^mailto:/i.test(a.getAttribute('href') || '')) {
+        track('mailto_click', { link_label: txt(a) });
+      }
+    } catch (e) { /* never break a page */ }
+  }, true);
+
+  // --- atlas filters + compare checkboxes ---
+  document.addEventListener('change', function (ev) {
+    try {
+      var el = ev.target;
+      if (!el || !el.matches) return;
+      if (closest(el, '.filterbar') && el.matches('select')) {
+        var lbl = closest(el, '.fgroup');
+        track('atlas_filter', {
+          filter_name: txt(lbl && lbl.querySelector('label')) || 'unknown',
+          filter_value: el.value || 'any'
+        });
+        return;
+      }
+      if (el.matches('input[type=checkbox]') && closest(el, '.card')) {
+        track('compare_toggle', { checked: el.checked ? 1 : 0 });
+      }
+    } catch (e) { /* never break a page */ }
+  }, true);
+
+  // --- FAQ / Q&A accordion opens: real engagement depth on listing, pillar, hub pages ---
+  // `toggle` does not bubble, but capture-phase on document still sees it.
+  document.addEventListener('toggle', function (ev) {
+    try {
+      var d = ev.target;
+      if (!d || d.tagName !== 'DETAILS' || !d.open) return;
+      track('faq_open', { question: txt(d.querySelector('summary')) });
+    } catch (e) { /* never break a page */ }
+  }, true);
+
+  // --- atlas search box: what people actually look for on-site ---
+  var q = document.getElementById('q'), qt = null;
+  if (q) {
+    q.addEventListener('input', function () {
+      clearTimeout(qt);
+      qt = setTimeout(function () {
+        var v = (q.value || '').trim();
+        if (v.length >= 3) track('atlas_search', { search_term: v.toLowerCase() });
+      }, 900);
+    });
+  }
+
+  // --- rate-benchmark calculator ---
+  // The form is <form id="f" onsubmit="return false"> and the button is
+  // <button type="button" onclick="run()"> — so there is no submit event to hook.
+  // Listen on the button click instead.
+  if (/rate-benchmark/.test(location.pathname)) {
+    var rbForm = document.getElementById('f');
+    if (rbForm) {
+      rbForm.addEventListener('click', function (ev) {
+        if (!closest(ev.target, 'button')) return;
+        var cat = document.getElementById('cat'), rate = document.getElementById('rate');
+        track('tool_use', {
+          tool_name: 'rate_benchmark',
+          tool_category: cat && cat.value,
+          tool_rate: rate && rate.value
+        });
+      }, true);
+    }
+  }
 })();
 
 (function () {
