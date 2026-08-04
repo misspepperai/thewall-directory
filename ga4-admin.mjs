@@ -196,3 +196,25 @@ if (cmd === 'keyevents') {
   if (!ke.length) console.log('no key events yet');
   for (const k of ke) console.log(`  ${k.eventName}`);
 }
+
+// The GA4 UI only lets you toggle "Mark as key event" on events it has already
+// seen. The Admin API has no such restriction — it creates by name. This is the
+// way past "unable to add".
+if (cmd === 'create-keyevents') {
+  needProperty();
+  const WANT = ['claim_click', 'correction_click', 'partner_terms_click'];
+  const cur = await api(tok, `${ADMIN}/properties/${PROPERTY_ID}/keyEvents`);
+  const have = (cur.j.keyEvents || []).map(k => k.eventName);
+  let made = 0;
+  for (const eventName of WANT) {
+    if (have.includes(eventName)) { console.log(`  skip (exists)  ${eventName}`); continue; }
+    const r = await api(tok, `${ADMIN}/properties/${PROPERTY_ID}/keyEvents`, {
+      method: 'POST',
+      body: JSON.stringify({ eventName, countingMethod: 'ONCE_PER_EVENT' }),
+    });
+    if (r.ok) { console.log(`  created        ${eventName}`); made++; }
+    else console.log(`  FAILED         ${eventName}: ${r.status} ${(r.j.error && r.j.error.message) || JSON.stringify(r.j).slice(0, 200)}`);
+  }
+  console.log(`\n${made} key event(s) created.`);
+  console.log('Deliberately NOT marking vendor_outbound — it is traffic leaving the site.');
+}

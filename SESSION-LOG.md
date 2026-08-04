@@ -666,3 +666,48 @@ change. Needs `npm install jsdom` in the run directory.
 **⏭ Next:** (a) Dan registers the 14 custom dimensions — do this before data accumulates,
 (b) ~3-7 days: first GSC coverage + query data, (c) then decide on the 3 unbuilt hubs using
 `page_type` conversion data rather than guesswork.
+
+## Measurement stack COMPLETE + verified by API (2026-08-04)
+
+**Tracking confirmed working end to end.** Custom events arriving in GA4 Realtime, read
+directly via the Data API — not a screenshot:
+`claim_click` 1 · `correction_click` 1 · `faq_open` 1 · `nav_click` 2 · `partner_terms_click` 2
+(alongside page_view 9, scroll 6, user_engagement 3, first_visit 2, session_start 2).
+Data stream "Hit The Wall" confirmed `measurementId=G-7EVW8MX8Z9`, uri `https://hitthewall.net`
+— matches what nav.js sends. **The earlier "not firing" was a reporting-surface issue, not a
+tracking bug**; the code was correct at every step and jsdom testing had already proven it.
+
+**GA4 API access via service account** — `thewall@pepper-api-324722.iam.gserviceaccount.com`,
+Editor on property **548494547**. Key at `.secrets/ga4-service-account.json` (gitignored, 600).
+
+**`ga4-admin.mjs`** — dependency-free client (signs its own RS256 JWT via node:crypto, no npm
+install, no package.json). Commands: `whoami`, `diagnose`, `dimensions`, `create-dims`,
+`keyevents`, `create-keyevents`.
+
+**Config now complete:**
+- **14 custom dimensions registered** (Dan did these in the UI; `create-dims` verified all 14
+  present and is idempotent, so it's safe to re-run).
+- **3 key events created via API**: `claim_click`, `correction_click`, `partner_terms_click`.
+  **The UI would not allow this** — GA4 only offers "Mark as key event" for events it has
+  already ingested, which is what "unable to add" was. **The Admin API has no such
+  restriction: `properties.keyEvents.create` takes a name directly.** Remember this; it's the
+  general escape hatch for GA4 UI gating.
+- `vendor_outbound` deliberately NOT a key event — it's traffic leaving the site. Measure it,
+  don't optimise for it.
+
+**⚠️ SECURITY INCIDENT (caught, no exposure).** The key arrived as `ga4-service-account.json`
+at the repo root. The ignore pattern was `service-account*.json`, which anchors to the START
+of the basename and did **not** match it — git listed it as untracked, one `git add -A` from
+publication (and `git add -A` is used routinely here). Fixed: moved to `.secrets/`, chmod 600,
+and every pattern broadened to match anywhere in the name (`*service-account*.json`,
+`*credential*.json`, `*.pem`, `.env*`). **Verified never committed** by scanning every blob in
+history for a key — the only `private_key` hit was ga4-admin.mjs referencing `sa.private_key`.
+**Lesson: gitignore patterns without wildcards anchor to the start of the filename. Always
+verify with `git check-ignore -v` against a real file at the real path, not by eye.**
+
+**Correction to an earlier claim:** data filters are NOT exposed by the GA4 Admin API in any
+version (checked against the REST reference). I had said I could read them. The script now
+prints the two UI paths instead of 404ing. Internal-traffic filters remain a manual check.
+
+**⏭ Next:** ~3-7 days for GSC coverage + query data. Then decide the 3 unbuilt hubs using
+`page_type` × `claim_click` conversion data rather than guesswork.
