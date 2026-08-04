@@ -259,3 +259,43 @@ blocklist. All removed rows backed up in session scratchpad (`nonus_backup.json`
 - `temp_anon_enrich` policy DROPPED (2026-08-04) — recreate before next enrichment pass.
 - To lift coverage above 65%: pass 3 with `emailStatusIncludes: ['verified','unverified']` OR contract with a manual-verification service on the remaining 1,127 domains. Neither shipped yet.
 - **Blocker for cold-email launch: Dan's sending-domain infrastructure warmup (2-4 weeks) + GSC verification.**
+
+## Tier A shipped (2026-08-04, commit ac1cd2c)
+
+**+128 new indexable URLs across 4 new sections. Sitemap now 2,497 URLs.**
+
+- **`build-locations.mjs`** → `/states/{slug}.html` × 20 + `/cities/{slug}.html` × 15 + 2 indexes.
+  Top-20 US states by vendor count (CA leads at 313, then NY, TX, FL). Top-15 metros
+  (New York 105, Chicago, LA, San Francisco). Each page: category breakdown, top 15-20 firms per
+  discipline, city breakdown within state, cross-link to atlas `?state=CA` deep-link.
+  `CollectionPage` + `BreadcrumbList` + `ItemList` JSON-LD per page. Local-SEO play.
+
+- **`build-compare.mjs`** → `/compare/{a-vs-b}.html` × 15 head-to-heads + 1 index.
+  HubSpot vs Salesforce, Ahrefs vs Semrush, Apollo vs ZoomInfo, Beehiiv vs Substack,
+  Outreach vs Salesloft, Zapier vs Make, Klaviyo vs Mailchimp, ChatGPT vs Claude,
+  Marketo vs HubSpot, Google Ads vs Meta Ads, Segment vs RudderStack, LinkedIn Ads vs Meta Ads,
+  ActiveCampaign vs HubSpot, Notion vs Airtable, Perplexity vs ChatGPT.
+  Each: 6-part factbox per side, 7-dimension comparison table, verdict ("PICK A" / "PICK B") card,
+  cross-links back to entity + pillar. `Article` + `SoftwareApplication` × 2 + `BreadcrumbList` JSON-LD.
+  High-intent "X vs Y" queries — one of the highest-ROI SEO plays in software directories.
+
+- **`build-questions.mjs`** → `/questions/{slug}.html` × 76 + index.
+  PAA silo. Harvested via DataForSEO `serp_organic_live_advanced` (10 pillar seed keywords,
+  `people_also_ask_click_depth: 4`). 92 raw PAA → 76 unique after dedup. Google-provided answers
+  used where available (28); the other 48 answered editorially from the directory position.
+  Each page: focused answer, "why this matters" section, 5 sibling questions in same pillar,
+  cross-links to pillar. `FAQPage` + `BreadcrumbList` JSON-LD. Long-tail SEO play.
+
+- **`build-pages.mjs`** — sitemap globs added for `/states/`, `/cities/`, `/compare/`, `/questions/`.
+- **`index.html`** — footer OPERATIONS nav adds: Head-to-heads, Q&A silo, By state, By city.
+
+**PAA data cached:** `scratchpad/paa-consolidated.json` (76 rows, all with answers). Rebuildable
+via `node build-questions.mjs` without re-harvesting.
+
+**Total site surface: 2,497 indexable URLs** — 2,286 c/{domain}.html + 21 news + 4 updates +
+1 report + 2 badge + 10 pillars + 6 hubs + 30 entities + 21 states + 16 cities + 16 compare +
+77 questions + trust/glossary/sitemap/root.
+
+**Next AA moves (unstarted):** author-persona shift (Dan blocked), Phase 3 catalyst-content
+outreach (blocked on Dan's Publisher Center + sending-domain), fresh-feed automation, monetization
+layer (skipped per Dan — this is a referral engine, not a directory business).
