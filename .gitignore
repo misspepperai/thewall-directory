@@ -4,8 +4,15 @@ data/draft-briefing-*.txt
 
 # Credentials — never commit. A service-account key is a live secret that grants
 # API access to the GA4 property until it is revoked.
+# Patterns are deliberately broad: the first version of this file only matched
+# `service-account*.json` and the key arrived named `ga4-service-account.json`,
+# which slipped through. Match anywhere in the name, not just the start.
 .secrets/
-service-account*.json
-*-credentials.json
+*service-account*.json
+*service_account*.json
+*credential*.json
+*-key.json
+*.pem
 .env
 .env.*
+*:Zone.Identifier

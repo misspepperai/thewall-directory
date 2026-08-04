@@ -89,7 +89,7 @@ function needProperty() {
 }
 
 const ADMIN = 'https://analyticsadmin.googleapis.com/v1beta';
-const ADMIN_A = 'https://analyticsadmin.googleapis.com/v1alpha';
+// v1alpha kept for reference; dataFilters are not exposed in any version.
 const DATA = 'https://analyticsdata.googleapis.com/v1beta';
 
 const cmd = process.argv[2] || 'whoami';
@@ -116,18 +116,34 @@ if (cmd === 'diagnose') {
   needProperty();
   console.log('--- data streams ---');
   const s = await api(tok, `${ADMIN}/properties/${PROPERTY_ID}/dataStreams`);
-  for (const st of (s.j.dataStreams || [])) {
-    console.log(`  ${st.displayName}  measurementId=${st.webStreamData?.measurementId}  uri=${st.webStreamData?.defaultUri}`);
+  if (!s.ok) {
+    console.log(`  ERROR ${s.status}: ${(s.j.error && s.j.error.message) || JSON.stringify(s.j).slice(0, 200)}`);
+    if (s.status === 403) {
+      console.log('\n  >> The service account has no access to this property yet.');
+      console.log('  >> GA4 > Admin > Property access management > + > Add users');
+      console.log(`  >> ${email}  — role: Editor`);
+      process.exit(1);
+    }
+  } else if (!(s.j.dataStreams || []).length) {
+    console.log('  (no streams returned)');
+  } else for (const st of s.j.dataStreams) {
+    const mid = st.webStreamData && st.webStreamData.measurementId;
+    console.log(`  ${st.displayName}  measurementId=${mid}  uri=${st.webStreamData && st.webStreamData.defaultUri}`);
+    if (mid && mid !== 'G-7EVW8MX8Z9') {
+      console.log(`     ^^ MISMATCH — nav.js sends to G-7EVW8MX8Z9, this stream is ${mid}`);
+    }
   }
 
-  console.log('\n--- data filters (internal/developer traffic exclusions) ---');
-  const f = await api(tok, `${ADMIN_A}/properties/${PROPERTY_ID}/dataFilters`);
-  if (!f.ok) console.log(`  (could not read: ${f.status} ${JSON.stringify(f.j).slice(0, 160)})`);
-  else if (!(f.j.dataFilters || []).length) console.log('  none — nothing is being excluded');
-  else for (const d of f.j.dataFilters) {
-    console.log(`  ${d.name.split('/').pop()}  type=${d.type}  state=${d.filterState}  ${JSON.stringify(d.stringFilter || {})}`);
-    if (d.filterState === 'ACTIVE') console.log('     ^^ ACTIVE — this EXCLUDES matching traffic from all reporting');
-  }
+  // Data filters (internal / developer traffic exclusions) are NOT exposed by the
+  // GA4 Admin API in any version — checked against the REST reference. They can only
+  // be inspected in the UI, so point there rather than silently 404.
+  console.log('\n--- data filters ---');
+  console.log('  Not available via API (Google does not expose dataFilters). Check by hand:');
+  console.log('  Admin > Data Settings > Data Filters — look for an ACTIVE "Internal Traffic"');
+  console.log('  or "Developer Traffic" filter. An ACTIVE filter excludes matching traffic');
+  console.log('  from ALL reporting, which looks exactly like "tracking is broken".');
+  console.log('  Also: Admin > Data Streams > [stream] > Configure tag settings >');
+  console.log('  Define internal traffic — check whether your own IP is listed.');
 
   console.log('\n--- realtime: events in the last 30 minutes ---');
   const rt = await api(tok, `${DATA}/properties/${PROPERTY_ID}:runRealtimeReport`, {
