@@ -443,3 +443,38 @@ after full DOM parse anyway.
 **Impact:** Users, journalists, and Claude can now find every critical page from
 anywhere on the site in one click. Cold-emailed vendors landing on their `/c/`
 listing page can find the partner program without hunting the footer.
+
+## Homepage optimization shipped (2026-08-04, commit c83f2b2)
+
+**SEO (1) + first-time visitor conversion (2) + referral funnel (4).**
+
+**SEO retrofit:**
+- Title: `US Marketing, SEO & Growth Agencies: 2,286 Verified Firms — The Wall`
+  (was `The Wall — Operations Atlas`)
+- Meta desc: leads with head terms, includes stat, lists disciplines, ends
+  with concrete filter capability (state, rate, team size, discipline)
+- Canonical link added
+- JSON-LD expanded from 2 → 4 schemas: `Organization` (adds parentOrganization
+  Miss Pepper AI + alternateName), `WebSite`, new `CollectionPage`, new
+  `FAQPage` with 6 canonical buyer questions
+
+**First-time visitor conversion:**
+- New H2 under lede carries head term: "The independent directory of US
+  marketing agencies, SEO firms, PR shops, and growth vendors"
+- Trust-chip strip: "US-headquartered · Machine-verified live · No pay-to-play"
+- No cookie/localStorage state — always-visible enhancements work for every
+  visitor and don't require JS state management
+
+**Referral funnel:**
+- `vendor-strip` — ink-black bar between topbar and hero: "Listed vendor?
+  Send us a client, keep **20%**. We send you a client, we take **10%**." +
+  CTA to /partner.html. Amber-accented percentages for scannability.
+- `partner-cta` — cobalt-bordered blue callout card between the atlas and
+  the footer. Full terms in view, primary CTA button, mobile-responsive.
+
+Both referral touches make the two-way deal discoverable to vendors who
+land on the homepage from Google or a cold email — the whole point of the
+Weapon 1 → Weapon 2 flow. No longer buried in the footer.
+
+**Live verified:** title, meta, 4 JSON-LD schemas, vendor strip, 3 trust
+chips, sub-H2, partner CTA, nav dropdowns — all rendering on hitthewall.net.
