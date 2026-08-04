@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The 2026 State of the US Growth-Vendor Market — The Wall</title>
+<meta name="description" content="A data-driven report on the US growth-services market — 2,286 verified vendors across ten disciplines, real pricing distributions, firm-shape data, geography, and the ten findings that decide how mid-market operators should actually build a shortlist. From The Wall.">
+<link rel="canonical" href="https://hitthewall.net/report/state-of-the-us-growth-vendor-market-2026.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧱</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Report","name":"The 2026 State of the US Growth-Vendor Market","headline":"The 2026 State of the US Growth-Vendor Market","datePublished":"2026-08-04","dateModified":"2026-08-04","author":{"@type":"Organization","name":"The Wall Editorial Team","url":"https://hitthewall.net/about.html"},"publisher":{"@type":"Organization","name":"The Wall","url":"https://hitthewall.net/"},"url":"https://hitthewall.net/report/state-of-the-us-growth-vendor-market-2026.html","reportNumber":"1","description":"Data-driven report on the US growth-services market — 2,286 verified vendors across ten disciplines, real pricing distributions, firm-shape data, geography, and buyer guidance for mid-market operators."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"The Wall","item":"https://hitthewall.net/"},{"@type":"ListItem","position":2,"name":"Reports","item":"https://hitthewall.net/report/"},{"@type":"ListItem","position":3,"name":"2026 State of the US Growth-Vendor Market"}]}</script>
+<style>
+  :root{--porcelain:#FAF9F6;--stone:#E7E3DA;--stone-lt:#F2F0EA;--cobalt:#1B4FD8;--oxblood:#6E1423;--ink:#0E1B33;--chrome:#85898F;--body:#3B4557;--serif:'Newsreader',Georgia,serif;--sans:'IBM Plex Sans',sans-serif;--mono:'IBM Plex Mono',monospace}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:var(--sans);background:var(--porcelain);color:var(--ink);-webkit-font-smoothing:antialiased}
+  .wrap{max-width:760px;margin:0 auto;padding:0 24px}
+  a{color:var(--cobalt)}
+
+  .topbar{border-bottom:1px solid var(--stone)}
+  .topbar::before{content:'';display:block;height:2px;background:linear-gradient(90deg,var(--cobalt) 0 62%,var(--oxblood) 62% 84%,var(--ink) 84% 100%)}
+  .topbar-in{display:flex;align-items:center;justify-content:space-between;height:56px}
+  .wordmark{font-family:var(--serif);font-weight:700;font-size:20px;text-decoration:none;color:var(--ink);display:flex;align-items:baseline;gap:10px}
+  .wordmark small{font-family:var(--mono);font-weight:600;font-size:8.5px;letter-spacing:.18em;color:var(--chrome)}
+  .back{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.1em;color:var(--cobalt);text-decoration:none}
+
+  /* Cover */
+  .cover{padding:80px 0 40px;border-bottom:1px solid var(--stone)}
+  .cover .label{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.18em;color:var(--oxblood);text-transform:uppercase}
+  .cover h1{font-family:var(--serif);font-weight:700;font-size:clamp(36px,6vw,58px);letter-spacing:-.025em;line-height:1.05;padding:14px 0 20px;max-width:600px}
+  .cover .sub{font-family:var(--serif);font-style:italic;font-size:19px;line-height:1.55;color:var(--body);max-width:640px}
+  .cover .meta{margin-top:34px;display:flex;gap:34px;flex-wrap:wrap;font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--chrome);text-transform:uppercase}
+  .cover .meta b{color:var(--ink);font-weight:600;display:block;font-size:13px;margin-top:3px}
+
+  .print-btn{display:inline-block;font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.1em;color:#fff;background:var(--cobalt);border-radius:7px;padding:11px 18px;text-decoration:none;border:none;cursor:pointer;margin-top:24px}
+
+  /* TOC */
+  .toc{border:1px solid var(--stone);background:#fff;border-radius:10px;padding:22px 28px;margin:40px 0}
+  .toc h2{font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:.16em;color:var(--oxblood);margin:0 0 12px;text-transform:uppercase}
+  .toc ol{counter-reset:c;padding-left:0;list-style:none}
+  .toc li{counter-increment:c;padding:6px 0;font-size:14px}
+  .toc li::before{content:counter(c,decimal-leading-zero) ".  ";font-family:var(--mono);font-size:11px;color:var(--chrome);font-weight:600}
+  .toc a{color:var(--ink);text-decoration:none}
+  .toc a:hover{color:var(--cobalt)}
+
+  /* Body */
+  section{padding:30px 0}
+  section+section{border-top:1px solid var(--stone-lt)}
+  .chapno{font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:.16em;color:var(--oxblood);text-transform:uppercase;margin-bottom:6px}
+  section h2{font-family:var(--serif);font-weight:600;font-size:clamp(22px,3.2vw,28px);letter-spacing:-.015em;line-height:1.2;margin-bottom:12px}
+  section h3{font-family:var(--serif);font-weight:600;font-size:18px;margin:22px 0 6px;color:var(--ink)}
+  section p,section li{font-size:15px;line-height:1.75;color:var(--body);margin-bottom:12px}
+  strong{color:var(--ink);font-weight:600}
+  ul,ol{padding-left:22px;margin-bottom:14px}
+  li{margin-bottom:5px}
+
+  .pullquote{border-left:3px solid var(--oxblood);padding:8px 0 8px 22px;margin:20px 0;font-family:var(--serif);font-style:italic;font-size:17px;color:var(--ink);line-height:1.55}
+
+  table{width:100%;border-collapse:collapse;margin:16px 0 20px;background:#fff;border:1px solid var(--stone);border-radius:8px;overflow:hidden;font-size:13.5px}
+  th{font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--chrome);text-align:left;padding:10px 14px;border-bottom:1px solid var(--stone);background:var(--stone-lt)}
+  td{padding:8px 14px;border-bottom:1px solid var(--stone-lt);color:var(--body)}
+  td.num{font-family:var(--mono);font-size:12.5px;text-align:right;white-space:nowrap}
+  tr:last-child td{border-bottom:none}
+
+  .fn{font-size:12px;color:var(--chrome);line-height:1.7}
+  .fn a{color:var(--chrome)}
+
+  /* Print */
+  @media print{
+    body{background:#fff}
+    .no-print,.topbar,footer,.print-btn{display:none !important}
+    .cover{padding:20px 0}
+    section{page-break-inside:auto}
+    section h2{page-break-after:avoid}
+    table{page-break-inside:avoid}
+    .toc{page-break-after:always}
+    a{color:var(--ink);text-decoration:none}
+    a[href^="http"]::after{content:" (" attr(href) ")";font-size:9px;color:var(--chrome)}
+    a[href^="/"]::after,a[href^="#"]::after,a[href^="mailto"]::after{content:""}
+    @page{margin:0.5in 0.6in}
+  }
+
+  footer{border-top:1px solid var(--stone);margin-top:50px;padding:22px 0 40px}
+  footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;max-width:760px}
+  footer span,footer a{font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:var(--chrome);text-decoration:none}
+  footer a:hover{color:var(--ink)}
+</style>
+</head>
+<body>
+<nav class="topbar no-print"><div class="wrap topbar-in">
+  <a class="wordmark" href="../">The Wall <small>OPERATIONS ATLAS</small></a>
+  <a class="back" href="../">BROWSE THE ATLAS →</a>
+</div></nav>
+
+<main class="wrap">
+
+<div class="cover">
+  <div class="label">Report № 1 · The Wall Editorial Team · August 2026</div>
+  <h1>The 2026 State of the US Growth-Vendor Market</h1>
+  <p class="sub">2,286 verified US growth-services firms across ten disciplines. What the market really charges. How the firms actually shape up. Where they cluster. What the data says buyers should do about it.</p>
+  <div class="meta">
+    <div>PAGES<br><b>~32 (print)</b></div>
+    <div>DATA SOURCES<br><b>The Wall index, Google keyword data</b></div>
+    <div>METHOD<br><b>Full-market aggregation, not a survey</b></div>
+    <div>LICENSE<br><b>Free to read, share, and cite</b></div>
+  </div>
+  <button class="print-btn no-print" onclick="window.print()">SAVE AS PDF (BROWSER PRINT) →</button>
+</div>
+
+<div class="toc">
+<h2>Contents</h2>
+<ol>
+  <li><a href="#summary">Ten findings, in a page</a></li>
+  <li><a href="#method">Methodology</a></li>
+  <li><a href="#shape">The shape of the market</a></li>
+  <li><a href="#pricing">What US growth agencies actually charge</a></li>
+  <li><a href="#minimums">The price of entry: minimum project sizes</a></li>
+  <li><a href="#transparency">The transparency map — who publishes rates and who doesn't</a></li>
+  <li><a href="#teams">Firm shape: team sizes and what they signal</a></li>
+  <li><a href="#age">How the market has aged: founding cohorts by discipline</a></li>
+  <li><a href="#geography">Where US growth vendors cluster</a></li>
+  <li><a href="#composition">Agencies vs software vs services — the three software-first pillars</a></li>
+  <li><a href="#ratings">The rating problem: why stars stopped differentiating</a></li>
+  <li><a href="#trend">A trend to watch: the "small-business platform" search surge</a></li>
+  <li><a href="#playbook">How to actually shortlist a vendor</a></li>
+  <li><a href="#about">About The Wall</a></li>
+</ol>
+</div>
+
+<section id="summary">
+<div class="chapno">Chapter 01</div>
+<h2>Ten findings, in a page</h2>
+<ol>
+<li><strong>The US growth-vendor market is a 2010s creation.</strong> Median founding year across 1,734 firms with declared data is 2012. Half the market was founded in the decade that professionalized inbound, content, marketing automation, and paid social.</li>
+<li><strong>Creative Strategy is by far the largest discipline.</strong> 870 firms — 38% of the entire 2,286-firm index. The next-largest category is Marketing at 550. Together the top two account for 62% of the market.</li>
+<li><strong>Two-thirds of US agencies price between $100 and $199/hour.</strong> Across 1,440 firms that publish an hourly rate, $150–$199 is the single modal band at 36.9%. Above $300/hour is just 1.5% of firms.</li>
+<li><strong>82% of US agencies open at $10,000 or less.</strong> Minimum project sizes cluster low: $5,000 is the most common gate, and only 6.4% of firms require $50,000+ to start.</li>
+<li><strong>SEO firms publish rates 87% of the time, Demand Gen firms only 60%.</strong> Rate-disclosure by category is a signal of commercial maturity — the disciplines with mature client-services models publish; the pricing-by-outcome disciplines don't.</li>
+<li><strong>Ratings stopped separating vendors.</strong> Every category's average Clutch rating sits between 4.88 and 4.94 out of 5. The total spread across 31,944 client reviews is six hundredths of a star.</li>
+<li><strong>The 10-to-49 majority.</strong> Half of US growth firms run teams of 10 to 49 people. 82% run fewer than 50. Only 55 firms in the entire index field more than 250 employees.</li>
+<li><strong>86% services, 11% software, 3% business services.</strong> The market is overwhelmingly people, not platforms — with three exceptions: Sales (54% software), Automation (53%), and AI Marketing (74%).</li>
+<li><strong>Five states hold 35% of the market — but the mid-table has moved.</strong> California, New York, Florida, Texas, and Illinois lead. Austin (48 firms) ranks fifth on cities, ahead of Atlanta. Colorado (71) out-ranks Massachusetts and Georgia on states.</li>
+<li><strong>The "small-business platform" search is up 1,015% year-over-year.</strong> The phrase "digital marketing platform for small businesses" jumped from ~3,000 to 40,500 monthly US searches over twelve months — signal that the sub-$5M operator is actively shopping for tooling framed for their scale.</li>
+</ol>
+<p class="pullquote">The ten findings, taken together, describe a market that has professionalized, standardized, and gone almost entirely dark on differentiation-by-rating. Which puts the burden on buyers to shortlist by structural data. That is what the rest of this report is for.</p>
+</section>
+
+<section id="method">
+<div class="chapno">Chapter 02</div>
+<h2>Methodology</h2>
+<p>The Wall is an independent atlas of 2,286 US-based, machine-verified-live growth-services vendors across ten disciplines: Sales, Marketing, SEO, Thought Leadership, Creative Strategy, Automation, Demand Gen, Content Marketing, Social Media Marketing, and AI Marketing.</p>
+<p>Every listing was compiled from public sources — primarily the provider's own website (title tags, meta descriptions, published bios), public Clutch profiles (provider-declared engagement data including hourly-rate bands, minimum project sizes, team-size bands, founding years, headquarters, and client-review counts), and curated industry references. Every domain was machine-verified as live via a three-method HTTP check before publication; failed domains were removed and blocklisted.</p>
+<p>The engagement-data cuts in this report are computed against the subset of listings that carry provider-declared data (1,738 of 2,286 for Clutch-sourced fields). Percentages are calculated against the disclosed subset, not the whole index; the report notes both figures where the distinction matters.</p>
+<p>The search-behavior data (used only in the "small-business platform" trend chapter) is sourced from DataForSEO's Google keyword-planner data, cited by month and query.</p>
+<p><strong>What this report is not:</strong> a survey. The data is aggregated from what firms have published, not from asking them to respond. Response bias — a persistent problem in every industry-report methodology — does not apply here. What does apply is publication bias: firms that publish rate data may differ systematically from those that don't. The transparency chapter examines that gap explicitly.</p>
+</section>
+
+<section id="shape">
+<div class="chapno">Chapter 03</div>
+<h2>The shape of the market</h2>
+<p>The 2,286 US growth-services firms in The Wall's index distribute across ten disciplines like this:</p>
+<table>
+<thead><tr><th>Discipline</th><th class="num">Firms</th><th class="num">Share</th></tr></thead>
+<tbody>
+<tr><td>Creative Strategy</td><td class="num">870</td><td class="num">38.1%</td></tr>
+<tr><td>Marketing</td><td class="num">550</td><td class="num">24.1%</td></tr>
+<tr><td>SEO</td><td class="num">226</td><td class="num">9.9%</td></tr>
+<tr><td>Thought Leadership</td><td class="num">193</td><td class="num">8.4%</td></tr>
+<tr><td>Content Marketing</td><td class="num">113</td><td class="num">4.9%</td></tr>
+<tr><td>Sales</td><td class="num">103</td><td class="num">4.5%</td></tr>
+<tr><td>Social Media Marketing</td><td class="num">90</td><td class="num">3.9%</td></tr>
+<tr><td>Automation</td><td class="num">59</td><td class="num">2.6%</td></tr>
+<tr><td>Demand Gen</td><td class="num">48</td><td class="num">2.1%</td></tr>
+<tr><td>AI Marketing</td><td class="num">34</td><td class="num">1.5%</td></tr>
+</tbody>
+</table>
+<p>The concentration at the top is the load-bearing fact: two disciplines — Creative Strategy and Marketing — account for 62% of the entire market. Every buyer building a shortlist in either category is filtering through a substantially larger population than any other pillar, which changes the shortlisting math (see Chapter 13).</p>
+<p>The tail is equally informative. AI Marketing at 34 firms is the smallest, not because AI-in-marketing is unimportant, but because dedicated AI-marketing vendors — as distinct from generalist agencies that added AI language to existing services — remain a young population. Demand Gen at 48 and Automation at 59 are technical-forward disciplines whose vendor populations lag the size of the categories they serve.</p>
+<p>What was removed matters as much as what was published. 696 candidate listings failed verification before launch — 668 companies headquartered outside the United States and 28 whose websites failed multi-method liveness checks. All 696 domains were added to a blocklist that prevents automated re-entry.</p>
+</section>
+
+<section id="pricing">
+<div class="chapno">Chapter 04</div>
+<h2>What US growth agencies actually charge</h2>
+<p>Across 1,440 US agencies in The Wall's index that publish an hourly rate on their public Clutch profile, the distribution is tighter than most buyers expect:</p>
+<table>
+<thead><tr><th>Hourly-rate band</th><th class="num">Firms</th><th class="num">Share of disclosed</th></tr></thead>
+<tbody>
+<tr><td>$150 – $199 / hr</td><td class="num">531</td><td class="num">36.9%</td></tr>
+<tr><td>$100 – $149 / hr</td><td class="num">470</td><td class="num">32.6%</td></tr>
+<tr><td>$200 – $300 / hr</td><td class="num">163</td><td class="num">11.3%</td></tr>
+<tr><td>$50 – $99 / hr</td><td class="num">159</td><td class="num">11.0%</td></tr>
+<tr><td>$25 – $49 / hr</td><td class="num">70</td><td class="num">4.9%</td></tr>
+<tr><td>&lt; $25 / hr</td><td class="num">25</td><td class="num">1.7%</td></tr>
+<tr><td>$300+ / hr</td><td class="num">22</td><td class="num">1.5%</td></tr>
+</tbody>
+</table>
+<p>Two-thirds of the market prices in a $100 band: 1,001 of 1,440 disclosed rates — 69.5% — fall between $100 and $199 per hour. The tails are thin on both ends. Only 6.6% of disclosing firms price below $50 an hour, and only 1.5% price above $300.</p>
+<p>For a buyer, the practical read is simple: a US agency quoting inside $100–$199 is quoting the market norm, and a quote outside that band should come with a reason. Deep specialization and senior-only teams on the high side; offshore delivery or junior-heavy teams on the low side. A rate itself is not a differentiator inside the modal band; what differentiates the firm is capability, portfolio, and team composition.</p>
+<p>At the modal band, a 20-hour-per-month retainer prices at roughly $3,000–$4,000 per month before deliverable-based pricing enters the picture. This is a useful anchor: below about $3,000/month, a serious US growth agency engagement is usually under-resourced for the multi-quarter work it's being asked to support.</p>
+</section>
+
+<section id="minimums">
+<div class="chapno">Chapter 05</div>
+<h2>The price of entry: minimum project sizes</h2>
+<p>1,648 US firms in the index publish a minimum project size. The distribution is far more accessible than most mid-market buyers assume:</p>
+<table>
+<thead><tr><th>Minimum project size</th><th class="num">Firms</th><th class="num">Share</th></tr></thead>
+<tbody>
+<tr><td>$5,000+</td><td class="num">534</td><td class="num">32.4%</td></tr>
+<tr><td>$1,000+</td><td class="num">461</td><td class="num">28.0%</td></tr>
+<tr><td>$10,000+</td><td class="num">365</td><td class="num">22.1%</td></tr>
+<tr><td>$25,000+</td><td class="num">182</td><td class="num">11.0%</td></tr>
+<tr><td>$50,000+</td><td class="num">66</td><td class="num">4.0%</td></tr>
+<tr><td>$75,000+</td><td class="num">22</td><td class="num">1.3%</td></tr>
+<tr><td>$100,000+</td><td class="num">14</td><td class="num">0.8%</td></tr>
+<tr><td>$250,000+</td><td class="num">4</td><td class="num">0.2%</td></tr>
+</tbody>
+</table>
+<p>1,360 of 1,648 disclosing firms — 82.5% — will open an engagement at $10,000 or less. Only 106 firms (6.4%) set the gate at $50,000 or above, and just four firms in the entire index require a quarter-million dollars to start.</p>
+<p>A minimum project size is a qualification filter, not a price list. Firms use it to screen out engagements too small to staff properly. For a buyer at $5M+ in revenue, the data says the filter is rarely the obstacle: the market's entry gates cluster far below a serious quarter's marketing budget. The more useful signal is the combination — a firm's minimum, its hourly band, and its team size together sketch what a real first engagement looks like before the first call.</p>
+</section>
+
+<section id="transparency">
+<div class="chapno">Chapter 06</div>
+<h2>The transparency map</h2>
+<p>Rate-disclosure rates in the US growth-vendor market are not evenly distributed. The share of firms with public engagement data that publish an hourly rate ranges from 87.4% at the top of the ranking to 60% at the bottom:</p>
+<table>
+<thead><tr><th>Discipline</th><th class="num">Rate disclosure</th><th class="num">Min-project disclosure</th></tr></thead>
+<tbody>
+<tr><td>SEO</td><td class="num">87.4%</td><td class="num">95.6%</td></tr>
+<tr><td>Creative Strategy</td><td class="num">86.5%</td><td class="num">95.8%</td></tr>
+<tr><td>Content Marketing</td><td class="num">81.6%</td><td class="num">93.1%</td></tr>
+<tr><td>Marketing</td><td class="num">80.9%</td><td class="num">94.1%</td></tr>
+<tr><td>Social Media Marketing</td><td class="num">78.7%</td><td class="num">97.3%</td></tr>
+<tr><td>Automation</td><td class="num">75.0%</td><td class="num">95.0%</td></tr>
+<tr><td>Thought Leadership</td><td class="num">68.0%</td><td class="num">90.2%</td></tr>
+<tr><td>Demand Gen</td><td class="num">60.0%</td><td class="num">93.3%</td></tr>
+</tbody>
+</table>
+<p>SEO, Creative Strategy, Content Marketing, Marketing, and Social Media Marketing all sit within a seven-point band — 78.7% to 87.4%. These are the categories where the client-services model is fully mature: buyers expect a rate band, sellers know publishing one pre-qualifies inbound and saves discovery-call time on both sides. A firm operating in these categories that <em>doesn't</em> publish an hourly rate is deliberately opting out of a market norm.</p>
+<p>Thought Leadership at 68% and Demand Gen at 60% lag the pack for structural reasons, not evasive ones. Thought-leadership work is often priced per-engagement — a book program, a podcast series, a keynote push — rather than per-hour. Demand Gen is heavily performance-priced — cost per meeting, cost per SQL, revenue share. Hourly-rate cards misrepresent the commercial models these disciplines actually operate on.</p>
+<p>Buyers should read the numbers accordingly. An undisclosed rate in SEO or Marketing is a question worth asking. An undisclosed rate in Thought Leadership or Demand Gen is often just a reflection of how those disciplines commercially operate. What matters is that the firm can articulate <em>some</em> pricing structure by the first substantive conversation — not that it fits the hourly-rate mold.</p>
+</section>
+
+<section id="teams">
+<div class="chapno">Chapter 07</div>
+<h2>Firm shape: team sizes and what they signal</h2>
+<p>Across 1,738 US firms in the index with provider-declared team-size data, the shape of the market is unmistakably mid-size:</p>
+<table>
+<thead><tr><th>Team size</th><th class="num">Firms</th><th class="num">Share</th></tr></thead>
+<tbody>
+<tr><td>10 – 49</td><td class="num">898</td><td class="num">51.7%</td></tr>
+<tr><td>2 – 9</td><td class="num">524</td><td class="num">30.2%</td></tr>
+<tr><td>50 – 249</td><td class="num">252</td><td class="num">14.5%</td></tr>
+<tr><td>250 – 999</td><td class="num">50</td><td class="num">2.9%</td></tr>
+<tr><td>Freelancer</td><td class="num">9</td><td class="num">0.5%</td></tr>
+<tr><td>1,000 – 9,999</td><td class="num">5</td><td class="num">0.3%</td></tr>
+</tbody>
+</table>
+<p>The 10–49 band alone holds 898 firms — a 51.7% majority. Add the 2–9 boutiques and 81.8% of the market runs fewer than 50 people. Only 55 firms in the entire data set field more than 250.</p>
+<p>Team size predicts the texture of an engagement more reliably than most sales decks. A 2–9 boutique typically means founder-led work and senior attention with capacity risk. A 10–49 firm — the market's center of gravity — means process without bureaucracy, and usually a named team. Above 250, buyers get bench depth and account layers. None of these is better in the abstract; the point of the data is that a buyer can decide which trade-off fits before the first call.</p>
+</section>
+
+<section id="age">
+<div class="chapno">Chapter 08</div>
+<h2>How the market has aged: founding cohorts by discipline</h2>
+<p>Every discipline in the index has a different median founding year, and the spread is meaningful:</p>
+<table>
+<thead><tr><th>Discipline</th><th class="num">Median founding year</th><th class="num">Since 2020</th><th class="num">Firms with declared year</th></tr></thead>
+<tbody>
+<tr><td>Thought Leadership</td><td class="num">2009</td><td class="num">11</td><td class="num">120</td></tr>
+<tr><td>Creative Strategy</td><td class="num">2011</td><td class="num">80</td><td class="num">766</td></tr>
+<tr><td>Marketing</td><td class="num">2013</td><td class="num">72</td><td class="num">444</td></tr>
+<tr><td>Content Marketing</td><td class="num">2013</td><td class="num">10</td><td class="num">87</td></tr>
+<tr><td>Demand Gen</td><td class="num">2014</td><td class="num">2</td><td class="num">15</td></tr>
+<tr><td>SEO</td><td class="num">2015</td><td class="num">45</td><td class="num">206</td></tr>
+<tr><td>Social Media Marketing</td><td class="num">2015</td><td class="num">6</td><td class="num">75</td></tr>
+<tr><td>Automation</td><td class="num">2018</td><td class="num">5</td><td class="num">20</td></tr>
+</tbody>
+</table>
+<p>The nine-year gap between Thought Leadership (median 2009) and Automation (median 2018) tracks the emergence of each discipline as a hire-able commercial category. Creative Strategy and Thought Leadership have institutional continuity into the 1990s and earlier — 95 creative firms and 21 thought-leadership firms in the index predate 2000. Marketing, Content Marketing, and Demand Gen came of age as content marketing and inbound became mainstream. SEO and Social Media Marketing coincide with the professionalization of those channels away from generalist agencies into specialist shops. Automation reflects a category that barely existed as commercial buyers understand it today until the late 2010s.</p>
+<p>Category age is not a quality metric. But it is a useful buying signal: in the older categories, favor longevity if you can — a firm founded in 1998 has weathered more cycles than most, and continuity is a real signal. In the younger categories, favor category-native firms over generalists who bolted the discipline on. A 2020-founded automation shop grew up native to the current-generation platforms; a 2005-founded generalist agency that added automation as a service line probably did not.</p>
+</section>
+
+<section id="geography">
+<div class="chapno">Chapter 09</div>
+<h2>Where US growth vendors cluster</h2>
+<p>Where headquarters data is available in the index, the geography of US growth vendors concentrates hard at the top. The five largest states account for 806 firms — 35.3% of the entire 2,286-firm index. The full top-15 by state:</p>
+<table>
+<thead><tr><th>State</th><th class="num">Firms</th></tr></thead>
+<tbody>
+<tr><td>California</td><td class="num">308</td></tr>
+<tr><td>New York</td><td class="num">150</td></tr>
+<tr><td>Florida</td><td class="num">124</td></tr>
+<tr><td>Texas</td><td class="num">120</td></tr>
+<tr><td>Illinois</td><td class="num">104</td></tr>
+<tr><td>Colorado</td><td class="num">71</td></tr>
+<tr><td>Massachusetts</td><td class="num">58</td></tr>
+<tr><td>Georgia</td><td class="num">56</td></tr>
+<tr><td>Pennsylvania</td><td class="num">46</td></tr>
+<tr><td>Washington</td><td class="num">37</td></tr>
+<tr><td>Ohio</td><td class="num">37</td></tr>
+<tr><td>Virginia</td><td class="num">36</td></tr>
+<tr><td>North Carolina</td><td class="num">30</td></tr>
+<tr><td>Arizona</td><td class="num">29</td></tr>
+<tr><td>New Jersey</td><td class="num">26</td></tr>
+</tbody>
+</table>
+<p>California's 308 firms — 13.5% of the whole index — make it the largest single market by a factor of two. But the more interesting entries sit mid-table. Florida's 124 places it third, ahead of Texas. Colorado, with 71, out-ranks Massachusetts, Georgia, and Pennsylvania — states with far larger business bases.</p>
+<p>At the city level, the rankings tell a similar story. New York (105 firms), Chicago (73), and Los Angeles (63) are the expected media capitals. Austin's 48 firms rank fifth, ahead of Atlanta. Denver ties Atlanta at 40. Miami's 33 places it ahead of Boston, Dallas, and Seattle.</p>
+<p>Nearly every firm in the index sells nationally; headquarters location is a supply-side fact, not a service-area constraint. What the clustering does tell a buyer is where talent pools, agency alumni networks, and specialization depth have compounded. It also means a buyer restricting a shortlist to local vendors in a bottom-half state is filtering out most of the market for no operational reason. And the map buyers built a decade ago no longer exists — growth-services firms have followed talent migration into Austin, Denver, and Miami.</p>
+</section>
+
+<section id="composition">
+<div class="chapno">Chapter 10</div>
+<h2>Agencies vs software vs services</h2>
+<p>The Wall's directory classifies every listing as one of three types — Marketing/Creative Agency, Software Provider, or Business Service. Overall, 85.9% of listings are agencies, 10.8% are software, and 3.3% are services. But that mix inverts sharply in three specific disciplines:</p>
+<table>
+<thead><tr><th>Discipline</th><th class="num">Agencies</th><th class="num">Software</th><th class="num">Services</th><th class="num">Software share</th></tr></thead>
+<tbody>
+<tr><td>AI Marketing</td><td class="num">9</td><td class="num">25</td><td class="num">0</td><td class="num">73.5%</td></tr>
+<tr><td>Sales</td><td class="num">12</td><td class="num">56</td><td class="num">35</td><td class="num">54.4%</td></tr>
+<tr><td>Automation</td><td class="num">26</td><td class="num">31</td><td class="num">2</td><td class="num">52.5%</td></tr>
+<tr><td>Demand Gen</td><td class="num">30</td><td class="num">12</td><td class="num">6</td><td class="num">25.0%</td></tr>
+<tr><td>Social Media Marketing</td><td class="num">77</td><td class="num">13</td><td class="num">0</td><td class="num">14.4%</td></tr>
+<tr><td>Marketing</td><td class="num">491</td><td class="num">55</td><td class="num">4</td><td class="num">10.0%</td></tr>
+<tr><td>Content Marketing</td><td class="num">100</td><td class="num">11</td><td class="num">2</td><td class="num">9.7%</td></tr>
+<tr><td>Thought Leadership</td><td class="num">153</td><td class="num">13</td><td class="num">27</td><td class="num">6.7%</td></tr>
+<tr><td>SEO</td><td class="num">214</td><td class="num">12</td><td class="num">0</td><td class="num">5.3%</td></tr>
+<tr><td>Creative Strategy</td><td class="num">852</td><td class="num">18</td><td class="num">0</td><td class="num">2.1%</td></tr>
+</tbody>
+</table>
+<p>The three software-first pillars are the technology-forward disciplines. Sales has been the most systematized growth function for a decade — CRM, enablement, engagement, intent — and it shows in the software concentration. Marketing Automation is definitionally the tooling layer of the entire marketing function. AI Marketing is where the tooling is the entire proposition, so far.</p>
+<p>The seven services-first pillars are the disciplines where human judgment and craft remain the durable value: creative and design, thought leadership, content, social, SEO. Every one has been declared automation-vulnerable by someone in the last three years. So far, the buying data has not budged: 90%+ of the listings buyers are actually paying to solve these problems are teams, not licenses.</p>
+</section>
+
+<section id="ratings">
+<div class="chapno">Chapter 11</div>
+<h2>The rating problem</h2>
+<p>1,623 firms in the index carry a public Clutch rating, backed by 31,944 client reviews in total. Averaged by category, the results are remarkable mostly for how little they vary:</p>
+<table>
+<thead><tr><th>Discipline</th><th class="num">Rated firms</th><th class="num">Avg rating</th></tr></thead>
+<tbody>
+<tr><td>Creative Strategy</td><td class="num">716</td><td class="num">4.94</td></tr>
+<tr><td>SEO</td><td class="num">190</td><td class="num">4.94</td></tr>
+<tr><td>Thought Leadership</td><td class="num">118</td><td class="num">4.92</td></tr>
+<tr><td>Marketing</td><td class="num">416</td><td class="num">4.91</td></tr>
+<tr><td>Demand Gen</td><td class="num">15</td><td class="num">4.89</td></tr>
+<tr><td>Content Marketing</td><td class="num">78</td><td class="num">4.89</td></tr>
+<tr><td>Social Media Marketing</td><td class="num">71</td><td class="num">4.88</td></tr>
+<tr><td>Automation</td><td class="num">18</td><td class="num">4.88</td></tr>
+</tbody>
+</table>
+<p>Every category average with a meaningful sample sits between 4.88 and 4.94 out of 5. The spread across the entire market is six hundredths of a star.</p>
+<p>Review platforms in professional services skew high for structural reasons: reviews are solicited by the vendor, unhappy clients tend to leave quietly rather than publicly, and firms with weak ratings often simply stop maintaining their profiles. The result is a market where a 4.9 tells a buyer almost nothing — it is the baseline, not a distinction.</p>
+<p class="pullquote">Ratings will not narrow a shortlist. The spread across 31,944 reviews is six hundredths of a star.</p>
+<p>The discriminating data lives elsewhere: hourly-rate band, minimum project size, team size, founding year, and specialty. Those are the fields buyers should filter on precisely because, unlike stars, they still separate one vendor from another.</p>
+</section>
+
+<section id="trend">
+<div class="chapno">Chapter 12</div>
+<h2>A trend to watch: the "small-business platform" search surge</h2>
+<p>Search for the exact phrase <em>digital marketing platform for small businesses</em> has climbed to 40,500 US searches per month, according to Google keyword data — a 1,015% jump from the same month a year earlier. The sibling query <em>online marketing platform for small businesses</em> shows the same shape at 9,900 monthly searches. Both are commercial-intent phrases (the searcher is shopping, not researching), and both carry low competition in Google's keyword-difficulty scoring.</p>
+<p>Absolute volume is not the story. 40,500 searches is a mid-sized keyword by SaaS category standards. What is unusual is the shape of the growth: monthly volume was in the low thousands as recently as ten months ago. A rise that steep on a specific commercial phrase is not organic drift.</p>
+<p>The most defensible read: buyers below the $5M revenue threshold — the segment the enterprise marketing-technology market has spent a decade ignoring or overcharging — are now shopping for tooling explicitly framed as "for us." That framing appears to be a reaction to sticker shock on the standard platforms, and to a wave of new offerings that price and position specifically for the sub-$5M operator.</p>
+<p>The Wall's directory is built for a different reader — US companies past $5M — but many of the 2,286 firms listed do serve smaller operators, particularly in the Automation and AI Marketing pillars where platform-shaped listings concentrate. The trend suggests that "platform for small business" is stopping being a market segment marketing-technology firms flee from, and becoming one they build for.</p>
+</section>
+
+<section id="playbook">
+<div class="chapno">Chapter 13</div>
+<h2>How to actually shortlist a vendor</h2>
+<p>Ten findings, translated into buyer moves:</p>
+<h3>1. Filter by category-native shape, not by rating.</h3>
+<p>Ratings are compressed to the sixth decimal. Category, listing type (agency / software / service), and category-fit specialty are the first three filters that actually remove candidates.</p>
+<h3>2. Anchor to the $100–$199 hourly band, then judge exceptions on their reasoning.</h3>
+<p>Two-thirds of the US market prices in this band. A quote outside it should come with a defensible reason. A quote inside it means rate is not a differentiator — evaluate the firm on capability and fit instead.</p>
+<h3>3. Use minimum project size as a shape signal, not an obstacle.</h3>
+<p>Most firms open below $10,000. Combining the minimum, the hourly band, and the team size sketches what a real first engagement looks like before the first call.</p>
+<h3>4. Match team size to the engagement shape.</h3>
+<p>2–9 for founder-led work with senior attention (capacity risk). 10–49 for process without bureaucracy (the market center). 50–249 for depth. 250+ for bench.</p>
+<h3>5. Read rate-disclosure as a discipline signal, not a moral one.</h3>
+<p>Undisclosed in SEO or Marketing is a question. Undisclosed in Thought Leadership or Demand Gen is often just how the discipline commercially operates. Ask about pricing structure, not just about hourly rates.</p>
+<h3>6. Weight founding-year age by discipline.</h3>
+<p>Longevity is a real signal in older disciplines (Creative Strategy, Thought Leadership). Category-native age matters more than absolute age in younger disciplines (AI Marketing, Automation, Demand Gen).</p>
+<h3>7. Skip the geography filter in a bottom-half state.</h3>
+<p>Virtually every firm in the index sells nationally. Restricting a shortlist to local vendors filters out most of the market for no operational reason. The map has moved: Austin, Denver, and Miami now punch above their historical weight.</p>
+<h3>8. Decide agency vs software vs service by discipline structure.</h3>
+<p>Sales, Automation, and AI Marketing are software-first — shortlists lean toward platforms. The seven other pillars are services-first — shortlists lean toward teams.</p>
+<h3>9. Verify liveness and independence yourself.</h3>
+<p>The Wall re-verifies liveness periodically, but firms go dark between sweeps, and no directory can guarantee independence at the individual-engagement level. A five-minute check of the firm's site, its LinkedIn, and its recent case studies catches most issues.</p>
+<h3>10. Get on a call.</h3>
+<p>All of the above narrows the shortlist to five or six firms whose structural fit is defensible. From there, the differentiator is judgment and chemistry, which no dataset resolves.</p>
+</section>
+
+<section id="about">
+<div class="chapno">Chapter 14</div>
+<h2>About The Wall</h2>
+<p>The Wall (<a href="https://hitthewall.net">hitthewall.net</a>) is an independent atlas of 2,286 US-based, machine-verified-live growth-services vendors across ten disciplines. Every listing is a structured record: category, specialty, buyer profile, and — where the firm has published it — hourly rate band, minimum project size, team size, founding year, headquarters, and review data.</p>
+<p>The directory is operated by Miss Pepper AI, a US-based marketing systems company. Inclusion is editorial and free. Listings are alphabetical within categories; position is never sold or ranked. Removed domains are blocked from automated re-entry. Firms may request removal at any time; verified requests are honored within two business days per the <a href="https://hitthewall.net/editorial-policy.html">editorial policy</a>.</p>
+<p><strong>How to be listed:</strong> Submit via the atlas at <a href="https://hitthewall.net/">hitthewall.net</a> using the Submit a Listing form. Submissions are editorially reviewed against the US-only criterion and the discipline definitions. Approval typically within two business days.</p>
+<p><strong>Corrections and removal requests:</strong> Email <a href="mailto:support@misspepper.ai">support@misspepper.ai</a> or use the <a href="https://hitthewall.net/contact.html">contact page</a>. Every listing displays a correction link. Corrections that materially change a fact are noted on the affected profile.</p>
+<p><strong>Citing this report:</strong> Free to quote, embed figures from, and link to. Recommended citation: <em>"The 2026 State of the US Growth-Vendor Market, The Wall Editorial Team, August 2026 (hitthewall.net/report/state-of-the-us-growth-vendor-market-2026.html)."</em> No prior permission required.</p>
+<p><strong>Data availability:</strong> The underlying aggregate figures are re-computed on demand from the live directory. Researchers, journalists, and analysts wanting specific cuts by category, state, or firm shape can email <a href="mailto:support@misspepper.ai">support@misspepper.ai</a> — reasonable requests are honored without cost.</p>
+<p><strong>Next edition:</strong> The next state-of-the-market report is planned for early 2027, with monthly index-shape briefings in between at <a href="https://hitthewall.net/news/updates/">hitthewall.net/news/updates/</a>.</p>
+<p class="fn">© 2026 The Wall / Miss Pepper AI. This report is published free of paywall and free of vendor sponsorship. No listed firm has editorial input into this report or into its own directory profile. Full editorial standards and disclosures at <a href="https://hitthewall.net/editorial-policy.html">hitthewall.net/editorial-policy.html</a> and <a href="https://hitthewall.net/disclosures.html">hitthewall.net/disclosures.html</a>.</p>
+</section>
+
+</main>
+
+<footer class="no-print"><div class="wrap">
+  <span>© The Wall · INDEPENDENT DIRECTORY · NOT AN ENDORSEMENT ENGINE</span>
+  <span><a href="../about.html">ABOUT</a> · <a href="../news/">BRIEFINGS</a> · <a href="../glossary.html">GLOSSARY</a> · <a href="../editorial-policy.html">EDITORIAL</a> · <a href="../contact.html">CONTACT</a></span>
+</div></footer>
+</body>
+</html>

@@ -252,6 +252,49 @@
     * { animation: none !important; transition: none !important; }
     html { scroll-behavior: auto; }
   }
+
+  /* filter bar */
+  .filterbar { display: flex; gap: 12px; flex-wrap: wrap; align-items: end; padding: 14px 18px; background: #fff; border: 1px solid var(--stone); border-radius: 10px; margin: 0 0 22px; }
+  .filterbar .fgroup { display: flex; flex-direction: column; gap: 3px; }
+  .filterbar label { font-family: var(--mono); font-size: 8.5px; font-weight: 600; letter-spacing: .14em; color: var(--chrome); text-transform: uppercase; }
+  .filterbar select { font-family: var(--sans); font-size: 13px; color: var(--ink); background: #fff; border: 1px solid var(--stone); border-radius: 6px; padding: 7px 9px; min-width: 140px; }
+  .filterbar select:focus { outline: none; border-color: var(--cobalt); }
+  .filterbar .fclr { font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: .1em; color: var(--oxblood); background: transparent; border: 1px solid var(--oxblood); border-radius: 6px; padding: 8px 12px; cursor: pointer; }
+  .filterbar .fclr:hover { background: var(--oxblood); color: #fff; }
+
+  /* card compare checkbox */
+  .card { position: relative; }
+  .card .cmp { position: absolute; top: 10px; right: 12px; font-family: var(--mono); font-size: 8.5px; font-weight: 600; letter-spacing: .12em; color: var(--chrome); background: rgba(255,255,255,.9); padding: 4px 8px; border-radius: 5px; border: 1px solid var(--stone); cursor: pointer; z-index: 2; display: flex; align-items: center; gap: 4px; }
+  .card .cmp input { width: 12px; height: 12px; margin: 0; cursor: pointer; accent-color: var(--cobalt); }
+  .card .cmp:hover { color: var(--cobalt); border-color: var(--cobalt); }
+  .card .card-body { cursor: pointer; }
+
+  /* floating compare bar */
+  .cmpbar { position: fixed; bottom: 0; left: 0; right: 0; background: var(--ink); color: #fff; padding: 14px 22px; display: none; align-items: center; gap: 10px; flex-wrap: wrap; z-index: 20; box-shadow: 0 -6px 20px rgba(0,0,0,.12); }
+  .cmpbar.on { display: flex; }
+  .cmpbar .lbl { font-family: var(--mono); font-size: 9.5px; font-weight: 600; letter-spacing: .14em; color: var(--chrome); }
+  .cmpbar .chip { font-family: var(--sans); font-size: 12.5px; color: #fff; background: rgba(255,255,255,.08); padding: 5px 10px; border-radius: 5px; display: inline-flex; align-items: center; gap: 8px; }
+  .cmpbar .chip a { color: var(--chrome); text-decoration: none; font-family: var(--mono); font-size: 11px; }
+  .cmpbar .chip a:hover { color: #fff; }
+  .cmpbar .btn { font-family: var(--mono); font-size: 10.5px; font-weight: 600; letter-spacing: .1em; color: #fff; background: var(--cobalt); border: none; border-radius: 6px; padding: 9px 14px; cursor: pointer; }
+  .cmpbar .btn:hover { background: #2856dd; }
+  .cmpbar .btn.ghost { background: transparent; border: 1px solid rgba(255,255,255,.24); }
+  .cmpbar .btn.ghost:hover { background: rgba(255,255,255,.08); }
+  main { padding-bottom: 80px; }
+
+  /* compare view */
+  .cmp-view .back-btn { font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: .1em; color: var(--cobalt); background: transparent; border: none; padding: 20px 0 6px; cursor: pointer; }
+  .cmp-view h1 { font-family: var(--serif); font-weight: 600; font-size: 34px; letter-spacing: -.02em; padding: 10px 0 20px; }
+  .cmp-grid { display: grid; gap: 1px; background: var(--stone); border: 1px solid var(--stone); border-radius: 10px; overflow: hidden; margin-bottom: 20px; }
+  .cmp-grid .ch, .cmp-grid .cr { background: #fff; padding: 12px 14px; font-size: 13.5px; color: var(--body); }
+  .cmp-grid .ch { background: var(--stone-lt); font-family: var(--serif); font-weight: 600; color: var(--ink); }
+  .cmp-grid .ch a { text-decoration: none; color: var(--ink); }
+  .cmp-grid .ch a:hover { color: var(--cobalt); }
+  .cmp-grid .ch b { font-size: 15px; }
+  .cmp-grid .ch span { font-family: var(--mono); font-size: 10px; color: var(--chrome); }
+  .cmp-grid .cr b { font-family: var(--mono); font-size: 9px; font-weight: 600; letter-spacing: .12em; color: var(--chrome); text-transform: uppercase; }
+  .cmp-note { font-size: 13px; color: var(--chrome); padding: 12px 0; }
+  .cmp-note .btn { font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: .1em; color: var(--oxblood); background: transparent; border: 1px solid var(--oxblood); border-radius: 6px; padding: 6px 10px; cursor: pointer; margin-left: 10px; }
 </style>
 </head>
 <body>
@@ -291,6 +334,7 @@
 </main>
 
 <section class="detail wrap" id="detail"></section>
+<div id="cmpbar" class="cmpbar"></div>
 
 <dialog id="submit-modal">
   <form class="modal-in" id="submit-form">
@@ -359,6 +403,21 @@ const COLORS = {
 const PREVIEW_N = 24;
 
 let all = [], activeCat = 'All';
+/* ---------- filters + compare state ---------- */
+const FILTERS = { rate: '', team: '', state: '', type: '', min: '' };
+const RATE_BANDS = ['< $25 / hr','$25 - $49 / hr','$50 - $99 / hr','$100 - $149 / hr','$150 - $199 / hr','$200 - $300 / hr','$300+ / hr'];
+const TEAM_BANDS = ['Freelancer','2 - 9','10 - 49','50 - 249','250 - 999','1,000 - 9,999'];
+const MIN_BANDS = ['$1,000+','$5,000+','$10,000+','$25,000+','$50,000+','$75,000+','$100,000+','$250,000+'];
+const LISTING_TYPES = ['Marketing Agency','Software Provider','Business Service'];
+const compareSet = new Set();
+const anyFilter = () => Object.values(FILTERS).some(Boolean);
+const passFilters = x => (
+  (!FILTERS.rate || x.avg_hourly_rate === FILTERS.rate) &&
+  (!FILTERS.team || x.team_size === FILTERS.team) &&
+  (!FILTERS.min || x.min_project_size === FILTERS.min) &&
+  (!FILTERS.state || x.hq_state === FILTERS.state) &&
+  (!FILTERS.type || x.listing_type === FILTERS.type)
+);
 const $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const hdrs = { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` };
@@ -368,7 +427,7 @@ async function load() {
   try {
     let rows = [], from = 0;
     while (true) {
-      const r = await fetch(`${SUPABASE_URL}/rest/v1/directory_companies?select=name,domain,category,subcategory,description&status=eq.approved&order=name.asc&offset=${from}&limit=1000`, { headers: hdrs });
+      const r = await fetch(`${SUPABASE_URL}/rest/v1/directory_companies?select=name,domain,category,subcategory,description,listing_type,avg_hourly_rate,min_project_size,team_size,hq_state,hq_city,year_established,clutch_rating&status=eq.approved&order=name.asc&offset=${from}&limit=1000`, { headers: hdrs });
       if (!r.ok) throw new Error(r.status);
       const page = await r.json();
       rows = rows.concat(page);
@@ -448,27 +507,114 @@ function matches(x, q) {
 
 function cardHTML(x) {
   const color = COLORS[x.category] || '#1B4FD8';
-  return `<article class="card" style="--card-c:${color}" onclick="openDetail('${esc(x.domain)}')">
-    <div class="card-top">
-      <img class="logo" loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=${encodeURIComponent(x.domain)}&sz=128"
-        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="logo-fb" style="display:none;background:${color}">${esc(x.name[0] || '?')}</div>
-      <div style="min-width:0">
-        <h3>${esc(x.name)}</h3>
-        <span class="sublabel" style="color:${color}">${esc(x.subcategory)}</span>
+  const checked = compareSet.has(x.domain) ? ' checked' : '';
+  return `<article class="card" style="--card-c:${color}">
+    <label class="cmp" onclick="event.stopPropagation()" title="Add to compare (up to 3)">
+      <input type="checkbox" onchange="toggleCompare('${esc(x.domain)}')"${checked}> COMPARE
+    </label>
+    <div class="card-body" onclick="openDetail('${esc(x.domain)}')">
+      <div class="card-top">
+        <img class="logo" loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=${encodeURIComponent(x.domain)}&sz=128"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="logo-fb" style="display:none;background:${color}">${esc(x.name[0] || '?')}</div>
+        <div style="min-width:0">
+          <h3>${esc(x.name)}</h3>
+          <span class="sublabel" style="color:${color}">${esc(x.subcategory)}</span>
+        </div>
       </div>
+      <p>${esc(x.description)}</p>
+      <div class="card-foot"><span class="dom">${esc(x.domain)}</span><span class="open">OPEN →</span></div>
     </div>
-    <p>${esc(x.description)}</p>
-    <div class="card-foot"><span class="dom">${esc(x.domain)}</span><span class="open">OPEN →</span></div>
   </article>`;
+}
+
+/* ---------- filter UI ---------- */
+function filterBarHTML() {
+  const states = [...new Set(all.map(x => x.hq_state).filter(Boolean))].sort();
+  const opt = (arr, val) => `<option value="">any</option>` + arr.map(v => `<option value="${esc(v)}"${v === val ? ' selected' : ''}>${esc(v)}</option>`).join('');
+  return `<div class="filterbar">
+    <div class="fgroup"><label>RATE</label><select onchange="setFilter('rate',this.value)">${opt(RATE_BANDS, FILTERS.rate)}</select></div>
+    <div class="fgroup"><label>TEAM</label><select onchange="setFilter('team',this.value)">${opt(TEAM_BANDS, FILTERS.team)}</select></div>
+    <div class="fgroup"><label>MIN</label><select onchange="setFilter('min',this.value)">${opt(MIN_BANDS, FILTERS.min)}</select></div>
+    <div class="fgroup"><label>STATE</label><select onchange="setFilter('state',this.value)">${opt(states, FILTERS.state)}</select></div>
+    <div class="fgroup"><label>TYPE</label><select onchange="setFilter('type',this.value)">${opt(LISTING_TYPES, FILTERS.type)}</select></div>
+    ${anyFilter() ? '<button class="fclr" onclick="clearAllFilters()">CLEAR FILTERS ✕</button>' : ''}
+  </div>`;
+}
+function setFilter(k, v) { FILTERS[k] = v; renderSections(); syncUrl(); }
+function clearAllFilters() { for (const k of Object.keys(FILTERS)) FILTERS[k] = ''; renderSections(); syncUrl(); }
+
+/* ---------- compare ---------- */
+function toggleCompare(dom) {
+  if (compareSet.has(dom)) compareSet.delete(dom);
+  else { if (compareSet.size >= 3) { alert('Compare up to 3 listings at a time.'); return renderCompareBar(); } compareSet.add(dom); }
+  renderSections(); renderCompareBar();
+}
+function renderCompareBar() {
+  const bar = $('cmpbar');
+  if (!compareSet.size) { bar.classList.remove('on'); bar.innerHTML = ''; return; }
+  const domains = [...compareSet];
+  bar.classList.add('on');
+  bar.innerHTML = `<span class="lbl">COMPARE:</span>
+    ${domains.map(d => { const x = all.find(y => y.domain === d); return `<span class="chip">${esc(x ? x.name : d)} <a href="#" onclick="toggleCompare('${esc(d)}');return false" title="Remove">✕</a></span>`; }).join('')}
+    <button class="btn" onclick="openCompare()">VIEW COMPARISON →</button>
+    <button class="btn ghost" onclick="clearCompare()">CLEAR</button>`;
+}
+function clearCompare() { compareSet.clear(); renderSections(); renderCompareBar(); if (location.search.includes('compare=')) history.pushState({}, '', location.pathname); }
+function openCompare() {
+  if (compareSet.size < 2) { alert('Pick at least two listings to compare.'); return; }
+  history.pushState({}, '', location.pathname + '?compare=' + [...compareSet].map(encodeURIComponent).join(','));
+  renderCompareView();
+}
+async function renderCompareView() {
+  $('home').style.display = 'none';
+  const domains = [...compareSet];
+  const rows = await Promise.all(domains.map(fullRow));
+  const wrap = $('detail');
+  wrap.style.display = 'block';
+  const fields = [
+    ['Category', x => x.category], ['Specialty', x => x.subcategory], ['Listing type', x => x.listing_type],
+    ['Location', x => (x.hq_city && x.hq_state) ? `${x.hq_city}, ${x.hq_state}` : (x.hq_state || '—')],
+    ['Founded', x => x.year_established || '—'], ['Team size', x => x.team_size || '—'],
+    ['Hourly rate', x => x.avg_hourly_rate || '—'], ['Min project', x => x.min_project_size || '—'],
+    ['Rating', x => x.clutch_rating ? `${x.clutch_rating}★ (${x.clutch_reviews || 0} reviews)` : '—'],
+    ['Website', x => `<a href="https://${esc(x.domain)}" target="_blank" rel="noopener">${esc(x.domain)}</a>`],
+    ['Own words', x => x.site_description || x.clutch_bio || '—']
+  ];
+  wrap.innerHTML = `<article class="cmp-view">
+    <button class="back-btn" onclick="closeCompare()">← BACK TO ATLAS</button>
+    <div class="kicker">COMPARE / ${rows.length} LISTINGS</div>
+    <h1>Side-by-side</h1>
+    <div class="cmp-grid" style="grid-template-columns:180px repeat(${rows.length}, 1fr)">
+      <div class="ch"></div>
+      ${rows.map(x => x ? `<div class="ch"><a href="?c=${encodeURIComponent(x.domain)}"><b>${esc(x.name)}</b><br><span>${esc(x.domain)}</span></a></div>` : '<div class="ch"></div>').join('')}
+      ${fields.map(([label, fn]) => `
+        <div class="cr"><b>${esc(label)}</b></div>
+        ${rows.map(x => `<div class="cr">${x ? fn(x) : '—'}</div>`).join('')}
+      `).join('')}
+    </div>
+    <p class="cmp-note">Same structured data on every listing — filter and shortlist before the first sales call. <button class="btn ghost" onclick="clearCompare();closeCompare()">CLEAR AND START OVER</button></p>
+  </article>`;
+  window.scrollTo(0, 0);
+}
+function closeCompare() { $('detail').style.display = 'none'; $('detail').innerHTML = ''; $('home').style.display = 'block'; history.pushState({}, '', location.pathname); renderSections(); }
+
+function syncUrl() {
+  const p = new URLSearchParams();
+  if (activeCat !== 'All') p.set('cat', activeCat);
+  for (const k of Object.keys(FILTERS)) if (FILTERS[k]) p.set(k, FILTERS[k]);
+  const s = p.toString();
+  history.replaceState({}, '', location.pathname + (s ? '?' + s : ''));
 }
 
 function renderSections() {
   const q = $('q').value.trim().toLowerCase();
   const el = $('sections');
   let total = 0, html = '';
+  const filtersOn = anyFilter();
+  const barHTML = filterBarHTML();
 
-  if (activeCat === 'All' && !q) {
+  if (activeCat === 'All' && !q && !filtersOn) {
     CATS.forEach((c, i) => {
       const rows = all.filter(x => x.category === c);
       if (!rows.length) return;
@@ -484,25 +630,25 @@ function renderSections() {
       </section>`;
     });
   } else {
-    const rows = all.filter(x => (activeCat === 'All' || x.category === activeCat) && matches(x, q));
+    const rows = all.filter(x => (activeCat === 'All' || x.category === activeCat) && matches(x, q) && passFilters(x));
     total = rows.length;
-    const title = activeCat === 'All' ? 'Search results' : activeCat;
+    const title = activeCat === 'All' ? (filtersOn ? 'Filtered results' : 'Search results') : activeCat;
     const color = COLORS[activeCat] || '#1B4FD8';
     const secNo = activeCat === 'All' ? 'QUERY' : `SECTOR ${String(CATS.indexOf(activeCat)+1).padStart(2,'0')}`;
     html = rows.length
       ? `<section class="section" style="--sec-c:${color}">
           <div class="section-head"><span class="no">${secNo}</span><h2>${esc(title)}</h2><span class="cnt">${rows.length} COMPANIES</span>
-          ${activeCat !== 'All' || q ? `<button class="more" onclick="clearFilters()">CLEAR ✕</button>` : ''}</div>
+          ${activeCat !== 'All' || q || filtersOn ? `<button class="more" onclick="clearFilters()">CLEAR ✕</button>` : ''}</div>
           <div class="grid">${rows.map(cardHTML).join('')}</div>
         </section>`
-      : '<div class="empty">NO MATCHES IN THE ATLAS. TRY ANOTHER SEARCH.</div>';
+      : '<div class="empty">NO MATCHES. TRY WIDER FILTERS.</div>';
   }
   $('meta-left').textContent = `INDEX / ${total.toLocaleString()} COMPANIES SHOWN / ${all.length.toLocaleString()} LISTED`;
   $('lede-count').textContent = all.length.toLocaleString();
-  el.innerHTML = html;
+  el.innerHTML = barHTML + html;
 }
 
-function clearFilters() { $('q').value = ''; activeCat = 'All'; buildDial(); buildStrip(); renderSections(); }
+function clearFilters() { $('q').value = ''; activeCat = 'All'; for (const k of Object.keys(FILTERS)) FILTERS[k] = ''; buildDial(); buildStrip(); renderSections(); syncUrl(); }
 
 /* ---------- enrichment content (composed from per-business stored facts; no invented specifics) ---------- */
 const has = v => v !== null && v !== undefined && v !== '';
@@ -762,9 +908,18 @@ function route() {
   const qs = new URLSearchParams(location.search);
   const c = qs.get('c');
   if (c && all.some(r => r.domain === c)) { openDetail(c, false); return; }
+  const cmp = qs.get('compare');
+  if (cmp) {
+    compareSet.clear();
+    cmp.split(',').filter(d => all.some(r => r.domain === d)).forEach(d => compareSet.add(d));
+    if (compareSet.size >= 2) { renderCompareBar(); renderCompareView(); return; }
+  }
   $('home').style.display = 'block';
+  // hydrate filters from URL
+  for (const k of Object.keys(FILTERS)) FILTERS[k] = qs.get(k) || '';
   const cat = qs.get('cat');
   if (cat && CATS.includes(cat)) { setCat(cat); } else { renderSections(); }
+  renderCompareBar();
 }
 window.addEventListener('popstate', route);
 
