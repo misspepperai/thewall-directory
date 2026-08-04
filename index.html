@@ -4,169 +4,208 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Wall — Operations Atlas</title>
-<meta name="description" content="An operations atlas of companies that solve marketing, SEO, thought leadership, creative, automation, and demand generation problems for established businesses.">
+<meta name="description" content="An operations atlas of 2,000+ companies that solve sales, marketing, SEO, thought leadership, creative, automation, and demand generation problems for established businesses.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧱</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
     --porcelain: #FAF9F6;
-    --stone: #E8E4DC;
-    --stone-lt: #F3F1EC;
+    --stone: #E7E3DA;
+    --stone-lt: #F2F0EA;
     --cobalt: #1B4FD8;
     --oxblood: #6E1423;
     --ink: #0E1B33;
     --chrome: #85898F;
+    --body: #3B4557;
     --serif: 'Newsreader', Georgia, serif;
     --sans: 'IBM Plex Sans', -apple-system, sans-serif;
     --mono: 'IBM Plex Mono', ui-monospace, monospace;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body { font-family: var(--sans); background: var(--porcelain); color: var(--ink); -webkit-font-smoothing: antialiased; }
+  body {
+    font-family: var(--sans); background: var(--porcelain); color: var(--ink);
+    -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+  }
+  body::after {
+    content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 90; opacity: .028;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  ::selection { background: var(--cobalt); color: #fff; }
+  :focus-visible { outline: 2px solid var(--cobalt); outline-offset: 2px; }
   .wrap { max-width: 1240px; margin: 0 auto; padding: 0 28px; }
   a { color: inherit; }
+  .mono-k { font-family: var(--mono); font-size: 9.5px; font-weight: 600; letter-spacing: .16em; }
+  .tnum { font-feature-settings: 'tnum'; }
 
   /* ---------- top bar ---------- */
   .topbar { border-bottom: 1px solid var(--stone); background: var(--porcelain); position: sticky; top: 0; z-index: 40; }
-  .topbar-in { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+  .topbar::before { content: ''; display: block; height: 2px; background: linear-gradient(90deg, var(--cobalt) 0 62%, var(--oxblood) 62% 84%, var(--ink) 84% 100%); }
+  .topbar-in { display: flex; align-items: center; justify-content: space-between; height: 58px; }
   .wordmark { font-family: var(--serif); font-weight: 700; font-size: 21px; letter-spacing: -0.01em; text-decoration: none; display: flex; align-items: baseline; gap: 12px; }
-  .wordmark small { font-family: var(--mono); font-weight: 500; font-size: 9.5px; letter-spacing: .14em; color: var(--chrome); }
+  .wordmark small { font-family: var(--mono); font-weight: 600; font-size: 9px; letter-spacing: .18em; color: var(--chrome); }
   .topbar-actions { display: flex; align-items: center; gap: 18px; }
+  .db-live { display: flex; align-items: center; gap: 7px; font-family: var(--mono); font-size: 9.5px; letter-spacing: .1em; color: var(--chrome); }
+  .db-live i { width: 6px; height: 6px; border-radius: 50%; background: var(--cobalt); animation: pulse 2.4s infinite; }
+  @keyframes pulse { 0%,100% { opacity: 1 } 50% { opacity: .25 } }
   .btn-submit {
-    font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: .1em;
+    font-family: var(--mono); font-size: 10.5px; font-weight: 600; letter-spacing: .1em;
     color: var(--cobalt); border: 1px solid var(--cobalt); background: transparent;
     padding: 8px 14px; border-radius: 4px; cursor: pointer; transition: all .15s;
   }
   .btn-submit:hover { background: var(--cobalt); color: #fff; }
-  .admin-link { font-family: var(--mono); font-size: 10px; letter-spacing: .12em; color: var(--chrome); text-decoration: none; }
+  .admin-link { font-family: var(--mono); font-size: 9.5px; letter-spacing: .14em; color: var(--chrome); text-decoration: none; }
   .admin-link:hover { color: var(--ink); }
 
   /* ---------- hero ---------- */
-  .hero { display: grid; grid-template-columns: minmax(0,1fr) 470px; gap: 40px; align-items: center; padding: 56px 0 30px; }
-  .hero h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(36px, 4.6vw, 56px); line-height: 1.04; letter-spacing: -0.015em; }
-  .hero h1 em { font-style: italic; color: var(--oxblood); }
-  .hero .lede { margin-top: 18px; font-size: 15.5px; line-height: 1.65; color: #3C4658; max-width: 520px; }
+  .hero { display: grid; grid-template-columns: minmax(0,1fr) 520px; gap: 32px; align-items: center; padding: 52px 0 22px; }
+  .kicker { color: var(--oxblood); margin-bottom: 18px; display: flex; align-items: center; gap: 10px; }
+  .kicker::before { content: '+'; font-family: var(--mono); color: var(--chrome); font-weight: 400; }
+  .hero h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(38px, 4.9vw, 62px); line-height: 1.0; letter-spacing: -0.022em; }
+  .hero h1 em { font-style: italic; font-weight: 500; color: var(--oxblood); }
+  .hero .lede { margin-top: 20px; font-size: 15.5px; line-height: 1.65; color: var(--body); max-width: 520px; }
   .hero .lede strong { color: var(--ink); font-weight: 600; }
-  .searchbox { margin-top: 26px; display: flex; align-items: center; gap: 12px; background: #fff; border: 1px solid var(--stone); border-radius: 6px; padding: 14px 16px; max-width: 560px; }
+  .searchbox { margin-top: 28px; display: flex; align-items: center; gap: 12px; background: #fff; border: 1px solid var(--stone); border-radius: 6px; padding: 14px 16px; max-width: 560px; transition: border .15s, box-shadow .15s; }
   .searchbox:focus-within { border-color: var(--cobalt); box-shadow: 0 0 0 3px rgba(27,79,216,.08); }
   .searchbox svg { color: var(--chrome); flex-shrink: 0; }
-  .searchbox input { border: 0; outline: 0; width: 100%; font-family: var(--mono); font-size: 13.5px; color: var(--ink); background: transparent; }
+  .searchbox input { border: 0; outline: 0; width: 100%; font-family: var(--mono); font-size: 13px; letter-spacing: .02em; color: var(--ink); background: transparent; }
   .searchbox input::placeholder { color: var(--chrome); }
 
-  /* ---------- radial dial ---------- */
-  .dial-holder { position: relative; width: 470px; height: 470px; justify-self: end; }
+  /* ---------- radial instrument ---------- */
+  .dial-holder { position: relative; width: 520px; height: 520px; justify-self: end; animation: dialIn 1s cubic-bezier(.22,1,.36,1) both; }
+  @keyframes dialIn { from { opacity: 0; transform: rotate(-5deg) scale(.97); } to { opacity: 1; transform: none; } }
   .dial-svg { position: absolute; inset: 0; }
   .dial-node {
     position: absolute; transform: translate(-50%, -50%);
     font-family: var(--mono); text-align: center; cursor: pointer;
     background: var(--porcelain); border: 1px solid var(--stone); border-radius: 5px;
-    padding: 7px 9px; min-width: 86px; transition: all .15s; z-index: 2;
+    padding: 7px 9px 6px; min-width: 92px; transition: all .16s; z-index: 2;
   }
-  .dial-node b { display: block; font-size: 9px; font-weight: 600; letter-spacing: .08em; }
-  .dial-node span { display: block; font-size: 9px; color: var(--chrome); margin-top: 2px; }
-  .dial-node:hover { border-color: var(--node-c, var(--cobalt)); color: var(--node-c, var(--cobalt)); }
+  .dial-node i { display: block; font-style: normal; font-size: 8px; font-weight: 600; letter-spacing: .14em; color: var(--chrome); margin-bottom: 2px; transition: color .16s; }
+  .dial-node b { display: block; font-size: 8.5px; font-weight: 600; letter-spacing: .1em; }
+  .dial-node span { display: block; font-size: 9.5px; color: var(--chrome); margin-top: 2px; font-feature-settings: 'tnum'; }
+  .dial-node:hover { border-color: var(--node-c, var(--cobalt)); color: var(--node-c, var(--cobalt)); transform: translate(-50%, -50%) scale(1.05); box-shadow: 0 6px 18px rgba(14,27,51,.08); }
   .dial-node.active { background: var(--node-c, var(--cobalt)); border-color: var(--node-c, var(--cobalt)); color: #fff; }
-  .dial-node.active span { color: rgba(255,255,255,.75); }
+  .dial-node.active i, .dial-node.active span { color: rgba(255,255,255,.72); }
   .dial-hub {
     position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
-    width: 116px; height: 116px; border-radius: 50%; cursor: pointer; z-index: 2;
-    background: var(--ink); color: #fff; border: 0; font-family: var(--mono); transition: all .15s;
+    width: 128px; height: 128px; border-radius: 50%; cursor: pointer; z-index: 2;
+    background: var(--ink); color: #fff; border: 0; font-family: var(--mono); transition: background .16s, box-shadow .16s;
+    box-shadow: 0 0 0 6px var(--porcelain), 0 0 0 7px var(--stone);
   }
-  .dial-hub b { display: block; font-size: 11px; font-weight: 600; letter-spacing: .14em; }
-  .dial-hub span { display: block; font-size: 10px; color: rgba(255,255,255,.6); margin-top: 4px; }
-  .dial-hub:hover { background: var(--cobalt); }
-  .dial-hub.active { background: var(--cobalt); }
+  .dial-hub b { display: block; font-size: 12px; font-weight: 600; letter-spacing: .18em; }
+  .dial-hub span { display: block; font-size: 12px; margin-top: 4px; font-feature-settings: 'tnum'; color: rgba(255,255,255,.85); }
+  .dial-hub small { display: block; font-size: 7.5px; letter-spacing: .2em; color: rgba(255,255,255,.5); margin-top: 4px; }
+  .dial-hub:hover, .dial-hub.active { background: var(--cobalt); }
 
-  /* ---------- index strip (mobile / fallback) ---------- */
-  .index-strip { display: none; flex-wrap: wrap; gap: 8px; padding: 6px 0 4px; }
-  .chip {
-    font-family: var(--mono); font-size: 10.5px; font-weight: 600; letter-spacing: .06em;
-    border: 1px solid var(--stone); background: #fff; color: var(--ink);
-    border-radius: 999px; padding: 7px 13px; cursor: pointer; transition: all .15s;
+  /* ---------- sector index (mobile) ---------- */
+  .index-strip { display: none; margin-top: 26px; border-top: 1px solid var(--stone); }
+  .index-row {
+    display: flex; align-items: baseline; gap: 10px; width: 100%; text-align: left;
+    background: none; border: 0; border-bottom: 1px solid var(--stone); cursor: pointer;
+    padding: 10px 2px; font-family: var(--mono);
   }
-  .chip small { color: var(--chrome); margin-left: 5px; font-weight: 500; }
-  .chip.active { background: var(--ink); border-color: var(--ink); color: #fff; }
-  .chip.active small { color: rgba(255,255,255,.6); }
+  .index-row .no { font-size: 9px; font-weight: 600; color: var(--row-c, var(--cobalt)); letter-spacing: .1em; }
+  .index-row .nm { font-size: 11px; font-weight: 600; letter-spacing: .08em; color: var(--ink); }
+  .index-row .lead { flex: 1; border-bottom: 1px dotted var(--stone); transform: translateY(-3px); }
+  .index-row .ct { font-size: 10.5px; color: var(--chrome); font-feature-settings: 'tnum'; }
+  .index-row.active .nm { color: var(--row-c, var(--cobalt)); }
+  .index-row.active .no { color: var(--row-c, var(--cobalt)); }
 
   /* ---------- meta rule ---------- */
-  .meta-rule { border-top: 1px solid var(--stone); margin-top: 26px; padding: 12px 0 0; display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
-  .meta-rule span { font-family: var(--mono); font-size: 10px; letter-spacing: .12em; color: var(--chrome); }
+  .meta-rule { border-top: 1px solid var(--stone); margin-top: 24px; padding: 12px 0 0; display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+  .meta-rule span { font-family: var(--mono); font-size: 9.5px; letter-spacing: .14em; color: var(--chrome); font-feature-settings: 'tnum'; }
 
   /* ---------- sections & grid ---------- */
-  .section { padding: 34px 0 8px; }
-  .section-head { display: flex; align-items: baseline; gap: 14px; border-bottom: 1px solid var(--stone); padding-bottom: 12px; margin-bottom: 20px; }
-  .section-head .no { font-family: var(--mono); font-size: 11px; font-weight: 600; color: var(--sec-c, var(--cobalt)); letter-spacing: .1em; }
-  .section-head h2 { font-family: var(--serif); font-weight: 600; font-size: 25px; letter-spacing: -0.01em; }
-  .section-head .cnt { font-family: var(--mono); font-size: 11px; color: var(--chrome); }
-  .section-head .more { margin-left: auto; font-family: var(--mono); font-size: 10.5px; font-weight: 600; letter-spacing: .08em; color: var(--cobalt); background: none; border: 0; cursor: pointer; }
+  .section { padding: 38px 0 6px; }
+  .section-head { display: flex; align-items: baseline; gap: 16px; border-bottom: 1px solid var(--stone); padding-bottom: 14px; margin-bottom: 20px; position: relative; }
+  .section-head::after { content: '+'; position: absolute; right: 0; bottom: -7px; font-family: var(--mono); font-size: 11px; color: var(--stone); background: var(--porcelain); padding-left: 6px; }
+  .section-head .no { font-family: var(--mono); font-size: 10px; font-weight: 600; color: var(--sec-c, var(--cobalt)); letter-spacing: .16em; }
+  .section-head h2 { font-family: var(--serif); font-weight: 600; font-size: 27px; letter-spacing: -0.012em; }
+  .section-head .cnt { font-family: var(--mono); font-size: 10.5px; color: var(--chrome); letter-spacing: .08em; font-feature-settings: 'tnum'; }
+  .section-head .more { margin-left: auto; font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: .1em; color: var(--cobalt); background: none; border: 0; cursor: pointer; }
   .section-head .more:hover { text-decoration: underline; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(285px, 1fr)); gap: 14px; padding-bottom: 22px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(285px, 1fr)); gap: 14px; padding-bottom: 26px; }
   .card {
-    background: #fff; border: 1px solid var(--stone); border-radius: 10px; padding: 18px;
-    cursor: pointer; transition: all .16s; display: flex; flex-direction: column; gap: 10px;
-    content-visibility: auto; contain-intrinsic-size: 172px;
+    position: relative; background: #fff; border: 1px solid var(--stone); border-radius: 9px; padding: 17px 17px 14px 19px;
+    cursor: pointer; transition: transform .16s, border-color .16s, box-shadow .16s; display: flex; flex-direction: column; gap: 10px;
+    content-visibility: auto; contain-intrinsic-size: 176px; overflow: hidden;
   }
-  .card:hover { border-color: var(--cobalt); box-shadow: 0 8px 22px rgba(14,27,51,.07); transform: translateY(-1px); }
+  .card::before { content: ''; position: absolute; left: 0; top: 14px; bottom: 14px; width: 2px; border-radius: 2px; background: var(--card-c, var(--cobalt)); opacity: .85; }
+  .card:hover { border-color: var(--card-c, var(--cobalt)); box-shadow: 0 10px 26px rgba(14,27,51,.08); transform: translateY(-2px); }
+  .card:hover .open { transform: translateX(3px); }
   .card-top { display: flex; align-items: center; gap: 11px; }
   .logo, .logo-fb {
     width: 40px; height: 40px; border-radius: 8px; flex-shrink: 0; border: 1px solid var(--stone);
     background: #fff; object-fit: contain; padding: 5px;
   }
   .logo-fb { display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-weight: 600; font-size: 15px; color: #fff; border: 0; padding: 0; }
-  .card h3 { font-family: var(--serif); font-weight: 600; font-size: 17.5px; line-height: 1.15; letter-spacing: -0.005em; }
-  .sublabel { font-family: var(--mono); font-size: 9px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; margin-top: 3px; display: block; }
-  .card p { font-size: 13px; line-height: 1.55; color: #4A5468; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; flex-grow: 1; }
-  .card-foot { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--stone-lt); padding-top: 10px; }
-  .card-foot .dom { font-family: var(--mono); font-size: 10px; color: var(--chrome); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .card-foot .open { font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: .08em; color: var(--cobalt); flex-shrink: 0; }
-  .empty { padding: 70px 0; text-align: center; font-family: var(--mono); font-size: 12px; color: var(--chrome); letter-spacing: .06em; }
+  .card h3 { font-family: var(--serif); font-weight: 600; font-size: 17.5px; line-height: 1.12; letter-spacing: -0.006em; }
+  .sublabel { font-family: var(--mono); font-size: 8.5px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; margin-top: 3px; display: block; }
+  .card p { font-size: 13px; line-height: 1.55; color: var(--body); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; flex-grow: 1; }
+  .card-foot { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--stone-lt); padding-top: 9px; }
+  .card-foot .dom { font-family: var(--mono); font-size: 9.5px; color: var(--chrome); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .card-foot .open { font-family: var(--mono); font-size: 9.5px; font-weight: 600; letter-spacing: .1em; color: var(--cobalt); flex-shrink: 0; transition: transform .16s; }
+  .empty { padding: 70px 0; text-align: center; font-family: var(--mono); font-size: 11.5px; color: var(--chrome); letter-spacing: .08em; }
 
-  /* ---------- detail view ---------- */
-  .detail { display: none; padding: 44px 0 70px; }
-  .backlink { font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: .1em; color: var(--chrome); background: none; border: 0; cursor: pointer; }
-  .backlink:hover { color: var(--cobalt); }
-  .detail-grid { display: grid; grid-template-columns: minmax(0,1fr) 320px; gap: 54px; margin-top: 30px; }
+  /* ---------- detail ---------- */
+  .detail { display: none; padding: 38px 0 70px; }
+  .crumb { font-family: var(--mono); font-size: 9.5px; letter-spacing: .14em; color: var(--chrome); display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .crumb button { font: inherit; letter-spacing: inherit; background: none; border: 0; color: var(--chrome); cursor: pointer; }
+  .crumb button:hover { color: var(--cobalt); }
+  .detail-grid { display: grid; grid-template-columns: minmax(0,1fr) 330px; gap: 54px; margin-top: 28px; }
   .d-head { display: flex; align-items: center; gap: 20px; }
-  .d-logo, .d-logo-fb { width: 76px; height: 76px; border-radius: 14px; border: 1px solid var(--stone); background: #fff; object-fit: contain; padding: 10px; }
+  .d-logo, .d-logo-fb { width: 78px; height: 78px; border-radius: 14px; border: 1px solid var(--stone); background: #fff; object-fit: contain; padding: 10px; }
   .d-logo-fb { display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-weight: 600; font-size: 30px; color: #fff; border: 0; }
-  .detail h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(30px, 3.5vw, 42px); letter-spacing: -0.015em; line-height: 1.05; }
-  .d-desc { margin-top: 24px; font-size: 16.5px; line-height: 1.7; color: #333D50; max-width: 640px; }
-  .d-cta { display: inline-block; margin-top: 30px; font-family: var(--mono); font-size: 12px; font-weight: 600; letter-spacing: .1em; color: #fff; background: var(--cobalt); border-radius: 5px; padding: 14px 24px; text-decoration: none; transition: background .15s; }
-  .d-cta:hover { background: var(--oxblood); }
-  .spec { border: 1px solid var(--stone); border-radius: 10px; background: #fff; padding: 6px 18px; height: fit-content; }
-  .spec-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 13px 0; border-bottom: 1px solid var(--stone-lt); }
+  .detail h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(32px, 3.6vw, 46px); letter-spacing: -0.02em; line-height: 1.02; }
+  .d-desc { margin-top: 22px; font-size: 16.5px; line-height: 1.7; color: var(--body); max-width: 640px; }
+  .ownquote {
+    margin-top: 26px; max-width: 620px; position: relative; padding: 4px 0 4px 26px;
+    border-left: 2px solid var(--oxblood);
+  }
+  .ownquote p { font-family: var(--serif); font-style: italic; font-weight: 500; font-size: 19.5px; line-height: 1.5; color: var(--ink); }
+  .ownquote cite { display: block; margin-top: 10px; font-family: var(--mono); font-style: normal; font-size: 9px; font-weight: 600; letter-spacing: .14em; color: var(--chrome); }
+  .d-cta { display: inline-block; margin-top: 28px; font-family: var(--mono); font-size: 11.5px; font-weight: 600; letter-spacing: .12em; color: #fff; background: var(--cobalt); border-radius: 5px; padding: 14px 24px; text-decoration: none; transition: background .15s, transform .15s; }
+  .d-cta:hover { background: var(--oxblood); transform: translateY(-1px); }
+  .spec { border: 1px solid var(--stone); border-radius: 10px; background: #fff; padding: 8px 18px; height: fit-content; position: sticky; top: 84px; }
+  .spec-title { font-family: var(--mono); font-size: 8.5px; font-weight: 600; letter-spacing: .18em; color: var(--chrome); padding: 10px 0 4px; border-bottom: 1px solid var(--stone); }
+  .spec-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--stone-lt); }
   .spec-row:last-child { border-bottom: 0; }
-  .spec-row dt { font-family: var(--mono); font-size: 9.5px; letter-spacing: .12em; color: var(--chrome); }
-  .spec-row dd { font-family: var(--mono); font-size: 11px; font-weight: 600; text-align: right; overflow-wrap: anywhere; }
-  .related-head { margin-top: 54px; }
+  .spec-row dt { font-family: var(--mono); font-size: 9px; letter-spacing: .14em; color: var(--chrome); }
+  .spec-row dd { font-family: var(--mono); font-size: 10.5px; font-weight: 600; text-align: right; overflow-wrap: anywhere; font-feature-settings: 'tnum'; }
   .d-about { margin-top: 34px; max-width: 640px; }
-  .d-about h2, .qa-wrap h2, .qf-wrap h2 { font-family: var(--serif); font-weight: 600; font-size: 21px; margin-bottom: 12px; }
-  .d-about p { font-size: 14.5px; line-height: 1.7; color: #333D50; margin-bottom: 12px; }
-  .qf-wrap { margin-top: 30px; border: 1px solid var(--stone); border-radius: 10px; background: #fff; padding: 18px 20px 8px; max-width: 640px; }
+  .d-about h2, .qa-wrap h2, .qf-wrap h2, .related-head h2 { font-family: var(--serif); font-weight: 600; font-size: 22px; letter-spacing: -0.01em; margin-bottom: 12px; }
+  .d-about p { font-size: 14.5px; line-height: 1.7; color: var(--body); margin-bottom: 12px; }
+  .qf-wrap { margin-top: 30px; border: 1px solid var(--stone); border-radius: 10px; background: #fff; padding: 16px 20px 8px; max-width: 640px; }
   .qf-row { display: flex; gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--stone-lt); }
   .qf-row:last-child { border-bottom: 0; }
-  .qf-row dt { font-family: var(--mono); font-size: 9.5px; font-weight: 600; letter-spacing: .1em; color: var(--chrome); min-width: 110px; padding-top: 2px; }
-  .qf-row dd { font-size: 13px; line-height: 1.55; color: #333D50; }
+  .qf-row dt { font-family: var(--mono); font-size: 8.5px; font-weight: 600; letter-spacing: .12em; color: var(--chrome); min-width: 112px; padding-top: 3px; }
+  .qf-row dd { font-size: 13px; line-height: 1.55; color: var(--body); }
   .qa-wrap { margin-top: 34px; max-width: 640px; }
-  .qa-wrap details { border: 1px solid var(--stone); border-radius: 8px; background: #fff; margin-bottom: 8px; }
-  .qa-wrap summary { cursor: pointer; padding: 13px 16px; font-size: 13.5px; font-weight: 600; list-style: none; display: flex; justify-content: space-between; gap: 10px; }
-  .qa-wrap summary::after { content: '+'; font-family: var(--mono); color: var(--cobalt); }
+  .qa-wrap details { border: 1px solid var(--stone); border-radius: 8px; background: #fff; margin-bottom: 8px; overflow: hidden; }
+  .qa-wrap summary { cursor: pointer; padding: 12px 16px; font-size: 13.5px; font-weight: 600; list-style: none; display: flex; align-items: baseline; gap: 12px; }
+  .qa-wrap summary::-webkit-details-marker { display: none; }
+  .qa-wrap summary .qno { font-family: var(--mono); font-size: 9px; font-weight: 600; color: var(--chrome); letter-spacing: .08em; flex-shrink: 0; }
+  .qa-wrap summary::after { content: '+'; font-family: var(--mono); color: var(--cobalt); margin-left: auto; }
+  .qa-wrap details[open] { border-color: var(--cobalt); }
+  .qa-wrap details[open] summary { background: var(--stone-lt); }
   .qa-wrap details[open] summary::after { content: '–'; }
-  .qa-wrap details p { padding: 0 16px 14px; font-size: 13px; line-height: 1.6; color: #4A5468; }
+  .qa-wrap details p { padding: 12px 16px 14px 43px; font-size: 13px; line-height: 1.65; color: var(--body); }
+  .related-head { margin-top: 54px; }
 
   /* ---------- submit modal ---------- */
   dialog { border: 1px solid var(--stone); border-radius: 12px; padding: 0; max-width: 480px; width: calc(100% - 40px); background: var(--porcelain); }
-  dialog::backdrop { background: rgba(14,27,51,.45); }
+  dialog::backdrop { background: rgba(14,27,51,.5); }
   .modal-in { padding: 28px; }
-  .modal-in h3 { font-family: var(--serif); font-weight: 600; font-size: 24px; }
-  .modal-in .note { font-family: var(--mono); font-size: 10px; color: var(--chrome); letter-spacing: .06em; margin-top: 6px; }
+  .modal-in h3 { font-family: var(--serif); font-weight: 600; font-size: 25px; }
+  .modal-in .note { font-family: var(--mono); font-size: 9px; color: var(--chrome); letter-spacing: .1em; margin-top: 6px; }
   .field { margin-top: 16px; }
-  .field label { display: block; font-family: var(--mono); font-size: 9.5px; font-weight: 600; letter-spacing: .12em; color: var(--chrome); margin-bottom: 6px; }
+  .field label { display: block; font-family: var(--mono); font-size: 9px; font-weight: 600; letter-spacing: .14em; color: var(--chrome); margin-bottom: 6px; }
   .field input, .field select, .field textarea {
     width: 100%; font-family: var(--sans); font-size: 14px; color: var(--ink);
-    background: #fff; border: 1px solid var(--stone); border-radius: 5px; padding: 10px 12px; outline: 0;
+    background: #fff; border: 1px solid var(--stone); border-radius: 5px; padding: 10px 12px; outline: 0; transition: border .15s;
   }
   .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--cobalt); }
   .field textarea { resize: vertical; min-height: 84px; }
@@ -174,18 +213,30 @@
   .btn-primary { font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: .1em; background: var(--cobalt); color: #fff; border: 0; border-radius: 5px; padding: 12px 20px; cursor: pointer; }
   .btn-primary:hover { background: var(--oxblood); }
   .btn-ghost { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; background: none; border: 0; color: var(--chrome); cursor: pointer; }
-  .form-msg { margin-top: 14px; font-family: var(--mono); font-size: 11px; letter-spacing: .04em; }
+  .form-msg { margin-top: 14px; font-family: var(--mono); font-size: 10.5px; letter-spacing: .04em; }
 
-  footer { border-top: 1px solid var(--stone); margin-top: 40px; padding: 26px 0 46px; }
-  footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-  footer span, footer a { font-family: var(--mono); font-size: 10px; letter-spacing: .08em; color: var(--chrome); }
-  footer a:hover { color: var(--ink); }
+  /* ---------- footer colophon ---------- */
+  footer { border-top: 1px solid var(--stone); margin-top: 44px; background: var(--stone-lt); }
+  .colophon { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; padding: 34px 0 26px; }
+  .colophon h4 { font-family: var(--mono); font-size: 8.5px; font-weight: 600; letter-spacing: .18em; color: var(--chrome); margin-bottom: 10px; }
+  .colophon .brand { font-family: var(--serif); font-weight: 700; font-size: 19px; }
+  .colophon p, .colophon a { font-size: 12.5px; line-height: 1.7; color: var(--body); }
+  .colophon a { display: block; text-decoration: none; }
+  .colophon a:hover { color: var(--cobalt); }
+  .baseline { border-top: 1px solid var(--stone); padding: 14px 0 26px; display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+  .baseline span { font-family: var(--mono); font-size: 9px; letter-spacing: .12em; color: var(--chrome); font-feature-settings: 'tnum'; }
 
-  @media (max-width: 1020px) {
-    .hero { grid-template-columns: 1fr; padding-top: 40px; }
+  @media (max-width: 1040px) {
+    .hero { grid-template-columns: 1fr; padding-top: 38px; }
     .dial-holder { display: none; }
-    .index-strip { display: flex; margin-top: 22px; }
+    .index-strip { display: block; }
     .detail-grid { grid-template-columns: 1fr; gap: 30px; }
+    .spec { position: static; }
+    .colophon { grid-template-columns: 1fr; gap: 22px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+    html { scroll-behavior: auto; }
   }
 </style>
 </head>
@@ -195,6 +246,7 @@
   <div class="wrap topbar-in">
     <a class="wordmark" href="./">The Wall <small>OPERATIONS ATLAS</small></a>
     <div class="topbar-actions">
+      <span class="db-live"><i></i><span id="live-count">—</span></span>
       <a class="admin-link" href="admin.html">ADMIN</a>
       <button class="btn-submit" onclick="openSubmit()">SUBMIT A LISTING</button>
     </div>
@@ -204,8 +256,9 @@
 <main id="home">
   <section class="hero wrap">
     <div>
+      <div class="kicker mono-k">FIELD GUIDE TO GETTING UNSTUCK · US MID-MARKET EDITION</div>
       <h1>Hit a wall?<br>Find who gets you <em>over it.</em></h1>
-      <p class="lede">An atlas of <strong id="lede-count">—</strong> companies that solve growth problems for established businesses — marketing, SEO, thought leadership, creative, automation, and demand generation. Built for operators who want the problem <strong>handled</strong>.</p>
+      <p class="lede">An atlas of <strong id="lede-count">—</strong> companies that solve growth problems for established businesses — sales, marketing, SEO, thought leadership, creative, automation, and demand generation. Built for operators who want the problem <strong>handled</strong>.</p>
       <div class="searchbox">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
         <input id="q" type="search" placeholder="SEARCH THE ATLAS…" autocomplete="off">
@@ -217,7 +270,7 @@
 
   <div class="wrap meta-rule">
     <span id="meta-left">INDEX / LOADING…</span>
-    <span>DATA · LIVE FROM POSTGRES</span>
+    <span>DATA · LIVE FROM POSTGRES · ENRICHED FROM PUBLIC SOURCES</span>
   </div>
 
   <div class="wrap" id="sections"><div class="empty">LOADING THE ATLAS…</div></div>
@@ -243,9 +296,25 @@
 </dialog>
 
 <footer>
-  <div class="wrap">
-    <span>INDEPENDENT DIRECTORY · LISTINGS ARE NOT ENDORSEMENTS OR RANKINGS</span>
-    <span><a href="mailto:support@misspepper.ai?subject=The%20Wall%20Directory">CONTACT</a> · <a href="admin.html">ADMIN</a></span>
+  <div class="wrap colophon">
+    <div>
+      <div class="brand">The Wall</div>
+      <p style="margin-top:8px;max-width:380px">An operations atlas of vendors, platforms, and firms that get established businesses past sales, marketing, thought-leadership, and creative walls. Compiled from public sources. Listings are not endorsements or rankings.</p>
+    </div>
+    <div>
+      <h4>INDEX</h4>
+      <div id="foot-cats"></div>
+    </div>
+    <div>
+      <h4>OPERATIONS</h4>
+      <a href="#" onclick="openSubmit();return false">Submit a listing</a>
+      <a href="admin.html">Admin console</a>
+      <a href="mailto:support@misspepper.ai?subject=The%20Wall%20Directory">Contact</a>
+    </div>
+  </div>
+  <div class="wrap baseline">
+    <span id="foot-meta">COMPILED FROM PUBLIC SOURCES</span>
+    <span>PLATE 001 · VENDOR INDEX</span>
   </div>
 </footer>
 
@@ -263,14 +332,13 @@ let all = [], activeCat = 'All';
 const $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const hdrs = { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` };
+const vt = fn => (document.startViewTransition ? document.startViewTransition(fn) : fn());
 
 async function load() {
   try {
     let rows = [], from = 0;
     while (true) {
-      const r = await fetch(`${SUPABASE_URL}/rest/v1/directory_companies?select=name,domain,category,subcategory,description,listing_type,bottleneck_solved,target_executive_icp,client_revenue_fit&status=eq.approved&order=name.asc`, {
-        headers: { ...hdrs, Range: `${from}-${from + 999}`, 'Range-Unit': 'items' }
-      });
+      const r = await fetch(`${SUPABASE_URL}/rest/v1/directory_companies?select=name,domain,category,subcategory,description&status=eq.approved&order=name.asc&offset=${from}&limit=1000`, { headers: hdrs });
       if (!r.ok) throw new Error(r.status);
       const page = await r.json();
       rows = rows.concat(page);
@@ -278,39 +346,51 @@ async function load() {
       from += 1000;
     }
     all = rows;
-    buildDial(); buildStrip(); buildSubmitCats();
+    buildDial(); buildStrip(); buildSubmitCats(); buildFooter();
+    $('q').placeholder = `SEARCH ${all.length.toLocaleString()} ENTRIES…`;
+    $('live-count').textContent = `${all.length.toLocaleString()} LIVE`;
     route();
   } catch (e) {
     $('sections').innerHTML = '<div class="empty">COULD NOT LOAD THE ATLAS. REFRESH TO RETRY.</div>';
   }
 }
 
-/* ---------- radial dial ---------- */
+/* ---------- radial instrument ---------- */
 function buildDial() {
-  const size = 470, cx = size/2, cy = size/2, r = 178;
+  const size = 520, cx = size/2, cy = size/2, r = 196;
+  let ticks = '';
+  for (let i = 0; i < 72; i++) {
+    const a = i * Math.PI / 36;
+    const len = i % 6 === 0 ? 10 : 4;
+    const r1 = r + 30, r2 = r1 - len;
+    ticks += `<line x1="${cx + r1 * Math.cos(a)}" y1="${cy + r1 * Math.sin(a)}" x2="${cx + r2 * Math.cos(a)}" y2="${cy + r2 * Math.sin(a)}" stroke="${i % 6 === 0 ? '#C9C4B8' : '#E7E3DA'}" stroke-width="1"/>`;
+  }
   const spokes = CATS.map((c, i) => {
     const a = (i * 2 * Math.PI / CATS.length) - Math.PI / 2;
-    return `<line x1="${cx}" y1="${cy}" x2="${cx + r * Math.cos(a)}" y2="${cy + r * Math.sin(a)}" stroke="#E8E4DC" stroke-width="1"/>`;
+    return `<line x1="${cx}" y1="${cy}" x2="${cx + r * Math.cos(a)}" y2="${cy + r * Math.sin(a)}" stroke="#E7E3DA" stroke-width="1"/>`;
   }).join('');
   let html = `<svg class="dial-svg" viewBox="0 0 ${size} ${size}">
-    <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#E8E4DC"/>
-    <circle cx="${cx}" cy="${cy}" r="${r-58}" fill="none" stroke="#F3F1EC"/>
-    <circle cx="${cx}" cy="${cy}" r="${r+42}" fill="none" stroke="#F3F1EC"/>
-    ${spokes}</svg>`;
-  html += `<button class="dial-hub ${activeCat==='All'?'active':''}" onclick="setCat('All')"><b>ALL</b><span>${all.length} CO.</span></button>`;
+    <circle cx="${cx}" cy="${cy}" r="${r + 30}" fill="none" stroke="#E7E3DA"/>
+    <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#E7E3DA"/>
+    <circle cx="${cx}" cy="${cy}" r="${r - 66}" fill="none" stroke="#F2F0EA"/>
+    ${ticks}${spokes}</svg>`;
+  html += `<button class="dial-hub ${activeCat==='All'?'active':''}" onclick="setCat('All')" aria-label="Show all sectors"><b>ALL</b><span>${all.length.toLocaleString()}</span><small>SECTORS</small></button>`;
   CATS.forEach((c, i) => {
     const a = (i * 2 * Math.PI / CATS.length) - Math.PI / 2;
     const x = cx + r * Math.cos(a), y = cy + r * Math.sin(a);
     const n = all.filter(x => x.category === c).length;
-    html += `<button class="dial-node ${activeCat===c?'active':''}" style="left:${x}px;top:${y}px;--node-c:${COLORS[c]}" onclick="setCat('${c}')"><b>${esc(c.toUpperCase())}</b><span>${n}</span></button>`;
+    html += `<button class="dial-node ${activeCat===c?'active':''}" style="left:${x}px;top:${y}px;--node-c:${COLORS[c]}" onclick="setCat('${c}')"><i>${String(i+1).padStart(2,'0')}</i><b>${esc(c.toUpperCase())}</b><span>${n}</span></button>`;
   });
   $('dial').innerHTML = html;
 }
 
 function buildStrip() {
-  $('strip').innerHTML = ['All', ...CATS].map(c => {
+  $('strip').innerHTML = ['All', ...CATS].map((c, i) => {
     const n = c === 'All' ? all.length : all.filter(x => x.category === c).length;
-    return `<button class="chip ${activeCat===c?'active':''}" onclick="setCat('${c}')">${esc(c.toUpperCase())}<small>${n}</small></button>`;
+    const color = c === 'All' ? '#0E1B33' : COLORS[c];
+    return `<button class="index-row ${activeCat===c?'active':''}" style="--row-c:${color}" onclick="setCat('${c}')">
+      <span class="no">${c === 'All' ? '&nbsp;&nbsp;' : String(i).padStart(2,'0')}</span>
+      <span class="nm">${esc(c.toUpperCase())}</span><span class="lead"></span><span class="ct">${n}</span></button>`;
   }).join('');
 }
 
@@ -318,9 +398,15 @@ function buildSubmitCats() {
   $('submit-cat').innerHTML = CATS.map(c => `<option>${esc(c)}</option>`).join('');
 }
 
+function buildFooter() {
+  $('foot-cats').innerHTML = CATS.map(c => `<a href="#" onclick="setCat('${c}');return false">${esc(c)}</a>`).join('');
+  $('foot-meta').textContent = `COMPILED FROM PUBLIC SOURCES · ${all.length.toLocaleString()} ENTRIES · UPDATED LIVE`;
+}
+
 function setCat(c) {
   activeCat = c;
-  buildDial(); buildStrip(); renderSections();
+  if ($('detail').style.display === 'block') closeDetail(true);
+  vt(() => { buildDial(); buildStrip(); renderSections(); });
   const top = document.querySelector('.meta-rule');
   if (top) top.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
@@ -332,7 +418,7 @@ function matches(x, q) {
 
 function cardHTML(x) {
   const color = COLORS[x.category] || '#1B4FD8';
-  return `<article class="card" onclick="openDetail('${esc(x.domain)}')">
+  return `<article class="card" style="--card-c:${color}" onclick="openDetail('${esc(x.domain)}')">
     <div class="card-top">
       <img class="logo" loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=${encodeURIComponent(x.domain)}&sz=128"
         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
@@ -360,7 +446,7 @@ function renderSections() {
       const preview = rows.slice(0, PREVIEW_N);
       html += `<section class="section" style="--sec-c:${COLORS[c]}">
         <div class="section-head">
-          <span class="no">${String(i+1).padStart(2,'0')}</span>
+          <span class="no">SECTOR ${String(i+1).padStart(2,'0')}</span>
           <h2>${esc(c)}</h2><span class="cnt">${rows.length} COMPANIES</span>
           ${rows.length > PREVIEW_N ? `<button class="more" onclick="setCat('${c}')">VIEW ALL ${rows.length} →</button>` : ''}
         </div>
@@ -372,15 +458,16 @@ function renderSections() {
     total = rows.length;
     const title = activeCat === 'All' ? 'Search results' : activeCat;
     const color = COLORS[activeCat] || '#1B4FD8';
+    const secNo = activeCat === 'All' ? 'QUERY' : `SECTOR ${String(CATS.indexOf(activeCat)+1).padStart(2,'0')}`;
     html = rows.length
       ? `<section class="section" style="--sec-c:${color}">
-          <div class="section-head"><span class="no">▣</span><h2>${esc(title)}</h2><span class="cnt">${rows.length} COMPANIES</span>
+          <div class="section-head"><span class="no">${secNo}</span><h2>${esc(title)}</h2><span class="cnt">${rows.length} COMPANIES</span>
           ${activeCat !== 'All' || q ? `<button class="more" onclick="clearFilters()">CLEAR ✕</button>` : ''}</div>
           <div class="grid">${rows.map(cardHTML).join('')}</div>
         </section>`
       : '<div class="empty">NO MATCHES IN THE ATLAS. TRY ANOTHER SEARCH.</div>';
   }
-  $('meta-left').textContent = `INDEX / ${total} COMPANIES SHOWN / ${all.length} LISTED`;
+  $('meta-left').textContent = `INDEX / ${total.toLocaleString()} COMPANIES SHOWN / ${all.length.toLocaleString()} LISTED`;
   $('lede-count').textContent = all.length.toLocaleString();
   el.innerHTML = html;
 }
@@ -397,8 +484,7 @@ const hqLine = x => has(x.hq_city) ? `${x.hq_city}${has(x.hq_state) ? ', ' + x.h
 
 function aboutHTML(x) {
   const noun = nounOf(x), words = ownWords(x);
-  const p1 = `${esc(x.name)} is a ${esc(x.subcategory.toLowerCase())} ${noun} in the ${esc(x.category)} section of The Wall${hqLine(x) ? `, based in ${esc(hqLine(x))}` : ''}. ` +
-    (words ? `As described ${ownWordsSrc(x)}: &ldquo;${esc(words)}&rdquo;` : esc(x.description));
+  const p1 = `${esc(x.name)} is a ${esc(x.subcategory.toLowerCase())} ${noun} in the ${esc(x.category)} section of The Wall${hqLine(x) ? `, based in ${esc(hqLine(x))}` : ''}. ${esc(x.description)}`;
   const factBits = [];
   if (has(x.year_established)) factBits.push(`operating since ${esc(x.year_established)}`);
   if (has(x.team_size)) factBits.push(`a listed team size of ${esc(x.team_size)}`);
@@ -410,6 +496,12 @@ function aboutHTML(x) {
     `Providers in this section are typically engaged by ${esc(x.target_executive_icp || 'senior executives')} to address ${esc((x.bottleneck_solved || 'growth bottlenecks').toLowerCase())}.`;
   const p3 = `To evaluate ${esc(x.name)}, review its capabilities at ${esc(x.domain)}, request case material relevant to your revenue band, and start through its own intake process. This profile is compiled from public sources${has(x.clutch_bio) || has(x.clutch_rating) ? ' including its Clutch listing' : ''} and is not an endorsement.`;
   return `<div class="d-about"><h2>About ${esc(x.name)}</h2><p>${p1}</p><p>${p2}</p><p>${p3}</p></div>`;
+}
+
+function quoteHTML(x) {
+  const words = ownWords(x);
+  if (!words) return '';
+  return `<figure class="ownquote"><p>&ldquo;${esc(words)}&rdquo;</p><cite>AS DESCRIBED ${ownWordsSrc(x).toUpperCase()}</cite></figure>`;
 }
 
 function quickFactsHTML(x) {
@@ -461,6 +553,7 @@ function buildStandardQA(x) {
         : `Contact ${x.name} through the inquiry form or channels published at ${x.domain}.`]
   ];
 }
+
 function buildTypeQA(x) {
   const words = ownWords(x), hq = hqLine(x);
   const positioning = words ? `Its own positioning: "${trim140(words)}" ` : '';
@@ -512,8 +605,8 @@ function buildTypeQA(x) {
 function qaPairs(x) { return [...buildStandardQA(x), ...buildTypeQA(x)]; }
 
 function qaHTML(x) {
-  return `<div class="qa-wrap"><h2>Questions &amp; answers</h2>${qaPairs(x).map(([q, a]) =>
-    `<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}</div>`;
+  return `<div class="qa-wrap"><h2>Questions &amp; answers</h2>${qaPairs(x).map(([q, a], i) =>
+    `<details><summary><span class="qno">Q.${String(i+1).padStart(2,'0')}</span>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}</div>`;
 }
 
 function injectJSONLD(x) {
@@ -559,64 +652,70 @@ async function openDetail(domain, push = true) {
   document.title = `${x.name} — The Wall`;
   const color = COLORS[x.category] || '#1B4FD8';
   const related = all.filter(r => r.subcategory === x.subcategory && r.domain !== x.domain).slice(0, 6);
-  $('home').style.display = 'none';
-  const d = $('detail');
-  d.style.display = 'block';
-  d.innerHTML = `
-    <button class="backlink" onclick="closeDetail()">← BACK TO INDEX</button>
-    <div class="detail-grid">
-      <div>
-        <div class="d-head">
-          <img class="d-logo" alt="" src="https://www.google.com/s2/favicons?domain=${encodeURIComponent(x.domain)}&sz=128"
-            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="d-logo-fb" style="display:none;background:${color}">${esc(x.name[0] || '?')}</div>
-          <div>
-            <h1>${esc(x.name)}</h1>
-            <span class="sublabel" style="color:${color};font-size:10.5px">${esc(x.category.toUpperCase())} / ${esc(x.subcategory.toUpperCase())}</span>
+  vt(() => {
+    $('home').style.display = 'none';
+    const d = $('detail');
+    d.style.display = 'block';
+    d.innerHTML = `
+      <div class="crumb"><button onclick="closeDetail()">INDEX</button><span>/</span><button onclick="closeDetail();setCat('${esc(x.category)}')">${esc(x.category.toUpperCase())}</button><span>/</span><span style="color:var(--ink)">${esc(x.name.toUpperCase())}</span></div>
+      <div class="detail-grid">
+        <div>
+          <div class="d-head">
+            <img class="d-logo" alt="" src="https://www.google.com/s2/favicons?domain=${encodeURIComponent(x.domain)}&sz=128"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="d-logo-fb" style="display:none;background:${color}">${esc(x.name[0] || '?')}</div>
+            <div>
+              <h1>${esc(x.name)}</h1>
+              <span class="sublabel" style="color:${color};font-size:10px">${esc(x.category.toUpperCase())} / ${esc(x.subcategory.toUpperCase())}</span>
+            </div>
           </div>
+          <p class="d-desc">${esc(x.description)}</p>
+          ${quoteHTML(x)}
+          <a class="d-cta" href="https://${esc(x.domain)}" target="_blank" rel="noopener nofollow">VISIT WEBSITE ↗</a>
+          ${aboutHTML(x)}
+          ${quickFactsHTML(x)}
+          ${qaHTML(x)}
         </div>
-        <p class="d-desc">${esc(x.description)}</p>
-        <a class="d-cta" href="https://${esc(x.domain)}" target="_blank" rel="noopener nofollow">VISIT WEBSITE ↗</a>
-        ${aboutHTML(x)}
-        ${quickFactsHTML(x)}
-        ${qaHTML(x)}
+        <dl class="spec">
+          <div class="spec-title">DATA SHEET</div>
+          <div class="spec-row"><dt>DOMAIN</dt><dd>${esc(x.domain)}</dd></div>
+          <div class="spec-row"><dt>CATEGORY</dt><dd style="color:${color}">${esc(x.category.toUpperCase())}</dd></div>
+          <div class="spec-row"><dt>SPECIALTY</dt><dd>${esc(x.subcategory.toUpperCase())}</dd></div>
+          <div class="spec-row"><dt>TYPE</dt><dd>${esc((x.listing_type || 'PROVIDER').toUpperCase())}</dd></div>
+          <div class="spec-row"><dt>SOLVES</dt><dd>${esc((x.bottleneck_solved || '—').toUpperCase())}</dd></div>
+          <div class="spec-row"><dt>TYPICAL BUYER</dt><dd>${esc((x.target_executive_icp || '—').toUpperCase())}</dd></div>
+          <div class="spec-row"><dt>CLIENT FIT</dt><dd>${esc(x.client_revenue_fit || '$5M-$50M+')}</dd></div>
+          ${has(x.hq_city) ? `<div class="spec-row"><dt>HQ</dt><dd>${esc(hqLine(x).toUpperCase())}</dd></div>` : ''}
+          ${has(x.year_established) ? `<div class="spec-row"><dt>FOUNDED</dt><dd>${esc(x.year_established)}</dd></div>` : ''}
+          ${has(x.team_size) ? `<div class="spec-row"><dt>TEAM SIZE</dt><dd>${esc(x.team_size)}</dd></div>` : ''}
+          ${has(x.min_project_size) ? `<div class="spec-row"><dt>MIN PROJECT</dt><dd>${esc(x.min_project_size)}</dd></div>` : ''}
+          ${has(x.avg_hourly_rate) ? `<div class="spec-row"><dt>AVG RATE</dt><dd>${esc(x.avg_hourly_rate)}</dd></div>` : ''}
+          ${has(x.phone_number) ? `<div class="spec-row"><dt>PHONE</dt><dd>${esc(x.phone_number)}</dd></div>` : ''}
+          ${has(x.clutch_rating) ? `<div class="spec-row"><dt>CLUTCH RATING</dt><dd>${esc(String(x.clutch_rating))}/5${has(x.clutch_reviews) ? ` · ${esc(String(x.clutch_reviews))} REVIEWS` : ''}</dd></div>` : ''}
+          <div class="spec-row"><dt>STATUS</dt><dd>LISTED</dd></div>
+        </dl>
       </div>
-      <dl class="spec">
-        <div class="spec-row"><dt>DOMAIN</dt><dd>${esc(x.domain)}</dd></div>
-        <div class="spec-row"><dt>CATEGORY</dt><dd style="color:${color}">${esc(x.category.toUpperCase())}</dd></div>
-        <div class="spec-row"><dt>SPECIALTY</dt><dd>${esc(x.subcategory.toUpperCase())}</dd></div>
-        <div class="spec-row"><dt>TYPE</dt><dd>${esc((x.listing_type || 'PROVIDER').toUpperCase())}</dd></div>
-        <div class="spec-row"><dt>SOLVES</dt><dd>${esc((x.bottleneck_solved || '—').toUpperCase())}</dd></div>
-        <div class="spec-row"><dt>TYPICAL BUYER</dt><dd>${esc((x.target_executive_icp || '—').toUpperCase())}</dd></div>
-        <div class="spec-row"><dt>CLIENT FIT</dt><dd>${esc(x.client_revenue_fit || '$5M-$50M+')}</dd></div>
-        ${has(x.hq_city) ? `<div class="spec-row"><dt>HQ</dt><dd>${esc(hqLine(x).toUpperCase())}</dd></div>` : ''}
-        ${has(x.year_established) ? `<div class="spec-row"><dt>FOUNDED</dt><dd>${esc(x.year_established)}</dd></div>` : ''}
-        ${has(x.team_size) ? `<div class="spec-row"><dt>TEAM SIZE</dt><dd>${esc(x.team_size)}</dd></div>` : ''}
-        ${has(x.min_project_size) ? `<div class="spec-row"><dt>MIN PROJECT</dt><dd>${esc(x.min_project_size)}</dd></div>` : ''}
-        ${has(x.avg_hourly_rate) ? `<div class="spec-row"><dt>AVG RATE</dt><dd>${esc(x.avg_hourly_rate)}</dd></div>` : ''}
-        ${has(x.phone_number) ? `<div class="spec-row"><dt>PHONE</dt><dd>${esc(x.phone_number)}</dd></div>` : ''}
-        ${has(x.clutch_rating) ? `<div class="spec-row"><dt>CLUTCH RATING</dt><dd>${esc(String(x.clutch_rating))}/5${has(x.clutch_reviews) ? ` · ${esc(String(x.clutch_reviews))} REVIEWS` : ''}</dd></div>` : ''}
-        <div class="spec-row"><dt>STATUS</dt><dd>LISTED</dd></div>
-      </dl>
-    </div>
-    ${related.length ? `
-    <div class="related-head section-head" style="--sec-c:${color}">
-      <span class="no">≡</span><h2>Also in ${esc(x.subcategory)}</h2><span class="cnt">${related.length}</span>
-    </div>
-    <div class="grid">${related.map(cardHTML).join('')}</div>` : ''}
-  `;
+      ${related.length ? `
+      <div class="related-head section-head" style="--sec-c:${color}">
+        <span class="no">CROSS-REF</span><h2>Also in ${esc(x.subcategory)}</h2><span class="cnt">${related.length}</span>
+      </div>
+      <div class="grid">${related.map(cardHTML).join('')}</div>` : ''}
+    `;
+    window.scrollTo({ top: 0 });
+  });
   injectJSONLD(x);
-  window.scrollTo({ top: 0 });
 }
 
 function closeDetail(push = true) {
   if (push) history.pushState({}, '', location.pathname);
   document.getElementById('jsonld')?.remove();
   document.title = 'The Wall — Operations Atlas';
-  $('detail').style.display = 'none';
-  $('detail').innerHTML = '';
-  $('home').style.display = 'block';
-  renderSections();
+  vt(() => {
+    $('detail').style.display = 'none';
+    $('detail').innerHTML = '';
+    $('home').style.display = 'block';
+    renderSections();
+  });
 }
 
 function route() {
