@@ -253,6 +253,10 @@ const run = async () => {
   const UPDATES = existsSync(join(ROOT, 'news/updates')) ? readdirSync(join(ROOT, 'news/updates')).filter(f => f.endsWith('.html')) : [];
   const REPORT = existsSync(join(ROOT, 'report')) ? readdirSync(join(ROOT, 'report')).filter(f => f.endsWith('.html')) : [];
   const BADGE = existsSync(join(ROOT, 'badge')) ? readdirSync(join(ROOT, 'badge')).filter(f => f.endsWith('.html')) : [];
+  const STATES = existsSync(join(ROOT, 'states')) ? readdirSync(join(ROOT, 'states')).filter(f => f.endsWith('.html')) : [];
+  const CITIES = existsSync(join(ROOT, 'cities')) ? readdirSync(join(ROOT, 'cities')).filter(f => f.endsWith('.html')) : [];
+  const COMPARE = existsSync(join(ROOT, 'compare')) ? readdirSync(join(ROOT, 'compare')).filter(f => f.endsWith('.html')) : [];
+  const QUESTIONS = existsSync(join(ROOT, 'questions')) ? readdirSync(join(ROOT, 'questions')).filter(f => f.endsWith('.html')) : [];
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
     `<url><loc>${SITE}/</loc><lastmod>${today}</lastmod><changefreq>daily</changefreq></url>\n` +
     `<url><loc>${SITE}/sitemap.html</loc><lastmod>${today}</lastmod></url>\n` +
@@ -266,6 +270,10 @@ const run = async () => {
     UPDATES.map(f => `<url><loc>${SITE}/news/updates/${f === 'index.html' ? '' : f}</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq></url>`).join('\n') + '\n' +
     REPORT.map(f => `<url><loc>${SITE}/report/${f}</loc><lastmod>${today}</lastmod></url>`).join('\n') + '\n' +
     BADGE.map(f => `<url><loc>${SITE}/badge/${f === 'index.html' ? '' : f}</loc><lastmod>${today}</lastmod></url>`).join('\n') + '\n' +
+    STATES.map(f => `<url><loc>${SITE}/states/${f === 'index.html' ? '' : f}</loc><lastmod>${today}</lastmod></url>`).join('\n') + '\n' +
+    CITIES.map(f => `<url><loc>${SITE}/cities/${f === 'index.html' ? '' : f}</loc><lastmod>${today}</lastmod></url>`).join('\n') + '\n' +
+    COMPARE.map(f => `<url><loc>${SITE}/compare/${f === 'index.html' ? '' : f}</loc><lastmod>${today}</lastmod></url>`).join('\n') + '\n' +
+    QUESTIONS.map(f => `<url><loc>${SITE}/questions/${f === 'index.html' ? '' : f}</loc><lastmod>${today}</lastmod></url>`).join('\n') + '\n' +
     urls.map(u => `<url><loc>${u}</loc><lastmod>${today}</lastmod></url>`).join('\n') + '\n</urlset>';
   writeFileSync(join(ROOT, 'sitemap.xml'), sitemap);
   writeFileSync(join(ROOT, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`);
