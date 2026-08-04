@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>US Marketing Agency Rate Benchmark: Where Does Your Rate Fall? — The Wall</title>
+<meta name="description" content="Interactive rate-benchmarking tool: pick a growth-services category, enter an hourly rate, and see exactly where it falls in the real US market distribution — computed from The Wall's index of 1,440 US agencies that publish rates.">
+<link rel="canonical" href="https://hitthewall.net/tools/rate-benchmark.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧱</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"The Wall","url":"https://hitthewall.net/","email":"support@misspepper.ai","description":"An operations atlas of US-based companies that solve sales, marketing, SEO, thought leadership, creative, automation, and demand generation problems for established businesses."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"US Marketing Agency Rate Benchmark","url":"https://hitthewall.net/tools/rate-benchmark.html","applicationCategory":"BusinessApplication","operatingSystem":"Web","browserRequirements":"Requires JavaScript","isAccessibleForFree":true,"description":"Interactive tool that shows where any US agency hourly rate falls in the market distribution, by discipline, computed from real data on 1,440 US agencies.","publisher":{"@type":"Organization","name":"The Wall","url":"https://hitthewall.net/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"The Wall","item":"https://hitthewall.net/"},{"@type":"ListItem","position":2,"name":"Tools"},{"@type":"ListItem","position":3,"name":"Rate Benchmark"}]}</script>
+<style>
+  :root{--porcelain:#FAF9F6;--stone:#E7E3DA;--stone-lt:#F2F0EA;--cobalt:#1B4FD8;--oxblood:#6E1423;--ink:#0E1B33;--chrome:#85898F;--body:#3B4557;--serif:'Newsreader',Georgia,serif;--sans:'IBM Plex Sans',sans-serif;--mono:'IBM Plex Mono',monospace}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:var(--sans);background:var(--porcelain);color:var(--ink);-webkit-font-smoothing:antialiased}
+  .wrap{max-width:820px;margin:0 auto;padding:0 24px}
+  a{color:var(--cobalt)}
+  .topbar{border-bottom:1px solid var(--stone)}
+  .topbar::before{content:'';display:block;height:2px;background:linear-gradient(90deg,var(--cobalt) 0 62%,var(--oxblood) 62% 84%,var(--ink) 84% 100%)}
+  .topbar-in{display:flex;align-items:center;justify-content:space-between;height:56px}
+  .wordmark{font-family:var(--serif);font-weight:700;font-size:20px;text-decoration:none;color:var(--ink);display:flex;align-items:baseline;gap:10px}
+  .wordmark small{font-family:var(--mono);font-weight:600;font-size:8.5px;letter-spacing:.18em;color:var(--chrome)}
+  .back{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.1em;color:var(--cobalt);text-decoration:none}
+  .kicker{font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:.16em;color:var(--oxblood);padding:34px 0 0}
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(28px,4.5vw,40px);letter-spacing:-.02em;line-height:1.15;padding:10px 0 6px}
+  .dek{font-family:var(--serif);font-style:italic;font-size:17.5px;line-height:1.55;color:var(--body);padding:8px 0 4px;max-width:680px}
+  h2{font-family:var(--serif);font-weight:600;font-size:21px;letter-spacing:-.01em;margin:30px 0 10px}
+  p,li{font-size:14.5px;line-height:1.75;color:var(--body);margin-bottom:12px}
+
+  .tool{border:1px solid var(--stone);border-radius:12px;background:#fff;padding:22px 24px;margin:26px 0}
+  .inputs{display:grid;grid-template-columns:2fr 1fr auto;gap:12px;align-items:end;margin-bottom:20px}
+  @media(max-width:640px){.inputs{grid-template-columns:1fr}}
+  .field label{display:block;font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:.14em;color:var(--chrome);margin-bottom:6px;text-transform:uppercase}
+  .field select,.field input{width:100%;font-family:var(--sans);font-size:15px;color:var(--ink);background:#fff;border:1px solid var(--stone);border-radius:7px;padding:11px 12px;outline:none}
+  .field select:focus,.field input:focus{border-color:var(--cobalt)}
+  .btn{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.1em;color:#fff;background:var(--cobalt);border:none;border-radius:7px;padding:12px 20px;cursor:pointer;height:44px}
+  .btn:hover{background:#153ea8}
+
+  .verdict{padding:18px 20px;border-radius:9px;background:var(--stone-lt);margin-bottom:20px;display:none}
+  .verdict.on{display:block}
+  .verdict .big{font-family:var(--serif);font-size:22px;font-weight:600;color:var(--ink);line-height:1.3}
+  .verdict .big b{color:var(--cobalt)}
+  .verdict p{margin:8px 0 0;font-size:13.5px}
+
+  table.bands{width:100%;border-collapse:collapse;margin-top:6px}
+  table.bands th{font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--chrome);text-align:left;padding:8px 10px;border-bottom:1px solid var(--stone);background:var(--stone-lt)}
+  table.bands td{padding:0;border-bottom:1px solid var(--stone-lt);vertical-align:middle}
+  .bar-cell{position:relative;padding:8px 10px;font-family:var(--mono);font-size:12px;color:var(--body);overflow:hidden}
+  .bar{position:absolute;top:0;left:0;bottom:0;background:var(--stone-lt);z-index:0}
+  .bar.here{background:rgba(27,79,216,.18)}
+  .bar-cell span{position:relative;z-index:1}
+  .band-name{padding:8px 10px;font-family:var(--sans);font-size:13.5px;color:var(--ink);white-space:nowrap}
+  .band-name.here{color:var(--cobalt);font-weight:600}
+  .n-cell{padding:8px 10px;font-family:var(--mono);font-size:12px;color:var(--chrome);text-align:right;white-space:nowrap}
+
+  .method{font-size:12.5px;color:var(--chrome);line-height:1.7;margin-top:14px}
+  .method a{color:var(--chrome)}
+
+  .rel{margin:34px 0 0;border-top:1px solid var(--stone);padding-top:18px}
+  .rel h3{font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:.16em;color:var(--oxblood);margin:0 0 10px}
+  .rel a{display:block;font-family:var(--serif);font-size:16px;font-weight:600;color:var(--ink);text-decoration:none;margin-bottom:8px}
+  .rel a:hover{color:var(--cobalt)}
+
+  footer{border-top:1px solid var(--stone);margin-top:50px;padding:22px 0 40px}
+  footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;max-width:820px}
+  footer span,footer a{font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:var(--chrome);text-decoration:none}
+  footer a:hover{color:var(--ink)}
+</style>
+</head>
+<body>
+<nav class="topbar"><div class="wrap topbar-in">
+  <a class="wordmark" href="../">The Wall <small>OPERATIONS ATLAS</small></a>
+  <a class="back" href="../">BROWSE THE ATLAS →</a>
+</div></nav>
+
+<main class="wrap">
+<div class="kicker">TOOLS / RATE BENCHMARK</div>
+<h1>US Marketing Agency Rate Benchmark</h1>
+<p class="dek">Pick a discipline. Enter an hourly rate — yours, or one you were quoted. See exactly where it falls in the real US market distribution. Computed from 1,440 US agencies that publish rates on their public Clutch profiles, as indexed by The Wall.</p>
+
+<div class="tool">
+  <form class="inputs" id="f" onsubmit="return false">
+    <div class="field">
+      <label for="cat">Discipline</label>
+      <select id="cat">
+        <option value="Creative Strategy">Creative Strategy (664 disclosed)</option>
+        <option value="Marketing" selected>Marketing (359 disclosed)</option>
+        <option value="SEO">SEO (180 disclosed)</option>
+        <option value="Thought Leadership">Thought Leadership (83 disclosed)</option>
+        <option value="Content Marketing">Content Marketing (71 disclosed)</option>
+        <option value="Social Media Marketing">Social Media Marketing (59 disclosed)</option>
+        <option value="Automation">Automation (15 disclosed)</option>
+        <option value="Demand Gen">Demand Gen (9 disclosed)</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="rate">Hourly rate (USD)</label>
+      <input type="number" id="rate" min="1" max="2000" step="1" value="175" inputmode="numeric">
+    </div>
+    <button class="btn" type="button" onclick="run()">BENCHMARK →</button>
+  </form>
+
+  <div class="verdict" id="verdict"></div>
+  <div id="dist"></div>
+  <p class="method">Method: hourly-rate bands published by 1,440 US agencies on their public Clutch.co profiles, as indexed and re-classified into The Wall's 10 disciplines. Sales and AI Marketing carry no rate data (compiled from curated sources rather than agency-review platforms) and are omitted. Snapshot date: August 3, 2026. <a href="../news/us-agency-hourly-rates-2026.html">Full briefing</a>.</p>
+</div>
+
+<h2>How to read the result</h2>
+<p><strong>Below the modal band</strong> — the rate is at the lower half of the market for that discipline. That's a value quote if the firm has the specialty and team seniority you need; a warning if it doesn't (a $50/hr rate on complex enterprise work usually means offshore delivery or junior-heavy staffing).</p>
+<p><strong>In the modal band</strong> — the rate is priced at the market norm. The rate itself is not a differentiator; what differentiates the firm is capability, portfolio, team composition, and how well the firm's specialty matches your problem.</p>
+<p><strong>Above the modal band</strong> — the rate is at the premium end. That's usually justified by deep specialization (a firm known for one thing that clients pay a premium for), senior-only staffing, or a track record on adjacent brand-name work. A premium quote should come with a clear reason; if it doesn't, ask.</p>
+<p><strong>No rate published</strong> — some firms decline to publish. That's not automatically a red flag — thought-leadership and demand-generation shops often price by engagement rather than by hour. It is a question to ask in the first conversation.</p>
+
+<div class="rel">
+  <h3>KEEP READING</h3>
+  <a href="../news/us-agency-hourly-rates-2026.html">What US growth agencies charge in 2026 — the full briefing</a>
+  <a href="../news/rate-transparency-by-category-2026.html">The transparency map: SEO firms publish rates 87% of the time, Demand Gen 60%</a>
+  <a href="../news/agency-minimum-project-sizes-2026.html">The price of entry: 82% of US agencies that disclose a minimum will start at $10,000 or less</a>
+  <a href="../news/rate-transparency-gap-2026.html">The transparency gap: 17% of US growth agencies won't publish an hourly rate</a>
+  <a href="../hubs/marketing-consultant.html">Marketing consultants: how they price differently</a>
+</div>
+</main>
+
+<footer><div class="wrap">
+  <span>© The Wall · INDEPENDENT DIRECTORY · NOT AN ENDORSEMENT ENGINE</span>
+  <span><a href="../about.html">ABOUT</a> · <a href="../news/">BRIEFINGS</a> · <a href="../glossary.html">GLOSSARY</a> · <a href="../editorial-policy.html">EDITORIAL</a> · <a href="../contact.html">CONTACT</a></span>
+</div></footer>
+
+<script>
+// Real distribution data, computed 2026-08-03 from directory_companies.
+const DATA = {
+  "Automation":            [{band:"$50 - $99 / hr",n:2},{band:"$100 - $149 / hr",n:11},{band:"$150 - $199 / hr",n:1},{band:"$200 - $300 / hr",n:1}],
+  "Content Marketing":     [{band:"< $25 / hr",n:2},{band:"$25 - $49 / hr",n:3},{band:"$50 - $99 / hr",n:3},{band:"$100 - $149 / hr",n:27},{band:"$150 - $199 / hr",n:27},{band:"$200 - $300 / hr",n:9}],
+  "Creative Strategy":     [{band:"< $25 / hr",n:2},{band:"$25 - $49 / hr",n:19},{band:"$50 - $99 / hr",n:69},{band:"$100 - $149 / hr",n:203},{band:"$150 - $199 / hr",n:286},{band:"$200 - $300 / hr",n:75},{band:"$300+ / hr",n:10}],
+  "Demand Gen":            [{band:"< $25 / hr",n:6},{band:"$25 - $49 / hr",n:1},{band:"$50 - $99 / hr",n:1},{band:"$100 - $149 / hr",n:1}],
+  "Marketing":             [{band:"< $25 / hr",n:9},{band:"$25 - $49 / hr",n:22},{band:"$50 - $99 / hr",n:48},{band:"$100 - $149 / hr",n:123},{band:"$150 - $199 / hr",n:114},{band:"$200 - $300 / hr",n:40},{band:"$300+ / hr",n:3}],
+  "SEO":                   [{band:"< $25 / hr",n:4},{band:"$25 - $49 / hr",n:21},{band:"$50 - $99 / hr",n:28},{band:"$100 - $149 / hr",n:72},{band:"$150 - $199 / hr",n:40},{band:"$200 - $300 / hr",n:12},{band:"$300+ / hr",n:3}],
+  "Social Media Marketing":[{band:"< $25 / hr",n:1},{band:"$25 - $49 / hr",n:1},{band:"$50 - $99 / hr",n:7},{band:"$100 - $149 / hr",n:16},{band:"$150 - $199 / hr",n:26},{band:"$200 - $300 / hr",n:8}],
+  "Thought Leadership":    [{band:"< $25 / hr",n:1},{band:"$25 - $49 / hr",n:3},{band:"$50 - $99 / hr",n:1},{band:"$100 - $149 / hr",n:17},{band:"$150 - $199 / hr",n:37},{band:"$200 - $300 / hr",n:18},{band:"$300+ / hr",n:6}]
+};
+// Numeric bounds per band (used to place a $ rate in the right bucket)
+const BOUNDS = [
+  ["< $25 / hr",         0,    25],
+  ["$25 - $49 / hr",     25,   50],
+  ["$50 - $99 / hr",     50,  100],
+  ["$100 - $149 / hr",  100,  150],
+  ["$150 - $199 / hr",  150,  200],
+  ["$200 - $300 / hr",  200,  300],
+  ["$300+ / hr",        300, 99999]
+];
+function bandFor(rate){for(const [n,lo,hi] of BOUNDS){if(rate>=lo&&rate<hi)return n}return "$300+ / hr"}
+function pct(x){return Math.round(x*10)/10}
+
+function run(){
+  const cat = document.getElementById('cat').value;
+  const rate = Math.max(1, Math.min(2000, +document.getElementById('rate').value || 0));
+  const dist = DATA[cat];
+  const total = dist.reduce((s,r)=>s+r.n,0);
+  const modal = dist.reduce((a,b)=>b.n>a.n?b:a);
+  const here = bandFor(rate);
+  const idx = dist.findIndex(r=>r.band===here);
+  // percentile — where does the rate fall in cumulative count (lo end of band)
+  let cum = 0;
+  for(let i=0;i<dist.length;i++){
+    if(dist[i].band === here){ break }
+    cum += dist[i].n;
+  }
+  const percentile = pct(100 * cum / total);
+
+  // verdict copy
+  const modalIdx = dist.findIndex(r=>r.band===modal.band);
+  let verdict = '';
+  if(idx === -1 || dist[idx]?.n === 0){
+    verdict = `<div class="big"><b>$${rate}/hr</b> falls in the <b>${here}</b> band — no firms in this discipline currently publish a rate in that band.</div><p>That's rare enough to be worth a second look. Rates that far outside the disclosed distribution usually reflect either an atypical engagement (small-project premium, custom scope) or a data gap (many firms in this discipline don't publish rates at all).</p>`;
+  } else if(idx === modalIdx){
+    verdict = `<div class="big"><b>$${rate}/hr</b> is in the market's <b>modal band</b> for ${cat} — priced at the norm.</div><p>Roughly ${pct(100 * modal.n / total)}% of ${total} disclosed ${cat} firms sit in this band. Rate itself is not a differentiator here — what separates firms at this price is capability, specialty, and team seniority.</p>`;
+  } else if(idx < modalIdx){
+    verdict = `<div class="big"><b>$${rate}/hr</b> is <b>below the modal band</b> for ${cat}.</div><p>Priced at the lower half of the market. That's a value quote if the firm has the specialty and seniority you need. If the firm is pitching complex enterprise work at this rate, ask what's actually staffing the account — often offshore delivery or junior-heavy teams.</p>`;
+  } else {
+    verdict = `<div class="big"><b>$${rate}/hr</b> is <b>above the modal band</b> for ${cat}.</div><p>Priced at the premium end. That's usually justified by deep specialization, senior-only staffing, or a specific track record. A premium quote should come with a clear reason — if it doesn't, ask what you're paying extra for.</p>`;
+  }
+  verdict += `<p style="margin-top:10px;color:var(--chrome);font-size:12px;font-family:var(--mono)">CUMULATIVE PERCENTILE (LOW END OF BAND): ${percentile}TH · MEDIAN OF DISCLOSED: <b>${modal.band}</b></p>`;
+
+  document.getElementById('verdict').innerHTML = verdict;
+  document.getElementById('verdict').classList.add('on');
+
+  // distribution table with highlighted "here" band
+  const maxN = Math.max(...dist.map(r=>r.n));
+  let html = '<table class="bands"><thead><tr><th>Band</th><th style="width:60%">Distribution</th><th style="text-align:right">Firms</th></tr></thead><tbody>';
+  for(const r of dist){
+    const isHere = r.band === here;
+    const w = maxN ? Math.max(1, r.n / maxN * 100) : 0;
+    html += `<tr>
+      <td class="band-name${isHere?' here':''}">${r.band}${isHere?' ← your rate':''}</td>
+      <td class="bar-cell"><div class="bar${isHere?' here':''}" style="width:${w}%"></div><span>${pct(100*r.n/total)}% of ${total}</span></td>
+      <td class="n-cell">${r.n}</td>
+    </tr>`;
+  }
+  html += '</tbody></table>';
+  document.getElementById('dist').innerHTML = html;
+}
+run();
+</script>
+</body>
+</html>

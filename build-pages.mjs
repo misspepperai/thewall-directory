@@ -248,6 +248,9 @@ const run = async () => {
   const NEWS = existsSync(join(ROOT, 'news')) ? readdirSync(join(ROOT, 'news')).filter(f => f.endsWith('.html')) : [];
   const PILLARS = existsSync(join(ROOT, 'pillars')) ? readdirSync(join(ROOT, 'pillars')).filter(f => f.endsWith('.html')) : [];
   const HUBS = existsSync(join(ROOT, 'hubs')) ? readdirSync(join(ROOT, 'hubs')).filter(f => f.endsWith('.html')) : [];
+  const ENTITIES = existsSync(join(ROOT, 'entities')) ? readdirSync(join(ROOT, 'entities')).filter(f => f.endsWith('.html')) : [];
+  const TOOLS = existsSync(join(ROOT, 'tools')) ? readdirSync(join(ROOT, 'tools')).filter(f => f.endsWith('.html')) : [];
+  const UPDATES = existsSync(join(ROOT, 'news/updates')) ? readdirSync(join(ROOT, 'news/updates')).filter(f => f.endsWith('.html')) : [];
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
     `<url><loc>${SITE}/</loc><lastmod>${today}</lastmod><changefreq>daily</changefreq></url>\n` +
     `<url><loc>${SITE}/sitemap.html</loc><lastmod>${today}</lastmod></url>\n` +
@@ -256,6 +259,9 @@ const run = async () => {
     (existsSync(join(ROOT, 'glossary.html')) ? `<url><loc>${SITE}/glossary.html</loc><lastmod>${today}</lastmod></url>\n` : '') +
     PILLARS.map(f => `<url><loc>${SITE}/pillars/${f}</loc><lastmod>${today}</lastmod></url>`).join('\n') + '\n' +
     HUBS.map(f => `<url><loc>${SITE}/hubs/${f}</loc><lastmod>${today}</lastmod></url>`).join('\n') + '\n' +
+    ENTITIES.map(f => `<url><loc>${SITE}/entities/${f === 'index.html' ? '' : f}</loc><lastmod>${today}</lastmod></url>`).join('\n') + '\n' +
+    TOOLS.map(f => `<url><loc>${SITE}/tools/${f}</loc><lastmod>${today}</lastmod></url>`).join('\n') + '\n' +
+    UPDATES.map(f => `<url><loc>${SITE}/news/updates/${f === 'index.html' ? '' : f}</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq></url>`).join('\n') + '\n' +
     urls.map(u => `<url><loc>${u}</loc><lastmod>${today}</lastmod></url>`).join('\n') + '\n</urlset>';
   writeFileSync(join(ROOT, 'sitemap.xml'), sitemap);
   writeFileSync(join(ROOT, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`);

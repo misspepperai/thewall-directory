@@ -245,6 +245,241 @@ Structured data — hourly band, minimum, team size, review count — is publish
   ],
   relPillars: ['marketing', 'demand-gen', 'sales'],
   ctaCat: 'Marketing', ctaSlug: 'marketing'
+},
+{
+  slug: 'social-media-management-platforms',
+  headTerm: 'social media management platforms',
+  title: `Social Media Management Platforms: The 2026 Buyer's Reference — The Wall`,
+  metaDesc: `The real US social media management platform market in 2026 — Sprout Social, Hootsuite, Later, Buffer, Loomly, HubSpot Social, Brandwatch, Zoho Social — what each is actually built for, what they cost, and when the platform is the answer vs when the answer is an agency.`,
+  h1: `Social Media Management Platforms`,
+  dek: `A social media management platform is the software layer that lets a marketing team plan, schedule, publish, moderate, and measure content across the social channels a business actually uses — usually Instagram, LinkedIn, Facebook, TikTok, X, and increasingly YouTube Shorts. In 2026 the category has fragmented into four buyer-shapes with very different platforms winning each one. Here is what actually differentiates them and how to decide whether the platform is the answer or the answer is an agency.`,
+  sections: [
+    {
+      h2: `The four buyer-shapes the platform market has fragmented into`,
+      body: `<strong>1. Enterprise-scale multi-brand management.</strong> Twenty brand handles across four regions, ten users, approval workflows, compliance archiving, integration with the CRM and DAM. This is where <em>Sprout Social</em>, <em>Hootsuite Enterprise</em>, and <em>Sprinklr</em> compete. Pricing is per-user + per-social-profile, typically $500–$5,000+ per month all-in.
+<br><br>
+<strong>2. Mid-market single-brand teams.</strong> Two to five people running one brand's social presence across four to six channels. This is <em>HubSpot Social</em> (bundled), <em>Zoho Social</em>, <em>Loomly</em>, <em>Sendible</em>. $50–$300/month, integrated calendars, decent analytics, easier learning curve than the enterprise tier.
+<br><br>
+<strong>3. Creator-and-small-business scheduling.</strong> One person, three channels, publish-and-forget. <em>Later</em>, <em>Buffer</em>, <em>Planoly</em>, <em>Metricool</em>. $10–$50/month, visual calendar first, Instagram-native, sometimes-clumsy on LinkedIn or TikTok.
+<br><br>
+<strong>4. Social listening and monitoring.</strong> Distinct category — <em>Brandwatch</em>, <em>Talkwalker</em>, <em>Meltwater</em>, <em>Sprout Listening</em>. Not primarily about publishing; about knowing what the market is saying about you and your competitors. Priced $1,000–$10,000+/month.
+<br><br>
+Most buyers who assume they need "one platform" actually need two: a publishing tool for their own posts, and a listening tool if they're brand-defensive. Trying to force one platform to do both usually results in doing both badly.`
+    },
+    {
+      h2: `What social media management platforms actually cost in 2026`,
+      body: `Pricing has fragmented as sharply as capability. A rough map of the 2026 US market:
+<br><br>
+<strong>Under $50/month</strong> — Buffer, Later starter, Planoly free tier, Hootsuite Professional (single user). Good enough for a founder or a one-person marketing team on two or three channels. Meaningful analytics start above this tier.
+<br><br>
+<strong>$50–$300/month</strong> — Hootsuite Team, Sprout Social Standard, Loomly, Zoho Social Professional, HubSpot Marketing Hub Starter. The center of gravity of the US SMB and mid-market segment. Multi-user, approval workflows, real reporting.
+<br><br>
+<strong>$300–$1,000/month</strong> — Sprout Social Advanced, Hootsuite Business, Sprinklr Standard. Enterprise-adjacent — multi-brand, role-based permissions, competitive benchmarking, ad-integration.
+<br><br>
+<strong>$1,000+/month</strong> — Sprinklr Enterprise, Brandwatch, Hootsuite Enterprise, Sprout Enterprise, Meltwater. Custom pricing, contract minimums, dedicated CSMs. Almost never the right first-time purchase for a company under $50M in revenue.
+<br><br>
+Buyers routinely overshoot the tier they need — because the enterprise sales motion sells better than the starter tier, not because the enterprise capabilities are actually being used. A useful test: if fewer than three people will ever log in, no tier above $300/month is worth its money.`
+    },
+    {
+      h2: `Platform vs agency: the honest decision`,
+      body: `The platform decision is only half the question. The other half is who actually operates it.
+<br><br>
+<strong>Buy the platform, run it in-house</strong> when: social is a permanent core capability, you can hire a full-time social lead (or already have one), and the volume of publishing justifies the ongoing seat cost of the enterprise features you'll actually use.
+<br><br>
+<strong>Buy the platform, hire a specialist to run it</strong> when: you want your data and audience under your control, but don't have (or don't want to hire) the in-house expertise. Common at the $10M–$50M revenue range where paying an agency $3–8K/month is cheaper than a $95–140K senior social hire.
+<br><br>
+<strong>Skip the platform, hire an agency that brings its own</strong> when: social is one channel of several the agency is already running, and you'd rather pay a bundled fee than manage two vendor relationships. Common at earlier-stage companies where the marketing lead doesn't want a social tool sitting mostly unused.
+<br><br>
+${BRAND}'s directory includes 90 US <a href="../pillars/social-media-marketing.html">social media marketing specialists</a>, of which 13 are software providers and 77 are agencies. Most of the agencies bring their own tooling — meaning for many buyers, the platform decision goes away entirely when the agency decision gets made.`
+    },
+    {
+      h2: `Where social platforms show up in the directory`,
+      body: `Social platforms sit at the intersection of two of ${BRAND}'s pillars. The <a href="../pillars/social-media-marketing.html">Social Media Marketing pillar</a> holds the 90 US firms whose primary discipline is social — 77 agencies and 13 software providers. The <a href="../pillars/automation.html">Automation pillar</a> holds broader marketing automation platforms with social modules, plus the CRM-integrated platforms (HubSpot, Salesforce Marketing Cloud) whose social capabilities are part of a larger suite.
+<br><br>
+The category deep-dive that matters most for buyers is the platform-vs-service split: 14.4% of the Social Media Marketing pillar is software vs 85.6% services. Compare to Automation at 53% software, or AI Marketing at 74%, and the takeaway is clear — social remains a services-led discipline. Platforms enable good work; they rarely substitute for it.`
+    }
+  ],
+  faq: [
+    {
+      q: `What is the best social media management platform for a small business?`,
+      a: `For most small businesses running one brand across two or three channels, Later, Buffer, or Metricool at the $15–$40/month tier does the job. If Instagram is the primary channel, Later's visual calendar is the strongest starting point. If LinkedIn is primary, Buffer or Metricool. Hootsuite Professional at ~$99/month is worth the upgrade only when a second person needs to log in.`
+    },
+    {
+      q: `How much does an enterprise social media management platform cost?`,
+      a: `Enterprise tiers of Sprout Social, Hootsuite, and Sprinklr typically start at $500–$1,000/month for smaller multi-brand teams and scale past $5,000/month for large deployments with listening, competitive intelligence, and CRM integration. Below about $10M in revenue with fewer than three social users, enterprise tiers are almost always over-buying.`
+    },
+    {
+      q: `Do I need a social media management platform if I use Buffer or Later?`,
+      a: `Buffer and Later are social media management platforms — they just occupy the entry tier. The upgrade question is whether you need capabilities that require paying more: real approval workflows, deeper analytics, listening, multi-brand support, or CRM integration. If none of those, staying on Buffer or Later is the right answer indefinitely.`
+    },
+    {
+      q: `What is the difference between social publishing and social listening?`,
+      a: `Social publishing is scheduling and posting your own content — the primary job of Sprout Social, Hootsuite, Buffer, Later. Social listening is monitoring what other people are saying about your brand, competitors, and category — the primary job of Brandwatch, Talkwalker, Meltwater. Some enterprise suites do both; most buyers who need both end up with two tools.`
+    },
+    {
+      q: `Are AI features on social platforms worth paying for in 2026?`,
+      a: `The AI features that matter are caption generation, image resizing/reformatting across channels, and post-time optimization. All meaningfully save time. The AI features that don't yet matter: fully-automated content generation and AI-driven strategy recommendations, which produce output that reads generically and rarely outperforms a competent human. Pay for the workflow AI, be skeptical of the strategy AI.`
+    }
+  ],
+  relPillars: ['social-media-marketing', 'automation', 'marketing'],
+  ctaCat: 'Social Media Marketing', ctaSlug: 'social-media-marketing'
+},
+{
+  slug: 'local-service-ads',
+  headTerm: 'local service ads',
+  title: `Local Service Ads: How They Work, What They Cost, and Whether They Fit Your Business — The Wall`,
+  metaDesc: `What Google's Local Service Ads are, how they differ from Google Search Ads, what businesses qualify, what leads actually cost in 2026, and when hiring an agency to manage them makes financial sense — grounded in The Wall's directory of US SEO and Marketing firms.`,
+  h1: `Local Service Ads`,
+  dek: `Local Service Ads (LSAs) are Google's pay-per-lead ad format for service businesses — the ads that show at the very top of local search results with a "Google Guaranteed" badge, a review score, and a phone number. They are not the same product as Google Search Ads, and they behave differently at every stage from qualifying to billing. Here is exactly what they are, what a lead actually costs in 2026, and when they belong in the mix.`,
+  sections: [
+    {
+      h2: `What Local Service Ads actually are (and are not)`,
+      body: `LSAs are a distinct Google ad product from Google Search Ads. Three defining differences:
+<br><br>
+<strong>1. Pay-per-lead, not pay-per-click.</strong> Google charges the advertiser only when a qualified lead contacts the business through the ad — a phone call, a message, or a booking. Random clicks are free. This alone is a material shift from search-ads economics.
+<br><br>
+<strong>2. Ads run above Search Ads.</strong> On mobile especially, LSAs occupy the top 2–3 slots of the results, above the traditional Google Ads block, above the map pack, above organic. Prime real estate for local intent queries.
+<br><br>
+<strong>3. Requires background check, license verification, and insurance disclosure.</strong> Google runs (or contracts) verification of the business's licenses, insurance, and (for many categories) employee background checks. The "Google Guaranteed" or "Google Screened" badge that appears on the ad is the visible artifact of this vetting. Not all businesses qualify.`
+    },
+    {
+      h2: `Which businesses qualify — and what "qualify" means`,
+      body: `LSAs are only available for specific service categories that Google has approved for the format. As of 2026, the largest categories include:
+<br><br>
+<strong>Home services</strong> — HVAC, plumbing, electricians, roofers, garage door, appliance repair, house cleaning, lawn care, movers, pest control, tree service, locksmiths.
+<br><br>
+<strong>Professional services</strong> — real estate agents, lawyers (several practice areas), financial planners, tax professionals, accountants.
+<br><br>
+<strong>Health and personal care</strong> — dentists, chiropractors, veterinarians, pet grooming.
+<br><br>
+<strong>Event and lifestyle</strong> — photographers, event planners, tutors, personal trainers.
+<br><br>
+"Qualify" means: the business is verifiably in one of those categories, holds current licenses in every service state, carries appropriate liability insurance, and (in most categories) passes employee background checks Google contracts through third-party vendors. The verification takes 1–3 weeks and needs to be re-run periodically.`
+    },
+    {
+      h2: `What LSA leads actually cost in 2026`,
+      body: `Cost-per-lead varies wildly by category, geography, and competition. A rough map from what US operators are actually paying in 2026:
+<br><br>
+<strong>$8–$30 per lead</strong> — home services outside dense metros, lower-competition categories (some pest, some appliance repair).
+<br><br>
+<strong>$30–$100 per lead</strong> — home services in mid-size metros, tax professionals, financial planners.
+<br><br>
+<strong>$100–$300 per lead</strong> — legal (personal injury especially), high-value home services in top-10 metros, elective dental, some real estate.
+<br><br>
+<strong>$300+ per lead</strong> — mass-tort legal, some financial-services categories in top-3 metros.
+<br><br>
+Google's bidding model lets advertisers set a monthly budget and either "maximize leads" (let Google set the bid) or "set max per lead" (fixed cap). The important economic reality: LSA leads are exclusive to the advertiser who won them, and lead quality is generally higher than pay-per-click clicks because the buyer took a phone action, not a passive click. Effective cost-per-customer is often <em>lower</em> than search ads at nominally higher cost-per-lead.`
+    },
+    {
+      h2: `When to hire an agency to manage LSAs (and when not to)`,
+      body: `LSAs have a lower operator burden than Google Search Ads — no keywords to manage, no ad copy to write, no landing pages to optimize. Which means: for a small local service business under about $2M in revenue, running LSAs in-house is almost always the right call. The account takes 30 minutes a week once set up.
+<br><br>
+Agencies earn their fee at higher scale, or across specific problem shapes: multi-location businesses running LSAs across 10+ markets; businesses with poor review flow whose LSA performance is capped by their Google review score; businesses whose lead-response time is broken (LSAs punish slow response); and businesses in disputed-lead-heavy categories where Google's lead-quality complaints need active management.
+<br><br>
+Across ${BRAND}'s directory of 550 US <a href="../pillars/marketing.html">Marketing firms</a> and 226 US <a href="../pillars/seo.html">SEO firms</a>, a growing subset specialize in LSAs — often as part of a broader local-marketing service including Google Business Profile optimization, review generation, and traditional local SEO. Rate bands for these specialists sit in the standard $100–$199 hourly range with monthly management fees typically $500–$3,000 depending on number of markets and lead volume.`
+    }
+  ],
+  faq: [
+    {
+      q: `What are Local Service Ads?`,
+      a: `Local Service Ads are Google's pay-per-lead ad format for service businesses. They appear at the top of local search results with a "Google Guaranteed" or "Google Screened" badge, a review score, and a phone number. Google charges the advertiser only when a qualified lead contacts them, not per click.`
+    },
+    {
+      q: `How much do Google Local Service Ads cost per lead?`,
+      a: `Cost per lead in 2026 ranges from about $8 for low-competition home services outside major metros to $300+ for legal categories in top metros. Most home-services and mid-market professional-services categories fall between $30 and $100 per lead. Google's system lets advertisers set monthly budgets and either automatic or capped bids.`
+    },
+    {
+      q: `What is the difference between Local Service Ads and Google Ads?`,
+      a: `Google Ads (formerly AdWords) is pay-per-click across the web and Google Search results. Local Service Ads is a separate, newer product limited to specific service categories, priced per qualified lead instead of per click, requiring background/license/insurance verification, and running above traditional Search Ads on the results page.`
+    },
+    {
+      q: `Which businesses qualify for Local Service Ads?`,
+      a: `Home services (HVAC, plumbing, electrical, cleaning, pest, roofing, garage, etc.), professional services (lawyers, real estate, financial, tax), health services (dentists, chiropractors, vets), and event/lifestyle services (photographers, event planners, tutors, trainers). Each business must hold current licenses, carry insurance, and pass the required background checks — a 1–3 week process managed through Google's verification vendor.`
+    },
+    {
+      q: `Should I hire an agency for Local Service Ads?`,
+      a: `For small local businesses running LSAs in a single market, in-house management is usually the right call — the ongoing time commitment is about 30 minutes a week once set up. Agencies earn their fees at higher scale (multi-location, multi-market), or when the business needs help with adjacent problems: Google review flow, lead-response speed, dispute management. Monthly management fees typically $500–$3,000.`
+    }
+  ],
+  relPillars: ['seo', 'marketing', 'demand-gen'],
+  ctaCat: 'SEO', ctaSlug: 'seo'
+},
+{
+  slug: 'digital-marketing-platform-for-small-businesses',
+  headTerm: 'digital marketing platform for small businesses',
+  title: `Digital Marketing Platforms for Small Businesses: The 2026 Buyer's Reference — The Wall`,
+  metaDesc: `Google search for "digital marketing platform for small businesses" is up 1,015% YoY. Here's what the category actually contains in 2026 — HubSpot, Mailchimp, ActiveCampaign, Constant Contact, Brevo, GoDaddy, Wix, Squarespace, Vendasta — what they cost, and how to pick.`,
+  h1: `Digital Marketing Platforms for Small Businesses`,
+  dek: `Search for "digital marketing platform for small businesses" is up 1,015% year-over-year to 40,500 monthly Google searches — a signal the sub-$5M operator segment is shopping for tooling explicitly framed for them, not tolerating enterprise pricing anymore. The category is broader than most buyers realize and clusters into four distinct buyer shapes. Here is what actually differentiates them and how to pick.`,
+  sections: [
+    {
+      h2: `What "digital marketing platform for small businesses" actually contains`,
+      body: `The phrase covers four different product categories that behave nothing alike at buy-time:
+<br><br>
+<strong>1. All-in-one marketing suites</strong> — HubSpot Marketing Hub Starter, ActiveCampaign, Brevo (formerly Sendinblue), Keap. Email + basic CRM + landing pages + automation + reporting in one login. $30–$150/month at the SMB tier. Deep by SMB standards, shallow by enterprise. The category most buyers actually mean when they search this phrase.
+<br><br>
+<strong>2. Email-first platforms with add-ons</strong> — Mailchimp, Constant Contact, MailerLite, Klaviyo (for e-commerce). Started as email, grew into modest CRM, landing pages, and automation. $20–$100/month. Excellent at email; adequate at the rest.
+<br><br>
+<strong>3. Website-plus-marketing platforms</strong> — Squarespace + Marketing, Wix Business, GoDaddy Digital Marketing Suite, Duda. Website builder that added marketing tools rather than a marketing platform that added a website. $30–$100/month. Best for businesses that primarily need a site and want the marketing to piggyback.
+<br><br>
+<strong>4. Agency-in-a-box platforms</strong> — Vendasta, DashClicks, GoHighLevel. Not primarily sold to SMBs directly — sold to agencies and consultants who then resell the platform bundled with their services. If you're seeing these while searching, you're being marketed to by a small local agency that runs them under the hood.`
+    },
+    {
+      h2: `What each shape actually costs`,
+      body: `The category's pricing sits in a narrower band than the enterprise martech market — $20 to $300/month covers almost everything an SMB would encounter — but the ceiling matters:
+<br><br>
+<strong>Under $50/month</strong> — Mailchimp Standard, Brevo Business, MailerLite Advanced, Constant Contact Standard, Squarespace Basic. Real capability at this tier if the business needs email + a website + a light CRM.
+<br><br>
+<strong>$50–$150/month</strong> — HubSpot Marketing Hub Starter, ActiveCampaign Plus, Keap Grow, Klaviyo mid-tier. Where automation gets real, deeper CRM integration, better reporting.
+<br><br>
+<strong>$150–$500/month</strong> — HubSpot Marketing Hub Professional, ActiveCampaign Professional, Keap Pro, enterprise-adjacent Klaviyo. Above the SMB sweet spot; usually overbuying for under-$5M businesses.
+<br><br>
+<strong>$500+/month</strong> — HubSpot Marketing Hub Enterprise and equivalents. Almost never worth it for genuine SMBs. If a business is spending this on marketing platforms, the money is almost always better spent on a fractional-CMO or an agency (see: <a href="marketing-consultant.html">marketing consultant hub</a>).`
+    },
+    {
+      h2: `How to pick — the three questions that matter`,
+      body: `<strong>1. What does the business actually do first — email, content, ads, or ecommerce?</strong>
+Email-first: Mailchimp, Brevo, MailerLite. Content + inbound: HubSpot. Paid ads with landing pages: Unbounce or the ads platforms directly. E-commerce: Klaviyo. Trying to make one platform serve every need equally usually results in decent-at-all-mediocre-at-each.
+<br><br>
+<strong>2. Is there a CRM already in use?</strong>
+If yes, pick a marketing platform that integrates cleanly (Zapier at minimum, native at best). If no, pick a suite that includes a CRM (HubSpot, ActiveCampaign, Keap) rather than bolting one on later.
+<br><br>
+<strong>3. Who will actually run it?</strong>
+Founder or founding team member with 5 hrs/week: pick simple. Dedicated marketing hire with 20+ hrs/week: pick capable. Small local agency: they'll bring their preferred stack (often GoHighLevel or Vendasta), and the discussion shifts from platform to agency.
+<br><br>
+The single most expensive mistake in this category is buying the platform for the vision (what the business hopes to do in year two) rather than the reality (what someone will actually operate this quarter).`
+    },
+    {
+      h2: `Where these platforms live in the directory`,
+      body: `${BRAND}'s core reader is US operators past $5M in revenue — larger than the segment most of these platforms target. But: the directory does list many of the agencies that operate these platforms on behalf of smaller clients, and the underlying platforms themselves surface in the <a href="../pillars/automation.html">Automation</a> and <a href="../pillars/ai-marketing.html">AI Marketing</a> pillars.
+<br><br>
+For an operator whose current spend on marketing is under $5,000/month, the honest guidance is: buy the platform yourself, run it in-house, and consider an agency only when the operational overhead of running it exceeds the marketing benefit you're getting. For an operator whose spend is $5,000–$15,000/month, an agency running one of the mid-tier platforms on your behalf usually beats DIY. Above $15,000/month monthly spend, custom engagements with a proper marketing agency (see the <a href="../pillars/marketing.html">Marketing pillar</a>) usually beats platform + generalist agency.`
+    }
+  ],
+  faq: [
+    {
+      q: `What is the best digital marketing platform for a small business in 2026?`,
+      a: `There is no single "best" — the answer depends on what the business does first. For email-driven businesses: Mailchimp, Brevo, or MailerLite at $20–$50/month. For content and inbound: HubSpot Marketing Hub Starter at $20/month, upgrading as you grow. For e-commerce: Klaviyo. For businesses that primarily need a website: Squarespace, Wix, or Duda with marketing add-ons.`
+    },
+    {
+      q: `How much does a digital marketing platform cost for a small business?`,
+      a: `The SMB sweet spot is $30–$150/month per month. Under $50 covers email-first platforms with modest CRM and automation; $50–$150 gets you real automation, deeper CRM, and better reporting from HubSpot, ActiveCampaign, or Klaviyo mid-tiers. Above $500/month is almost always overbuying for a genuine SMB.`
+    },
+    {
+      q: `What is the difference between HubSpot and Mailchimp for a small business?`,
+      a: `Mailchimp is email-first with modest CRM, landing pages, and automation added on. HubSpot is a full marketing suite (email + CRM + landing pages + automation + reporting) that scales into enterprise. For a business that primarily wants email marketing, Mailchimp is simpler and cheaper. For a business that wants a unified CRM + marketing system with room to grow, HubSpot's starter tier is worth the extra $10/month.`
+    },
+    {
+      q: `Do I need a digital marketing platform if I already have a website?`,
+      a: `Yes — the website is where marketing lands, not what runs marketing. A digital marketing platform handles the email sends, the automation, the CRM, the lead capture, and the reporting. Some website builders (Wix, Squarespace, Duda) include a marketing suite that covers the basics; a dedicated marketing platform does the job better once volume justifies it.`
+    },
+    {
+      q: `Should a small business use a digital marketing platform or hire an agency?`,
+      a: `Under about $5,000/month in total marketing spend: buy the platform, run it yourself or with a part-time contractor. $5,000–$15,000/month: an agency running the platform for you usually beats DIY. Above $15,000/month: a full-service marketing agency (not tied to a specific platform) typically outperforms platform+generalist.`
+    }
+  ],
+  relPillars: ['automation', 'marketing', 'ai-marketing'],
+  ctaCat: 'Automation', ctaSlug: 'automation'
 }
 ];
 
@@ -374,4 +609,34 @@ ${relPillarsHTML}
     shell({ title: h.title, metaDesc: h.metaDesc, canonical, ld, bodyHTML: body, base: '../' }));
 }
 
-console.log(`hub pages written: ${HUBS.length}`);
+// hubs index
+const idxLD = [ORG_LD, {
+  '@context': 'https://schema.org', '@type': 'CollectionPage',
+  name: `Buyer Hubs — ${BRAND}`, url: `${SITE}/hubs/`,
+  description: `Reference pages for the high-intent buyer questions in the US growth-vendor market — marketing consultants, paid advertising platforms, B2B marketing agencies, and more.`,
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: HUBS.map((h, i) => ({
+      '@type': 'ListItem', position: i + 1,
+      url: `${SITE}/hubs/${h.slug}.html`, name: h.h1
+    }))
+  }
+}];
+const idxBody = `
+<div class="kicker">REFERENCE / BUYER HUBS</div>
+<h1>Buyer hubs</h1>
+<p class="dek">Reference pages for the questions buyers most often bring to ${BRAND} — what a marketing consultant costs, when to hire a B2B agency, how paid-ad platforms actually price. Each hub grounds the answer in real data from the directory.</p>
+${HUBS.map(h => `<div class="faq-item"><h3><a href="${h.slug}.html">${esc(h.h1)}</a></h3><p>${esc(h.dek).slice(0, 220)}${h.dek.length > 220 ? '…' : ''}</p></div>`).join('\n')}
+<div class="rel"><h3>KEEP GOING</h3>
+<a href="../entities/">Platform reference — the tools that show up on shortlists</a>
+<a href="../glossary.html">The Wall glossary — 200+ growth-vendor terms defined</a>
+<a href="../news/">Data briefings on the US growth-vendor market</a>
+</div>`;
+writeFileSync(join(ROOT, 'hubs', 'index.html'),
+  shell({
+    title: `Buyer Hubs — Reference Pages on High-Intent Growth-Vendor Questions — ${BRAND}`,
+    metaDesc: `${HUBS.length} reference pages for the high-intent buyer questions in the US growth-vendor market — marketing consultants, paid advertising platforms, B2B marketing agencies, social media management platforms, Google Local Service Ads, and more. From The Wall.`,
+    canonical: `${SITE}/hubs/`, ld: idxLD, bodyHTML: idxBody, base: '../'
+  }));
+
+console.log(`hub pages written: ${HUBS.length} + index`);
