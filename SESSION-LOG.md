@@ -129,10 +129,25 @@ blocklist. All removed rows backed up in session scratchpad (`nonus_backup.json`
   4. **Task 3 — briefing**: `news/small-business-platform-search-1015-percent-2026.html` on the
      40,500/mo +1,015% YoY trend for "digital marketing platform for small businesses".
      DataForSEO cited as source. No fabricated platform data — trend is the story.
-- ⏭ **Next:** Phase 3 catalyst distribution (the briefings are seed data studies — outreach and
-  roundup pitching starts now); Phase 5 monetization (claimed listings). Additional hubs from
-  keyword pipeline: paid-advertising-platforms, b2b-marketing-agency, digital-marketing-platform-
-  for-small-businesses.
+- ✅ **Option B+C SHIPPED (commit 97e25c5, 2026-08-04):**
+  - **B1**: 2 more hubs — `hubs/paid-advertising-platforms.html` (KD 6, $81 CPC) and
+    `hubs/b2b-marketing-agency.html` (KD 18, $63 CPC). HUBS array now has `ctaCat` + `ctaSlug`
+    fields so each hub's CTA browses the right pillar.
+  - **B2**: 3 more briefings (18 total now) — rate-transparency-by-category, agency-age-by-
+    category, three-software-first-pillars. All from fresh SQL against directory_companies.
+  - **B3**: Glossary expanded 71 → 204 terms. New terms link into hubs where relevant.
+  - **C**: `docs/outreach-kit-2026-08-04.md` — cold/follow-up/podcast pitch templates, HARO/
+    Connectively response bank keyed to briefings, per-briefing angle sheet (18), Tier 1-3
+    target reporter list, weekly cadence. Ready for Dan or a hired outreach person.
+- ✅ **Teamwork project set up (2026-08-04):** "The Wall — Authority Amplifier Launch"
+  (ID 1305672, deadline 8/15). 8 tasks under tasklist 3918852 with Dan-side blockers:
+  GSC verify + sitemap, GA4, Google Publisher Center, admin account create, social fortress,
+  DMCA/ScoreDetect signups, NAP data, Phase 3 outreach channel decision.
+- ⏭ **Next:** wait for Dan-side unblocks (GSC especially — master gate for Google News),
+  then Phase 5 monetization (claimed listings). More hubs available from keyword pipeline:
+  digital-marketing-platform-for-small-businesses (40,500/mo, KD 13), social-media-management-
+  platforms (22,200/mo, KD 39), local-service-ads (40,500/mo, KD 15).
+- **Sitemap: 2,329 URLs** (10 pillars + 3 hubs + 19 news + glossary + trust + 2,286 listings).
 - **Dan's checklist:** GSC + GA setup & sitemap submit (post-domain), social fortress accounts
   (X/LinkedIn/FB/YT → schema sameAs), DMCA badge account, ScoreDetect account, optional NAP
   address/phone for contact page.
