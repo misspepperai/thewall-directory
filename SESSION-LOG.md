@@ -478,3 +478,59 @@ Weapon 1 → Weapon 2 flow. No longer buried in the footer.
 
 **Live verified:** title, meta, 4 JSON-LD schemas, vendor strip, 3 trust
 chips, sub-H2, partner CTA, nav dropdowns — all rendering on hitthewall.net.
+
+## Listing-page conversion + measurement unblock (2026-08-04, commits cad51bc + next)
+
+**The gap:** 2,286 `/c/` listing pages — the highest-volume page type on the site — had
+**zero conversion path**. Grepped `c/108degrees.com.html`: the only "Partner" hits were the
+vendor's own marketing copy and the nav dropdown. The entire business model is Weapon 1 →
+Weapon 2 (free-listing acknowledgment → two-way 10/20 flip), and the page a vendor actually
+lands on when they Google themselves had nothing to reply to. Meanwhile the cold-email path
+is stalled on 50.7% contact coverage + Apollo signup + a 2-4 week domain warm-up.
+
+**Claim block shipped on all 2,286 `/c/` pages** (`claimHTML()` in build-pages.mjs, rendered
+after the data sheet):
+- "IS THIS YOUR FIRM?" kicker → H2 "Claim this listing — and keep 20% of every client you send us"
+- Visual 10/20 deal card, two tiles: "You keep 20%" (of what you send us) / "We take 10%"
+  (of what we send you). Vendor side is the larger number, on purpose.
+- **Primary CTA** — mailto with subject `Claim listing: {domain}` and a body pre-filled in the
+  vendor's own voice with their name, domain, the deal terms, and blank Name/Role/Email/fixes
+  fields. One click = a Weapon 1 reply with no cold email required.
+- **Secondary** — `Correction: {domain}` mailto, body pre-filled with the canonical listing URL.
+- **Tertiary** — full terms on `/partner.html`.
+- Fine print: no cost to claim, no exclusivity, listing stays up either way, inclusion is
+  editorial not purchased.
+- Note: `&` in mailto hrefs must be `&amp;` — first build emitted raw `&`, rebuilt.
+
+**Verified live** on hitthewall.net: all 6 block elements render. Visual check at 375px was
+NOT possible — puppeteer's Chrome is missing `libnss3` (needs sudo). CSS is plain flex-wrap
+with `flex-basis:220px` so it collapses to one column on mobile, but that is reasoned, not seen.
+
+**MEASUREMENT IS THE REAL BLOCKER.** Checked via SEO Gets MCP `list_sites`: **hitthewall.net
+is not in Search Console at all** — 26 other Dan properties are there, this one is absent.
+Everything shipped since 2026-08-03 (2,588 URLs, all schema, all head-term retrofits) is
+flying blind. No coverage data, no query data. Also the hard gate for Publisher Center.
+
+- DNS confirmed on Namecheap BasicDNS (`dns1/dns2.registrar-servers.com`). Existing TXT is
+  SPF only (`v=spf1 include:spf.efwd.registrar-servers.com ~all`) — no verification token.
+- **`docs/gsc-ga4-unblock-2026-08-04.md`** — exact click path, ~12 min of Dan's time:
+  Domain-property verification via Namecheap TXT (with a do-not-clobber warning on the SPF
+  record), sitemap submit, GA4 property creation, Publisher Center.
+- **GA4 pre-wired in `nav.js`** behind `GA4_MEASUREMENT_ID` (empty = no tag, no requests, no
+  cookies; verified `''` in production). nav.js is already on all ~2,590 pages, so switching
+  analytics on is a one-line edit and a push — **no rebuild of 2,286 pages**.
+- ⚠️ **GA4 is coupled to a privacy claim.** `privacy.html` (from build-trust.mjs ~line 156)
+  states "the site sets no cookies and runs no advertising trackers". GA4 sets `_ga` cookies,
+  which falsifies it. Guard comment in nav.js says the two must ship in the same commit.
+  Open question for Dan: is zero-cookie worth more as a trust asset than GA4 is as data?
+  GSC alone still delivers query + coverage, which is the bigger half.
+
+**Housekeeping:** 3 files showed as modified with 1,580 insertions / 1,580 deletions — pure
+CRLF churn from a Windows-side write (`git diff --ignore-cr-at-eol` was empty). Reverted;
+added `.gitattributes` with `* text=auto eol=lf` so it can't recur.
+
+**Sitemap: 2,588 URLs** (unchanged — claim block adds no new URLs).
+
+**⏭ Next:** Dan does the 3 tasks in the unblock doc. On GSC green I pull coverage/query data
+and fix whatever is excluded. Still unbuilt from the keyword pipeline: 3 named hub
+opportunities — deliberately deferred until we can measure whether hubs are working.
