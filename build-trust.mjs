@@ -10,6 +10,14 @@ const BRAND = 'The Wall';
 const CONTACT_EMAIL = 'support@misspepper.ai';
 const EFFECTIVE = '2026-08-03';
 
+// Must stay in lockstep with GA4_MEASUREMENT_ID in nav.js. GA4 sets first-party
+// _ga / _ga_* cookies, so the privacy copy below has to change in the same commit
+// that switches the tag on — otherwise the policy states something untrue.
+// Flip to true, re-run `node build-trust.mjs`, commit alongside the nav.js edit.
+const GA4_ENABLED = false;
+// Date analytics went live. Set this to the same day you flip GA4_ENABLED.
+const EFFECTIVE_ANALYTICS = '';
+
 const ORG_LD = {
   '@context': 'https://schema.org', '@type': 'Organization',
   name: BRAND, url: `${SITE}/`, email: CONTACT_EMAIL,
@@ -153,7 +161,10 @@ ${eff}
 ${eff}
 <h2>What we collect</h2>
 <ul>
-<li><strong>Browsing:</strong> the site sets no cookies and runs no advertising trackers. Pages are served by GitHub Pages and listing data by Supabase; both process standard server logs (IP address, user agent) to deliver the service.</li>
+<li><strong>Browsing:</strong> ${GA4_ENABLED
+  ? `the site runs Google Analytics 4 to measure traffic. GA4 sets first-party cookies (<code>_ga</code>, <code>_ga_*</code>) that distinguish one visitor from another across pages and visits; they hold a random identifier, not your name or email. We use it to see which pages get read and which searches bring people here. We run no advertising trackers, no remarketing tags, and no cross-site ad pixels, and we do not use analytics data to build advertising audiences. You can opt out with Google's <a href="https://tools.google.com/dlpage/gaoptout" rel="nofollow noopener" target="_blank">browser add-on</a> or by blocking cookies for this site &mdash; nothing on The Wall stops working if you do.`
+  : `the site sets no cookies and runs no advertising trackers.`
+} Pages are served by GitHub Pages and listing data by Supabase; both process standard server logs (IP address, user agent) to deliver the service.</li>
 <li><strong>Submissions:</strong> if you submit a listing, we store the business information you provide (company name, website, category, description). Submit only business information.</li>
 <li><strong>Email:</strong> if you email us, we retain the correspondence to handle your request.</li>
 </ul>
@@ -164,7 +175,10 @@ ${eff}
 <h2>Listing data</h2>
 <p>Directory profiles describe businesses, not private individuals, and are compiled from public sources. Business contact details shown (office phone, office address) are those the business publishes publicly. Businesses may request corrections or removal via the <a href="contact.html">contact page</a>.</p>
 <h2>Your rights</h2>
-<p>To access, correct, or delete information you have sent us, email <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>. If analytics are added in the future, this policy will be updated first and the change noted here.</p>`],
+<p>To access, correct, or delete information you have sent us, email <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>. ${GA4_ENABLED
+  ? `Analytics were added on ${EFFECTIVE_ANALYTICS}; before that date the site set no cookies at all. Any future change to what we collect will be reflected here first.`
+  : `If analytics are added in the future, this policy will be updated first and the change noted here.`
+}</p>`],
 
   'terms': ['Terms of Use', 'The terms that govern use of The Wall directory.', `
 <div class="kicker">TRUST / 07</div>
