@@ -12,7 +12,7 @@
 // "the site sets no cookies and runs no advertising trackers". GA4 sets _ga /
 // _ga_* first-party cookies, so that sentence becomes false the moment this is
 // filled in. Edit build-trust.mjs, re-run `node build-trust.mjs`, commit both.
-var GA4_MEASUREMENT_ID = '';
+var GA4_MEASUREMENT_ID = 'G-7EVW8MX8Z9';
 
 (function () {
   if (!GA4_MEASUREMENT_ID || window._ga4Injected) return;

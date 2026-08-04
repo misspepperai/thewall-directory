@@ -14,9 +14,9 @@ const EFFECTIVE = '2026-08-03';
 // _ga / _ga_* cookies, so the privacy copy below has to change in the same commit
 // that switches the tag on — otherwise the policy states something untrue.
 // Flip to true, re-run `node build-trust.mjs`, commit alongside the nav.js edit.
-const GA4_ENABLED = false;
+const GA4_ENABLED = true;
 // Date analytics went live. Set this to the same day you flip GA4_ENABLED.
-const EFFECTIVE_ANALYTICS = '';
+const EFFECTIVE_ANALYTICS = '2026-08-04';
 
 const ORG_LD = {
   '@context': 'https://schema.org', '@type': 'Organization',
