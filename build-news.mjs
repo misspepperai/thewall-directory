@@ -332,6 +332,122 @@ ${table(['Category', 'Agencies', 'Software', 'Services', 'Software share'], [
 <p>The three software-first pillars are the technology-forward disciplines. Sales has been the most systematized function in growth for a decade — CRM, enablement, engagement, intent — and it shows in the software concentration. Marketing Automation is definitionally the tooling layer of the entire marketing function. AI Marketing is where the tooling is the entire proposition, so far.</p>
 <p>The seven services-first pillars are the disciplines where human judgment and craft remain the durable value: creative and design, thought leadership, content, social, SEO. Every one has been declared automation-vulnerable by someone in the last three years. So far, the buying data has not budged: 90%+ of the listings buyers are actually paying to solve these problems are teams, not licenses.</p>`,
   rel: ['agencies-vs-software-mix-2026', 'ai-marketing-thinnest-category-2026', 'sales-pillar-brief-2026']
+},
+{
+  slug: 'the-single-founder-tail-agencies-pre-2000-2026', date: '2026-08-04',
+  h: 'The single-founder tail: 182 US growth-services firms in the index were founded before 2000',
+  dek: 'Of 2,286 US growth vendors indexed, 182 predate 2000 — including 15 firms founded before the personal computer. The distribution shows what actually survives four decades of agency-business turnover.',
+  body: `
+<p>The US growth-services market has a very long tail of very old firms. Of the 2,286 companies indexed in ${BRAND}, 182 were founded on or before 2000 — the year the first mainstream browser browser wars ended and the modern digital agency category began forming. Six were founded before 1970. The oldest listed firm, Olberding Brand Family (Ohio), was founded in 1926.</p>
+${table(['Decade founded', 'Firms still listed'], [
+  ['Pre-1970', '6'],
+  ['1970s', '9'],
+  ['1980s', '33'],
+  ['1990s', '134'],
+  ['<strong>Total pre-2000</strong>', '<strong>182</strong>']
+])}
+<h2>What the pre-2000 tail looks like</h2>
+<p>The oldest survivors skew heavily toward Creative Strategy — 15 of the 25 oldest firms in the index are in the creative pillar, and 5 more are in Thought Leadership (PR) or general Marketing. Not one firm founded before 1980 is in SEO, Content Marketing, Social Media, Automation, Demand Gen, or AI Marketing — those pillars did not exist as coherent buying categories until the 2000s or later.</p>
+${table(['Rank', 'Firm', 'Founded', 'Pillar', 'HQ'], [
+  ['1', 'Olberding Brand Family', '1926', 'Creative Strategy', 'OH'],
+  ['2', 'NewmanPR', '1946', 'Thought Leadership', 'FL'],
+  ['3', 'Davis Advertising', '1948', 'Creative Strategy', 'MA'],
+  ['4', 'Archer Malmo', '1952', 'Marketing', 'TX'],
+  ['5', 'The Brandon Agency', '1959', 'Creative Strategy', 'SC'],
+  ['6', 'Epsilon', '1969', 'Creative Strategy', 'CA'],
+  ['7', 'BLD Marketing', '1971', 'Content Marketing', 'PA'],
+  ['8', 'TriAd Marketing &amp; Media', '1972', 'Marketing', 'OH'],
+  ['9', 'Grady Britton', '1974', 'Creative Strategy', 'OR'],
+  ['10', 'HANGAR12', '1975', 'Creative Strategy', 'IL']
+])}
+<h2>Why the tail matters — for buyers and for the discipline</h2>
+<p>Agency-business mortality is high. Most agencies that start do not survive their founder's second decade of ownership, and the firms in this cohort have cleared that gate three, four, or (in six cases) five times over. That does not automatically make them the right pick for any specific buyer — many of these firms are deeply specialized in categories their peers have exited. But the presence of a 30-, 40-, 50-year-old vendor on your shortlist is a data point about durability that a two-year-old boutique cannot match.</p>
+<p>For the industry, the tail is a reminder that agency work as a category is stable in a way tech is not. A 1948 advertising firm still solving essentially the same problem — get a message in front of the right people, make them care — describes the through-line of the market better than any current-year discipline breakdown.</p>
+${METHOD}`,
+  rel: ['agency-age-by-category-2026', 'agency-founding-years-2026', 'us-agency-hourly-rates-2026']
+},
+{
+  slug: 'seo-rate-spread-inside-one-discipline-2026', date: '2026-08-04',
+  h: 'Inside SEO: the $75 rate spread that makes vendor comparison hard',
+  dek: 'US SEO agencies span a $275 hourly-rate range — from $25 to $300+ per hour — inside a single discipline. The distribution shows why "how much does SEO cost?" has no single answer.',
+  body: `
+<p>Of the 226 US SEO firms indexed in ${BRAND}, 206 publish an hourly-rate band and 20 do not. The disclosed distribution uses <strong>every rate tier in the market</strong> — from under $25 to over $300 per hour, with a fat middle at $100–$149. This is the widest intra-discipline rate spread in the index.</p>
+${table(['Hourly-rate band', 'US SEO firms', 'Share of disclosed'], [
+  ['&lt; $25 / hr', '4', '1.9%'],
+  ['$25 – $49 / hr', '21', '10.2%'],
+  ['$50 – $99 / hr', '28', '13.6%'],
+  ['$100 – $149 / hr', '72', '35.0%'],
+  ['$150 – $199 / hr', '40', '19.4%'],
+  ['$200 – $300 / hr', '12', '5.8%'],
+  ['$300+ / hr', '3', '1.5%'],
+  ['<strong>Undisclosed</strong>', '<strong>26</strong>', '<strong>12.6%</strong>']
+])}
+<h2>Why the spread is this wide</h2>
+<p>Three overlapping SEO products share one word:</p>
+<ol>
+<li><strong>Low tier ($25–$99):</strong> Templated audits, blog-post SEO briefs, technical checklists. Often offshore delivery or freelancer-led work sold through agency wrappers. 25 of 206 disclosed firms (12.1%) price here.</li>
+<li><strong>Modal tier ($100–$199):</strong> Full-service US SEO agencies with a mix of senior strategy and mid-level execution. 112 of 206 firms (54.4%) price here. This is the honest market center for anything approaching a real program.</li>
+<li><strong>Premium tier ($200+):</strong> Boutique, senior-only teams; frequently deeply-specialized (SaaS, ecommerce, enterprise). 15 of 206 firms (7.3%) price here — a smaller tail than agency marketing suggests.</li>
+</ol>
+<p>The buyer who asks "what does SEO cost?" and gets a $50 quote versus a $250 quote is not comparing two versions of the same thing. They are comparing two different products the industry has agreed to call by one name.</p>
+<h2>How to read a rate you got</h2>
+<p>The band matters less than what the band buys. A $150 rate should include senior strategy time, not just execution. A $50 rate should not be expected to include real strategic direction — it's paying for hands. A firm quoting in the top band and staffing the account entirely with junior specialists is the failure mode buyers most consistently regret; the rate is a hypothesis, the staffing plan is the evidence.</p>
+<p>For a real US SEO shortlist with rate, team size, and headquarters filters live, see the <a href="../pillars/seo.html">SEO pillar</a>.</p>
+${METHOD}`,
+  rel: ['us-agency-hourly-rates-2026', 'rate-transparency-by-category-2026', 'rate-transparency-gap-2026']
+},
+{
+  slug: 'sales-pillar-hourly-blackout-2026', date: '2026-08-04',
+  h: 'Zero of 103 US Sales firms in the index publish an hourly rate — and it is not evasion',
+  dek: 'Every other pillar has firms quoting hourly. Sales has none. The reason is structural: sales work is priced by outcomes, not hours, and the discipline treats hourly as an anti-pattern.',
+  body: `
+<p>${BRAND}'s index contains 103 US firms categorized under the Sales pillar — sales training, sales enablement, RevOps consulting, outsourced SDR/BDR teams. Of those 103, exactly zero publish an hourly rate on their Clutch profile. Every other pillar in the index has at least some firms disclosing hourly:</p>
+${table(['Pillar', 'Firms', 'With hourly rate', '% disclosing'], [
+  ['Creative Strategy', '870', '768', '88.3%'],
+  ['Marketing', '550', '444', '80.7%'],
+  ['SEO', '226', '206', '91.2%'],
+  ['Thought Leadership', '193', '122', '63.2%'],
+  ['Content Marketing', '113', '87', '77.0%'],
+  ['<strong>Sales</strong>', '<strong>103</strong>', '<strong>0</strong>', '<strong>0.0%</strong>'],
+  ['Social Media Marketing', '90', '75', '83.3%'],
+  ['Automation', '59', '20', '33.9%'],
+  ['Demand Gen', '48', '15', '31.3%'],
+  ['AI Marketing', '34', '1', '2.9%']
+])}
+<h2>Why Sales is the outlier</h2>
+<p>Sales work does not price cleanly by the hour, and the discipline knows it. A senior sales consultant billing $400/hr for six months of enablement is selling a change in a company's revenue trajectory, not 720 hours of instruction. Outsourced SDR teams price per-seat per-month or per-qualified-meeting because the buyer cares about pipeline created, not hours logged. RevOps consultants price by project or by installed system.</p>
+<p>The other two low-disclosure pillars — Automation (33.9%) and Demand Gen (31.3%) — sit in the same structural place for the same reason: outcomes are more legible than hours, and buyers prefer being priced against the outcome. AI Marketing at 2.9% is a special case: the pillar is young enough that most firms have not decided how to price at all yet.</p>
+<h2>What this means for a buyer</h2>
+<p>Asking a Sales vendor "what's your hourly rate" is asking the wrong question. The right questions are: what does month one look like? What does month three look like? How is progress measured, and by whom? A vendor who resists that framing and insists on billing hours-and-materials is unusual in this discipline — and worth understanding why before signing.</p>
+<p>See the <a href="../pillars/sales.html">Sales pillar</a> for the full US firm list with team size, minimum project size, and location filters (the fields Sales firms actually do disclose).</p>
+${METHOD}`,
+  rel: ['us-agency-hourly-rates-2026', 'rate-transparency-by-category-2026', 'the-three-software-first-pillars-2026']
+},
+{
+  slug: 'category-leaders-thirty-entities-2026', date: '2026-08-04',
+  h: 'The 30 US software platforms every growth stack still runs through — and which categories they dominate',
+  dek: 'The Wall\'s 30-platform entity reference covers the market-leader software behind US marketing and sales operations. Marketing Automation is the most concentrated pillar; AI Marketing is the least settled.',
+  body: `
+<p>${BRAND} publishes 30 individual entity reference pages for the most-consequential US software platforms in the growth-services market — HubSpot, Salesforce, Klaviyo, Google Ads, Ahrefs, and 25 others. The concentration tells you where the market has settled and where it hasn't.</p>
+${table(['Pillar', 'Reference-tier platforms indexed', 'Concentration'], [
+  ['Marketing Automation', '9 (HubSpot, Salesforce, Marketo, ActiveCampaign, Klaviyo, Mailchimp, Zapier, Make, Customer.io)', 'High'],
+  ['Sales Automation', '5 (Pipedrive, Zoho CRM, Outreach.io, ZoomInfo, Apollo.io)', 'High'],
+  ['SEO', '2 (Ahrefs, Semrush)', 'Duopoly'],
+  ['AI Marketing', '4 (OpenAI/ChatGPT, Anthropic/Claude, Perplexity, Jasper)', 'Fluid'],
+  ['Content Marketing', '3 (Beehiiv, Substack, Jasper)', 'Emerging'],
+  ['Paid Advertising', '3 (Google Ads, Meta Ads Manager, LinkedIn Campaign Manager)', 'Duopoly + LinkedIn'],
+  ['Analytics/Attribution', '2 (Segment, Google Analytics 4)', 'Fragmented'],
+  ['Sales Outbound', '2 (Instantly.ai, Outreach.io)', 'Emerging']
+])}
+<h2>What the concentration pattern says</h2>
+<p><strong>Marketing Automation and Sales Automation are mature.</strong> Nine reference-tier platforms in Marketing Automation and five in Sales Automation reflect categories that have settled into a stable set of platform choices. Most US operators run some combination of HubSpot, Salesforce, or their category-adjacent alternatives; the question is which specific mix, not whether the category is still forming.</p>
+<p><strong>SEO is a duopoly.</strong> Ahrefs and Semrush cover 90%+ of professional US SEO workflows. The third-place tier (Moz, Sistrix, others) exists but is not a category leader; the "which one" decision effectively picks between two products.</p>
+<p><strong>AI Marketing is fluid.</strong> Four reference-tier platforms — but the market rank order shifts quarterly, and the field is younger than any settled category. Most operators use 2–3 in combination rather than picking one primary.</p>
+<p><strong>Analytics and Attribution are fragmented.</strong> Only two reference-tier platforms (Segment, GA4) reflect a category where enterprise stacks routinely combine 4–8 tools with no clear leader — Amplitude, Mixpanel, Adobe Analytics, Bizible, TripleWhale, Rockerbox, and half a dozen others each own defensible slices.</p>
+<h2>How the reference pages map to buying decisions</h2>
+<p>The entity pages are not reviews or rankings. Each covers what the platform actually does, who it's built for, what it typically costs, and where it fits inside the pillar of vendors that surrounds it. Use the <a href="../entities/">full entity index</a> to browse by pillar, or the <a href="../compare/">head-to-head comparisons</a> for the 15 most-common "X vs Y" decisions.</p>
+${METHOD}`,
+  rel: ['the-three-software-first-pillars-2026', 'agencies-vs-software-mix-2026', 'us-agency-hourly-rates-2026']
 }
 ];
 
