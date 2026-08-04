@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Featured in The Wall — Embed Kit for Listed Vendors</title>
+<meta name="description" content="Grab the "Featured in The Wall" badge to display on your site. Auto-generated HTML snippet with a live link to your listing.">
+<link rel="canonical" href="https://hitthewall.net/badge/">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧱</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--porcelain:#FAF9F6;--stone:#E7E3DA;--stone-lt:#F2F0EA;--cobalt:#1B4FD8;--oxblood:#6E1423;--ink:#0E1B33;--chrome:#85898F;--body:#3B4557;--serif:'Newsreader',Georgia,serif;--sans:'IBM Plex Sans',sans-serif;--mono:'IBM Plex Mono',monospace}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:var(--sans);background:var(--porcelain);color:var(--ink);-webkit-font-smoothing:antialiased}
+  .wrap{max-width:820px;margin:0 auto;padding:0 24px}
+  a{color:var(--cobalt)}
+  .topbar{border-bottom:1px solid var(--stone)}
+  .topbar::before{content:'';display:block;height:2px;background:linear-gradient(90deg,var(--cobalt) 0 62%,var(--oxblood) 62% 84%,var(--ink) 84% 100%)}
+  .topbar-in{display:flex;align-items:center;justify-content:space-between;height:56px}
+  .wordmark{font-family:var(--serif);font-weight:700;font-size:20px;text-decoration:none;color:var(--ink);display:flex;align-items:baseline;gap:10px}
+  .wordmark small{font-family:var(--mono);font-weight:600;font-size:8.5px;letter-spacing:.18em;color:var(--chrome)}
+  .back{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.1em;color:var(--cobalt);text-decoration:none}
+  .kicker{font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:.16em;color:var(--oxblood);padding:34px 0 0;text-transform:uppercase}
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(28px,4.5vw,40px);letter-spacing:-.02em;line-height:1.15;padding:10px 0 6px}
+  .dek{font-family:var(--serif);font-style:italic;font-size:17px;line-height:1.55;color:var(--body);padding:8px 0 4px;max-width:680px}
+  h2{font-family:var(--serif);font-weight:600;font-size:21px;letter-spacing:-.01em;margin:32px 0 10px}
+  p,li{font-size:14.5px;line-height:1.75;color:var(--body);margin-bottom:12px}
+  strong{color:var(--ink);font-weight:600}
+
+  .search-box{margin:24px 0 6px}
+  .search-box label{display:block;font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:.14em;color:var(--chrome);margin-bottom:8px;text-transform:uppercase}
+  .search-box input{width:100%;font-family:var(--sans);font-size:16px;color:var(--ink);background:#fff;border:1.5px solid var(--stone);border-radius:8px;padding:14px 16px;outline:none}
+  .search-box input:focus{border-color:var(--cobalt)}
+  #results{max-height:280px;overflow-y:auto;border:1px solid var(--stone);border-radius:8px;background:#fff;margin-top:6px;display:none}
+  #results.on{display:block}
+  #results .r{padding:11px 14px;border-bottom:1px solid var(--stone-lt);cursor:pointer;font-size:14px}
+  #results .r:hover{background:var(--stone-lt)}
+  #results .r b{color:var(--ink)}
+  #results .r span{font-family:var(--mono);font-size:11px;color:var(--chrome);margin-left:8px}
+  #results .r.none{cursor:default;color:var(--chrome);font-style:italic}
+
+  .preview{border:1px solid var(--stone);border-radius:12px;background:#fff;padding:26px;margin:22px 0;display:none}
+  .preview.on{display:block}
+  .preview .lbl{font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:.14em;color:var(--chrome);margin-bottom:12px;text-transform:uppercase}
+
+  .badge-samples{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:14px 0 22px}
+  @media(max-width:640px){.badge-samples{grid-template-columns:1fr}}
+  .badge-cell{border:1px solid var(--stone-lt);border-radius:8px;background:var(--stone-lt);padding:22px;display:flex;align-items:center;justify-content:center;min-height:140px}
+  .badge-cell.dark{background:var(--ink)}
+
+  /* THE ACTUAL BADGE STYLES — kept minimal + self-contained so the snippet copies cleanly */
+  .tw-badge{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;background:#fff;border:1px solid #E7E3DA;border-radius:8px;text-decoration:none;color:#0E1B33;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:12px;line-height:1.3;box-shadow:0 1px 2px rgba(0,0,0,.03)}
+  .tw-badge:hover{border-color:#1B4FD8}
+  .tw-badge .tw-icon{width:32px;height:32px;background:#0E1B33;color:#fff;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+  .tw-badge .tw-txt{display:flex;flex-direction:column;gap:2px}
+  .tw-badge .tw-label{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:8.5px;font-weight:600;letter-spacing:.14em;color:#85898F;text-transform:uppercase}
+  .tw-badge .tw-brand{font-family:'Newsreader',Georgia,serif;font-weight:600;font-size:14px;color:#0E1B33}
+  .tw-badge.tw-dark{background:#0E1B33;border-color:#0E1B33;color:#fff}
+  .tw-badge.tw-dark .tw-icon{background:#fff;color:#0E1B33}
+  .tw-badge.tw-dark .tw-brand{color:#fff}
+  .tw-badge.tw-dark .tw-label{color:#85898F}
+  .tw-badge.tw-dark:hover{border-color:#1B4FD8}
+
+  .snippet-tabs{display:flex;gap:0;border:1px solid var(--stone);border-radius:8px;overflow:hidden;margin:12px 0 0}
+  .snippet-tabs button{flex:1;font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.12em;color:var(--chrome);background:var(--stone-lt);border:none;padding:10px;cursor:pointer;text-transform:uppercase}
+  .snippet-tabs button.on{background:#fff;color:var(--ink)}
+  pre.snippet{background:var(--ink);color:#F2F0EA;padding:20px 22px;border-radius:0 0 8px 8px;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;line-height:1.65;overflow-x:auto;margin-top:-1px;border:1px solid var(--stone);border-top:none}
+  .copy-row{display:flex;gap:10px;margin-top:12px}
+  .btn{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.1em;color:#fff;background:var(--cobalt);border:none;border-radius:7px;padding:11px 18px;cursor:pointer}
+  .btn:hover{background:#153ea8}
+  .btn.ghost{background:transparent;color:var(--cobalt);border:1px solid var(--cobalt)}
+
+  .fn{font-size:12px;color:var(--chrome);margin-top:20px;line-height:1.7}
+  footer{border-top:1px solid var(--stone);margin-top:50px;padding:22px 0 40px}
+  footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;max-width:820px}
+  footer span,footer a{font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:var(--chrome);text-decoration:none}
+  footer a:hover{color:var(--ink)}
+</style>
+</head>
+<body>
+<nav class="topbar"><div class="wrap topbar-in">
+  <a class="wordmark" href="../">The Wall <small>OPERATIONS ATLAS</small></a>
+  <a class="back" href="../">BROWSE THE ATLAS →</a>
+</div></nav>
+
+<main class="wrap">
+<div class="kicker">Embed kit · For listed vendors</div>
+<h1>"Featured in The Wall" badge</h1>
+<p class="dek">A small trust badge you can drop on your homepage, footer, or press page. Links directly to your listing in The Wall's 2,286-vendor US directory. Free to use, no attribution required beyond the link itself.</p>
+
+<div class="search-box">
+  <label for="q">Find your listing</label>
+  <input type="text" id="q" placeholder="Type your company name or domain (e.g., 'agirlcreative')" autocomplete="off">
+  <div id="results"></div>
+</div>
+
+<div class="preview" id="preview">
+  <div class="lbl">Preview</div>
+  <div class="badge-samples">
+    <div class="badge-cell">
+      <a class="tw-badge" id="pv-light">
+        <div class="tw-icon">🧱</div>
+        <div class="tw-txt"><span class="tw-label">FEATURED IN</span><span class="tw-brand">The Wall</span></div>
+      </a>
+    </div>
+    <div class="badge-cell dark">
+      <a class="tw-badge tw-dark" id="pv-dark">
+        <div class="tw-icon">🧱</div>
+        <div class="tw-txt"><span class="tw-label">FEATURED IN</span><span class="tw-brand">The Wall</span></div>
+      </a>
+    </div>
+  </div>
+
+  <div class="snippet-tabs">
+    <button class="on" id="tab-html" onclick="setTab('html')">HTML (RECOMMENDED)</button>
+    <button id="tab-md" onclick="setTab('md')">MARKDOWN</button>
+    <button id="tab-plain" onclick="setTab('plain')">TEXT LINK</button>
+  </div>
+  <pre class="snippet" id="snippet-out"></pre>
+  <div class="copy-row">
+    <button class="btn" onclick="copySnippet()">COPY SNIPPET →</button>
+    <button class="btn ghost" onclick="switchTheme()"><span id="theme-lbl">SWITCH TO DARK</span></button>
+  </div>
+</div>
+
+<h2>Where to put it</h2>
+<ul>
+  <li><strong>Footer of your site</strong> — small persistent trust signal on every page.</li>
+  <li><strong>"Press" or "As featured in" page</strong> — alongside other logos and mentions.</li>
+  <li><strong>Homepage hero</strong> — as a below-the-fold trust row.</li>
+  <li><strong>Email signature</strong> — the text-link version works.</li>
+</ul>
+
+<h2>What it does for you</h2>
+<p>The badge links to your listing at <code>hitthewall.net/c/{your-domain}.html</code> — a page with your company profile, the discipline you're in, your published rate and team-size data (if you've disclosed it on Clutch), and structured JSON-LD that helps search engines and AI answer surfaces cite you. Your listing already ranks; the badge on your own site reinforces the reciprocal connection.</p>
+
+<h2>Why we made this</h2>
+<p>Two reasons. First, listed vendors deserve a way to publicize the fact they're indexed — same reason "Featured in Forbes" badges exist. Second, a link back from your site to your Wall listing helps your listing's search visibility (and reciprocally, our directory's), which benefits everyone.</p>
+
+<p class="fn">The badge, the link, and the listing itself are all free. No paid tiers, no premium badge, no upgrade. Corrections to your listing: reply to the email that reached you or use the <a href="../contact.html">contact page</a>. Read our full <a href="../editorial-policy.html">editorial policy</a>.</p>
+</main>
+
+<footer><div class="wrap">
+  <span>© The Wall · INDEPENDENT DIRECTORY · NOT AN ENDORSEMENT ENGINE</span>
+  <span><a href="../about.html">ABOUT</a> · <a href="../news/">BRIEFINGS</a> · <a href="../glossary.html">GLOSSARY</a> · <a href="../editorial-policy.html">EDITORIAL</a> · <a href="../contact.html">CONTACT</a></span>
+</div></footer>
+
+<script>
+const SITE = 'https://hitthewall.net';
+const SUPABASE_URL = 'https://kdvuewhbinmhmrysusbd.supabase.co';
+const ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtkdnVld2hiaW5taG1yeXN1c2JkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM0MzM2NjUsImV4cCI6MjA5OTAwOTY2NX0.8YF8O_iaCp5C9z8gr8dfEPmW7B8fZCcZ4pIRTwxwsPU';
+const hdrs = { apikey: ANON, Authorization: 'Bearer ' + ANON };
+
+let all = [];
+let selected = null;
+let theme = 'light';
+let tab = 'html';
+
+async function load() {
+  let rows = [], from = 0;
+  while (true) {
+    const r = await fetch(`${SUPABASE_URL}/rest/v1/directory_companies?select=name,domain&status=eq.approved&order=name.asc&offset=${from}&limit=1000`, { headers: hdrs });
+    const p = await r.json();
+    rows = rows.concat(p);
+    if (p.length < 1000) break;
+    from += 1000;
+  }
+  all = rows;
+}
+load();
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+
+$('q').addEventListener('input', e => {
+  const q = e.target.value.trim().toLowerCase();
+  if (!q) { $('results').classList.remove('on'); return; }
+  const matches = all.filter(x => x.name.toLowerCase().includes(q) || x.domain.toLowerCase().includes(q)).slice(0, 12);
+  const box = $('results');
+  if (!matches.length) {
+    box.innerHTML = '<div class="r none">No listings match. Try a broader query or contact us if you believe you should be listed.</div>';
+  } else {
+    box.innerHTML = matches.map(m => `<div class="r" onclick="pick('${esc(m.domain)}','${esc(m.name)}')"><b>${esc(m.name)}</b><span>${esc(m.domain)}</span></div>`).join('');
+  }
+  box.classList.add('on');
+});
+
+function pick(domain, name) {
+  selected = { domain, name };
+  $('q').value = name;
+  $('results').classList.remove('on');
+  $('preview').classList.add('on');
+  render();
+}
+
+function render() {
+  if (!selected) return;
+  const url = `${SITE}/c/${selected.domain}.html?utm_source=partner_badge&utm_medium=embed&utm_campaign=featured_in_the_wall`;
+  const isDark = theme === 'dark';
+  const cls = isDark ? 'tw-badge tw-dark' : 'tw-badge';
+  const styles = isDark
+    ? `background:#0E1B33;border-color:#0E1B33;color:#fff;`
+    : `background:#fff;border-color:#E7E3DA;color:#0E1B33;`;
+  const iconStyles = isDark
+    ? `background:#fff;color:#0E1B33;`
+    : `background:#0E1B33;color:#fff;`;
+  const brandColor = isDark ? '#fff' : '#0E1B33';
+
+  document.querySelectorAll('#pv-light, #pv-dark').forEach(a => a.href = url);
+
+  const html = `<a href="${url}" style="display:inline-flex;align-items:center;gap:10px;padding:10px 14px;${styles}border:1px solid;border-radius:8px;text-decoration:none;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:12px;line-height:1.3;box-shadow:0 1px 2px rgba(0,0,0,.03)" title="${esc(selected.name)} in The Wall directory">
+  <span style="width:32px;height:32px;${iconStyles}border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">🧱</span>
+  <span style="display:flex;flex-direction:column;gap:2px">
+    <span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:8.5px;font-weight:600;letter-spacing:.14em;color:#85898F;text-transform:uppercase">Featured in</span>
+    <span style="font-family:'Newsreader',Georgia,serif;font-weight:600;font-size:14px;color:${brandColor}">The Wall</span>
+  </span>
+</a>`;
+
+  const md = `[**Featured in The Wall** — ${selected.name}'s listing](${url})`;
+  const plain = `Featured in The Wall — ${url}`;
+
+  const map = { html, md, plain };
+  $('snippet-out').textContent = map[tab];
+}
+
+function setTab(t) {
+  tab = t;
+  ['html','md','plain'].forEach(x => $('tab-'+x).classList.toggle('on', x===t));
+  render();
+}
+
+function switchTheme() {
+  theme = theme === 'light' ? 'dark' : 'light';
+  $('theme-lbl').textContent = theme === 'light' ? 'SWITCH TO DARK' : 'SWITCH TO LIGHT';
+  render();
+}
+
+async function copySnippet() {
+  await navigator.clipboard.writeText($('snippet-out').textContent);
+  const btn = event.target;
+  const original = btn.textContent;
+  btn.textContent = 'COPIED ✓';
+  setTimeout(() => btn.textContent = original, 1400);
+}
+</script>
+</body>
+</html>

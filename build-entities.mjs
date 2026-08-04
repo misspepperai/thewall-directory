@@ -291,6 +291,231 @@ Outreach is one of the two dominant products in the sales-engagement category al
     { q: 'Do I need Outreach if I have Salesforce?', a: 'Salesforce alone does not handle multi-touch outbound sequencing well. Companies with active outbound sales-development motions almost always need a dedicated sales-engagement platform on top of Salesforce — either Outreach, Salesloft, or a similar tool. Salesforce Sales Engagement is Salesforce\'s own competing product but has historically lagged Outreach and Salesloft in the market.' }
   ],
   alternatives: ['salesforce', 'hubspot']
+},
+// -------------------- batch 2 (2026-08-04) --------------------
+{
+  slug: 'pipedrive', name: 'Pipedrive', vendor: 'Pipedrive OÜ', url: 'https://www.pipedrive.com/',
+  category: 'BusinessApplication', pillar: 'sales',
+  tagline: 'The visual, pipeline-first CRM built for small and mid-market sales teams.',
+  what: `Pipedrive is a sales-focused CRM headquartered in Tallinn, Estonia, founded in 2010. Its differentiator is the drag-and-drop deal pipeline UI — sales-first rather than the marketing-first model of HubSpot or the enterprise complexity of Salesforce. Owned by Vista Equity Partners since 2020.`,
+  who: `Small and mid-market sales teams (typically 3–50 reps) who want a CRM that reps actually update — because updating it is one click, not a form. Not the right choice for marketing-led motions (HubSpot wins) or enterprise complexity (Salesforce wins).`,
+  cost: `Essential ~$15/user/month, Advanced ~$29, Professional ~$59, Enterprise ~$99. Most SMB sales orgs run Advanced or Professional. Add-ons for lead nurturing (LeadBooster), Web Visitors, Campaigns, Projects price separately.`,
+  faq: [
+    { q: 'What is Pipedrive?', a: 'Pipedrive is a CRM built visually around the sales pipeline — deals move through stages via drag-and-drop, and every feature is designed to reduce friction on reps updating their deals.' },
+    { q: 'How much does Pipedrive cost?', a: 'From ~$15/user/month (Essential) to ~$99/user/month (Enterprise). Most mid-market sales teams run Advanced (~$29) or Professional (~$59).' },
+    { q: 'Pipedrive vs HubSpot vs Salesforce?', a: 'Pipedrive is sales-first and cheapest. HubSpot is marketing-and-sales-unified and mid-market-optimized. Salesforce is enterprise-first and most customizable. Match the tool to your primary motion.' },
+    { q: 'Is Pipedrive good for a small business?', a: 'Yes — Pipedrive is one of the two or three best-fit CRMs for SMB sales teams under 20 reps. Fast to deploy, cheap per seat, and reps actually use it.' },
+    { q: 'What are Pipedrive alternatives?', a: 'HubSpot Sales Hub (unified with marketing), Close (calling-focused), Copper (Google Workspace-native), Zoho CRM (cheaper), Salesforce (enterprise).' }
+  ],
+  alternatives: ['hubspot', 'salesforce', 'zoho-crm']
+},
+{
+  slug: 'zoho-crm', name: 'Zoho CRM', vendor: 'Zoho Corporation', url: 'https://www.zoho.com/crm/',
+  category: 'BusinessApplication', pillar: 'sales',
+  tagline: 'The comprehensive CRM at a fraction of Salesforce or HubSpot pricing, part of the broader Zoho One suite.',
+  what: `Zoho CRM is the flagship product of Zoho Corporation, a privately-held India-headquartered software company that runs a bootstrapped SaaS suite of 50+ business applications. Founded in 1996, Zoho competes on price and breadth: comparable CRM capabilities to HubSpot or Salesforce at roughly a quarter of the cost, with the trade-off being a busier UI and less polish on individual modules.`,
+  who: `SMB and mid-market companies that want CRM + marketing + service + productivity from one vendor, and who care more about total cost of ownership than best-in-class per module. Also popular among global companies for India/APAC pricing advantages.`,
+  cost: `Standard ~$14/user/mo, Professional ~$23, Enterprise ~$40, Ultimate ~$52. Zoho One (all 50+ apps bundled) at ~$37/user/mo is the most commonly-purchased option because the math works: CRM + email + docs + accounting + support + more for less than Salesforce charges for just CRM.`,
+  faq: [
+    { q: 'What is Zoho CRM?', a: 'Zoho CRM is a comprehensive customer-relationship-management platform including sales pipeline, marketing automation, customer service, and analytics — priced at a fraction of Salesforce or HubSpot for comparable feature depth.' },
+    { q: 'How much does Zoho CRM cost?', a: 'Standard $14/user/month, Professional $23, Enterprise $40, Ultimate $52. Zoho One (50+ apps) at ~$37/user/month is the value play.' },
+    { q: 'Zoho vs Salesforce?', a: 'Salesforce is more customizable, has the deepest ecosystem, and is the enterprise default. Zoho is 25–50% the cost, covers more ground per license, and is the small-and-mid-market value choice.' },
+    { q: 'Is Zoho CRM any good in 2026?', a: 'Yes. The knock on Zoho for years was UI polish; the last two release cycles closed most of that gap. For a bootstrapped or capital-efficient business, Zoho is often the right call.' },
+    { q: 'What are Zoho CRM alternatives?', a: 'HubSpot (unified, mid-market), Salesforce (enterprise), Pipedrive (SMB sales-first), Freshsales, Bitrix24.' }
+  ],
+  alternatives: ['hubspot', 'salesforce', 'pipedrive']
+},
+{
+  slug: 'zoominfo', name: 'ZoomInfo', vendor: 'ZoomInfo Technologies Inc.', url: 'https://www.zoominfo.com/',
+  category: 'BusinessApplication', pillar: 'sales',
+  tagline: 'The enterprise-scale B2B contact and company database, with intent data and workflow tools.',
+  what: `ZoomInfo (NASDAQ: ZI) is a US B2B data platform providing verified contact information, company firmographics, technographics, and intent data on hundreds of millions of business professionals globally. Formed from the 2019 merger of ZoomInfo and DiscoverOrg; publicly listed 2020.`,
+  who: `Enterprise B2B sales and marketing organizations with data-hungry outbound motions, ABM programs, and the budget to justify the platform's premium pricing. SMBs typically use Apollo or Lusha instead at 10–20% of the cost.`,
+  cost: `ZoomInfo does not publish list pricing. Typical enterprise contracts start around $15,000–$30,000/year for a small team and scale into six figures for large deployments. Intent data (ZoomInfo Intent, formerly Bombora) and Workflows add-ons price separately.`,
+  faq: [
+    { q: 'What is ZoomInfo used for?', a: 'ZoomInfo is used for B2B prospecting (finding target contacts), account-based marketing (identifying in-market accounts via intent data), CRM enrichment (keeping records current), and outbound workflow automation.' },
+    { q: 'How much does ZoomInfo cost?', a: 'Enterprise contracts typically start at $15,000–$30,000/year for smaller teams and reach six figures for large deployments. ZoomInfo does not publish list pricing.' },
+    { q: 'ZoomInfo vs Apollo?', a: 'ZoomInfo has deeper data and stronger enterprise features but costs 5–10× more. Apollo is the SMB-through-mid-market alternative — most companies under 250 employees find Apollo\'s data quality sufficient at a fraction of the cost.' },
+    { q: 'Is ZoomInfo worth the cost?', a: 'For enterprise sales orgs with formal outbound and ABM programs, generally yes. For small teams doing occasional prospecting, almost certainly not — Apollo or Lusha delivers 80% of the value at 10% of the cost.' },
+    { q: 'What are ZoomInfo alternatives?', a: 'Apollo.io (SMB/mid-market default), Lusha (cheaper contact-first), Cognism (EU-strong), Clearbit (now HubSpot Breeze), LinkedIn Sales Navigator (people-first, no email direct).' }
+  ],
+  alternatives: ['salesforce', 'outreach-io', 'hubspot']
+},
+{
+  slug: 'apollo-io', name: 'Apollo.io', vendor: 'Apollo.io, Inc.', url: 'https://www.apollo.io/',
+  category: 'BusinessApplication', pillar: 'sales',
+  tagline: 'The all-in-one sales intelligence + engagement platform that made ZoomInfo-level data affordable to SMBs.',
+  what: `Apollo.io is a San Francisco-based sales technology company founded in 2015. The product combines a 275M+ B2B contact database with sales-engagement (sequences, dialer), meeting scheduling, and workflow automation — the categories previously served by ZoomInfo + Outreach + Salesloft, at a fraction of the cost.`,
+  who: `SMB and mid-market sales teams that need enterprise-adjacent data quality without enterprise pricing. Especially strong for outbound SDR teams, founder-led sales, and B2B agencies running lead-gen for clients.`,
+  cost: `Free tier includes 60 email credits/month. Basic ~$59/user/month, Professional ~$99, Organization ~$149. Enterprise pricing custom. Most SMB sales teams run Basic or Professional. Meaningfully cheaper than ZoomInfo or Outreach individually — let alone both combined.`,
+  faq: [
+    { q: 'What is Apollo.io?', a: 'Apollo.io is a unified sales-intelligence and engagement platform: contact database, sales sequences, dialer, meeting scheduler, and workflow automation in one product.' },
+    { q: 'How much does Apollo.io cost?', a: 'Free tier (60 credits/month), Basic ~$59/user/month, Professional ~$99, Organization ~$149. Most SMB teams end up in the $59–$99 range per seat.' },
+    { q: 'Apollo vs ZoomInfo?', a: 'Apollo has 90% of ZoomInfo\'s data quality at 10–20% of the price. For teams under 250 employees, Apollo is almost always the right first choice. Enterprises with existing ZoomInfo contracts and deep data-integration needs keep ZoomInfo.' },
+    { q: 'Apollo vs Outreach?', a: 'Outreach is a specialist sales-engagement platform (best-in-class sequences, deep Salesforce integration). Apollo does sequences + everything else at lower quality on each piece but massively lower cost. Match to team maturity: mature enterprise = Outreach; SMB/scaling = Apollo.' },
+    { q: 'What are the best Apollo alternatives?', a: 'ZoomInfo (enterprise, deeper data), Lusha (contact-first, cheaper for individuals), Clay (waterfall enrichment across sources), Salesforce Sales Engagement (Salesforce-native), Outreach + ZoomInfo combo (enterprise stack).' }
+  ],
+  alternatives: ['outreach-io', 'salesforce', 'zoominfo']
+},
+{
+  slug: 'instantly-ai', name: 'Instantly.ai', vendor: 'Instantly.ai, Inc.', url: 'https://instantly.ai/',
+  category: 'BusinessApplication', pillar: 'demand-gen',
+  tagline: 'The cold-email automation platform built for high-volume outbound at low cost.',
+  what: `Instantly.ai is a US SaaS company launched in 2021 that focuses on cold email at scale. The product handles unlimited sending accounts, deliverability warmup, inbox rotation, unified inbox, and sequence automation — designed for agencies, lead-gen shops, and B2B founders running high-volume outbound.`,
+  who: `Cold-email operators: outbound-focused B2B agencies, lead-gen firms, sales-development teams at scaling companies, and founders running founder-led outbound. Not for teams doing warm sales at low volume.`,
+  cost: `Growth ~$37/month for up to 5K contacts and unlimited email accounts. Hypergrowth ~$97/month (100K contacts). Light Speed ~$358/month (unlimited contacts). Meaningfully cheaper per active email account than Outreach or Salesloft (which charge per seat, not per volume).`,
+  faq: [
+    { q: 'What is Instantly.ai?', a: 'Instantly.ai is a cold-email automation platform: unlimited sending accounts, deliverability warmup, inbox rotation, unified inbox, and sequence automation — built for high-volume outbound.' },
+    { q: 'How much does Instantly cost?', a: 'Growth ~$37/month (5K contacts), Hypergrowth ~$97/month (100K contacts), Light Speed ~$358/month (unlimited). Priced by contacts and features, not per seat.' },
+    { q: 'Instantly vs Smartlead vs Lemlist?', a: 'All three do cold email at scale with warmup and inbox rotation. Instantly and Smartlead are the two most popular for pure high-volume outbound; Lemlist adds more personalization and video features. Test drives are cheap — try both before committing.' },
+    { q: 'Is Instantly good for a founder doing their own outbound?', a: 'Yes, especially at the Growth tier. Founder-led outbound was a specific design target — the UI is faster to learn than enterprise sales-engagement tools.' },
+    { q: 'Do I need Apollo AND Instantly?', a: 'They\'re complements, not alternatives. Apollo finds the contacts; Instantly sends the cold emails at scale. Most outbound stacks run both.' }
+  ],
+  alternatives: ['apollo-io', 'outreach-io']
+},
+{
+  slug: 'zapier', name: 'Zapier', vendor: 'Zapier, Inc.', url: 'https://zapier.com/',
+  category: 'BusinessApplication', pillar: 'automation',
+  tagline: 'The dominant no-code workflow automation platform, connecting 6,000+ apps.',
+  what: `Zapier is a San Francisco-based, fully-remote SaaS company founded in 2011. The product connects 6,000+ apps via trigger-action workflows ("Zaps") that non-technical users can build without code. The category-defining product for no-code integration.`,
+  who: `Marketing, sales, operations, and admin teams at essentially every SaaS-using company. Solo entrepreneurs use it for personal automation; enterprise teams use it for tactical glue between systems that don't have native integrations.`,
+  cost: `Free (100 tasks/month), Starter ~$20/month, Professional ~$50, Team ~$70, Company ~$120. Priced by task volume (each step in a workflow = one task) and features. Most SMBs land at Starter or Professional.`,
+  faq: [
+    { q: 'What is Zapier?', a: 'Zapier is a no-code automation platform: connect 6,000+ apps via trigger-action workflows without writing code. When X happens in App A, do Y in App B.' },
+    { q: 'How much does Zapier cost?', a: 'Free tier (100 tasks/month), Starter ~$20/month, Professional ~$50, Team ~$70, Company ~$120. Priced by task volume and features. Most SMBs land at Starter or Professional.' },
+    { q: 'Zapier vs Make (formerly Integromat)?', a: 'Zapier has the largest integration catalog and the simplest UX. Make is meaningfully cheaper at high task volumes, has more complex workflow logic (branching, filtering, iteration), and appeals to more technical users. Start with Zapier; move to Make if task costs get expensive.' },
+    { q: 'When do companies outgrow Zapier?', a: 'When task volume drives monthly cost above $500–$1,000/month, when workflow complexity exceeds Zapier\'s branching capabilities, or when technical teams want to move automation into a proper iPaaS (Workato, Boomi, MuleSoft) or into custom code.' },
+    { q: 'What are Zapier alternatives?', a: 'Make (cheaper, more complex logic), n8n (open-source, self-hostable), Pipedream (developer-first), Workato (enterprise iPaaS), Boomi (enterprise iPaaS), native integrations where they exist.' }
+  ],
+  alternatives: ['hubspot', 'salesforce']
+},
+{
+  slug: 'make', name: 'Make', vendor: 'Celonis SE', url: 'https://www.make.com/',
+  category: 'BusinessApplication', pillar: 'automation',
+  tagline: 'The visual, branching-first automation platform — the technical alternative to Zapier.',
+  what: `Make (formerly Integromat) is a workflow automation platform acquired by Celonis in 2020. Where Zapier prioritizes ease-of-use, Make prioritizes power: complex branching logic, iteration, filtering, error handling, and dramatically cheaper per-task pricing. The visual "scenario" builder appeals to technically-adjacent users who need more than linear if-then flows.`,
+  who: `Marketing operations, RevOps, and technical teams building non-trivial automations. Also the default choice for cost-conscious operators running high-volume automations (10K+ tasks/month) where Zapier's pricing becomes prohibitive.`,
+  cost: `Free (1,000 operations/month), Core ~$9/month (10K ops), Pro ~$16 (10K ops + more features), Teams ~$29, Enterprise custom. Operations are cheaper than Zapier tasks at high volumes — often 5–10× more automation per dollar at scale.`,
+  faq: [
+    { q: 'What is Make?', a: 'Make (formerly Integromat) is a visual workflow automation platform for building "scenarios" that connect apps and services with branching logic, iteration, filtering, and error handling.' },
+    { q: 'How much does Make cost?', a: 'Free (1,000 ops/month), Core ~$9/month (10K ops), Pro ~$16, Teams ~$29, Enterprise custom. Significantly cheaper than Zapier at high volumes.' },
+    { q: 'Make vs Zapier — which is better?', a: 'For simple linear workflows and non-technical users, Zapier is easier. For complex branching, high-volume, cost-sensitive, or technical users, Make wins. Most serious automation programs eventually run both.' },
+    { q: 'Is Make hard to learn?', a: 'Harder than Zapier but not by much. Non-developers can build production workflows in Make with a few hours of learning. The complexity is opt-in — start simple, add branching only when needed.' },
+    { q: 'What are Make alternatives?', a: 'Zapier (easier), n8n (open-source, self-hostable), Pipedream (developer-first), Workato (enterprise), custom code (Python/Node scripts on a scheduler).' }
+  ],
+  alternatives: ['hubspot', 'segment']
+},
+{
+  slug: 'customer-io', name: 'Customer.io', vendor: 'Customer.io, Inc.', url: 'https://customer.io/',
+  category: 'BusinessApplication', pillar: 'automation',
+  tagline: 'The developer-friendly customer messaging platform for behavior-triggered email, SMS, and push.',
+  what: `Customer.io is a Portland-based, fully-remote SaaS company founded in 2012. The product specializes in behavior-triggered messaging across email, SMS, push, and in-app — driven by event data (what users did) rather than static list membership. Popular in SaaS, e-commerce, and any product where user behavior varies enough to justify per-user messaging.`,
+  who: `Product-led SaaS companies, mobile app operators, and e-commerce brands that need to trigger messages from product events. Requires event tracking (Segment, custom integration) to be useful — not a plug-and-play SMB tool like Mailchimp.`,
+  cost: `Essentials ~$100/month for up to 5K profiles + email. Premium (custom pricing) adds SMS, push, in-app, and advanced features. Most real deployments end up in the $200–$2,000/month range depending on profile volume and channel mix.`,
+  faq: [
+    { q: 'What is Customer.io?', a: 'Customer.io is a customer messaging platform for behavior-triggered email, SMS, push, and in-app messages — driven by event data about what users actually do in your product.' },
+    { q: 'How much does Customer.io cost?', a: 'Essentials starts at ~$100/month (5K profiles, email). Premium (custom) adds SMS/push/in-app. Real deployments typically $200–$2,000/month.' },
+    { q: 'Customer.io vs Braze vs Iterable?', a: 'All three are behavior-triggered messaging platforms. Braze and Iterable are enterprise-first with heavier pricing and deeper mobile capabilities. Customer.io is mid-market-first, developer-friendly, and roughly a third the cost for equivalent volumes.' },
+    { q: 'Do I need a CDP with Customer.io?', a: 'A CDP or clean event tracking makes Customer.io dramatically more valuable — the platform is only as good as the event data flowing in. Most Customer.io deployments run alongside Segment or RudderStack.' },
+    { q: 'What are Customer.io alternatives?', a: 'Braze (enterprise), Iterable (enterprise), Klaviyo (e-commerce specific), OneSignal (mobile-first), Intercom (support-first), HubSpot Marketing Hub (if you\'re already on HubSpot).' }
+  ],
+  alternatives: ['hubspot', 'klaviyo', 'segment']
+},
+{
+  slug: 'beehiiv', name: 'Beehiiv', vendor: 'beehiiv, Inc.', url: 'https://www.beehiiv.com/',
+  category: 'BusinessApplication', pillar: 'content-marketing',
+  tagline: 'The newsletter platform built for creators who want to grow, monetize, and treat their newsletter like a business.',
+  what: `Beehiiv is a US SaaS company founded in 2021 by former Morning Brew operators. The product is a purpose-built newsletter platform combining ESP capability, built-in monetization (paid subscriptions, ad network), audience-growth tools (referral programs, recommendation network), and clean analytics. Positioned as the professional alternative to Substack for creators serious about growth.`,
+  who: `Independent creators building serious newsletters (10K–1M+ subscribers), media brands, and companies using newsletters as their primary owned-audience channel. Not the right choice for transactional email or e-commerce lifecycle marketing.`,
+  cost: `Free tier up to 2,500 subscribers. Scale ~$39/month (up to 10K), Grow ~$99/month (up to 100K), Enterprise custom. Beehiiv Ad Network shares revenue with publishers who opt in, materially subsidizing subscription cost for larger publishers.`,
+  faq: [
+    { q: 'What is Beehiiv?', a: 'Beehiiv is a newsletter platform: send emails, manage subscribers, run paid subscriptions, grow via a recommendation network, monetize via an integrated ad network, and see clean analytics — all in one product.' },
+    { q: 'How much does Beehiiv cost?', a: 'Free up to 2,500 subscribers. Scale ~$39/month (10K), Grow ~$99/month (100K), Enterprise custom. Publishers can offset cost via the built-in ad network.' },
+    { q: 'Beehiiv vs Substack?', a: 'Substack has the larger reader-side network and takes 10% of paid-subscription revenue. Beehiiv charges a flat SaaS fee (no revenue share), offers better analytics and audience-growth tools, but has a smaller reader network. Serious creators building an audience-and-business tend toward Beehiiv; solo creators optimizing for reader discovery tend toward Substack.' },
+    { q: 'Is Beehiiv good for a business newsletter (vs a personal one)?', a: 'Yes — arguably the best-fit platform for a B2B or company-branded newsletter. Full custom domain, no visible platform branding on the reader end, integrations with segmentation and automation tools.' },
+    { q: 'What are Beehiiv alternatives?', a: 'Substack (reader-network, cheaper for tiny lists), ConvertKit/Kit (creator-focused ESP), Ghost (open-source, self-hostable), Mailchimp (general-purpose ESP), Buttondown (developer-friendly minimalist).' }
+  ],
+  alternatives: ['substack', 'mailchimp', 'active-campaign']
+},
+{
+  slug: 'substack', name: 'Substack', vendor: 'Substack, Inc.', url: 'https://substack.com/',
+  category: 'BusinessApplication', pillar: 'content-marketing',
+  tagline: 'The reader-network-first paid newsletter and podcast platform that defined the modern independent-publisher renaissance.',
+  what: `Substack is a US publishing platform founded in 2017 by Chris Best, Hamish McKenzie, and Jairaj Sethi. The product combines newsletter hosting, paid subscriptions, podcasts, and — critically — a reader-side network (the Substack app + Substack Notes) that helps publications gain subscribers from other publications' readers. Category-defining for the independent-publisher renaissance.`,
+  who: `Independent writers, journalists, opinion columnists, podcasters, and anyone building a paid-subscriber audience for their own voice. Increasingly used by publications and businesses too, though the platform's identity remains creator-first.`,
+  cost: `Free to start. Substack takes 10% of paid-subscription revenue + Stripe processing fees. No monthly SaaS fee. That model appeals to creators launching a paid publication with no upfront cost; it becomes expensive at scale (a $100K/year Substack pays $10K/year to Substack — where Beehiiv's $99/month tier would be ~$1,200/year for the same volume).`,
+  faq: [
+    { q: 'What is Substack?', a: 'Substack is a publishing platform combining newsletter, paid subscription, podcast, and a reader-side discovery network — designed for independent creators to publish, monetize, and grow.' },
+    { q: 'How much does Substack cost?', a: 'Free to start. Substack takes 10% of paid-subscription revenue + Stripe fees. No monthly SaaS fee. Free publications pay nothing.' },
+    { q: 'Substack vs Beehiiv — which is better?', a: 'Substack has the stronger reader-side network (better organic growth for solo creators). Beehiiv has better analytics, monetization tools, and flat pricing that\'s cheaper at scale. Serious creators building a business tend toward Beehiiv; creators optimizing for reader discovery tend toward Substack.' },
+    { q: 'Can I use Substack for a business newsletter?', a: 'Technically yes, but the platform\'s identity is creator-first and Substack branding is visible to readers (app, notifications, recommendations). Most companies choose Beehiiv or ConvertKit for a fully-branded business newsletter.' },
+    { q: 'What are Substack alternatives?', a: 'Beehiiv (business-newsletter-friendly, flat pricing), Ghost (open-source, self-hostable), Buttondown (minimalist), Kit / ConvertKit (creator ESP), Medium Partner Program (article-first).' }
+  ],
+  alternatives: ['beehiiv', 'mailchimp', 'active-campaign']
+},
+{
+  slug: 'openai-chatgpt', name: 'ChatGPT (OpenAI)', vendor: 'OpenAI, Inc.', url: 'https://openai.com/chatgpt',
+  category: 'BusinessApplication', pillar: 'ai-marketing',
+  tagline: 'The dominant general-purpose AI assistant and the catalyst for the generative-AI adoption wave in marketing.',
+  what: `ChatGPT is the consumer-facing product of OpenAI, launched November 2022 as a research demo and now the largest AI assistant deployment in history (500M+ weekly users). Built on OpenAI's GPT model family. For marketers, ChatGPT is both a personal-productivity tool (drafting, brainstorming, editing) and — via the API — the underlying capability for most AI-marketing products in the market.`,
+  who: `Essentially every knowledge worker with any exposure to writing, analysis, or research. In marketing specifically: content teams for drafting, strategy teams for brainstorming, analysts for data reasoning, ops teams for automation and coding. Enterprise adoption via ChatGPT Enterprise for teams needing SSO, admin, and data controls.`,
+  cost: `Free tier (limited GPT-5 access, GPT-4o unlimited). Plus $20/user/month. Business $25/user/month (min 2 seats). Enterprise custom pricing. API pricing separate: pay-per-token, typically $2–$15 per million input/output tokens depending on model.`,
+  faq: [
+    { q: 'What is ChatGPT?', a: 'ChatGPT is OpenAI\'s consumer AI assistant — a conversational interface to their GPT family of large language models. Used for writing, brainstorming, coding, research, analysis, and countless other knowledge-work tasks.' },
+    { q: 'How much does ChatGPT cost?', a: 'Free tier available. Plus $20/user/month, Business $25/user/month, Enterprise custom. API access separate (pay-per-token).' },
+    { q: 'ChatGPT vs Claude vs Gemini?', a: 'ChatGPT has the largest user base and ecosystem, strongest at general-purpose tasks. Claude (Anthropic) is preferred for long-context analysis and by many for writing quality. Gemini (Google) integrates deeply with Google Workspace. Serious users often use all three depending on task.' },
+    { q: 'Is ChatGPT worth paying for?', a: 'For anyone using AI daily for meaningful work, yes — the paid tiers unlock the latest models, higher rate limits, and features like image generation, data analysis, and custom GPTs. Free-tier limitations are meaningful once you use the product seriously.' },
+    { q: 'Should marketers use ChatGPT for content generation?', a: 'For drafting, brainstorming, editing, and research — extremely useful. For fully-automated content publication — dangerous without human review, since AI content still misfires on facts, brand voice, and search-engine quality guidelines. Use it as an assistant, not a replacement for editorial judgment.' }
+  ],
+  alternatives: ['anthropic-claude', 'perplexity', 'jasper']
+},
+{
+  slug: 'anthropic-claude', name: 'Claude (Anthropic)', vendor: 'Anthropic PBC', url: 'https://claude.ai/',
+  category: 'BusinessApplication', pillar: 'ai-marketing',
+  tagline: 'The AI assistant most-preferred for writing quality, long-context work, and coding by serious knowledge-work users.',
+  what: `Claude is the flagship product of Anthropic, an AI safety company founded in 2021 by former OpenAI researchers including Dario and Daniela Amodei. The Claude model family (Fable, Opus, Sonnet, Haiku as of 2026) competes head-to-head with OpenAI's GPT models. Widely considered the best-in-class model for long-context reasoning, coding, and writing quality — with a smaller consumer footprint than ChatGPT but growing enterprise and developer adoption.`,
+  who: `Knowledge workers who evaluated ChatGPT and Claude side-by-side and preferred Claude for their specific tasks (usually writing quality or long-context analysis). Also the dominant AI in the developer community for coding assistance. Enterprise adoption via Claude Enterprise for compliance-conscious industries.`,
+  cost: `Free tier (limited). Pro $20/user/month. Max $100/user/month (higher limits + priority). Team $30/user/month (min 5). Enterprise custom. API pricing separate: pay-per-token, typically $3–$75 per million tokens depending on model tier.`,
+  faq: [
+    { q: 'What is Claude?', a: 'Claude is Anthropic\'s AI assistant — a conversational interface to their Claude model family. Used for writing, analysis, coding, research, and long-document reasoning. Widely preferred by users who care about writing quality or need to work with long documents.' },
+    { q: 'How much does Claude cost?', a: 'Free tier available. Pro $20/user/month, Max $100/user/month, Team $30/user/month, Enterprise custom. API pricing separate.' },
+    { q: 'Claude vs ChatGPT?', a: 'Both are excellent general-purpose AI assistants. Claude is generally preferred for writing quality (feels less formulaic), long-context work (larger useful context window), and coding. ChatGPT has the larger ecosystem, more integrations, and stronger multimodal features. Serious users often pay for both.' },
+    { q: 'Is Claude the same company as OpenAI?', a: 'No. Anthropic was founded in 2021 by former OpenAI researchers who left over disagreements about AI safety and commercialization priorities. Anthropic operates independently and has raised billions in funding to compete directly with OpenAI.' },
+    { q: 'What are the Claude models called?', a: 'Model tiers in 2026: Fable (fastest general-purpose), Opus (most capable), Sonnet (balanced), Haiku (smallest, cheapest). Older tiers include Claude 3 Opus/Sonnet/Haiku. The naming has evolved several times.' }
+  ],
+  alternatives: ['openai-chatgpt', 'perplexity', 'jasper']
+},
+{
+  slug: 'perplexity', name: 'Perplexity', vendor: 'Perplexity AI, Inc.', url: 'https://www.perplexity.ai/',
+  category: 'BusinessApplication', pillar: 'ai-marketing',
+  tagline: 'The AI-native search engine that cites sources, competing directly with Google as a knowledge-work default.',
+  what: `Perplexity is a US AI-search company founded in 2022 by Aravind Srinivas, Denis Yarats, Johnny Ho, and Andy Konwinski. The product is a conversational search interface that answers questions by combining LLM reasoning with live web-search + citations to source URLs. Widely adopted by knowledge workers as a Google alternative for research-first queries.`,
+  who: `Knowledge workers doing research-heavy work: analysts, journalists, marketers, researchers. Also increasingly used inside sales and marketing teams for competitor and prospect research. Consumer adoption growing rapidly but still much smaller than Google.`,
+  cost: `Free tier (limited). Pro $20/user/month (unlimited Pro searches, model choice including GPT-4o/Claude Opus, file uploads). Enterprise custom. API access separate via Perplexity Sonar.`,
+  faq: [
+    { q: 'What is Perplexity?', a: 'Perplexity is an AI-native search engine — you ask questions in plain language, and it returns answers synthesized from live web sources with inline citations. Positioned as a research-first alternative to Google.' },
+    { q: 'How much does Perplexity cost?', a: 'Free tier available. Pro $20/user/month (unlimited Pro searches, choice of GPT/Claude/other models, file uploads). Enterprise custom.' },
+    { q: 'Perplexity vs Google?', a: 'Google returns links; Perplexity returns answers. For research-first queries where you want a synthesized answer with citations, Perplexity is often faster than Google. For navigational queries or when you want to browse multiple sources, Google is still better.' },
+    { q: 'Perplexity vs ChatGPT?', a: 'ChatGPT is a general-purpose AI assistant; Perplexity is a search-focused AI. For questions requiring current-web information with source citations, Perplexity is better. For general writing, coding, or reasoning tasks, ChatGPT is better.' },
+    { q: 'Should marketers optimize for Perplexity results?', a: 'Yes — Perplexity is one of the emerging "AI answer surfaces" that marketers now optimize content for (alongside Google\'s AI Overview and ChatGPT\'s search). Getting cited as a source in Perplexity\'s answers matters for the growing segment of buyers who start their research there.' }
+  ],
+  alternatives: ['openai-chatgpt', 'anthropic-claude', 'ahrefs']
+},
+{
+  slug: 'jasper', name: 'Jasper', vendor: 'Jasper AI, Inc.', url: 'https://www.jasper.ai/',
+  category: 'BusinessApplication', pillar: 'ai-marketing',
+  tagline: 'The enterprise-focused AI content platform built for marketing teams with brand guidelines and workflow needs.',
+  what: `Jasper is a US SaaS company founded in 2021 (originally as Jarvis, then Conversion.ai). The product is an AI content platform built specifically for marketing use cases — brand voice enforcement, template-driven output, campaign workflows, and integrations with the marketing stack. Positioned as the enterprise-marketing alternative to general-purpose AI assistants like ChatGPT.`,
+  who: `Mid-market and enterprise marketing teams that need AI content generation with brand-consistency guardrails, approval workflows, and integrations with tools like HubSpot, Salesforce, and Adobe. Not the right choice for individual creators or teams that prefer general-purpose AI tools.`,
+  cost: `Creator ~$49/user/month (basic AI writing). Pro ~$69/user/month (brand voice, campaigns, more). Business custom pricing (typically $500+/month for teams needing SSO, custom brand voices, dedicated support).`,
+  faq: [
+    { q: 'What is Jasper?', a: 'Jasper is an AI content platform purpose-built for marketing teams — AI writing with brand voice enforcement, template-driven output for common marketing formats, and workflow features for team collaboration and approval.' },
+    { q: 'How much does Jasper cost?', a: 'Creator ~$49/user/month, Pro ~$69/user/month, Business custom (typically $500+/month for teams).' },
+    { q: 'Jasper vs ChatGPT?', a: 'ChatGPT is a general-purpose AI assistant, cheaper per user, more versatile. Jasper is marketing-specific, more expensive, with features (brand voice, campaigns, approval workflows) that only matter for teams. Solo marketers usually don\'t need Jasper. Marketing teams often do.' },
+    { q: 'Is Jasper worth the price?', a: 'For enterprise marketing teams that need brand-voice enforcement and workflow features at scale — yes. For solo creators or small teams that can operate ChatGPT + Claude directly — no, Jasper\'s premium is hard to justify.' },
+    { q: 'What are Jasper alternatives?', a: 'ChatGPT + Claude (general-purpose, cheaper), Copy.ai (marketing-focused, similar positioning), Writer (enterprise brand-voice AI), Anyword (ad-copy specialist), Frase (SEO-focused writing).' }
+  ],
+  alternatives: ['openai-chatgpt', 'anthropic-claude', 'hubspot']
 }
 ];
 

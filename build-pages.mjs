@@ -252,6 +252,7 @@ const run = async () => {
   const TOOLS = existsSync(join(ROOT, 'tools')) ? readdirSync(join(ROOT, 'tools')).filter(f => f.endsWith('.html')) : [];
   const UPDATES = existsSync(join(ROOT, 'news/updates')) ? readdirSync(join(ROOT, 'news/updates')).filter(f => f.endsWith('.html')) : [];
   const REPORT = existsSync(join(ROOT, 'report')) ? readdirSync(join(ROOT, 'report')).filter(f => f.endsWith('.html')) : [];
+  const BADGE = existsSync(join(ROOT, 'badge')) ? readdirSync(join(ROOT, 'badge')).filter(f => f.endsWith('.html')) : [];
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
     `<url><loc>${SITE}/</loc><lastmod>${today}</lastmod><changefreq>daily</changefreq></url>\n` +
     `<url><loc>${SITE}/sitemap.html</loc><lastmod>${today}</lastmod></url>\n` +
@@ -264,6 +265,7 @@ const run = async () => {
     TOOLS.map(f => `<url><loc>${SITE}/tools/${f}</loc><lastmod>${today}</lastmod></url>`).join('\n') + '\n' +
     UPDATES.map(f => `<url><loc>${SITE}/news/updates/${f === 'index.html' ? '' : f}</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq></url>`).join('\n') + '\n' +
     REPORT.map(f => `<url><loc>${SITE}/report/${f}</loc><lastmod>${today}</lastmod></url>`).join('\n') + '\n' +
+    BADGE.map(f => `<url><loc>${SITE}/badge/${f === 'index.html' ? '' : f}</loc><lastmod>${today}</lastmod></url>`).join('\n') + '\n' +
     urls.map(u => `<url><loc>${u}</loc><lastmod>${today}</lastmod></url>`).join('\n') + '\n</urlset>';
   writeFileSync(join(ROOT, 'sitemap.xml'), sitemap);
   writeFileSync(join(ROOT, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`);
