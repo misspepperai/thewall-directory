@@ -491,10 +491,15 @@ const ownWordsSrc = x => has(x.site_description) ? 'on its website' : 'on its Cl
 const trim140 = s => s.length > 140 ? s.slice(0, 140).replace(/\s+\S*$/, '') + '…' : s;
 const nounOf = x => x.listing_type === 'Software Provider' ? 'platform' : x.listing_type === 'Business Service' ? 'firm' : 'agency';
 const hqLine = x => has(x.hq_city) ? `${x.hq_city}${has(x.hq_state) ? ', ' + x.hq_state : ''}` : null;
+const an = w => /^[aeiou]/i.test(w) ? 'an' : 'a';
+const subNoun = x => {
+  const s = x.subcategory.toLowerCase();
+  return /(agency|software|platform|firm|marketplace|community|bureau|studio)$/.test(s) ? s : `${s} ${nounOf(x)}`;
+};
 
 function aboutHTML(x) {
-  const noun = nounOf(x), words = ownWords(x);
-  const p1 = `${esc(x.name)} is a ${esc(x.subcategory.toLowerCase())} ${noun} in the ${esc(x.category)} section of The Wall${hqLine(x) ? `, based in ${esc(hqLine(x))}` : ''}. ${esc(x.description)}`;
+  const words = ownWords(x);
+  const p1 = `${esc(x.name)} is ${an(subNoun(x))} ${esc(subNoun(x))} in the ${esc(x.category)} section of The Wall${hqLine(x) ? `, based in ${esc(hqLine(x))}` : ''}. ${esc(x.description)}`;
   const factBits = [];
   if (has(x.year_established)) factBits.push(`operating since ${esc(x.year_established)}`);
   if (has(x.team_size)) factBits.push(`a listed team size of ${esc(x.team_size)}`);
@@ -528,10 +533,10 @@ function quickFactsHTML(x) {
 }
 
 function buildStandardQA(x) {
-  const noun = nounOf(x), words = ownWords(x), hq = hqLine(x);
+  const words = ownWords(x), hq = hqLine(x);
   return [
     [`What is ${x.name} and what does it offer?`,
-      `${x.name} is a ${x.subcategory.toLowerCase()} ${noun} in the ${x.category} category.` +
+      `${x.name} is ${an(subNoun(x))} ${subNoun(x)} in the ${x.category} category.` +
       (words ? ` As described ${ownWordsSrc(x)}: "${words}"` : ` ${x.description}`) +
       (has(x.services_list) ? ` Its listed service lines are ${x.services_list}.` : '') +
       (has(x.clutch_rating) && has(x.clutch_reviews) ? ` Client feedback on Clutch averages ${x.clutch_rating}/5 across ${x.clutch_reviews} reviews.` : '')],
@@ -586,7 +591,7 @@ function buildTypeQA(x) {
   }
   if (x.listing_type === 'Business Service') {
     return [
-      [`What business bottlenecks does ${x.name} resolve?`, `${x.name} works on ${(x.bottleneck_solved || 'growth bottlenecks').toLowerCase()} as a ${x.subcategory.toLowerCase()} firm. ${words ? `As described ${ownWordsSrc(x)}: "${trim140(words)}"` : x.description}`],
+      [`What business bottlenecks does ${x.name} resolve?`, `${x.name} works on ${(x.bottleneck_solved || 'growth bottlenecks').toLowerCase()} as ${an(subNoun(x))} ${subNoun(x)}. ${words ? `As described ${ownWordsSrc(x)}: "${trim140(words)}"` : x.description}`],
       [`Are ${x.name} programs tailored to our revenue scale?`, `The Wall lists ${x.name} for ${x.client_revenue_fit || '$5M-$50M+'} organizations; confirm current fit criteria directly.`],
       [`What background does ${x.name} bring?`, `${has(x.year_established) ? `${x.name} has operated since ${x.year_established}. ` : ''}${teamFact}practitioner credentials are published on its website.${ratingFact}`],
       [`How are ${x.name} engagements billed?`, (has(x.min_project_size) || has(x.avg_hourly_rate)) ? `${x.name} publishes ${has(x.min_project_size) ? `a minimum engagement of ${x.min_project_size}` : ''}${has(x.min_project_size) && has(x.avg_hourly_rate) ? ' and ' : ''}${has(x.avg_hourly_rate) ? `an average rate of ${x.avg_hourly_rate}` : ''} on its Clutch profile; structures in this category include retainers and milestone contracts.` : `${x.name} does not publish billing terms in indexed sources; retainer and milestone structures are typical for this category.`],
@@ -599,7 +604,7 @@ function buildTypeQA(x) {
     ];
   }
   return [
-    [`What marketing bottlenecks does ${x.name} solve?`, `${x.name} addresses ${(x.bottleneck_solved || 'growth bottlenecks').toLowerCase()} as a ${x.subcategory.toLowerCase()}${has(x.services_list) ? ` with listed service lines in ${x.services_list}` : ''}. ${words ? `As described ${ownWordsSrc(x)}: "${trim140(words)}"` : ''}`],
+    [`What marketing bottlenecks does ${x.name} solve?`, `${x.name} addresses ${(x.bottleneck_solved || 'growth bottlenecks').toLowerCase()} as ${an(subNoun(x))} ${subNoun(x)}${has(x.services_list) ? ` with listed service lines in ${x.services_list}` : ''}. ${words ? `As described ${ownWordsSrc(x)}: "${trim140(words)}"` : ''}`],
     [`Does ${x.name} run account-based marketing?`, `ABM specifics vary by firm — ${x.name} publishes its service scope at ${x.domain}${has(x.services_list) ? `; its Clutch-listed lines are ${x.services_list}` : ''}.`],
     [`How does ${x.name} report pipeline impact?`, `Reporting norms in this category cover qualified leads, pipeline velocity, acquisition cost, and closed-won attribution; ${x.name} can share its exact dashboard format at intake.${ratingFact}`],
     [`What industries does ${x.name} serve?`, `${positioning}Confirm vertical focus at ${x.domain}; common verticals in this category include B2B SaaS, professional services, financial services, manufacturing, and healthcare.`],

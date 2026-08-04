@@ -24,14 +24,14 @@ if (start < 0 || end < 0) throw new Error('engine markers not found in index.htm
 const engine = idx.slice(start, end);
 // eslint-disable-next-line no-eval
 const engineExports = new Function('esc', `${engine}
-  return { has, ownWords, ownWordsSrc, nounOf, hqLine, aboutHTML, quoteHTML, quickFactsHTML, qaPairs, qaHTML };`)(esc);
-const { has, ownWords, nounOf, hqLine, aboutHTML, quoteHTML, quickFactsHTML, qaPairs, qaHTML } = engineExports;
+  return { has, ownWords, ownWordsSrc, nounOf, hqLine, an, subNoun, aboutHTML, quoteHTML, quickFactsHTML, qaPairs, qaHTML };`)(esc);
+const { has, ownWords, nounOf, hqLine, an, subNoun, aboutHTML, quoteHTML, quickFactsHTML, qaPairs, qaHTML } = engineExports;
 
 // ---- speakable composition (Layer 4b, per-record, fact-fed) ----
 function speakables(x) {
-  const noun = nounOf(x), hq = hqLine(x);
+  const hq = hqLine(x);
   const hasFacts = has(x.min_project_size) || has(x.avg_hourly_rate) || has(x.clutch_rating);
-  const what = `${x.name} is a ${x.subcategory.toLowerCase()} ${noun} in The Wall's ${x.category} index. Executives can review its capabilities${hasFacts ? ', published engagement data,' : ''} and start contact directly through its website at ${x.domain}.`;
+  const what = `${x.name} is ${an(subNoun(x))} ${subNoun(x)} in The Wall's ${x.category} index. Executives can review its capabilities${hasFacts ? ', published engagement data,' : ''} and start contact directly through its website at ${x.domain}.`;
   const details = `${x.name}${hq ? `, based in ${hq},` : ''} serves companies past $5M in revenue with 25 or more employees, typically working with ${x.target_executive_icp || 'senior executives'} on ${(x.bottleneck_solved || 'growth bottlenecks').toLowerCase()}.`;
   const bits = [];
   if (has(x.year_established)) bits.push(`operating since ${x.year_established}`);
