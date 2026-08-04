@@ -108,8 +108,31 @@ blocklist. All removed rows backed up in session scratchpad (`nonus_backup.json`
   now links pillar pages (slug = category lowercased, spaces→hyphens); `?cat=<Category>` SPA deep
   links added to route() (verified: ?cat=SEO renders exactly the 226 SEO cards); glossary link in
   all footers; sitemap globs pillars/ + glossary.
-- ⏭ **Then:** Phase 3 catalyst (data studies from index — briefings already seed this; next is
-  distribution/roundups), Phase 5 monetization (claimed listings = "listing upgrades").
+- ✅ **DataForSEO-driven retrofit SHIPPED (commit 59affdd, 2026-08-03):** switched primary
+  PAA/SERP tool from mcp-scraper to **DataForSEO MCP** (memory: `dataforseo-primary-harvest`).
+  Four coordinated changes:
+  1. **Task 4 sweep**: 10 pillar seed queries → keyword_ideas (KD ≤ 30, volume ≥ 500) →
+     171 qualifying keywords, distilled into `docs/keyword-pipeline-2026-08-03.md` + .json
+     (durable planning asset in repo). Lesson: `keyword_ideas` semantic-drifts hard (dictionary
+     lookups, "video editing tips", "smart synonym"); for tighter recall use
+     `dataforseo_labs_google_keyword_suggestions` (seed must appear literally).
+  2. **Task 1 — pillar head-term retrofit**: added `title`, `metaDesc`, `mktH2` optional fields
+     to each PILLARS entry in build-pillars.mjs. All 10 pillars now carry commercial buyer terms
+     in title/meta ("US SEO Agencies & SEO Services: 226 Verified Firms", "US Marketing
+     Agencies: 550 Verified Full-Service Firms", etc.). Shell falls back to old title if a pillar
+     doesn't set the new fields.
+  3. **Task 2 — Marketing Consultant hub**: new `build-hubs.mjs` generates `hubs/{slug}.html`.
+     First hub is `hubs/marketing-consultant.html` targeting "marketing consultant"
+     (18,100/mo, KD 4, $19.15 CPC). Article + FAQPage + Breadcrumb JSON-LD. Glossary term
+     added, points to it. Sitemap in build-pages.mjs now globs hubs/. Pattern is ready for
+     paid-advertising-platforms, b2b-marketing-agency, and small-business-platform hubs next.
+  4. **Task 3 — briefing**: `news/small-business-platform-search-1015-percent-2026.html` on the
+     40,500/mo +1,015% YoY trend for "digital marketing platform for small businesses".
+     DataForSEO cited as source. No fabricated platform data — trend is the story.
+- ⏭ **Next:** Phase 3 catalyst distribution (the briefings are seed data studies — outreach and
+  roundup pitching starts now); Phase 5 monetization (claimed listings). Additional hubs from
+  keyword pipeline: paid-advertising-platforms, b2b-marketing-agency, digital-marketing-platform-
+  for-small-businesses.
 - **Dan's checklist:** GSC + GA setup & sitemap submit (post-domain), social fortress accounts
   (X/LinkedIn/FB/YT → schema sameAs), DMCA badge account, ScoreDetect account, optional NAP
   address/phone for contact page.
