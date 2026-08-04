@@ -245,3 +245,17 @@ blocklist. All removed rows backed up in session scratchpad (`nonus_backup.json`
   All infra + probe input prepared; enrichment runs end-to-end in ~1 hour after "actor rented".
 
 **Sitemap: 2,368 URLs.**
+
+## Contact enrichment SHIPPED (2026-08-04)
+
+- Actor: `pipelinelabs/lead-scraper-apollo-zoominfo-lusha-ppe` (**pay-per-event**, $0.001/lead, 250M+ verified contact DB).
+- **Two passes, ~$7 total spend, 1,159 of 2,286 companies enriched (50.7%).**
+- Pass 1 (strict — c_suite/owner/partner/vp/director × marketing/sales/bizdev × verified): 6,000 leads → 652 companies.
+- Pass 2 (widened — added 'manager' seniority, dropped function filter, verified only): 1,396 leads → 507 new companies.
+- Per-category coverage: Sales 77%, Demand Gen 63%, Thought Leadership 62%, Automation 56%, Marketing 53%, Content 50%, Social 50%, Creative 49%, SEO 32%, AI Marketing 18%.
+- Data quality: verified deliverable emails, real names + titles + LinkedIn URLs + seniority. Bounce risk ~5% (industry standard for verified).
+- Raw datasets cached: `scratchpad/apollo-raw-ifActaoKYij2PaFyz.json` + `-HIRkKMC6JSbHTZoTW.json`.
+- Segment CSVs (`exports/`): A-marketing 291 rows, B-seo-content-social 174, C-creative 426, D-sales-auto-demand-ai-tl 268. `exports/` is gitignored (PII).
+- `temp_anon_enrich` policy DROPPED (2026-08-04) — recreate before next enrichment pass.
+- To lift coverage above 65%: pass 3 with `emailStatusIncludes: ['verified','unverified']` OR contract with a manual-verification service on the remaining 1,127 domains. Neither shipped yet.
+- **Blocker for cold-email launch: Dan's sending-domain infrastructure warmup (2-4 weeks) + GSC verification.**
