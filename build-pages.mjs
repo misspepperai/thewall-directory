@@ -45,9 +45,17 @@ function speakables(x) {
   return { what, details, facts };
 }
 
+const ORG_LD = {
+  '@context': 'https://schema.org', '@type': 'Organization',
+  name: 'The Wall', url: `${SITE}/`, email: 'support@misspepper.ai',
+  description: 'An operations atlas of US-based companies that solve sales, marketing, SEO, thought leadership, creative, automation, and demand generation problems for established businesses.',
+  sameAs: []
+};
+
 // ---- JSON-LD (static: FULL 20-item FAQPage + speakable pointing at the three blocks) ----
 function jsonld(x, pairs, sp) {
   return [
+    ORG_LD,
     {
       '@context': 'https://schema.org', '@type': x.listing_type === 'Software Provider' ? 'SoftwareApplication' : 'ProfessionalService',
       name: x.name, url: `https://${x.domain}`, description: ownWords(x) || x.description,
@@ -194,7 +202,7 @@ function pageHTML(x, pairs, sp) {
 </main>
 <footer><div class="wrap">
   <span>INDEPENDENT DIRECTORY · COMPILED FROM PUBLIC SOURCES · NOT AN ENDORSEMENT</span>
-  <span><a href="../">BROWSE THE ATLAS</a> · <a href="../admin.html">ADMIN</a></span>
+  <span><a href="../">ATLAS</a> · <a href="../about.html">ABOUT</a> · <a href="../editorial-policy.html">EDITORIAL</a> · <a href="../privacy.html">PRIVACY</a> · <a href="../terms.html">TERMS</a> · <a href="../contact.html">CONTACT</a></span>
 </div></footer>
 </body>
 </html>`;
@@ -234,17 +242,73 @@ const run = async () => {
   }
   console.log(`pages written: ${urls.length}`);
 
-  // sitemap + robots + .nojekyll
+  // sitemap.xml + HTML sitemap + robots + .nojekyll
   const today = new Date().toISOString().slice(0, 10);
+  const TRUST = ['about','contact','editorial-policy','ai-policy','disclosures','privacy','terms','accessibility'];
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
     `<url><loc>${SITE}/</loc><lastmod>${today}</lastmod><changefreq>daily</changefreq></url>\n` +
+    `<url><loc>${SITE}/sitemap.html</loc><lastmod>${today}</lastmod></url>\n` +
+    TRUST.map(s => `<url><loc>${SITE}/${s}.html</loc><lastmod>${today}</lastmod></url>`).join('\n') + '\n' +
     urls.map(u => `<url><loc>${u}</loc><lastmod>${today}</lastmod></url>`).join('\n') + '\n</urlset>';
   writeFileSync(join(ROOT, 'sitemap.xml'), sitemap);
   writeFileSync(join(ROOT, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`);
   writeFileSync(join(ROOT, '.nojekyll'), '');
-  console.log('sitemap + robots + .nojekyll written');
 
-  // persist qa + speakables to DB (concurrency 12)
+  // HTML sitemap (crawlable index page; passes internal PageRank)
+  const CATS_ORDER = ['Sales','Marketing','SEO','Thought Leadership','Creative Strategy','Automation','Demand Gen','Content Marketing','Social Media Marketing','AI Marketing'];
+  const byCat = Object.fromEntries(CATS_ORDER.map(c => [c, []]));
+  for (const x of rows) (byCat[x.category] || (byCat[x.category] = [])).push(x);
+  const secHTML = CATS_ORDER.filter(c => byCat[c]?.length).map((c, i) => `
+  <h2><span class="no">${String(i+1).padStart(2,'0')}</span> ${esc(c)} <span class="ct">${byCat[c].length}</span></h2>
+  <ul>${byCat[c].map(x => `<li><a href="c/${esc(x.domain)}.html">${esc(x.name)}</a></li>`).join('')}</ul>`).join('\n');
+  writeFileSync(join(ROOT, 'sitemap.html'), `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Site Index — The Wall</title>
+<meta name="description" content="Complete index of all ${rows.length} companies listed in The Wall directory, by category.">
+<link rel="canonical" href="${SITE}/sitemap.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧱</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,600;6..72,700&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">${JSON.stringify(ORG_LD)}</script>
+<style>
+  :root{--porcelain:#FAF9F6;--stone:#E7E3DA;--cobalt:#1B4FD8;--oxblood:#6E1423;--ink:#0E1B33;--chrome:#85898F;--serif:'Newsreader',Georgia,serif;--sans:'IBM Plex Sans',sans-serif;--mono:'IBM Plex Mono',monospace}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:var(--sans);background:var(--porcelain);color:var(--ink);-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  .topbar{border-bottom:1px solid var(--stone)}
+  .topbar::before{content:'';display:block;height:2px;background:linear-gradient(90deg,var(--cobalt) 0 62%,var(--oxblood) 62% 84%,var(--ink) 84% 100%)}
+  .topbar-in{display:flex;align-items:center;justify-content:space-between;height:56px}
+  .wordmark{font-family:var(--serif);font-weight:700;font-size:20px;text-decoration:none;color:var(--ink)}
+  .back{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.1em;color:var(--cobalt);text-decoration:none}
+  h1{font-family:var(--serif);font-weight:600;font-size:34px;letter-spacing:-.02em;padding:34px 0 4px}
+  .sub{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--chrome)}
+  h2{font-family:var(--serif);font-weight:600;font-size:20px;margin:28px 0 10px;border-bottom:1px solid var(--stone);padding-bottom:8px}
+  h2 .no{font-family:var(--mono);font-size:10px;color:var(--cobalt);letter-spacing:.12em;margin-right:6px}
+  h2 .ct{font-family:var(--mono);font-size:10px;color:var(--chrome);margin-left:6px}
+  ul{list-style:none;columns:3;column-gap:28px}
+  li{margin-bottom:5px;break-inside:avoid}
+  li a{font-size:13px;color:var(--ink);text-decoration:none}
+  li a:hover{color:var(--cobalt);text-decoration:underline}
+  footer{border-top:1px solid var(--stone);margin-top:44px;padding:20px 0 40px}
+  footer span,footer a{font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:var(--chrome);text-decoration:none}
+  @media(max-width:800px){ul{columns:2}}@media(max-width:520px){ul{columns:1}}
+</style>
+</head>
+<body>
+<nav class="topbar"><div class="wrap topbar-in"><a class="wordmark" href="./">The Wall</a><a class="back" href="./">BROWSE THE ATLAS →</a></div></nav>
+<main class="wrap">
+<h1>Site index</h1>
+<p class="sub">ALL ${rows.length} LISTINGS BY SECTOR · <a href="about.html" style="color:var(--cobalt)">ABOUT</a> · <a href="editorial-policy.html" style="color:var(--cobalt)">EDITORIAL POLICY</a></p>
+${secHTML}
+</main>
+<footer><div class="wrap"><span>© The Wall · <a href="privacy.html">PRIVACY</a> · <a href="terms.html">TERMS</a> · <a href="contact.html">CONTACT</a></span></div></footer>
+</body>
+</html>`);
+  console.log('sitemap.xml + sitemap.html + robots + .nojekyll written');
+
+  // persist qa + speakables to DB (concurrency 12) — skip with --pages-only
+  if (process.argv.includes('--pages-only')) { console.log('pages-only: skipping DB persist'); return; }
   let ok = 0, fail = 0, i = 0;
   async function worker() {
     while (i < patches.length) {
