@@ -325,3 +325,51 @@ layer (skipped per Dan — this is a referral engine, not a directory business).
 - **First-run baseline captured today (2026-08-04):** 2286 approved listings, 10 pillars, 47 states.
 
 **Sitemap: 2,501 URLs.**
+
+## Tier C shipped (2026-08-04, commit a2d14fd)
+
+**Prep for the referral win-cycle — case-study template + interactive data explorer.**
+
+**Case-study template** (`build-wins.mjs` + `/wins/`):
+- WIN object with slug/date/client/partner/engagement/problem/solution/outcomes/quote/
+  referralCredit/editorialNote fields. Fill and rebuild = published case study.
+- `/wins/{slug}.html` template: kicker, headline, dek, meta date-line, two-side
+  factbox (Client | Referring partner), problem, solution, 3–6 outcome cards
+  with big-number values, blockquote, blue referral-economics call-out that
+  publishes the partner's cut + first payout, editorial-note slot, standing
+  "become a partner" CTA at bottom.
+- `/wins/index.html` always renders — currently in "first wins in flight" state
+  with copy about the referral network having launched today.
+- Article + Organization + BreadcrumbList JSON-LD per win.
+- **Publish path when first win arrives:** add entry to WINS array →
+  `node build-wins.mjs` → `node build-pages.mjs --pages-only` → commit + push.
+  30-minute publish time, not a week.
+
+**Data corner** (`/data/index.html` — 303 lines, self-contained):
+- Client-side single-page interactive explorer over all 2,286 approved US vendors.
+- Loads via Supabase REST (anon JWT + status=approved filter, same public read
+  pattern as index.html), no server. Live data, cache-friendly.
+- **Filter dimensions (multi-select within, AND across):** pillar, listing type,
+  rate band, team size, HQ state (top 15), founding decade. Each shows count in
+  chip label. Clear-all button.
+- **8 chart panels** (all pure CSS bars — no external libs):
+  1. Composition by pillar
+  2. Hourly-rate distribution (excludes undisclosed)
+  3. Team-size distribution
+  4. Minimum-project-size distribution
+  5. Top 15 US states by count
+  6. Top 15 US cities by count
+  7. Founding-year distribution (decade cohorts)
+  8. Listing-type composition (agency / software / business_services)
+- Top stats bar (5 counters): matching firms, with-rate, with-team, distinct
+  states, distinct cities. All respect active filters. Recompute in browser.
+- **Per-chart CITE button** copies a citation string with the active filter
+  context and access-date auto-embedded. Journalist-first design.
+- `Dataset` + `BreadcrumbList` JSON-LD (schema-org Dataset type — helps Google
+  Dataset Search find it).
+
+**Wired both into sitemap** (build-pages.mjs) + footer nav (index.html).
+**Sitemap now 2,503 URLs.**
+
+**When first Miss Pepper referral win lands:** publish takes 30 min not a week.
+**When a journalist wants a stat:** they cite the Data Corner not a competitor.
