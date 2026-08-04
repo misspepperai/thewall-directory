@@ -5,7 +5,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
-const SITE = 'https://misspepperai.github.io/thewall-directory';
+const SITE = 'https://hitthewall.net';
 const BRAND = 'The Wall';
 const CONTACT_EMAIL = 'support@misspepper.ai';
 const EFFECTIVE = '2026-08-03';

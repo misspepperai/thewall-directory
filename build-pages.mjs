@@ -8,7 +8,7 @@ import { fileURLToPath } from 'node:url';
 const ROOT = dirname(fileURLToPath(import.meta.url));
 const SB = 'https://kdvuewhbinmhmrysusbd.supabase.co';
 const KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtkdnVld2hiaW5taG1yeXN1c2JkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM0MzM2NjUsImV4cCI6MjA5OTAwOTY2NX0.8YF8O_iaCp5C9z8gr8dfEPmW7B8fZCcZ4pIRTwxwsPU';
-const SITE = 'https://misspepperai.github.io/thewall-directory';
+const SITE = 'https://hitthewall.net';
 const HDRS = { apikey: KEY, Authorization: `Bearer ${KEY}` };
 const COLORS = {
   'Sales':'#0E1B33','Marketing':'#1B4FD8','SEO':'#16389B','Thought Leadership':'#6E1423','Creative Strategy':'#93202F',
