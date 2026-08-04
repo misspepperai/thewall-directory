@@ -414,3 +414,32 @@ layer (skipped per Dan — this is a referral engine, not a directory business).
 - Both formatted for OpenPR / PRLog / PR.com free-tier submission
 
 **Sitemap: 2,588 URLs.** Footer nav adds "Find by state" and "Press & media".
+
+## Top-level nav shipped (2026-08-04, commits d8ff48f + f44adc4)
+
+**Every page now has a 4-dropdown top-level menu** — no more "buried in the footer."
+
+- `nav.js` (single source of truth) — 155 lines including scoped CSS
+- DIRECTORY: Atlas home, Browse by pillar, Find by state, All US states, All US cities
+- REFERENCE: Buyer hubs, Platform reference, Head-to-heads, Q&A silo, Glossary, Rate benchmark
+- NEWSROOM: Briefings, Data corner, State-of-market report, Press & media kit
+- PARTNER: Partner program, Referral wins, "Featured in The Wall" badge
+- Hover-open on desktop, click-open on mobile, ≤780px collapses to hamburger
+- Idempotency guard (`window._navInjected`) prevents double-injection
+- Uses root-anchored `/paths` on http(s), relative on `file://` preview
+
+**Placement:** `<script src="/nav.js"></script>` at body-end (right before `</body>`).
+Initially tried head-defer but the atlas index.html's inline scripts caused the
+tag to be stripped from the live DOM on that specific page (other pages worked).
+Body-end placement is universal and defer-unnecessary since scripts there run
+after full DOM parse anyway.
+
+**Rollout:**
+- 2,590 existing HTML files patched via one-off scratchpad script
+- All 12 builder shell functions patched so future rebuilds preserve it
+- Verified live on atlas home, press, find/, compare/, data/, and c/*.html
+- 4 dropdowns render correctly, hover opens on desktop, hamburger on mobile
+
+**Impact:** Users, journalists, and Claude can now find every critical page from
+anywhere on the site in one click. Cold-emailed vendors landing on their `/c/`
+listing page can find the partner program without hunting the footer.
