@@ -234,6 +234,16 @@
     .spec { position: static; }
     .colophon { grid-template-columns: 1fr; gap: 22px; }
   }
+  @media (max-width: 600px) {
+    .wrap { padding: 0 18px; }
+    .db-live, .wordmark small { display: none; }
+    .topbar-in { gap: 10px; }
+    .section-head { flex-wrap: wrap; row-gap: 4px; }
+    .section-head .more { margin-left: 0; }
+    .detail h1 { font-size: 29px; }
+    .d-head { flex-wrap: wrap; }
+    .ownquote p { font-size: 17px; }
+  }
   @media (prefers-reduced-motion: reduce) {
     * { animation: none !important; transition: none !important; }
     html { scroll-behavior: auto; }
