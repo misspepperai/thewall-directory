@@ -374,6 +374,7 @@ ${ld.map(o => `<script type="application/ld+json">${JSON.stringify(o)}</script>`
   footer a:hover{color:var(--ink)}
   @media (max-width:640px){.fact{grid-template-columns:1fr}.fact-side{border-right:none;border-bottom:1px solid var(--stone)}.fact-side:last-child{border-bottom:none}th:first-child{width:38%}}
 </style>
+<script src="/nav.js" defer></script>
 </head>
 <body>
 <nav class="topbar"><div class="wrap topbar-in">

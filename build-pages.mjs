@@ -166,6 +166,7 @@ function pageHTML(x, pairs, sp) {
   footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   footer span,footer a{font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:var(--chrome)}
 </style>
+<script src="/nav.js" defer></script>
 </head>
 <body>
 <nav class="topbar"><div class="wrap topbar-in">
@@ -327,6 +328,7 @@ const run = async () => {
   footer span,footer a{font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:var(--chrome);text-decoration:none}
   @media(max-width:800px){ul{columns:2}}@media(max-width:520px){ul{columns:1}}
 </style>
+<script src="/nav.js" defer></script>
 </head>
 <body>
 <nav class="topbar"><div class="wrap topbar-in"><a class="wordmark" href="./">The Wall</a><a class="back" href="./">BROWSE THE ATLAS →</a></div></nav>

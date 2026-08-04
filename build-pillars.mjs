@@ -490,6 +490,7 @@ ${ld.map(o => `<script type="application/ld+json">${JSON.stringify(o)}</script>`
   footer span,footer a{font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:var(--chrome);text-decoration:none}
   footer a:hover{color:var(--ink)}
 </style>
+<script src="/nav.js" defer></script>
 </head>
 <body>
 <nav class="topbar"><div class="wrap topbar-in">
