@@ -10,7 +10,7 @@
 
 ### The US growth-vendor directory adds structured coverage of the platforms and decisions that shape every marketing shortlist
 
-**AUSTIN, TX — August 14, 2026** — [The Wall](https://hitthewall.net), the independent US directory of 2,286 verified growth-services vendors, has published a comprehensive reference layer covering the software platforms, comparative decisions, and buyer questions that surround every US marketing engagement.
+**[CITY, STATE] — August 14, 2026** — [The Wall](https://hitthewall.net), the independent US directory of 2,286 verified growth-services vendors, has published a comprehensive reference layer covering the software platforms, comparative decisions, and buyer questions that surround every US marketing engagement.
 
 The expansion adds three new sections to the directory:
 

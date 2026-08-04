@@ -711,3 +711,51 @@ prints the two UI paths instead of 404ing. Internal-traffic filters remain a man
 
 **⏭ Next:** ~3-7 days for GSC coverage + query data. Then decide the 3 unbuilt hubs using
 `page_type` × `claim_click` conversion data rather than guesswork.
+
+## Distribution push started (2026-08-04) — the constraint is backlinks, not pages
+
+**Diagnosis: `hitthewall.net` has ZERO backlinks** (verified via DataForSEO
+`backlinks_summary`, empty result set). Domain live 2 days, 2,588 URLs. That chain is the
+whole problem: no links → shallow crawl → no index → no vendor traffic → the claim CTA
+shipped this session has nothing to convert. **More pages does not fix this.**
+
+Also found three finished assets that had never been delivered: 2 press releases, the
+outreach kit, and the badge page. All built, none used.
+
+**✅ IndexNow SHIPPED — 2,588 URLs accepted (HTTP 200).**
+- Key `b04f72ccaa73fcf7c56cfc1d09ca564e`, file served at site root
+- `submit-indexnow.mjs` — verifies the key file is reachable AND that its contents match the
+  filename before submitting (IndexNow rejects the whole batch otherwise with a vague error),
+  guards against off-host URLs, supports `--dry` and `--since <date>` for incremental pushes
+- **Gotcha:** first submission returned `403 SiteVerificationNotCompleted` because the key
+  file had only just deployed. It is transient — retry loop succeeded on the next attempt.
+  Wait for the Pages deploy AND give IndexNow a minute before submitting.
+- Notifies **Bing, Yandex, Seznam, Naver** — these crawl on notification, so this sidesteps
+  the zero-backlink problem for them entirely. **Google does NOT participate in IndexNow.**
+  Google discovery still needs the GSC sitemap + real links.
+- Re-run after any build that adds URLs.
+
+**⚠️ CAUGHT A FABRICATED FACT IN BOTH PRESS RELEASES.** Both carried the dateline
+**`AUSTIN, TX`**. There is no address anywhere on the site, no NAP was ever supplied by Dan,
+and it could not be verified — it appears to have been invented in an earlier session.
+Replaced with `[CITY, STATE]` placeholder in both files. **Dan must fill in the real city
+before either release is submitted.** This matters disproportionately: The Wall's entire
+positioning is "we publish what we can verify"; a fabricated dateline in the launch
+announcement, sent to journalists and permanently archived, discredits that. Verified the
+other stats in the release ARE accurate (2,286 vendors, 22 briefings — counted).
+
+**`docs/distribution-runbook-2026-08-04.md`** — sequenced last-mile plan:
+1. IndexNow (done)
+2. Press syndication — OpenPR + PRLog + PR.com, free, ~20 min, gated on the dateline fix
+3. HARO/Connectively/Qwoted — the outreach kit's response bank, best-quality links available;
+   angle is the original pricing data on 1,440 agencies, not the directory itself
+4. Badge distribution — sequenced LAST on purpose; it only converts vendors who already know
+   they are listed, which is almost nobody until 2 and 3 create traffic
+
+**Explicit hold: do NOT build the 3 remaining hubs.** 2,588 URLs and zero backlinks means
+surface area is not the constraint. Revisit once GSC shows what indexes and GA4 shows which
+`page_type` converts (3-7 days).
+
+**⏭ Dan-side:** (a) real city/state for the dateline, (b) OpenPR/PRLog/PR.com accounts +
+submit launch release, (c) decide on option 2 (cold-email domain warm-up — pure calendar time,
+2-4 weeks, so delay costs directly).
