@@ -1,3 +1,11 @@
 exports/
 C:/Users/danku/AppData/Local/Temp/
 data/draft-briefing-*.txt
+
+# Credentials — never commit. A service-account key is a live secret that grants
+# API access to the GA4 property until it is revoked.
+.secrets/
+service-account*.json
+*-credentials.json
+.env
+.env.*
