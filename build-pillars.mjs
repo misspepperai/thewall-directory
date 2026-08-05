@@ -616,4 +616,103 @@ ${byLetter[l].map(t => `<dt>${esc(t.t)}${t.link ? ` <a href="${t.link}" style="f
 writeFileSync(join(ROOT, 'glossary.html'),
   shell({ title: 'Growth-Vendor Glossary', metaDesc: `${TERMS.length} plain-English definitions of growth, marketing, and sales-vendor terms — the working vocabulary of The Wall's ten disciplines.`, canonical: `${SITE}/glossary.html`, ld: glLD, bodyHTML: glBody, base: '' }));
 
-console.log(`pillar pages written: ${PILLARS.length} + glossary (${TERMS.length} terms)`);
+// ---------------------------------------------------------------- pillars index
+// nav.js links "Browse by pillar" -> /pillars/ on every page of the site, and 77 static
+// hrefs point at it too, but nothing ever wrote pillars/index.html. It 404'd site-wide.
+const byCount = [...PILLARS].sort((a, b) => b.stats.n - a.stats.n);
+const grandTotal = byCount.reduce((a, p) => a + p.stats.n, 0);
+const widest = byCount[0].stats.n;
+
+// Sorted magnitude, single hue, direct-labelled — the correct form for "how many per
+// category" (STYLE-GUIDE §3). Ten distinguishable categorical hues do not exist, and the
+// question here is size, not identity.
+const pxRows = byCount.map(p => `<a class="px-row" href="${p.slug}.html">
+  <span class="px-no">${p.no}</span>
+  <span class="px-nm">${esc(p.cat)}</span>
+  <span class="px-track"><span class="px-bar" style="width:${(p.stats.n / widest * 100).toFixed(1)}%"></span></span>
+  <span class="px-n">${p.stats.n.toLocaleString('en-US')}</span>
+</a>`).join('\n');
+
+const pxCards = byCount.map(p => `<div class="px-card">
+  <h3><a href="${p.slug}.html">${esc(p.cat)}</a> <span class="px-cn">${p.stats.n.toLocaleString('en-US')} listings</span></h3>
+  <p>${p.dek}</p>
+</div>`).join('\n');
+
+const pxLD = [ORG_LD, {
+  '@context': 'https://schema.org', '@type': 'CollectionPage',
+  '@id': `${SITE}/pillars/`,
+  name: `${BRAND} — the ten disciplines`,
+  description: `All ten growth-services disciplines indexed by ${BRAND}, with verified listing counts for each.`,
+  isPartOf: { '@type': 'WebSite', name: BRAND, url: `${SITE}/` },
+  mainEntity: {
+    '@type': 'ItemList', numberOfItems: byCount.length,
+    itemListOrder: 'https://schema.org/ItemListOrderDescending',
+    itemListElement: byCount.map((p, i) => ({
+      '@type': 'ListItem', position: i + 1, name: p.cat, url: `${SITE}/pillars/${p.slug}.html`
+    }))
+  }
+}, {
+  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: BRAND, item: `${SITE}/` },
+    { '@type': 'ListItem', position: 2, name: 'Disciplines' }
+  ]
+}];
+
+const pxBody = `<style>
+  .px-list{border-top:1px solid var(--stone);margin:18px 0 6px}
+  .px-row{display:grid;grid-template-columns:34px 210px minmax(0,1fr) 64px;align-items:center;gap:14px;
+    padding:11px 4px;border-bottom:1px solid var(--stone);text-decoration:none;transition:background .15s}
+  .px-row:hover{background:var(--stone-lt)}
+  .px-no{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.12em;color:var(--chrome)}
+  .px-nm{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--ink)}
+  .px-track{height:13px;background:var(--stone-lt);border-radius:2px}
+  .px-bar{display:block;height:13px;background:var(--cobalt);border-radius:0 3px 3px 0}
+  .px-n{font-family:var(--mono);font-size:12.5px;color:var(--body);text-align:right;font-feature-settings:'tnum'}
+  .px-card{border:1px solid var(--stone);border-radius:10px;background:#fff;padding:15px 20px;margin:10px 0}
+  .px-card h3{margin:0 0 5px;font-size:16px}
+  .px-card h3 a{color:var(--ink);text-decoration:none}
+  .px-card h3 a:hover{color:var(--cobalt)}
+  .px-cn{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--chrome);font-weight:400}
+  .px-card p{font-size:13.5px;line-height:1.55;color:var(--body)}
+  @media(max-width:720px){.px-row{grid-template-columns:28px minmax(0,1fr) 58px}.px-track{display:none}}
+</style>
+<div class="kicker">THE INDEX · TEN DISCIPLINES</div>
+<h1>Browse by discipline</h1>
+<p class="dek">Every listing on ${BRAND} sits in exactly one of ten disciplines. They are sized very
+differently, and the sizes are worth knowing before you start — a category with 34 firms in it is a
+different shopping problem from one with 870.</p>
+
+<div class="statline">
+  <div><b>${grandTotal.toLocaleString('en-US')}</b><span>FIRMS INDEXED</span></div>
+  <div><b>${byCount.length}</b><span>DISCIPLINES</span></div>
+  <div><b>${byCount[0].stats.n.toLocaleString('en-US')}</b><span>LARGEST · ${esc(byCount[0].cat.toUpperCase())}</span></div>
+  <div><b>${byCount[byCount.length - 1].stats.n.toLocaleString('en-US')}</b><span>SMALLEST · ${esc(byCount[byCount.length - 1].cat.toUpperCase())}</span></div>
+</div>
+
+<h2>Listings per discipline</h2>
+<div class="px-list">${pxRows}</div>
+<p class="fn">Sorted by count, largest first. Ordering on this page reflects index size only —
+it is not a ranking, and nothing on ${BRAND} can be bought into. Within each discipline,
+listings are alphabetical. Counts are live aggregates from the directory.</p>
+
+<a class="cta" href="../">BROWSE ALL ${grandTotal.toLocaleString('en-US')} LISTINGS →</a>
+
+<h2>What each discipline covers</h2>
+${pxCards}
+
+<div class="rel"><h3>REFERENCE</h3>
+<a href="../glossary.html">The Wall glossary — ${TERMS.length} growth-vendor terms defined</a>
+<a href="../data/">Data corner — rates, team sizes, and where the firms are</a>
+<a href="../about.html">How listings are verified, and what gets removed</a>
+</div>`;
+
+writeFileSync(join(ROOT, 'pillars', 'index.html'),
+  shell({
+    title: 'Browse by discipline — all ten growth-services categories',
+    metaDesc: `All ten growth-services disciplines indexed by ${BRAND}, with verified listing counts: ${byCount.slice(0, 3).map(p => `${p.cat} (${p.stats.n})`).join(', ')} and seven more. Alphabetical within each — no paid placement.`,
+    canonical: `${SITE}/pillars/`, ld: pxLD, bodyHTML: pxBody, base: '../'
+  }));
+
+console.log(`pillar pages written: ${PILLARS.length} + index + glossary (${TERMS.length} terms)`);
+console.log(`  index totals: ${grandTotal} across ${byCount.length} disciplines`);

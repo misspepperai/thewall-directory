@@ -57,6 +57,8 @@ Subject: `;
 const ART = {
   home: 'a wall of stacked masonry courses seen flat-on, with a single narrow opening cut clean through it; fine measurement rules run along the opening, and the light falling through the gap is picked out in cobalt.',
 
+  pillars: 'ten horizontal bars built from small uniform squares, sorted longest at the top to shortest at the bottom against a common left baseline rule with fine tick divisions, the longest bar picked out in cobalt.',
+
   // --- the ten disciplines (silos) ---
   'pillars/seo': 'an engraved diagram of a branching root system beneath a horizontal ground rule, roots spreading and dividing into ever finer threads, one deep taproot picked out in cobalt.',
   'pillars/marketing': 'concentric rings radiating outward from a small dense centre, each ring marked with regular tick divisions, one outer arc picked out in cobalt.',

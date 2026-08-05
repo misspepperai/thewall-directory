@@ -31,6 +31,7 @@ const QUALITY = 72;
 // art key -> [pages it fronts], and the alt text describing the drawing.
 const PLACE = {
   home: [['index.html', 'An engraved elevation of a stone wall with a single narrow opening cut through it, light falling through the gap picked out in cobalt.']],
+  pillars: [['pillars/index.html', 'Ten horizontal bars of stacked squares sorted longest to shortest against a common baseline, the longest picked out in cobalt.']],
   glossary: [['glossary.html', 'An engraved two-column index of ruled entry lines with leader dots and edge tabs.']],
   news: [['news/index.html', 'An engraved broadsheet sheet ruled into narrow columns, one column picked out in cobalt.'], ['news/updates/index.html', 'An engraved broadsheet sheet ruled into narrow columns, one column picked out in cobalt.']],
   questions: [['questions/index.html', 'An engraved decision tree branching left to right from a single origin, one path picked out in cobalt.']],

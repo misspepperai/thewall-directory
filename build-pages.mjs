@@ -320,8 +320,8 @@ const run = async () => {
     TRUST.map(s => `<url><loc>${SITE}/${s}.html</loc><lastmod>${today}</lastmod></url>`).join('\n') + '\n' +
     NEWS.map(f => `<url><loc>${SITE}/news/${f === 'index.html' ? '' : f}</loc><lastmod>${today}</lastmod>${f === 'index.html' ? '<changefreq>weekly</changefreq>' : ''}</url>`).join('\n') + '\n' +
     (existsSync(join(ROOT, 'glossary.html')) ? `<url><loc>${SITE}/glossary.html</loc><lastmod>${today}</lastmod></url>\n` : '') +
-    PILLARS.map(f => `<url><loc>${SITE}/pillars/${f}</loc><lastmod>${today}</lastmod></url>`).join('\n') + '\n' +
-    HUBS.map(f => `<url><loc>${SITE}/hubs/${f}</loc><lastmod>${today}</lastmod></url>`).join('\n') + '\n' +
+    PILLARS.map(f => `<url><loc>${SITE}/pillars/${f === 'index.html' ? '' : f}</loc><lastmod>${today}</lastmod></url>`).join('\n') + '\n' +
+    HUBS.map(f => `<url><loc>${SITE}/hubs/${f === 'index.html' ? '' : f}</loc><lastmod>${today}</lastmod></url>`).join('\n') + '\n' +
     ENTITIES.map(f => `<url><loc>${SITE}/entities/${f === 'index.html' ? '' : f}</loc><lastmod>${today}</lastmod></url>`).join('\n') + '\n' +
     TOOLS.map(f => `<url><loc>${SITE}/tools/${f}</loc><lastmod>${today}</lastmod></url>`).join('\n') + '\n' +
     UPDATES.map(f => `<url><loc>${SITE}/news/updates/${f === 'index.html' ? '' : f}</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq></url>`).join('\n') + '\n' +
@@ -379,6 +379,7 @@ const run = async () => {
   footer{border-top:1px solid var(--stone);margin-top:44px;padding:20px 0 40px}
   footer span,footer a{font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:var(--chrome);text-decoration:none}
   @media(max-width:800px){ul{columns:2}}@media(max-width:520px){ul{columns:1}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important}}
 </style>
 </head>
 <body>
