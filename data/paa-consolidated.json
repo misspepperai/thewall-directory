@@ -1,0 +1,527 @@
+[
+  {
+    "q": "Are Google Ads worth paying for?",
+    "a": "For businesses selling high-intent, high-margin products/services where your customer knows they need you, Google Search is usually the most reliable customer acquisition channel available. Where it stops working: low-margin ecommerce, top-of-funnel awareness for unknown categories, and any account that can't track conversions back to revenue.",
+    "pillar": "Paid Advertising",
+    "pillarSlug": "paid-advertising",
+    "seed": "google ads agency"
+  },
+  {
+    "q": "Can ChatGPT do SEO?",
+    "a": "ChatGPT (and Claude) can accelerate significant portions of SEO work — keyword clustering, title tag drafting, meta description writing, competitive analysis, briefing content writers, technical audit interpretation. What they cannot do: replace the human judgment about which battles are worth fighting, why a search result is ranking, or what an editorial calendar should prioritize. Every serious SEO practitioner in 2026 is AI-augmented; nobody serious is AI-replaced.",
+    "pillar": "SEO",
+    "pillarSlug": "seo",
+    "seed": "seo agency"
+  },
+  {
+    "q": "Can ChatGPT help with marketing?",
+    "a": "Yes, and by 2026 most professional marketing teams treat ChatGPT (or Claude) as core infrastructure — drafting ad copy and briefs, structuring campaign plans, summarizing customer research, transforming unstructured data. The mistake is treating AI as a shortcut to skip strategy work. It amplifies whatever quality of input you feed it.",
+    "pillar": "AI Marketing",
+    "pillarSlug": "ai-marketing",
+    "seed": "ai marketing tools"
+  },
+  {
+    "q": "Can I do social media marketing with no experience?",
+    "a": "Yes. Social media is one of the least gate-kept skills in marketing — the platforms teach themselves, and the feedback loop (a post either works or it doesn't) is faster than any other channel. What separates paid professionals from beginners isn't platform knowledge; it's strategy (choosing the right target audience, format, and offer) and consistency (the discipline to publish daily for 6+ months). Start posting for yourself before selling the service.",
+    "pillar": "Social Media",
+    "pillarSlug": "social-media",
+    "seed": "social media marketing"
+  },
+  {
+    "q": "Can I learn digital marketing in 3 months?",
+    "a": "The fundamentals of digital marketing — SEO basics, ad platform mechanics, email marketing, landing page structure, basic analytics — can be learned in 3 months of dedicated study. What can't be learned in 3 months is judgment: knowing when a channel is failing versus just early, when to double down versus abandon, when a campaign is broken versus normal. That takes 2–5 years of real reps.",
+    "pillar": "Social Media",
+    "pillarSlug": "social-media",
+    "seed": "social media marketing"
+  },
+  {
+    "q": "Do you need an LLC for a marketing agency?",
+    "a": "Legally, no — you can operate as a sole proprietor in most US states. Practically, yes — most professional US marketing agencies operate as LLCs (or S-corps at larger scale) to separate personal and business liability, simplify client contracting, and enable tax elections that reduce self-employment burden. Total setup is typically $100–$500 depending on state; the bigger investment is a competent CPA for the first year.",
+    "pillar": "Marketing",
+    "pillarSlug": "marketing",
+    "seed": "marketing agency"
+  },
+  {
+    "q": "Do you really need a CRM in 2026?",
+    "a": "If you have more than a handful of active customers and any repeat business, yes — you need a CRM. The alternative is losing track of what was promised, dropping follow-ups, and having every departing employee take their book of relationships with them. What's changed in 2026 is the entry price: HubSpot's free tier and lightweight tools like Attio or Folk can start you at $0. There's no excuse not to have one.",
+    "pillar": "Sales Automation",
+    "pillarSlug": "sales-automation",
+    "seed": "sales automation"
+  },
+  {
+    "q": "How do beginners start social media marketing?",
+    "a": "Start by picking one platform where your customers actually spend time (not where you personally do). Post consistently — even 3x/week beats sporadic bursts. Build the muscle of writing hooks and native-format content before worrying about strategy or analytics. Study 5–10 accounts winning in your niche, understand why their posts work, then adapt patterns to your own voice. Skip the paid ads until you have organic content that resonates.",
+    "pillar": "Social Media",
+    "pillarSlug": "social-media",
+    "seed": "social media marketing"
+  },
+  {
+    "q": "How do creative agencies get paid?",
+    "a": "Most modern creative agencies use retainer or project-fee pricing. The legacy 15% media commission model still exists at holding-company agencies handling large paid media budgets, but is rare in the independent creative-agency world. Some hybrid arrangements exist: retainer plus performance bonuses tied to campaign outcomes.",
+    "pillar": "Creative Strategy",
+    "pillarSlug": "creative-strategy",
+    "seed": "creative agency"
+  },
+  {
+    "q": "How do you find a good content marketing agency?",
+    "a": "Ask to see recent published work in your industry (not case-study slides — actual articles that are ranking or generating leads). Ask who will do the writing (in-house team, freelancers, offshore, AI-augmented). Ask what happens in month 4 when the initial content wave is out but rankings haven't kicked in yet. If they answer clearly, they're probably good.",
+    "pillar": "Content Marketing",
+    "pillarSlug": "content-marketing",
+    "seed": "content marketing agency"
+  },
+  {
+    "q": "How is AI used for marketing?",
+    "a": "AI has replaced or accelerated four categories of marketing work: content production (drafting, editing, repurposing), personalization (segmenting audiences, dynamic email content, ad variants), analysis (extracting insights from CRM and web data), and creative production (image, video, voice). The teams getting real leverage aren't \"using AI\" — they're rebuilding their content and campaign workflows around AI as the default first draft.",
+    "pillar": "AI Marketing",
+    "pillarSlug": "ai-marketing",
+    "seed": "ai marketing tools"
+  },
+  {
+    "q": "How much do creative agencies charge per hour?",
+    "a": "US creative agency hourly rates typically fall: freelancer/solo $40–$100/hr, small agency (2–10 people) $75–$150/hr, mid-size (11–50) $125–$200/hr, large (50+) $150–$300+/hr. Most engagements are priced by project or retainer, not hourly — the hourly rate matters mostly for calculating whether a fixed price is reasonable given estimated hours.",
+    "pillar": "Creative Strategy",
+    "pillarSlug": "creative-strategy",
+    "seed": "creative agency"
+  },
+  {
+    "q": "How much does a content marketing agency cost?",
+    "a": "US content marketing agencies typically charge between $1,000 and $5,000 per month for smaller retainers, with mid-market and enterprise packages ranging $5,000–$25,000+ per month. Pricing scales with output volume, distribution complexity, and whether design/video is bundled in.",
+    "pillar": "Content Marketing",
+    "pillarSlug": "content-marketing",
+    "seed": "content marketing agency"
+  },
+  {
+    "q": "How much does it cost to hire an SEO agency?",
+    "a": "US SEO agencies typically charge $2,500–$10,000+ per month for retainers, or $5,000–$50,000+ for one-off audits and large technical migrations. Enterprise programs run $15,000–$50,000+/mo. Retainers under $2,500/mo almost always mean templated deliverables from junior staff — occasionally worth it for very small local sites, rarely worth it otherwise. The best value tier is $5–10K/mo where you get senior strategy plus real execution capacity.",
+    "pillar": "SEO",
+    "pillarSlug": "seo",
+    "seed": "seo agency"
+  },
+  {
+    "q": "How much does it cost to start a social media?",
+    "a": "Nothing to start posting. To do it seriously: budget $0–$500/mo for tools (Buffer, Hootsuite, Later for scheduling; Canva for creative), $500–$3,000/mo for content production if you outsource writing/design, and $500–$50,000+/mo for paid amplification if you're running ads. Full-service US social media agencies typically charge $2,000–$15,000/mo depending on platform coverage and content volume.",
+    "pillar": "Social Media",
+    "pillarSlug": "social-media",
+    "seed": "social media marketing"
+  },
+  {
+    "q": "How much does it cost to use a Google Ads agency?",
+    "a": "US Google Ads agency fees typically run $1,500–$10,000+ per month, or 10–20% of ad spend on larger accounts, whichever is greater. Smaller retainers ($1,500–$3,000/mo) usually mean junior account managers running templated campaigns; senior specialists at $5K+/mo. The right anchor is \"management fees should be less than the profit uplift from proper account management\" — if they aren't, hire in-house.",
+    "pillar": "Paid Advertising",
+    "pillarSlug": "paid-advertising",
+    "seed": "google ads agency"
+  },
+  {
+    "q": "How to automate your sales process?",
+    "a": "Start by mapping every step of your current sales process on a whiteboard, then identify which steps are (1) repetitive, (2) rule-based, (3) not requiring judgment. Automate those first — lead capture, enrichment, initial email sequences, meeting scheduling, follow-up reminders, deal-stage updates. Leave conversations, negotiations, and closing to humans. The mistake to avoid: automating the parts of your process that were badly designed to begin with.",
+    "pillar": "Sales Automation",
+    "pillarSlug": "sales-automation",
+    "seed": "sales automation"
+  },
+  {
+    "q": "Is $10 a day enough for Google Ads?",
+    "a": "For most competitive commercial keywords in the US, $10/day (~$300/mo) is below the threshold where Google's automated bidding has enough conversion data to optimize. You'll get some traffic but the campaigns will spin their wheels in \"learning mode\" indefinitely. Practical minimum for a real test is $30–$100/day depending on category; higher for legal, insurance, home services.",
+    "pillar": "Paid Advertising",
+    "pillarSlug": "paid-advertising",
+    "seed": "google ads agency"
+  },
+  {
+    "q": "Is a marketing agency worth it?",
+    "a": "A marketing agency is worth it when your monthly marketing capacity gap costs more than the retainer. Concretely: if you need 2 senior specialists (SEO + paid, say) to run a channel properly, in-house that's $180K+/year all-in. A specialist agency at $8K/mo is $96K/year with more collective experience across their client base. The math flips against agencies at enterprise scale where in-house teams gain economies you can't rent.",
+    "pillar": "Marketing",
+    "pillarSlug": "marketing",
+    "seed": "marketing agency"
+  },
+  {
+    "q": "Is AI going to replace CRM?",
+    "a": "No — AI is being built into CRM (Salesforce Einstein, HubSpot Breeze, Zoho Zia), not replacing it. The CRM is still the customer record of truth; AI is a layer on top that surfaces insights, drafts communications, and automates workflows. What may change: the visible \"CRM UI\" as sales teams shift toward AI-driven prompts (\"call this contact next,\" \"here's the draft email\"). The underlying database and integration layer stays.",
+    "pillar": "Sales Automation",
+    "pillarSlug": "sales-automation",
+    "seed": "sales automation"
+  },
+  {
+    "q": "Is content marketing worth it?",
+    "a": "For businesses selling considered products or services where buyers research before purchasing — B2B software, professional services, high-ticket B2C — content marketing is usually the most durable growth channel available. It compounds; paid ads deliver only when you're paying. The catch is that it takes 6–18 months to see meaningful traffic and requires editorial consistency most orgs struggle to maintain.",
+    "pillar": "Content Marketing",
+    "pillarSlug": "content-marketing",
+    "seed": "content marketing agency"
+  },
+  {
+    "q": "Is Google shutting down SEO?",
+    "a": "No. SEO is not dead. SEO is changing because AI search, zero-click results, and new search behaviors are changing how people find information. The fundamentals still matter, but modern SEO now includes brand visibility, content quality, technical health, reviews, authority, and visibility across multiple platforms.",
+    "pillar": "SEO",
+    "pillarSlug": "seo",
+    "seed": "seo agency"
+  },
+  {
+    "q": "Is it hard to become a marketing analyst?",
+    "a": "The technical barrier is moderate — SQL and Google Analytics can be learned in 3–6 months of focused study. The harder part is building enough business context to interpret data usefully. Entry-level marketing analyst roles are attainable within 6–12 months of self-directed study plus a portfolio (real dashboards you built, real analyses you shipped). The path is genuinely more accessible than most quant-heavy careers.",
+    "pillar": "Analytics/Attribution",
+    "pillarSlug": "analytics-attribution",
+    "seed": "marketing analytics"
+  },
+  {
+    "q": "Is it worth hiring an SEO agency?",
+    "a": "Yes, if you meet two conditions: (1) your buyers actively research on Google before purchasing, and (2) you can afford to wait 6–12 months before results compound. SEO isn't worth it for businesses selling impulse-purchase B2C at low margins, or for businesses that need customers this quarter — those should run paid ads. For B2B, professional services, home services, and considered B2C purchases, SEO is usually the single most durable growth channel available.",
+    "pillar": "SEO",
+    "pillarSlug": "seo",
+    "seed": "seo agency"
+  },
+  {
+    "q": "Is it worth it to hire a marketing agency?",
+    "a": "See above — it's worth it when the marketing capacity gap costs more than the retainer. The bigger question is whether the agency has actually done what you're hiring them to do. Ask for case studies with attributable results (revenue, leads, ranking improvements — not \"engagement lifted\"), ask who specifically will run your account, and ask what happens if the first 90 days underperform. A good agency answers those cleanly.",
+    "pillar": "Marketing",
+    "pillarSlug": "marketing",
+    "seed": "marketing agency"
+  },
+  {
+    "q": "Is marketing automation hard to learn?",
+    "a": "Marketing automation tools, as in the full suite of marketing automation, are quite complex and require a lot of training and time to really start to understand how powerful they are and get the benefits out of them. This is not something that you should be taking lightly.",
+    "pillar": "Marketing Automation",
+    "pillarSlug": "marketing-automation",
+    "seed": "marketing automation"
+  },
+  {
+    "q": "Is SEO being phased out?",
+    "a": "SEO is not dying. Organic search traffic declined by just 2.5% year-on-year, and organic listings still generate around 90% of all search clicks compared with paid ads.",
+    "pillar": "SEO",
+    "pillarSlug": "seo",
+    "seed": "seo agency"
+  },
+  {
+    "q": "Is SEO dead or evolving in 2026?",
+    "a": "The discipline is evolving ; the demand for trusted, authoritative content is not going away. The more accurate framing is this: SEO in 2026 is still relevant, still growing as an industry, and still essential for visibility.",
+    "pillar": "SEO",
+    "pillarSlug": "seo",
+    "seed": "seo agency"
+  },
+  {
+    "q": "What 5 jobs will AI not replace?",
+    "a": "Categories where AI acceleration has been slowest by 2026: (1) senior sales and account management (relationships, negotiation, high-stakes trust), (2) creative direction and brand strategy (judgment about culture, taste, position), (3) executive leadership (accountability, judgment under uncertainty), (4) hands-on trades (electricians, plumbers, HVAC), (5) high-touch care work (therapy, coaching, medicine). Every profession is being augmented; these five are being displaced slowest.",
+    "pillar": "Sales Automation",
+    "pillarSlug": "sales-automation",
+    "seed": "sales automation"
+  },
+  {
+    "q": "What AI is better than ChatGPT for marketing?",
+    "a": "For marketing-specific tasks — long-form writing, brand voice, editorial nuance — Claude is widely reported as producing more usable first drafts. For image generation and multimodal work, ChatGPT's native DALL-E integration is still the easiest single-vendor path. For research and citation, Perplexity beats both. Most professional marketing teams subscribe to 2–3, not 1.",
+    "pillar": "AI Marketing",
+    "pillarSlug": "ai-marketing",
+    "seed": "ai marketing tools"
+  },
+  {
+    "q": "What AI tools are best for marketing?",
+    "a": "The consolidated market leaders as of 2026 are ChatGPT and Claude for writing/reasoning, HubSpot Campaign Assistant for asset generation inside CRM, Jasper and Copy.ai for high-volume marketing copy, Canva's AI design tools for on-brand visuals, Runway for AI video, and Semrush + Surfer for AI-assisted SEO. Most marketing teams end up using 3–5 of these in combination rather than a single vendor.",
+    "pillar": "AI Marketing",
+    "pillarSlug": "ai-marketing",
+    "seed": "ai marketing tools"
+  },
+  {
+    "q": "What are 5 careers in marketing?",
+    "a": "Five common tracks: (1) content marketing (writers, editors, content strategists), (2) demand generation (paid acquisition, campaign managers), (3) product marketing (positioning, launches, competitive intelligence), (4) growth marketing (experimentation, funnel optimization), (5) marketing operations/analytics (attribution, tooling, measurement). Adjacent tracks include brand, PR/comms, social, and lifecycle/CRM marketing. Each has distinct skill sets and career ceilings.",
+    "pillar": "Analytics/Attribution",
+    "pillarSlug": "analytics-attribution",
+    "seed": "marketing analytics"
+  },
+  {
+    "q": "What are the 5 most popular AI tools for marketing?",
+    "a": "By combined market share and reported usage in marketing teams: ChatGPT, Claude, HubSpot (with AI features), Canva, and Zapier (as the automation glue between AI and other systems). Perplexity has moved into daily-driver status for research-heavy marketing roles.",
+    "pillar": "AI Marketing",
+    "pillarSlug": "ai-marketing",
+    "seed": "ai marketing tools"
+  },
+  {
+    "q": "What are the five things you should not do on social media?",
+    "a": "Complain about your current job.\nFocus on the negative.\nLie.\nPost photos doing something you're ashamed of the day after.\nSay things that you wouldn't repeat in person.",
+    "pillar": "Social Media",
+    "pillarSlug": "social-media",
+    "seed": "social media marketing"
+  },
+  {
+    "q": "What are the four types of marketing analytics?",
+    "a": "The four canonical types: (1) Descriptive — what happened (dashboards, reports, engagement metrics), (2) Diagnostic — why it happened (root-cause analysis, funnel drop-off, attribution), (3) Predictive — what will happen (forecasting, propensity modeling, LTV prediction), (4) Prescriptive — what to do about it (recommendation engines, budget optimization, next-best-action systems). Most teams operate at levels 1–2 and aspire to 3–4.",
+    "pillar": "Analytics/Attribution",
+    "pillarSlug": "analytics-attribution",
+    "seed": "marketing analytics"
+  },
+  {
+    "q": "What are the top 10 advertising agencies?",
+    "a": "The largest US-based advertising agencies by revenue in 2026 include (in rough order): BBDO, McCann Worldgroup, Ogilvy, Wieden+Kennedy, Publicis Worldwide, DDB, TBWA, Leo Burnett, Grey Group, and Havas. This ranking shifts annually with billings. For SMB and mid-market alternatives, The Wall's directory lists thousands of independent US agencies at the Marketing pillar.",
+    "pillar": "Marketing",
+    "pillarSlug": "marketing",
+    "seed": "marketing agency"
+  },
+  {
+    "q": "What are the top 10 automation tools?",
+    "a": "The most-used sales and marketing automation platforms in 2026: HubSpot, Salesforce (with Sales Cloud + Salesforce Automation), Zapier, Make, ActiveCampaign, Marketo (Adobe), Klaviyo, Pardot, Apollo.io, and Outreach. This spans marketing automation (drip campaigns, lead scoring), sales automation (sequences, dialers), and integration platforms (Zapier, Make) that connect them.",
+    "pillar": "Sales Automation",
+    "pillarSlug": "sales-automation",
+    "seed": "sales automation"
+  },
+  {
+    "q": "What are the top 5 marketing agencies?",
+    "a": "There is no universal \"top 5\" — the answer depends on scale (enterprise vs. mid-market vs. SMB), discipline (creative vs. digital vs. paid vs. content), and vertical. For enterprise creative: Wieden+Kennedy, Droga5 (Accenture Song), R/GA, Ogilvy, BBDO. For enterprise digital: R/GA, VaynerMedia, We Are Social. For mid-market and SMB in the US, The Wall indexes 2,286 US growth-services vendors filterable by category, budget, and location.",
+    "pillar": "Marketing",
+    "pillarSlug": "marketing",
+    "seed": "marketing agency"
+  },
+  {
+    "q": "What can you do with a marketing analytics degree?",
+    "a": "A marketing analytics degree leads into roles like marketing analyst, growth analyst, marketing data scientist, marketing operations manager, attribution specialist, media analyst, or CRM analyst. Salaries in 2026 range $65K–$95K for entry-level, $110K–$180K for senior roles, and $180K–$300K+ for principal/staff-level positions at growth-stage or public companies.",
+    "pillar": "Analytics/Attribution",
+    "pillarSlug": "analytics-attribution",
+    "seed": "marketing analytics"
+  },
+  {
+    "q": "What does a content marketing agency do?",
+    "a": "A content marketing agency creates, manages, and distributes various forms of digital marketing content — blogs, whitepapers, video, social, email — for businesses that lack the in-house capacity to produce that volume consistently. The strong ones build strategy first (positioning, ICP, pillar topics), then execution. The weak ones start with execution.",
+    "pillar": "Content Marketing",
+    "pillarSlug": "content-marketing",
+    "seed": "content marketing agency"
+  },
+  {
+    "q": "What does a creative agency do?",
+    "a": "A creative agency develops the creative platform — the ideas, positioning, visual system, and narrative — that a brand uses across advertising, content, and product marketing. Some focus on brand identity (logo, visual system, brand book), some on advertising (campaign concepts, video, print, digital), some on integrated storytelling. The line between \"creative agency\" and \"advertising agency\" has blurred; most sell both.",
+    "pillar": "Creative Strategy",
+    "pillarSlug": "creative-strategy",
+    "seed": "creative agency"
+  },
+  {
+    "q": "What does a Google Ads agency do?",
+    "a": "A Google Ads agency runs your search, YouTube, Display, and Shopping campaigns end-to-end: keyword research, ad copy and creative, bid management, negative keyword pruning, landing page recommendations, conversion tracking, and reporting. The good ones also push back on obvious mistakes (bad landing pages, mistargeted campaigns) that no amount of platform expertise can rescue.",
+    "pillar": "Paid Advertising",
+    "pillarSlug": "paid-advertising",
+    "seed": "google ads agency"
+  },
+  {
+    "q": "What does a marketing analytics person do?",
+    "a": "A marketing analyst builds and maintains the measurement layer — implementing tracking (Google Analytics, Segment, tag management), designing reports and dashboards, running attribution analysis, forecasting campaign impact, and translating results into recommendations for marketers. Senior analysts move into media mix modeling, incrementality testing, and marketing science. The role sits at the intersection of marketing, data engineering, and statistics.",
+    "pillar": "Analytics/Attribution",
+    "pillarSlug": "analytics-attribution",
+    "seed": "marketing analytics"
+  },
+  {
+    "q": "What does an SEO agency do?",
+    "a": "An SEO agency improves how your site ranks in Google and other search engines. That work spans three layers: technical SEO (site speed, crawlability, indexation, structured data), on-page SEO (title tags, content targeting, internal linking), and off-page SEO (backlink acquisition, digital PR, authority building). Most US SEO agencies also handle content strategy and production. The strong ones start by auditing what's already broken; the weak ones sell \"more content\" as the answer to every problem.",
+    "pillar": "SEO",
+    "pillarSlug": "seo",
+    "seed": "seo agency"
+  },
+  {
+    "q": "What does social media marketing do?",
+    "a": "Social media marketing does four different things depending on the brand: (1) brand awareness (getting seen by cold audiences), (2) community building (engaging existing customers, creating word-of-mouth), (3) lead generation (capturing prospects via forms, DMs, comments), and (4) sales (direct commerce via native shopping tools). Most brands try to do all four and end up doing none well; pick two and specialize.",
+    "pillar": "Social Media",
+    "pillarSlug": "social-media",
+    "seed": "social media marketing"
+  },
+  {
+    "q": "What exactly do marketing agencies do?",
+    "a": "US marketing agencies package the execution of marketing work — strategy, creative, media, content, SEO, social, email, analytics — into services businesses buy instead of hiring in-house. Full-service agencies cover multiple disciplines under one roof; specialist agencies focus on one (SEO-only, paid-only, content-only). Most modern agencies also handle marketing technology setup and reporting. The unifying job is trading their expertise and capacity for your budget.",
+    "pillar": "Marketing",
+    "pillarSlug": "marketing",
+    "seed": "marketing agency"
+  },
+  {
+    "q": "What is a marketing automation specialist's salary?",
+    "a": "$100K - $117K/yr Total pay. $109K Median. Marketing Automation Specialist. Tabcorp3.1★ $100K - $120K/yr Total pay.",
+    "pillar": "Marketing Automation",
+    "pillarSlug": "marketing-automation",
+    "seed": "marketing automation"
+  },
+  {
+    "q": "What is an example of marketing automation?",
+    "a": "A common example: someone downloads an ebook from your site. Marketing automation instantly (1) adds them to your CRM, (2) tags them with the topic, (3) sends a delivery email with the ebook, (4) enters them into a 6-email nurture sequence over 3 weeks introducing your product, (5) scores their engagement (opens, clicks, page visits), (6) flags to sales when they cross a threshold. That entire flow runs on triggers set up once.",
+    "pillar": "Marketing Automation",
+    "pillarSlug": "marketing-automation",
+    "seed": "marketing automation"
+  },
+  {
+    "q": "What is an example of sales automation?",
+    "a": "A canonical example: a prospect fills out a demo request form. Sales automation instantly (1) creates a lead in the CRM, (2) enriches it with contact and company data from ZoomInfo or Apollo, (3) routes it to the right sales rep by territory rules, (4) triggers a personalized follow-up email sequence, (5) schedules a task for the rep to call within 4 hours, (6) reports the conversion path back to marketing. All without human touch until the rep dials.",
+    "pillar": "Sales Automation",
+    "pillarSlug": "sales-automation",
+    "seed": "sales automation"
+  },
+  {
+    "q": "What is meant by marketing analytics?",
+    "a": "Marketing analytics is the discipline of measuring and interpreting marketing performance — attribution (which channel drove which conversion), cohort analysis (how customer segments behave over time), lifetime value modeling, media mix modeling, campaign ROI. The tooling spans Google Analytics, Adobe Analytics, Amplitude, Mixpanel, and enterprise attribution platforms like Bizible and Rockerbox. The point is turning marketing spend from an expense into a measurable investment.",
+    "pillar": "Analytics/Attribution",
+    "pillarSlug": "analytics-attribution",
+    "seed": "marketing analytics"
+  },
+  {
+    "q": "What is meant by marketing automation?",
+    "a": "Marketing automation is software that executes marketing workflows on rules and triggers instead of manual sends — welcome emails, drip campaigns, lead scoring, behavioral segmentation, personalization, cross-channel orchestration. HubSpot, Marketo, ActiveCampaign, and Klaviyo are the market leaders. It's what lets a 5-person marketing team run programs that would otherwise require 20 people.",
+    "pillar": "Marketing Automation",
+    "pillarSlug": "marketing-automation",
+    "seed": "marketing automation"
+  },
+  {
+    "q": "What is sales automation?",
+    "a": "Sales automation is software that removes manual, repetitive work from the sales process — email sequencing, meeting scheduling, follow-up reminders, data entry into CRM, deal-stage progression, quote generation. Modern sales automation platforms (Outreach, Salesloft, Apollo, HubSpot Sales Hub) combine sequencing, dialing, and analytics into one workflow. The point isn't replacing salespeople — it's freeing them from tasks that don't require judgment so they spend more time on tasks that do.",
+    "pillar": "Sales Automation",
+    "pillarSlug": "sales-automation",
+    "seed": "sales automation"
+  },
+  {
+    "q": "What is the 3 3 3 rule in marketing?",
+    "a": "The 3-3-3 rule is a content structuring heuristic: 3 seconds to catch attention, 30 seconds to hold it, 3 minutes to convert. It maps loosely to how modern platforms punish weak hooks (3s bail rate on video), reward mid-video retention, and reserve deeper information for viewers who signaled interest. Not a hard rule — a well-crafted 15-second video can convert; the point is that structure matters more than length.",
+    "pillar": "Marketing",
+    "pillarSlug": "marketing",
+    "seed": "marketing agency"
+  },
+  {
+    "q": "What is the 5 5 5 rule for social media?",
+    "a": "The 5-5-5 rule prescribes: comment on 5 posts in your niche, message 5 people, and publish 5 pieces of content per day. It's an engagement-heavy discipline aimed at accelerating growth when starting from a small audience. Effective for LinkedIn and Twitter/X where visibility rewards outbound activity; less applicable to Instagram or TikTok where the algorithm dominates over engagement.",
+    "pillar": "Social Media",
+    "pillarSlug": "social-media",
+    "seed": "social media marketing"
+  },
+  {
+    "q": "What is the 5 5 5 rule on social media?",
+    "a": "Same as the 5-5-5 rule above: engage on 5 posts, message 5 people, publish 5 posts per day. Effective for aggressive outbound growth on relationship-based platforms like LinkedIn and Twitter/X.",
+    "pillar": "Social Media",
+    "pillarSlug": "social-media",
+    "seed": "social media marketing"
+  },
+  {
+    "q": "What is the 50/30/20 rule for social media?",
+    "a": "The 50/30/20 rule is a content-mix heuristic: 50% of posts should be original/valuable content that positions you as an expert, 30% should be shared/curated content from others in your industry, 20% should be promotional. It's a starting rubric, not scripture — many high-performing brands run pure 100% original, and many creator-led brands run heavier promotional mixes. The point is avoiding an all-promo feed that reads as spam.",
+    "pillar": "Social Media",
+    "pillarSlug": "social-media",
+    "seed": "social media marketing"
+  },
+  {
+    "q": "What is the 80 20 rule in marketing?",
+    "a": "The 80/20 rule (Pareto principle) in marketing observes that ~80% of results typically come from ~20% of inputs — 20% of your customers drive 80% of revenue, 20% of keywords drive 80% of organic traffic, 20% of ads generate 80% of paid conversions. The action is: identify the 20% and pour more resource into it. The mistake most marketers make is spreading resources evenly across all activities.",
+    "pillar": "Social Media",
+    "pillarSlug": "social-media",
+    "seed": "social media marketing"
+  },
+  {
+    "q": "What is the best SEO agency in Florida?",
+    "a": "Florida has one of the deepest SEO agency clusters in the US, with strong shops in Miami, Tampa, Orlando, and Jacksonville. There's no single \"best\" — the right choice depends on your industry (local service vs. e-commerce vs. B2B), scale, and whether you need in-person work. The Wall lists verified US SEO firms filterable by state; the Florida state page shows every vendor headquartered there.",
+    "pillar": "SEO",
+    "pillarSlug": "seo",
+    "seed": "seo agency"
+  },
+  {
+    "q": "What is the biggest creative agency?",
+    "a": "By revenue, the world's largest creative agencies are inside the four major holding companies — WPP (Ogilvy, VMLY&R), Omnicom (BBDO, TBWA, DDB), Publicis (Publicis Worldwide, Saatchi & Saatchi), Interpublic (McCann, MullenLowe). In the independent tier, Wieden+Kennedy, Droga5 (now part of Accenture Song), and R/GA are among the largest.",
+    "pillar": "Creative Strategy",
+    "pillarSlug": "creative-strategy",
+    "seed": "creative agency"
+  },
+  {
+    "q": "What is the biggest marketing agency in the US?",
+    "a": "The biggest US-headquartered marketing/advertising agencies by revenue are inside the Omnicom Group (BBDO, TBWA, DDB, PHD) and Interpublic Group (McCann, IPG Mediabrands). Individual brands within these holding groups regularly bill $500M–$1B+ annually. Ogilvy (WPP), Wieden+Kennedy (independent), and R/GA (Interpublic) round out the top of the US market.",
+    "pillar": "Marketing",
+    "pillarSlug": "marketing",
+    "seed": "marketing agency"
+  },
+  {
+    "q": "What is the highest paid job in marketing?",
+    "a": "The highest-paid marketing roles in 2026 are typically Chief Marketing Officer at large public companies ($400K–$1M+ base plus equity), VP Marketing at growth-stage tech ($250K–$500K), Growth Executive roles at DTC brands post-Series B, and specialist consultant roles (senior fractional CMOs charging $8K–$30K/mo). Individual contributor peaks include principal marketing data scientists and senior brand strategists at $300K–$500K.",
+    "pillar": "Analytics/Attribution",
+    "pillarSlug": "analytics-attribution",
+    "seed": "marketing analytics"
+  },
+  {
+    "q": "What is the largest ad agency in the US?",
+    "a": "By revenue, the largest US-based advertising agencies in 2026 belong to the four major holding companies — WPP, Omnicom, Publicis, and Interpublic. Individual agency ranking shifts year-to-year, but Ogilvy, BBDO, McCann, Publicis Worldwide, and DDB consistently sit in the top 10 by US billings. Independent agencies rarely crack the top 20 by revenue but often lead in creative recognition.",
+    "pillar": "Marketing",
+    "pillarSlug": "marketing",
+    "seed": "marketing agency"
+  },
+  {
+    "q": "What services does content marketing include?",
+    "a": "Content marketing spans strategy, editorial calendar management, long-form writing (blog, whitepaper, ebook), short-form (social, email, ad copy), design (infographics, illustration), video (scripted, brand doc, short-form social), distribution (email, syndication, paid amplification), and measurement (SEO ranking, engagement, attribution). Agencies pick what to specialize in — nobody does all of it well.",
+    "pillar": "Content Marketing",
+    "pillarSlug": "content-marketing",
+    "seed": "content marketing agency"
+  },
+  {
+    "q": "What skills are needed for marketing automation?",
+    "a": "The 10 skills that actually matter: platform proficiency (HubSpot dominates with 37% market share), workflow design, data analytics, lead scoring, A/B testing, CRM integration, customer journey mapping, AI prompt engineering, attribution modeling, and cross-team communication.",
+    "pillar": "Marketing Automation",
+    "pillarSlug": "marketing-automation",
+    "seed": "marketing automation"
+  },
+  {
+    "q": "What skills do you need for marketing automation?",
+    "a": "The 10 skills that actually matter: platform proficiency (HubSpot dominates with 37% market share), workflow design, data analytics, lead scoring, A/B testing, CRM integration, customer journey mapping, AI prompt engineering, attribution modeling, and cross-team communication.",
+    "pillar": "Marketing Automation",
+    "pillarSlug": "marketing-automation",
+    "seed": "marketing automation"
+  },
+  {
+    "q": "What skills do you need to be a marketing analyst?",
+    "a": "Core technical skills: SQL (mandatory), spreadsheet fluency (Excel/Google Sheets), a BI tool (Looker, Tableau, PowerBI), Google Analytics 4 (or equivalent), and increasingly Python or R for advanced analysis. Core business skills: understanding marketing funnels, attribution models, cohort analysis, and enough judgment to know when a metric is misleading. Communication skill matters more than most technical roles because you're translating numbers to marketers.",
+    "pillar": "Analytics/Attribution",
+    "pillarSlug": "analytics-attribution",
+    "seed": "marketing analytics"
+  },
+  {
+    "q": "Which Google Ads agency is the best?",
+    "a": "There is no universal \"best\" — the right agency depends on your category, deal size, and channel mix. Specialists usually beat generalists (a home-services PPC shop will outperform a full-service agency for a home-services business). Look for verifiable Google Premier Partner status, published case studies in your vertical, and a bench senior enough to actually run your account.",
+    "pillar": "Paid Advertising",
+    "pillarSlug": "paid-advertising",
+    "seed": "google ads agency"
+  },
+  {
+    "q": "Which is the easiest automation tool to learn?",
+    "a": "For non-technical operators, Zapier is the easiest starting point — its \"trigger → action\" model is intuitive and its integration library is the broadest. Make (formerly Integromat) is more powerful but requires more configuration. For sales-specific automation, HubSpot's workflow builder has the gentlest learning curve. n8n and Pipedream are more technical alternatives for engineering-friendly teams.",
+    "pillar": "Sales Automation",
+    "pillarSlug": "sales-automation",
+    "seed": "sales automation"
+  },
+  {
+    "q": "Which tool is commonly used for marketing analytics?",
+    "a": "The most-used tools by category: web analytics — Google Analytics 4 (dominant in SMB and mid-market), Adobe Analytics (dominant in enterprise), Mixpanel and Amplitude (product analytics with marketing crossover). Attribution — Bizible (LinkedIn), Rockerbox, Northbeam (DTC), TripleWhale. BI — Looker, Tableau, Power BI. Data platforms — Segment, RudderStack. Most stacks combine 3–5 of these.",
+    "pillar": "Analytics/Attribution",
+    "pillarSlug": "analytics-attribution",
+    "seed": "marketing analytics"
+  },
+  {
+    "q": "Who are the big 5 advertising agencies?",
+    "a": "The \"Big 5\" advertising agency holding companies — the parent groups behind hundreds of individual agencies — are WPP (which owns Ogilvy, VMLY&R, GroupM), Omnicom (BBDO, TBWA, DDB), Publicis Groupe (Publicis Worldwide, Saatchi & Saatchi, Leo Burnett), Interpublic (McCann, MullenLowe, R/GA), and Dentsu. Together they represent the majority of global agency spending. Independent agencies fill a distinct market segment focused on flexibility and specialization.",
+    "pillar": "Marketing",
+    "pillarSlug": "marketing",
+    "seed": "marketing agency"
+  },
+  {
+    "q": "Who is no. 1 direct selling?",
+    "a": "In direct selling (a distinct category from marketing agencies — think MLM, party plan, network marketing), Amway consistently ranks as the #1 direct-selling company globally by revenue, followed by Natura & Co, Herbalife, Vorwerk, and Nu Skin. This is off-topic for the growth-services directory but appears in \"marketing agency\" search results due to ambiguity.",
+    "pillar": "Marketing",
+    "pillarSlug": "marketing",
+    "seed": "marketing agency"
+  },
+  {
+    "q": "Will AI replace automation testers?",
+    "a": "In marketing/sales automation, the \"testing\" role — validating that email sequences fire correctly, workflows route to the right owner, tracking pixels function — is being augmented by AI, not replaced. AI can generate synthetic test scenarios and check outputs faster than manual QA, but the judgment about what's worth testing and what constitutes correct behavior remains human. The role is shifting from executing tests to designing them.",
+    "pillar": "Sales Automation",
+    "pillarSlug": "sales-automation",
+    "seed": "sales automation"
+  },
+  {
+    "q": "Will AI replace creative agencies?",
+    "a": "AI is already replacing production execution (video editing, image variants, template design) that used to be billable hours for creative agencies. It has not yet replaced the strategic core — brand positioning, campaign ideation, cultural insight — that the strongest agencies sell. The near-term result: creative agencies are consolidating around strategy, and the production layer is either automated or offshored.",
+    "pillar": "Creative Strategy",
+    "pillarSlug": "creative-strategy",
+    "seed": "creative agency"
+  },
+  {
+    "q": "Will marketing be replaced by AI?",
+    "a": "Portions of marketing execution are being replaced by AI right now — ad copy variants, email drafting, image generation, keyword clustering, competitor scraping. What is not being replaced: brand strategy, positioning judgment, creative concept, cultural insight, and the interpretation of ambiguous data. The near-term equilibrium: fewer marketers producing more output, with the strategic layer becoming more valuable and the execution layer more automated.",
+    "pillar": "Marketing Automation",
+    "pillarSlug": "marketing-automation",
+    "seed": "marketing automation"
+  },
+  {
+    "q": "Will SEO be replaced by AI?",
+    "a": "Google's AI Overviews and ChatGPT/Perplexity have compressed the top-of-SERP results and eaten some navigational and informational traffic. But the underlying demand — people searching for products, services, and answers — hasn't disappeared, just fragmented. SEO is shifting toward ranking IN AI answers (which cite sources), toward brand and entity signals, and toward high-intent commercial queries where a click still matters. The category is changing, not dying.",
+    "pillar": "SEO",
+    "pillarSlug": "seo",
+    "seed": "seo agency"
+  }
+]

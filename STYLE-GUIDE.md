@@ -39,15 +39,23 @@ categorical chart palette that is not distinguishable.
 data caption at 8.5–9px — small text, which requires 4.5:1. This is a real accessibility
 failure on all 2,588 pages and Stage 6 would have flagged it.
 
-| | Old | **New** |
-|---|---|---|
-| Hex | `#85898F` | **`#686D75`** |
-| On porcelain | 3.34:1 ❌ | **4.95:1** ✅ |
-| On stone-lt | 3.09:1 ❌ | **4.57:1** ✅ |
+**The token had to split.** `--chrome` is used on *both* porcelain and ink grounds. A single
+value cannot serve both: darkening it to pass on light backgrounds makes it fail on dark ones
+(`#686D75` on ink scores only 3.30:1). Two tokens:
 
-`#686D75` is the *lightest* value in the same cool-neutral family that clears AA on both
-grounds — chosen deliberately so the muted character survives. Anything darker would have
-made labels compete with body copy.
+| Token | Hex | Ground | Ratio | |
+|---|---|---|---|---|
+| `--chrome` | **`#686D75`** | porcelain | **4.95:1** | ✅ |
+| `--chrome` | `#686D75` | stone-lt | **4.57:1** | ✅ |
+| `--chrome-dk` | `#85898F` | ink | **4.88:1** | ✅ |
+
+`#686D75` is the *lightest* value in the same cool-neutral family that clears AA on light
+grounds — chosen deliberately so the muted character survives; anything darker starts
+competing with body copy. `--chrome-dk` keeps the original value, which already passed on
+ink, so dark bars are visually unchanged.
+
+**Applied 2026-08-04** across all 12 build scripts, `index.html`, and the 7 hand-written
+pages. All 2,601 HTML files verified on the new tokens; zero remaining on the failing value.
 
 ### Semantic
 

@@ -1,5 +1,6 @@
 // Generates /questions/{slug}.html for each PAA question.
-// Source: scratchpad/paa-consolidated.json (harvested via DataForSEO, enriched with editorial answers).
+// Source: data/paa-consolidated.json (vendored in-repo so the build is reproducible;
+// was previously read from a Windows scratchpad path that no longer exists).
 // Each page: focused answer + 3 related questions in the same pillar + cross-links to pillar/hubs.
 // Run: node build-questions.mjs
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
@@ -9,7 +10,7 @@ import { fileURLToPath } from 'node:url';
 const ROOT = dirname(fileURLToPath(import.meta.url));
 const SITE = 'https://hitthewall.net';
 const BRAND = 'The Wall';
-const SRC = 'C:/Users/danku/AppData/Local/Temp/claude/C--Users-danku-Documents-directory-thewall/63c496a2-614a-4715-af90-7224008db515/scratchpad/paa-consolidated.json';
+const SRC = join(ROOT, 'data', 'paa-consolidated.json');
 
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 80);
@@ -42,7 +43,7 @@ function shell({ title, metaDesc, canonical, ld, bodyHTML }) {
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 ${ld.map(o => `<script type="application/ld+json">${JSON.stringify(o)}</script>`).join('\n')}
 <style>
-  :root{--porcelain:#FAF9F6;--stone:#E7E3DA;--stone-lt:#F2F0EA;--cobalt:#1B4FD8;--oxblood:#6E1423;--ink:#0E1B33;--chrome:#85898F;--body:#3B4557;--serif:'Newsreader',Georgia,serif;--sans:'IBM Plex Sans',sans-serif;--mono:'IBM Plex Mono',monospace}
+  :root{--porcelain:#FAF9F6;--stone:#E7E3DA;--stone-lt:#F2F0EA;--cobalt:#1B4FD8;--oxblood:#6E1423;--ink:#0E1B33;--chrome:#686D75;--chrome-dk:#85898F;--body:#3B4557;--serif:'Newsreader',Georgia,serif;--sans:'IBM Plex Sans',sans-serif;--mono:'IBM Plex Mono',monospace}
   *{margin:0;padding:0;box-sizing:border-box}body{font-family:var(--sans);background:var(--porcelain);color:var(--ink);-webkit-font-smoothing:antialiased}
   .wrap{max-width:720px;margin:0 auto;padding:0 24px}a{color:var(--cobalt)}
   .topbar{border-bottom:1px solid var(--stone)}.topbar::before{content:'';display:block;height:2px;background:linear-gradient(90deg,var(--cobalt) 0 62%,var(--oxblood) 62% 84%,var(--ink) 84% 100%)}
