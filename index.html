@@ -215,6 +215,25 @@
   .rate-chart details > summary { font-family: var(--mono); font-size: 9.5px; letter-spacing: .12em; color: var(--cobalt); cursor: pointer; margin-top: 12px; text-transform: uppercase; }
   @media (max-width: 860px) { .evidence { grid-template-columns: 1fr; gap: 30px; } .ev-facts { gap: 18px 20px; } }
 
+  .speak-wrap { margin-top: 34px; max-width: 640px; }
+  .speak p { font-size: 14.5px; line-height: 1.7; color: var(--body); margin-bottom: 12px; }
+  .claim { margin-top: 40px; border: 2px solid var(--cobalt); border-radius: 12px; background: #f4f7fe; padding: 26px 30px; max-width: 720px; }
+  .claim-k { font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: .16em; color: var(--oxblood); margin-bottom: 8px; }
+  .claim h2 { font-family: var(--serif); font-weight: 600; font-size: 22px; color: var(--ink); letter-spacing: -.01em; margin-bottom: 10px; }
+  .claim p { font-size: 14px; line-height: 1.6; color: var(--body); }
+  .claim .deal { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 18px 0; }
+  .claim .deal div { border: 1px solid var(--stone); border-radius: 8px; background: #fff; padding: 12px 14px; }
+  .claim .deal b { display: block; font-family: var(--mono); font-size: 13px; color: var(--ink); margin-bottom: 3px; }
+  .claim .deal span { font-size: 12.5px; color: var(--body); line-height: 1.45; }
+  .claim-acts { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+  .claim-acts a { display: inline-block; font-family: var(--mono); font-size: 10.5px; font-weight: 600; letter-spacing: .1em; padding: 11px 16px; border-radius: 7px; text-decoration: none; }
+  .a-pri { background: var(--cobalt); color: #fff; }
+  .a-pri:hover { background: var(--ink); }
+  .a-sec { color: var(--ink); background: #fff; border: 1px solid var(--stone); }
+  .a-sec:hover { border-color: var(--cobalt); color: var(--cobalt); }
+  .claim-fine { margin-top: 14px; font-family: var(--mono); font-size: 9px; letter-spacing: .06em; color: var(--chrome); line-height: 1.7; }
+  @media (max-width: 560px) { .claim .deal { grid-template-columns: 1fr; } }
+
   /* ---------- meta rule ---------- */
   .meta-rule { border-top: 1px solid var(--stone); margin-top: 24px; padding: 12px 0 0; display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
   .meta-rule span { font-family: var(--mono); font-size: 9.5px; letter-spacing: .14em; color: var(--chrome); font-feature-settings: 'tnum'; }
@@ -835,7 +854,8 @@ async function renderCompareView() {
     ['Hourly rate', x => x.avg_hourly_rate || '—'], ['Min project', x => x.min_project_size || '—'],
     ['Rating', x => x.clutch_rating ? `${x.clutch_rating}★ (${x.clutch_reviews || 0} reviews)` : '—'],
     ['Website', x => `<a href="https://${esc(x.domain)}" target="_blank" rel="noopener">${esc(x.domain)}</a>`],
-    ['Own words', x => x.site_description || x.clutch_bio || '—']
+    // Scraped prose, dropped into innerHTML — escaped and tag-stripped, never trusted.
+    ['Own words', x => esc(ownWords(x) || '—')]
   ];
   wrap.innerHTML = `<article class="cmp-view">
     <button class="back-btn" onclick="closeCompare()">← BACK TO ATLAS</button>
@@ -907,8 +927,20 @@ function clearFilters() { $('q').value = ''; activeCat = 'All'; for (const k of 
 
 /* ---------- enrichment content (composed from per-business stored facts; no invented specifics) ---------- */
 const has = v => v !== null && v !== undefined && v !== '';
-const ownWords = x => has(x.site_description) ? x.site_description : (has(x.clutch_bio) ? x.clutch_bio : null);
-const ownWordsSrc = x => has(x.site_description) ? 'on its website' : 'on its Clutch profile';
+// site_description and clutch_bio are SCRAPED off the vendor's own site, so they can carry
+// raw markup. Three records shipped a full head fragment — meta tags, a title element, and a
+// literal closing script tag — which rendered as visible tag soup in the prose and, once
+// embedded in JSON-LD, terminated the script element and destroyed the rest of the document.
+// Scraped prose is treated as text, never as markup.
+//
+// Note for future edits: this comment sits INSIDE an inline script, so it must never contain
+// a literal closing script tag. The HTML parser does not know it is reading a comment.
+const plain = s => String(s).replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+const scraped = v => { const t = has(v) ? plain(v) : ''; return t ? t : null; };
+const ownWords = x => scraped(x.site_description) || scraped(x.clutch_bio);
+// Keyed off the sanitized value, not the raw column: a site_description that is pure markup
+// strips to nothing and the quote actually comes from Clutch, so the attribution must follow.
+const ownWordsSrc = x => scraped(x.site_description) ? 'on its website' : 'on its Clutch profile';
 const trim140 = s => s.length > 140 ? s.slice(0, 140).replace(/\s+\S*$/, '') + '…' : s;
 const nounOf = x => x.listing_type === 'Software Provider' ? 'platform' : x.listing_type === 'Business Service' ? 'firm' : 'agency';
 const hqLine = x => has(x.hq_city) ? `${x.hq_city}${has(x.hq_state) ? ', ' + x.hq_state : ''}` : null;
@@ -1071,6 +1103,76 @@ function injectJSONLD(x) {
   can.href = `c/${x.domain}.html`;
 }
 
+/* ---------- summary + claim (shared by the atlas detail view and the static /c/ page) ----------
+   These two blocks used to live only in build-pages.mjs, so the atlas detail view rendered
+   neither. A vendor arriving via a shared atlas link saw no way to claim their listing —
+   the site's only conversion path — and no summary. Defined here with the rest of the
+   engine so both renderers stay 1:1 by construction. `base` is '' in the atlas (root) and
+   '../' for /c/ pages. */
+function speakables(x) {
+  const hq = hqLine(x);
+  const hasFacts = has(x.min_project_size) || has(x.avg_hourly_rate) || has(x.clutch_rating);
+  const what = `${x.name} is ${an(subNoun(x))} ${subNoun(x)} in The Wall's ${x.category} index. Executives can review its capabilities${hasFacts ? ', published engagement data,' : ''} and start contact directly through its website at ${x.domain}.`;
+  const details = `${x.name}${hq ? `, based in ${hq},` : ''} serves companies past $5M in revenue with 25 or more employees, typically working with ${x.target_executive_icp || 'senior executives'} on ${(x.bottleneck_solved || 'growth bottlenecks').toLowerCase()}.`;
+  const bits = [];
+  if (has(x.year_established)) bits.push(`operating since ${x.year_established}`);
+  if (has(x.team_size)) bits.push(`listed team size ${x.team_size}`);
+  if (has(x.min_project_size)) bits.push(`minimum project ${x.min_project_size}`);
+  if (has(x.avg_hourly_rate)) bits.push(`average rate ${x.avg_hourly_rate}`);
+  if (has(x.clutch_rating) && has(x.clutch_reviews)) bits.push(`rated ${x.clutch_rating} out of 5 across ${x.clutch_reviews} Clutch reviews`);
+  const facts = bits.length
+    ? `Key facts about ${x.name}: ${bits.join('; ')}.`
+    : `Key facts about ${x.name}: engagement structures in this category include monthly retainers, project contracts, and advisory arrangements.`;
+  return { what, details, facts };
+}
+
+function summaryHTML(x) {
+  const sp = speakables(x);
+  return `<div class="speak-wrap"><h2>Summary</h2>
+    <div class="speak">
+      <p class="sp-what">${esc(sp.what)}</p>
+      <p class="sp-details">${esc(sp.details)}</p>
+      <p class="sp-facts">${esc(sp.facts)}</p>
+    </div></div>`;
+}
+
+function claimHTML(x, base) {
+  const b = base === undefined ? '' : base;
+  const mail = (subject, body) =>
+    `mailto:support@misspepper.ai?subject=${encodeURIComponent(subject)}&amp;body=${encodeURIComponent(body)}`;
+  const claim = mail(
+    `Claim listing: ${x.domain}`,
+    `Hi — I'm with ${x.name} (${x.domain}).\n\n`
+    + `I'd like to claim our listing on The Wall and I'm in on the two-way referral deal:\n`
+    + `we keep 20% of what we send you, you take 10% of what you send us.\n\n`
+    + `Name:\nRole:\nBest email:\nAnything on the listing that needs fixing:\n`
+  );
+  const fix = mail(
+    `Correction: ${x.domain}`,
+    `Hi — I'm with ${x.name} (${x.domain}).\n\n`
+    + `Something on our listing at https://hitthewall.net/c/${x.domain}.html needs correcting:\n\n`
+    + `What's wrong:\nWhat it should say:\nSource we can verify it against:\n`
+  );
+  return `<section class="claim">
+    <div class="claim-k">IS THIS YOUR FIRM?</div>
+    <h2>Claim this listing — and keep 20% of every client you send us</h2>
+    <p>${esc(x.name)} is listed here for free, compiled from public sources. There is no fee to
+    claim it and no pay-to-play tier. Claiming lets you correct the record and opens a two-way
+    referral arrangement that runs in your favour by design.</p>
+    <div class="deal">
+      <div><b>You keep 20%</b><span>Of any client you send to Miss Pepper AI.</span></div>
+      <div><b>We take 10%</b><span>Of any client we send to ${esc(x.name)}.</span></div>
+    </div>
+    <div class="claim-acts">
+      <a class="a-pri" href="${claim}">CLAIM &amp; COUNT ME IN →</a>
+      <a class="a-sec" href="${fix}">CORRECT THIS LISTING</a>
+      <a class="a-sec" href="${b}partner.html">READ THE FULL TERMS</a>
+    </div>
+    <p class="claim-fine">NO COST TO CLAIM · NO EXCLUSIVITY · CANCEL BY REPLYING &ldquo;STOP&rdquo; ·
+    LISTING STAYS UP EITHER WAY &mdash; INCLUSION IS EDITORIAL, NOT PURCHASED</p>
+  </section>`;
+}
+
 /* ---------- detail route ---------- */
 const FULL_FIELDS = 'name,domain,category,subcategory,description,listing_type,bottleneck_solved,target_executive_icp,client_revenue_fit,site_title,site_description,clutch_bio,services_list,year_established,min_project_size,avg_hourly_rate,team_size,hq_city,hq_state,street_address,zip_code,phone_number,clutch_rating,clutch_reviews,enriched_at';
 const fullCache = {};
@@ -1090,7 +1192,11 @@ async function openDetail(domain, push = true) {
   if (push) history.pushState({ c: domain }, '', `?c=${encodeURIComponent(domain)}`);
   document.title = `${x.name} — The Wall`;
   const color = COLORS[x.category] || '#1B4FD8';
-  const related = all.filter(r => r.subcategory === x.subcategory && r.domain !== x.domain).slice(0, 6);
+  // Sorted explicitly, not left to the query. The atlas fetches order=name.asc and
+  // build-pages.mjs fetches order=domain.asc, so "the first six" silently meant two
+  // different sets of firms on the two renderings of the same company.
+  const related = all.filter(r => r.subcategory === x.subcategory && r.domain !== x.domain)
+    .sort((a, b) => a.name.localeCompare(b.name, 'en')).slice(0, 6);
   vt(() => {
     $('home').style.display = 'none';
     const d = $('detail');
@@ -1111,12 +1217,13 @@ async function openDetail(domain, push = true) {
           <p class="d-desc">${esc(x.description)}</p>
           ${quoteHTML(x)}
           <a class="d-cta" href="https://${esc(x.domain)}" target="_blank" rel="noopener nofollow">VISIT WEBSITE ↗</a>
+          ${summaryHTML(x)}
           ${aboutHTML(x)}
           ${quickFactsHTML(x)}
           ${qaHTML(x)}
         </div>
         <dl class="spec">
-          <div class="spec-title">DATA SHEET</div>
+          <h2 class="spec-title">Data sheet</h2>
           <div class="spec-row"><dt>DOMAIN</dt><dd>${esc(x.domain)}</dd></div>
           <div class="spec-row"><dt>CATEGORY</dt><dd style="color:${color}">${esc(x.category.toUpperCase())}</dd></div>
           <div class="spec-row"><dt>SPECIALTY</dt><dd>${esc(x.subcategory.toUpperCase())}</dd></div>
@@ -1132,7 +1239,7 @@ async function openDetail(domain, push = true) {
           ${has(x.phone_number) ? `<div class="spec-row"><dt>PHONE</dt><dd>${esc(x.phone_number)}</dd></div>` : ''}
           ${has(x.clutch_rating) ? `<div class="spec-row"><dt>CLUTCH RATING</dt><dd>${esc(String(x.clutch_rating))}/5${has(x.clutch_reviews) ? ` · ${esc(String(x.clutch_reviews))} REVIEW${Number(x.clutch_reviews) === 1 ? '' : 'S'}` : ''}</dd></div>` : ''}
           <div class="spec-row"><dt>STATUS</dt><dd>LISTED</dd></div>
-          <div class="spec-row"><dt>PERMALINK</dt><dd><a href="c/${esc(x.domain)}.html" style="color:var(--cobalt);text-decoration:none">STATIC PAGE →</a></dd></div>
+          <div class="spec-row"><dt>PERMALINK</dt><dd><a href="c/${esc(x.domain)}.html" style="color:var(--cobalt);text-decoration:none">/c/${esc(x.domain)}.html</a></dd></div>
         </dl>
       </div>
       ${related.length ? `
@@ -1140,6 +1247,7 @@ async function openDetail(domain, push = true) {
         <h2>Also in ${esc(x.subcategory)}</h2><span class="cnt">${related.length}</span>
       </div>
       <div class="grid">${related.map(cardHTML).join('')}</div>` : ''}
+      ${claimHTML(x, '')}
     `;
     window.scrollTo({ top: 0 });
   });

@@ -23,26 +23,12 @@ if (start < 0 || end < 0) throw new Error('engine markers not found in index.htm
 const engine = idx.slice(start, end);
 // eslint-disable-next-line no-eval
 const engineExports = new Function('esc', `${engine}
-  return { has, ownWords, ownWordsSrc, nounOf, hqLine, an, subNoun, aboutHTML, quoteHTML, quickFactsHTML, qaPairs, qaHTML };`)(esc);
-const { has, ownWords, nounOf, hqLine, an, subNoun, aboutHTML, quoteHTML, quickFactsHTML, qaPairs, qaHTML } = engineExports;
+  return { has, plain, ownWords, ownWordsSrc, nounOf, hqLine, an, subNoun, aboutHTML, quoteHTML, quickFactsHTML, qaPairs, qaHTML, speakables, summaryHTML, claimHTML };`)(esc);
+const { has, plain, ownWords, nounOf, hqLine, an, subNoun, aboutHTML, quoteHTML, quickFactsHTML, qaPairs, qaHTML, speakables, summaryHTML, claimHTML } = engineExports;
 
 // ---- speakable composition (Layer 4b, per-record, fact-fed) ----
-function speakables(x) {
-  const hq = hqLine(x);
-  const hasFacts = has(x.min_project_size) || has(x.avg_hourly_rate) || has(x.clutch_rating);
-  const what = `${x.name} is ${an(subNoun(x))} ${subNoun(x)} in The Wall's ${x.category} index. Executives can review its capabilities${hasFacts ? ', published engagement data,' : ''} and start contact directly through its website at ${x.domain}.`;
-  const details = `${x.name}${hq ? `, based in ${hq},` : ''} serves companies past $5M in revenue with 25 or more employees, typically working with ${x.target_executive_icp || 'senior executives'} on ${(x.bottleneck_solved || 'growth bottlenecks').toLowerCase()}.`;
-  const bits = [];
-  if (has(x.year_established)) bits.push(`operating since ${x.year_established}`);
-  if (has(x.team_size)) bits.push(`listed team size ${x.team_size}`);
-  if (has(x.min_project_size)) bits.push(`minimum project ${x.min_project_size}`);
-  if (has(x.avg_hourly_rate)) bits.push(`average rate ${x.avg_hourly_rate}`);
-  if (has(x.clutch_rating) && has(x.clutch_reviews)) bits.push(`rated ${x.clutch_rating} out of 5 across ${x.clutch_reviews} Clutch reviews`);
-  const facts = bits.length
-    ? `Key facts about ${x.name}: ${bits.join('; ')}.`
-    : `Key facts about ${x.name}: engagement structures in this category include monthly retainers, project contracts, and advisory arrangements.`;
-  return { what, details, facts };
-}
+// speakables / summaryHTML / claimHTML now come from the shared engine in index.html,
+// so the atlas detail view and this page cannot drift apart.
 
 const ORG_LD = {
   '@context': 'https://schema.org', '@type': 'Organization',
@@ -85,46 +71,9 @@ function jsonld(x, pairs, sp) {
 }
 
 // ---- static page shell (trimmed atlas design system) ----
-// "Is this your firm?" block — the only conversion path on a /c/ page.
-// Vendors land here by self-searching; this turns that into a Weapon 1 reply.
-function claimHTML(x) {
-  const mail = (subject, body) =>
-    `mailto:support@misspepper.ai?subject=${encodeURIComponent(subject)}&amp;body=${encodeURIComponent(body)}`;
-  const claim = mail(
-    `Claim listing: ${x.domain}`,
-    `Hi — I'm with ${x.name} (${x.domain}).\n\n`
-    + `I'd like to claim our listing on The Wall and I'm in on the two-way referral deal:\n`
-    + `we keep 20% of what we send you, you take 10% of what you send us.\n\n`
-    + `Name:\nRole:\nBest email:\nAnything on the listing that needs fixing:\n`
-  );
-  const fix = mail(
-    `Correction: ${x.domain}`,
-    `Hi — I'm with ${x.name} (${x.domain}).\n\n`
-    + `Something on our listing at ${SITE}/c/${x.domain}.html needs correcting:\n\n`
-    + `What's wrong:\nWhat it should say:\nSource we can verify it against:\n`
-  );
-  return `<section class="claim">
-    <div class="claim-k">IS THIS YOUR FIRM?</div>
-    <h2>Claim this listing — and keep 20% of every client you send us</h2>
-    <p>${esc(x.name)} is listed here for free, compiled from public sources. There is no fee to
-    claim it and no pay-to-play tier. Claiming lets you correct the record and opens a two-way
-    referral arrangement that runs in your favour by design.</p>
-    <div class="deal">
-      <div><b>You keep 20%</b><span>Of any client you send to Miss Pepper AI.</span></div>
-      <div><b>We take 10%</b><span>Of any client we send to ${esc(x.name)}.</span></div>
-    </div>
-    <div class="claim-acts">
-      <a class="a-pri" href="${claim}">CLAIM &amp; COUNT ME IN →</a>
-      <a class="a-sec" href="${fix}">CORRECT THIS LISTING</a>
-      <a class="a-sec" href="../partner.html">READ THE FULL TERMS</a>
-    </div>
-    <p class="claim-fine">NO COST TO CLAIM · NO EXCLUSIVITY · CANCEL BY REPLYING &ldquo;STOP&rdquo; ·
-    LISTING STAYS UP EITHER WAY &mdash; INCLUSION IS EDITORIAL, NOT PURCHASED</p>
-  </section>`;
-}
 
-function pageHTML(x, pairs, sp) {
-  const metaDesc = esc(((x.site_description || x.description) + '').slice(0, 158));
+function pageHTML(x, pairs, sp, related) {
+  const metaDesc = esc(plain(x.site_description || x.description || '').slice(0, 158));
   const specRows = [
     ['DOMAIN', x.domain], ['CATEGORY', x.category.toUpperCase()], ['SPECIALTY', x.subcategory.toUpperCase()],
     ['TYPE', (x.listing_type || 'PROVIDER').toUpperCase()], ['SOLVES', (x.bottleneck_solved || '—').toUpperCase()],
@@ -136,7 +85,8 @@ function pageHTML(x, pairs, sp) {
     ...(has(x.avg_hourly_rate) ? [['AVG RATE', x.avg_hourly_rate]] : []),
     ...(has(x.phone_number) ? [['PHONE', x.phone_number]] : []),
     ...(has(x.clutch_rating) ? [['CLUTCH RATING', `${x.clutch_rating}/5${has(x.clutch_reviews) ? ` · ${x.clutch_reviews} review${Number(x.clutch_reviews) === 1 ? '' : 's'}` : ''}`]] : []),
-    ['STATUS', 'LISTED']
+    ['STATUS', 'LISTED'],
+    ['PERMALINK', `/c/${x.domain}.html`]
   ];
   return `<!DOCTYPE html>
 <html lang="en">
@@ -150,7 +100,7 @@ function pageHTML(x, pairs, sp) {
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<script type="application/ld+json">${JSON.stringify(jsonld(x, pairs, sp))}</script>
+<script type="application/ld+json">${JSON.stringify(jsonld(x, pairs, sp)).replace(/</g, "\\u003c")}</script>
 <style>
   :root{--porcelain:#FAF9F6;--stone:#E7E3DA;--stone-lt:#F2F0EA;--cobalt:#1B4FD8;--oxblood:#6E1423;--ink:#0E1B33;--chrome:#686D75;--chrome-dk:#85898F;--body:#3B4557;--serif:'Newsreader',Georgia,serif;--sans:'IBM Plex Sans',sans-serif;--mono:'IBM Plex Mono',monospace}
   *{margin:0;padding:0;box-sizing:border-box}
@@ -214,6 +164,12 @@ function pageHTML(x, pairs, sp) {
   .a-pri{color:#fff;background:var(--cobalt)} .a-pri:hover{background:var(--oxblood)}
   .a-sec{color:var(--ink);background:#fff;border:1px solid var(--stone)} .a-sec:hover{border-color:var(--cobalt);color:var(--cobalt)}
   .claim-fine{margin-top:14px;font-family:var(--mono);font-size:9px;letter-spacing:.06em;color:var(--chrome);line-height:1.7}
+  .rel-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1px;background:var(--stone);border:1px solid var(--stone);margin:14px 0 6px}
+  .rel-card{display:flex;flex-direction:column;gap:5px;background:var(--porcelain);padding:14px 16px;text-decoration:none;transition:background .15s}
+  .rel-card:hover{background:var(--stone-lt)}
+  .rel-nm{font-family:var(--serif);font-size:15px;font-weight:600;color:var(--ink);line-height:1.25}
+  .rel-d{font-size:12.5px;line-height:1.45;color:var(--body);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .rel-m{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;color:var(--chrome);text-transform:uppercase}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important}}
 </style>
 </head>
@@ -232,12 +188,7 @@ function pageHTML(x, pairs, sp) {
   ${quoteHTML(x)}
   <a class="cta" href="https://${esc(x.domain)}" target="_blank" rel="noopener nofollow">VISIT WEBSITE ↗</a>
 
-  <h2>Summary</h2>
-  <div class="speak">
-    <p class="sp-what">${esc(sp.what)}</p>
-    <p class="sp-details">${esc(sp.details)}</p>
-    <p class="sp-facts">${esc(sp.facts)}</p>
-  </div>
+  ${summaryHTML(x)}
 
   ${aboutHTML(x).replace('class="d-about"', 'class="about"')}
 
@@ -250,7 +201,14 @@ function pageHTML(x, pairs, sp) {
   <h2>Data sheet</h2>
   <dl class="spec">${specRows.map(([t, d]) => `<div><dt>${esc(t)}</dt><dd>${esc(String(d))}</dd></div>`).join('')}</dl>
 
-  ${claimHTML(x)}
+  ${related.length ? `<h2>Also in ${esc(x.subcategory)}</h2>
+  <div class="rel-grid">${related.map(r => `<a class="rel-card" href="${esc(r.domain)}.html">
+    <span class="rel-nm">${esc(r.name)}</span>
+    <span class="rel-d">${esc(r.description || '')}</span>
+    <span class="rel-m">${esc([r.hq_state, r.avg_hourly_rate].filter(has).join(' · '))}</span>
+  </a>`).join('')}</div>` : ''}
+
+  ${claimHTML(x, '../')}
 </main>
 <footer><div class="wrap">
   <span>Compiled from public sources. Listings are not endorsements.</span>
@@ -281,7 +239,13 @@ const run = async () => {
   for (const x of rows) {
     const pairs = qaPairs(x);
     const sp = speakables(x);
-    writeFileSync(join(ROOT, 'c', `${x.domain}.html`), pageHTML(x, pairs, sp));
+    // Same rule the atlas uses: same subcategory, itself excluded, sorted by name, capped
+    // at 6. The sort is explicit because this builder queries order=domain.asc while the
+    // atlas queries order=name.asc — relying on query order gave the two renderings
+    // different neighbours for the same company.
+    const related = rows.filter(r => r.subcategory === x.subcategory && r.domain !== x.domain)
+      .sort((a, b) => a.name.localeCompare(b.name, 'en')).slice(0, 6);
+    writeFileSync(join(ROOT, 'c', `${x.domain}.html`), pageHTML(x, pairs, sp, related));
     urls.push(`${SITE}/c/${x.domain}.html`);
     patches.push({
       domain: x.domain,
@@ -356,7 +320,7 @@ const run = async () => {
 <link rel="canonical" href="${SITE}/sitemap.html">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧱</text></svg>">
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,600;6..72,700&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
-<script type="application/ld+json">${JSON.stringify(ORG_LD)}</script>
+<script type="application/ld+json">${JSON.stringify(ORG_LD).replace(/</g, "\\u003c")}</script>
 <style>
   :root{--porcelain:#FAF9F6;--stone:#E7E3DA;--cobalt:#1B4FD8;--oxblood:#6E1423;--ink:#0E1B33;--chrome:#686D75;--chrome-dk:#85898F;--serif:'Newsreader',Georgia,serif;--sans:'IBM Plex Sans',sans-serif;--mono:'IBM Plex Mono',monospace}
   *{margin:0;padding:0;box-sizing:border-box}
