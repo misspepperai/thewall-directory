@@ -220,6 +220,18 @@ function wallContext() {
         return;
       }
 
+      // --- buyer intent: which job-to-be-done they picked out of the action band ---
+      // This is the only read we get on WHY a buyer came. Nothing on the homepage asks
+      // them, so the card they choose is the answer.
+      var ab = a && closest(a, '.ab-card');
+      if (ab) {
+        track('buyer_path_click', {
+          buyer_job: txt(ab.querySelector('.job')),
+          path_destination: ab.getAttribute('href')
+        });
+        return;
+      }
+
       // --- traffic we send OUT to a vendor (this is the 10% side of the deal) ---
       if (a && a.matches('.cta') && /^https?:/i.test(a.getAttribute('href') || '')) {
         track('vendor_outbound', { link_url: a.getAttribute('href') });

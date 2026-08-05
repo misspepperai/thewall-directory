@@ -147,6 +147,31 @@
   .index-row.active .nm { color: var(--row-c, var(--cobalt)); }
   .index-row.active .no { color: var(--row-c, var(--cobalt)); }
 
+  /* ---------- problem statement (Stage 3.5, section 2 of the arc) ---------- */
+  .problem { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 40px; align-items: start; padding: 30px 0 4px; }
+  .problem .pq { font-family: var(--serif); font-size: clamp(19px, 2.1vw, 25px); line-height: 1.35; color: var(--ink); font-style: italic; font-weight: 500; border-left: 3px solid var(--oxblood); padding-left: 20px; letter-spacing: -.012em; }
+  .problem .pq cite { display: block; font-family: var(--mono); font-style: normal; font-size: 10px; letter-spacing: .12em; color: var(--body); margin-top: 14px; text-transform: uppercase; }
+  .problem .pa p { font-size: 14.5px; line-height: 1.65; color: var(--body); margin-bottom: 11px; }
+  .problem .pa p:last-child { margin-bottom: 0; }
+  .problem .pa strong { color: var(--ink); font-weight: 600; }
+  @media (max-width: 860px) { .problem { grid-template-columns: 1fr; gap: 24px; } }
+
+  /* ---------- buyer action band (Stage 3.5, section 6 of the arc) ---------- */
+  .actband { border-top: 2px solid var(--ink); margin-top: 42px; padding: 26px 0 6px; }
+  .actband .ab-k { font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: .16em; color: var(--oxblood); text-transform: uppercase; margin-bottom: 6px; }
+  .actband h3 { font-family: var(--serif); font-weight: 600; font-size: 25px; color: var(--ink); letter-spacing: -.015em; margin-bottom: 20px; }
+  .ab-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 1px; background: var(--stone); border: 1px solid var(--stone); }
+  .ab-card { background: var(--porcelain); padding: 20px 18px; display: flex; flex-direction: column; text-decoration: none; transition: background .15s; }
+  .ab-card:hover { background: var(--stone-lt); }
+  .ab-card .job { font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: .1em; color: var(--cobalt); text-transform: uppercase; margin-bottom: 9px; }
+  .ab-card .ttl { font-family: var(--sans); font-size: 15px; font-weight: 600; color: var(--ink); line-height: 1.3; margin-bottom: 7px; }
+  .ab-card .dsc { font-size: 13px; line-height: 1.5; color: var(--body); flex: 1; }
+  .ab-card .go { font-family: var(--mono); font-size: 10px; letter-spacing: .12em; color: var(--cobalt); margin-top: 13px; font-feature-settings: 'tnum'; }
+  .ab-close { margin-top: 16px; font-size: 13px; line-height: 1.6; color: var(--body); }
+  .ab-close strong { color: var(--ink); font-weight: 600; }
+  @media (max-width: 900px) { .ab-grid { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+  @media (max-width: 520px) { .ab-grid { grid-template-columns: 1fr; } }
+
   .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 
   /* ---------- evidence band (Stage 3: pillar 3, show the work) ---------- */
@@ -387,6 +412,25 @@
     <div class="dial-holder" id="dial"></div>
   </section>
 
+  <section class="problem wrap">
+    <blockquote class="pq">
+      “I'm going to pick from a list somebody paid to be on, overpay by 40%, and not
+      find out for six months.”
+      <cite>The reason most vendor directories are useless</cite>
+    </blockquote>
+    <div class="pa">
+      <p>That fear is rational. Every major directory in this category sells position —
+      sponsored tiers, paid badges, "Top 10" lists a cheque can reorder. You cannot tell
+      from the page which firms earned their spot and which bought it.</p>
+      <p><strong>The Wall sells nothing, so it has nothing to protect.</strong> Listings are
+      alphabetical inside each category. There is no sponsored tier and no way to pay for
+      removal. Where a firm's rate, team size, or minimum project size is unknown, the page
+      says unknown rather than guessing.</p>
+      <p>What that buys you is narrow but real: <strong>you can trust the ordering means
+      nothing</strong>, and read the data instead.</p>
+    </div>
+  </section>
+
   <section class="evidence wrap">
     <div>
       <div class="ev-k">What is on the page, and where it came from</div>
@@ -458,6 +502,41 @@
   </div>
 
   <div class="wrap" id="sections"><div class="empty">LOADING THE ATLAS…</div></div>
+
+  <section class="actband wrap">
+    <div class="ab-k">Start here</div>
+    <h3>Four ways to use this before you talk to anyone</h3>
+    <div class="ab-grid">
+      <a class="ab-card" href="tools/rate-benchmark.html">
+        <span class="job">You have a quote</span>
+        <span class="ttl">Check it against 1,440 published rates</span>
+        <span class="dsc">Enter an hourly rate and discipline. See where it sits in the real distribution before you negotiate.</span>
+        <span class="go">RATE BENCHMARK →</span>
+      </a>
+      <a class="ab-card" href="compare/">
+        <span class="job">You're down to two</span>
+        <span class="ttl">Read the head-to-head</span>
+        <span class="dsc">Side-by-side breakdowns of the platforms and firms buyers most often weigh against each other.</span>
+        <span class="go">15 COMPARISONS →</span>
+      </a>
+      <a class="ab-card" href="find/">
+        <span class="job">You want local</span>
+        <span class="ttl">Filter by discipline and state</span>
+        <span class="dsc">Every category crossed with every state that has enough firms to be worth a page.</span>
+        <span class="go">83 SHORTLISTS →</span>
+      </a>
+      <a class="ab-card" href="hubs/">
+        <span class="job">You're still scoping</span>
+        <span class="ttl">Work out what you actually need</span>
+        <span class="dsc">Buyer guides on what each discipline does, what it costs, and when hiring one is the wrong move.</span>
+        <span class="go">6 BUYER GUIDES →</span>
+      </a>
+    </div>
+    <p class="ab-close"><strong>No form, no gate, no sales call.</strong> Nothing on The Wall
+    requires an email address, and none of it is a recommendation — the index reports what is
+    published and where it came from. If something here is wrong,
+    <a href="editorial-policy.html">tell us and we'll correct it in public</a>.</p>
+  </section>
 
   <div class="partner-cta">
     <div class="txt">
