@@ -583,7 +583,13 @@ ${ARTICLES.map(a => `<div class="idx-item">
   <div class="d">${dateFmt(a.date)}</div>
   <a href="${a.slug}.html">${esc(a.h)}</a>
   <p>${esc(a.dek)}</p>
-</div>`).join('\n')}`;
+</div>`).join('\n')}
+<!-- The corrections log had no inbound link from anywhere on the site: reachable only by
+     typing the URL, and invisible to a crawler. A directory that publishes a corrections
+     policy has to make the corrections findable, so the newsroom links to it. -->
+<div class="rel"><h2>ALSO</h2>
+<a href="updates/">Index updates and corrections log</a>
+</div>`;
 writeFileSync(join(ROOT, 'news', 'index.html'), shell({ title: 'Briefings', metaDesc: 'Data briefings on the US growth-vendor market, computed from The Wall’s verified index of 2,286 US companies.', canonical: `${SITE}/news/`, ld: idxLD, bodyHTML: idxBody, base: '../' }));
 
 console.log(`news pages written: ${ARTICLES.length} articles + index`);

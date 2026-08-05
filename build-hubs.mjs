@@ -628,7 +628,7 @@ const idxBody = `
 <div class="kicker">REFERENCE / BUYER HUBS</div>
 <h1>Buyer hubs</h1>
 <p class="dek">Reference pages for the questions buyers most often bring to ${BRAND} — what a marketing consultant costs, when to hire a B2B agency, how paid-ad platforms actually price. Each hub grounds the answer in real data from the directory.</p>
-${HUBS.map(h => `<div class="faq-item"><h3><a href="${h.slug}.html">${esc(h.h1)}</a></h3><p>${esc(h.dek).slice(0, 220)}${h.dek.length > 220 ? '…' : ''}</p></div>`).join('\n')}
+${HUBS.map(h => `<div class="faq-item"><h2><a href="${h.slug}.html">${esc(h.h1)}</a></h2><p>${esc(h.dek).slice(0, 220)}${h.dek.length > 220 ? '…' : ''}</p></div>`).join('\n')}
 <div class="rel"><h3>KEEP GOING</h3>
 <a href="../entities/">Platform reference — the tools that show up on shortlists</a>
 <a href="../glossary.html">The Wall glossary — 200+ growth-vendor terms defined</a>

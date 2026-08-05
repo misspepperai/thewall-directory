@@ -3,6 +3,7 @@
 import { writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { pillar, entity } from './slugs.mjs';
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
 const SITE = 'https://hitthewall.net';
@@ -415,7 +416,7 @@ for (const c of COMPARISONS) {
 
 <div class="fact">
   <div class="fact-side">
-    <h3>${esc(c.a)}</h3>
+    <h2>${esc(c.a)}</h2>
     <div class="name">${esc(c.left.name)}</div>
     <dl>
       <dt>Pricing entry</dt><dd>${esc(c.left.pricingStart)}</dd>
@@ -427,7 +428,7 @@ for (const c of COMPARISONS) {
     <div class="url"><a href="${esc(c.left.url)}" rel="nofollow noopener" target="_blank">${esc(c.left.url.replace(/^https?:\/\//, ''))} →</a></div>
   </div>
   <div class="fact-side">
-    <h3>${esc(c.b)}</h3>
+    <h2>${esc(c.b)}</h2>
     <div class="name">${esc(c.right.name)}</div>
     <dl>
       <dt>Pricing entry</dt><dd>${esc(c.right.pricingStart)}</dd>
@@ -458,9 +459,13 @@ ${c.dimensions.map(([dim, l, r]) => `    <tr><td>${esc(dim)}</td><td>${esc(l)}</
 <p>Both ${esc(c.a)} and ${esc(c.b)} show up on nearly every ${esc(c.pillar.toLowerCase())} shortlist in 2026, which is why the "vs" query gets asked constantly and answered badly. Most comparison content is written by affiliates optimizing for the winner they're paid to recommend. ${BRAND} makes no commission on either — this is a directory-editorial verdict, grounded in what the software actually does and what the buying decision costs to reverse.</p>
 
 <div class="rel"><h3>KEEP EXPLORING</h3>
-<a href="../pillars/${c.pillarSlug}.html">The full ${esc(c.pillar)} pillar</a>
-<a href="../entities/${c.slug.split('-vs-')[0]}.html">Standalone entity: ${esc(c.a)}</a>
-<a href="../entities/${c.slug.split('-vs-')[1]}.html">Standalone entity: ${esc(c.b)}</a>
+<a href="../pillars/${pillar(c.pillarSlug).slug}.html">The full ${esc(pillar(c.pillarSlug).name)} pillar</a>
+${[[c.slug.split('-vs-')[0], c.a], [c.slug.split('-vs-')[1], c.b]].map(([s, nm]) => {
+  // Four tools named in comparison copy have no entity page. A link to one is a 404, so the
+  // row renders as plain text until the page exists — see ENTITY_MISSING in slugs.mjs.
+  const t = entity(s);
+  return t ? `<a href="../entities/${t}.html">Standalone entity: ${esc(nm)}</a>` : '';
+}).filter(Boolean).join('\n')}
 <a href="./">Other head-to-heads</a>
 </div>`;
   writeFileSync(join(ROOT, 'compare', `${c.slug}.html`), shell({ title, metaDesc, canonical, ld, bodyHTML: body }));
@@ -487,7 +492,7 @@ writeFileSync(join(ROOT, 'compare', 'index.html'), shell({
 ${COMPARISONS.map(c => `<tr><td><a href="${c.slug}.html" style="color:var(--ink);text-decoration:none;font-weight:600">${esc(c.a)} vs ${esc(c.b)}</a></td><td>${esc(c.pillar)}</td></tr>`).join('\n')}
 </tbody>
 </table>
-<div class="rel"><h3>ALSO</h3><a href="../entities/">Individual entity pages</a><a href="../pillars/">Category pillars</a></div>`
+<div class="rel"><h2>ALSO</h2><a href="../entities/">Individual entity pages</a><a href="../pillars/">Category pillars</a></div>`
 }));
 
 console.log(`compare pages: ${COMPARISONS.length} + 1 index`);

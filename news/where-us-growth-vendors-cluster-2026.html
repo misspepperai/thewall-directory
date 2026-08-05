@@ -75,11 +75,19 @@
 </style>
 </head>
 <body>
+<!-- a11y:begin (managed by inject-a11y.mjs) --><style>
+.skip-link{position:absolute;left:-9999px;top:0;z-index:100;padding:12px 18px;background:var(--ink,#0E1B33);color:#fff;font-family:var(--sans,system-ui,sans-serif);font-size:14px;font-weight:600;text-decoration:none}
+.skip-link:focus,.skip-link:focus-visible{left:0}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--cobalt,#1B4FD8);outline-offset:2px}
+@media (prefers-contrast:more){a:focus-visible,button:focus-visible{outline-width:4px}}
+</style>
+<a class="skip-link" href="#main">Skip to main content</a>
+<!-- a11y:end -->
 <nav class="topbar"><div class="wrap topbar-in">
   <a class="wordmark" href=".././">The Wall <small>OPERATIONS ATLAS</small></a>
   <a class="back" href=".././">BROWSE THE ATLAS →</a>
 </div></nav>
-<main class="wrap">
+<main class="wrap" id="main" tabindex="-1">
 
 <div class="kicker">BRIEFING</div>
 <h1>Five states hold a third of US growth vendors — and California alone holds 308</h1>

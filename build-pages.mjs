@@ -70,10 +70,64 @@ function jsonld(x, pairs, sp) {
   ];
 }
 
+// Some vendors' stored `name` is a tagline, not a name — "360 ELEVATED® Marketing.
+// Advertising. Public Relations." One title ran to 134 characters, and Google truncates
+// around 60-70, so the discipline and the brand suffix — the parts that tell a searcher
+// which listing this is and whose index it is on — were the parts being cut.
+//
+// The name is shortened first, at a sentence or separator boundary where one exists, so the
+// title reads as a name rather than a sentence stopped mid-word.
+function titleName(name) {
+  const n = String(name).trim();
+  if (n.length <= 42) return n;
+  // The FIRST boundary, not the last one that fits: a tagline's opening clause is the actual
+  // name ("360 ELEVATED® Marketing"), while the last clause that fits is an arbitrary midpoint
+  // of the tagline ("360 ELEVATED® Marketing. Advertising").
+  const at = [n.indexOf('. '), n.indexOf(' — '), n.indexOf(' | '), n.indexOf(' - ')]
+    .filter(i => i > 2 && i <= 42).sort((a, b) => a - b)[0];
+  if (at !== undefined) return n.slice(0, at).trim();
+  return n.slice(0, 42).replace(/\s+\S*$/, '').trim();
+}
+
+// Meta descriptions were taken straight from the `description` column, which is a category
+// template — "SEO agency.", "Branding and identity agency based in Chicago, IL." Six firms
+// shared one description, 52 groups of pages were byte-identical, and 591 came in under 100
+// characters. Google rewrites descriptions it finds useless, and identical ones across sibling
+// pages read to a crawler as near-duplicate documents.
+//
+// So it is composed from the record's own stored columns instead. Every clause is a value read
+// from the database — nothing is inferred, estimated or written. Firms with no enrichment fall
+// back to the template plus their domain, which is still unique per page.
+function metaDescFor(x) {
+  const hq = has(x.hq_city) && has(x.hq_state) ? `${x.hq_city}, ${x.hq_state}` : (x.hq_state || null);
+  const lead = `${x.name} — ${x.subcategory}${hq ? ` in ${hq}` : ''}.`;
+
+  const facts = [];
+  // avg_hourly_rate already carries its own unit ("$150 - $199 / hr"); appending one gave "/hr/hr".
+  if (has(x.avg_hourly_rate)) facts.push(String(x.avg_hourly_rate).replace(/\s*\/\s*hr$/i, '/hr'));
+  if (has(x.min_project_size)) facts.push(`${x.min_project_size} minimum`);
+  // team_size is a range for firms ("10 - 49") but a word for individuals ("Freelancer"),
+  // which "Freelancer staff" gets wrong.
+  if (has(x.team_size)) facts.push(/\d/.test(x.team_size) ? `${x.team_size} staff` : String(x.team_size));
+  if (has(x.year_established)) facts.push(`founded ${x.year_established}`);
+  if (has(x.clutch_rating)) facts.push(`${x.clutch_rating}★ on Clutch`);
+
+  // Append whole clauses only — a description cut mid-fact reads as broken data.
+  let out = lead;
+  for (const f of facts) {
+    const next = out === lead ? `${out} ${f}` : `${out} · ${f}`;
+    if (next.length > 152) break;
+    out = next;
+  }
+  // Nothing to add: the domain still distinguishes the page from its category siblings.
+  if (out === lead) out = `${lead} Listed at ${x.domain} in The Wall's ${x.category} index.`;
+  return out.length > 158 ? out.slice(0, 157).replace(/\s+\S*$/, '') + '…' : out;
+}
+
 // ---- static page shell (trimmed atlas design system) ----
 
 function pageHTML(x, pairs, sp, related) {
-  const metaDesc = esc(plain(x.site_description || x.description || '').slice(0, 158));
+  const metaDesc = esc(metaDescFor(x));
   const specRows = [
     ['DOMAIN', x.domain], ['CATEGORY', x.category.toUpperCase()], ['SPECIALTY', x.subcategory.toUpperCase()],
     ['TYPE', (x.listing_type || 'PROVIDER').toUpperCase()], ['SOLVES', (x.bottleneck_solved || '—').toUpperCase()],
@@ -93,7 +147,7 @@ function pageHTML(x, pairs, sp, related) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>${esc(x.name)} — ${esc(x.subcategory)} | The Wall</title>
+<title>${esc(titleName(x.name))} — ${esc(x.subcategory)} | The Wall</title>
 <meta name="description" content="${metaDesc}">
 <link rel="canonical" href="${SITE}/c/${esc(x.domain)}.html">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧱</text></svg>">
@@ -181,7 +235,12 @@ function pageHTML(x, pairs, sp, related) {
 <main class="wrap">
   <div class="crumb"><a href="../">INDEX</a> / <a href="../?c=${encodeURIComponent(x.domain)}">${esc(x.category.toUpperCase())}</a> / ${esc(x.name.toUpperCase())}</div>
   <div class="head">
-    <img class="logo" alt="${esc(x.name)} logo" src="https://www.google.com/s2/favicons?domain=${encodeURIComponent(x.domain)}&sz=128">
+    <!-- width/height match the CSS box (72x72) so the browser reserves the space before the
+         image arrives; without them the heading and everything under it jump on load.
+         referrerpolicy=no-referrer stops the favicon request telling Google which listing the
+         visitor is reading — the privacy page states this site runs no trackers, and a
+         third-party request carrying the full page URL undercuts that. -->
+    <img class="logo" alt="${esc(x.name)} logo" width="72" height="72" loading="lazy" decoding="async" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=${encodeURIComponent(x.domain)}&sz=128">
     <div><h1>${esc(x.name)}</h1><span class="sub">${esc(x.category.toUpperCase())} / ${esc(x.subcategory.toUpperCase())}</span></div>
   </div>
   <p class="desc">${esc(x.description)}</p>

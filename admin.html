@@ -8,6 +8,7 @@
 <meta property="og:site_name" content="The Wall">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Admin — The Wall">
+<meta property="og:description" content="Private administrative console for The Wall. Not public content.">
 <meta property="og:url" content="https://hitthewall.net/admin.html">
 <meta property="og:image" content="https://hitthewall.net/og/default.png">
 <meta property="og:image:width" content="1200">
@@ -15,8 +16,13 @@
 <meta property="og:image:alt" content="Admin — share card from The Wall, the independent index of US growth-services vendors">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Admin — The Wall">
+<meta name="twitter:description" content="Private administrative console for The Wall. Not public content.">
 <meta name="twitter:image" content="https://hitthewall.net/og/default.png">
 <!-- og:end -->
+<!-- Private listings console. Never indexed, never followed: it is not site content,
+     it has no canonical public URL, and it is deliberately absent from both sitemaps. -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Private administrative console for The Wall. Not public content.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧱</text></svg>">
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600;6..72,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -76,6 +82,14 @@
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important}}</style>
 </head>
 <body>
+<!-- a11y:begin (managed by inject-a11y.mjs) --><style>
+.skip-link{position:absolute;left:-9999px;top:0;z-index:100;padding:12px 18px;background:var(--ink,#0E1B33);color:#fff;font-family:var(--sans,system-ui,sans-serif);font-size:14px;font-weight:600;text-decoration:none}
+.skip-link:focus,.skip-link:focus-visible{left:0}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--cobalt,#1B4FD8);outline-offset:2px}
+@media (prefers-contrast:more){a:focus-visible,button:focus-visible{outline-width:4px}}
+</style>
+<a class="skip-link" href="#dash">Skip to main content</a>
+<!-- a11y:end -->
 
 <nav class="topbar"><div class="wrap topbar-in">
   <a class="wordmark" href="./">The Wall <small>ADMIN CONSOLE</small></a>
@@ -86,8 +100,8 @@
 <div class="auth-card" id="auth">
   <h1>Admin sign in</h1>
   <p class="note">ACCESS IS LIMITED TO THE AUTHORIZED ADMIN EMAIL. OTHER ACCOUNTS CAN SIGN IN BUT CANNOT READ OR WRITE LISTINGS.</p>
-  <div class="field"><label>EMAIL</label><input id="email" type="email" autocomplete="username"></div>
-  <div class="field"><label>PASSWORD</label><input id="password" type="password" autocomplete="current-password"></div>
+  <div class="field"><label for="email">EMAIL</label><input id="email" type="email" autocomplete="username"></div>
+  <div class="field"><label for="password">PASSWORD</label><input id="password" type="password" autocomplete="current-password"></div>
   <div class="auth-actions">
     <button class="btn blue" onclick="signIn()">SIGN IN</button>
     <button class="btn" onclick="signUp()">CREATE ACCOUNT</button>
@@ -96,9 +110,9 @@
 </div>
 
 <!-- dashboard -->
-<main class="dash wrap" id="dash">
+<main class="dash wrap" id="dash" tabindex="-1">
   <div class="dash-head">
-    <h1>Listings console</h1>
+    <h2>Listings console</h2>
     <span class="stats" id="stats">—</span>
   </div>
 
@@ -112,12 +126,12 @@
     <div class="row">
       <div class="editor" style="display:block;border:0;padding-top:8px">
         <div class="grid2">
-          <div class="field"><label>NAME</label><input id="add-name"></div>
-          <div class="field"><label>DOMAIN</label><input id="add-domain" placeholder="example.com"></div>
-          <div class="field"><label>CATEGORY</label><select id="add-cat"></select></div>
-          <div class="field"><label>SPECIALTY</label><input id="add-sub"></div>
+          <div class="field"><label for="add-name">NAME</label><input id="add-name"></div>
+          <div class="field"><label for="add-domain">DOMAIN</label><input id="add-domain" placeholder="example.com"></div>
+          <div class="field"><label for="add-cat">CATEGORY</label><select id="add-cat"></select></div>
+          <div class="field"><label for="add-sub">SPECIALTY</label><input id="add-sub"></div>
         </div>
-        <div class="field"><label>DESCRIPTION</label><textarea id="add-desc" rows="2"></textarea></div>
+        <div class="field"><label for="add-desc">DESCRIPTION</label><textarea id="add-desc" rows="2"></textarea></div>
         <div style="margin-top:12px"><button class="btn blue" onclick="addListing()">ADD LISTING</button><span class="msg" id="add-msg"></span></div>
       </div>
     </div>
@@ -125,7 +139,7 @@
 
   <section class="sect">
     <div class="sect-head"><h2>All listings</h2><span id="all-count"></span></div>
-    <input class="searchbar" id="admin-q" placeholder="FILTER BY NAME, DOMAIN, CATEGORY…">
+    <input class="searchbar" id="admin-q" aria-label="Filter listings by name, domain or category" placeholder="FILTER BY NAME, DOMAIN, CATEGORY…">
     <div id="rows"></div>
     <div class="pager">
       <button class="btn" id="more-btn" onclick="showMore()" style="display:none">SHOW MORE</button>

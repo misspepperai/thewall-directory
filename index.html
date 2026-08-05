@@ -9,15 +9,15 @@
 <!-- og:begin (managed by inject-og.mjs) -->
 <meta property="og:site_name" content="The Wall">
 <meta property="og:type" content="website">
-<meta property="og:title" content="US Marketing, SEO &amp;amp; Growth Agencies: 2,286 Verified Firms — The Wall">
+<meta property="og:title" content="US Marketing, SEO &amp; Growth Agencies: 2,286 Verified Firms — The Wall">
 <meta property="og:description" content="The Wall is the independent US directory of 2,286 verified growth-services vendors — marketing agencies, SEO firms, PR shops, creative studios, and sales consultancies. Every listing US-headquartered, machine-verified live, no pay-to-play. Filter by discipline, state, rate, team size.">
 <meta property="og:url" content="https://hitthewall.net/">
 <meta property="og:image" content="https://hitthewall.net/og/home.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="US Marketing, SEO &amp;amp; Growth Agencies: 2,286 Verified Firms — share card from The Wall, the independent index of US growth-services vendors">
+<meta property="og:image:alt" content="US Marketing, SEO &amp; Growth Agencies: 2,286 Verified Firms — share card from The Wall, the independent index of US growth-services vendors">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="US Marketing, SEO &amp;amp; Growth Agencies: 2,286 Verified Firms — The Wall">
+<meta name="twitter:title" content="US Marketing, SEO &amp; Growth Agencies: 2,286 Verified Firms — The Wall">
 <meta name="twitter:description" content="The Wall is the independent US directory of 2,286 verified growth-services vendors — marketing agencies, SEO firms, PR shops, creative studios, and sales consultancies. Every listing US-headquartered, machine-verified live, no pay-to-play. Filter by discipline, state, rate, team size.">
 <meta name="twitter:image" content="https://hitthewall.net/og/home.png">
 <!-- og:end -->
@@ -414,6 +414,14 @@
 </style>
 </head>
 <body>
+<!-- a11y:begin (managed by inject-a11y.mjs) --><style>
+.skip-link{position:absolute;left:-9999px;top:0;z-index:100;padding:12px 18px;background:var(--ink,#0E1B33);color:#fff;font-family:var(--sans,system-ui,sans-serif);font-size:14px;font-weight:600;text-decoration:none}
+.skip-link:focus,.skip-link:focus-visible{left:0}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--cobalt,#1B4FD8);outline-offset:2px}
+@media (prefers-contrast:more){a:focus-visible,button:focus-visible{outline-width:4px}}
+</style>
+<a class="skip-link" href="#home">Skip to main content</a>
+<!-- a11y:end -->
 
 <nav class="topbar">
   <div class="wrap topbar-in">
@@ -426,7 +434,7 @@
   </div>
 </nav>
 
-<main id="home">
+<main id="home" tabindex="-1">
 <!-- art:begin (managed by inject-art.mjs) --><style>
 .masthead{margin:0 0 26px;border:1px solid var(--stone,#E7E3DA);background:var(--porcelain,#FAF9F6);overflow:hidden}
 .masthead img{display:block;width:100%;height:clamp(150px,20vw,240px);object-fit:cover;object-position:center}
@@ -448,7 +456,7 @@
       </div>
       <div class="searchbox">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-        <input id="q" type="search" placeholder="SEARCH THE ATLAS…" autocomplete="off">
+        <input id="q" type="search" aria-label="Search the atlas by company name, category or location" placeholder="SEARCH THE ATLAS…" autocomplete="off">
       </div>
       <div class="index-strip" id="strip"></div>
     </div>
@@ -590,11 +598,11 @@
   <form class="modal-in" id="submit-form">
     <h3>Submit a listing</h3>
     <p class="note">Reviewed before publication. Listing is not an endorsement.</p>
-    <div class="field"><label>COMPANY NAME</label><input name="name" required maxlength="90"></div>
-    <div class="field"><label>WEBSITE URL</label><input name="website" type="url" required placeholder="https://"></div>
-    <div class="field"><label>CATEGORY</label><select name="category" id="submit-cat" required></select></div>
-    <div class="field"><label>SPECIALTY</label><input name="subcategory" required maxlength="60" placeholder="e.g. PR Agency, SEO Software"></div>
-    <div class="field"><label>ONE-LINE DESCRIPTION</label><textarea name="description" required maxlength="280"></textarea></div>
+    <div class="field"><label for="sub-name">COMPANY NAME</label><input id="sub-name" name="name" required maxlength="90"></div>
+    <div class="field"><label for="sub-website">WEBSITE URL</label><input id="sub-website" name="website" type="url" required placeholder="https://"></div>
+    <div class="field"><label for="submit-cat">CATEGORY</label><select name="category" id="submit-cat" required></select></div>
+    <div class="field"><label for="sub-specialty">SPECIALTY</label><input id="sub-specialty" name="subcategory" required maxlength="60" placeholder="e.g. PR Agency, SEO Software"></div>
+    <div class="field"><label for="sub-desc">ONE-LINE DESCRIPTION</label><textarea id="sub-desc" name="description" required maxlength="280"></textarea></div>
     <div class="modal-actions">
       <button type="submit" class="btn-primary">SUBMIT FOR REVIEW</button>
       <button type="button" class="btn-ghost" onclick="document.getElementById('submit-modal').close()">CANCEL</button>
@@ -926,7 +934,13 @@ function renderSections() {
 function clearFilters() { $('q').value = ''; activeCat = 'All'; for (const k of Object.keys(FILTERS)) FILTERS[k] = ''; buildDial(); buildStrip(); renderSections(); syncUrl(); }
 
 /* ---------- enrichment content (composed from per-business stored facts; no invented specifics) ---------- */
-const has = v => v !== null && v !== undefined && v !== '';
+// "Undisclosed" is not a value, it is the absence of one — Clutch's own placeholder, stored
+// verbatim in avg_hourly_rate and min_project_size on 1,264 records. Treating it as present
+// produced copy like "an average rate band of Undisclosed" and "Minimum project Undisclosed".
+// Every downstream clause, fact row and meta description keys off has(), so the sentinels are
+// filtered here once rather than at each of the ~30 call sites.
+const BLANK = new Set(['undisclosed', 'n/a', 'na', 'none', 'null', '-', '—', 'tbd', 'unknown']);
+const has = v => v !== null && v !== undefined && v !== '' && !BLANK.has(String(v).trim().toLowerCase());
 // site_description and clutch_bio are SCRAPED off the vendor's own site, so they can carry
 // raw markup. Three records shipped a full head fragment — meta tags, a title element, and a
 // literal closing script tag — which rendered as visible tag soup in the prose and, once
@@ -935,7 +949,17 @@ const has = v => v !== null && v !== undefined && v !== '';
 //
 // Note for future edits: this comment sits INSIDE an inline script, so it must never contain
 // a literal closing script tag. The HTML parser does not know it is reading a comment.
-const plain = s => String(s).replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+// Entities are decoded as well as tags stripped. Scraped copy carries "&amp;" verbatim, and
+// esc() then escaped the ampersand a second time, so "health & wellness" shipped as
+// "health &amp; wellness" — visible markup in the prose. plain() converts markup to text, and
+// an entity is markup.
+const plain = s => String(s)
+  .replace(/<[^>]*>/g, ' ')
+  .replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"')
+  .replace(/&#0*39;|&apos;|&rsquo;/g, "'").replace(/&ldquo;|&rdquo;/g, '"')
+  .replace(/&nbsp;/g, ' ').replace(/&#(\d+);/g, (_, d) => String.fromCharCode(+d))
+  .replace(/&amp;/g, '&')
+  .replace(/\s+/g, ' ').trim();
 const scraped = v => { const t = has(v) ? plain(v) : ''; return t ? t : null; };
 const ownWords = x => scraped(x.site_description) || scraped(x.clutch_bio);
 // Keyed off the sanitized value, not the raw column: a site_description that is pure markup

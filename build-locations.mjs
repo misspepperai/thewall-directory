@@ -188,7 +188,7 @@ writeFileSync(join(ROOT,'states','index.html'),shell({
 <h1>US growth vendors by state</h1>
 <p class="dek">Top 20 US states by vendor count, drawn from ${rows.length} verified US growth-services firms in the directory. California leads at ${topStates[0][1].length}, with the mid-table concentrations more informative than the top.</p>
 <div class="catgrid">
-${stIdx.map(s=>`<div class="catcell"><h3>${esc(s.code)} · ${s.n}</h3><ul><li><a href="${s.slug}.html">${esc(s.name)} — ${s.n} vendors →</a></li></ul></div>`).join('\n')}
+${stIdx.map(s=>`<div class="catcell"><h2>${esc(s.code)} · ${s.n}</h2><ul><li><a href="${s.slug}.html">${esc(s.name)} — ${s.n} vendors →</a></li></ul></div>`).join('\n')}
 </div>
 <div class="rel"><h3>ALSO</h3><a href="../cities/">By city</a><a href="../news/where-us-growth-vendors-cluster-2026.html">The state-clustering briefing</a></div>`
 }));
@@ -268,7 +268,7 @@ writeFileSync(join(ROOT,'cities','index.html'),shell({
 <h1>US growth vendors by city</h1>
 <p class="dek">Top 15 US metros by vendor count. New York leads at ${topCities[0][1].length}, followed by Chicago, Los Angeles, and San Francisco — with mid-table entries (Austin, Denver, Miami) frequently outranking metros with much larger business bases.</p>
 <div class="catgrid">
-${ctIdx.map(c=>`<div class="catcell"><h3>${esc(c.city)}, ${esc(c.state)} · ${c.n}</h3><ul><li><a href="${c.slug}.html">${esc(c.city)} — ${c.n} vendors →</a></li></ul></div>`).join('\n')}
+${ctIdx.map(c=>`<div class="catcell"><h2>${esc(c.city)}, ${esc(c.state)} · ${c.n}</h2><ul><li><a href="${c.slug}.html">${esc(c.city)} — ${c.n} vendors →</a></li></ul></div>`).join('\n')}
 </div>
 <div class="rel"><h3>ALSO</h3><a href="../states/">By state</a><a href="../news/top-cities-us-growth-vendors-2026.html">The city-ranking briefing</a></div>`
 }));

@@ -72,7 +72,15 @@ function cardFor(rel) {
   return 'og/default.png';
 }
 
-const attr = s => String(s == null ? '' : s)
+// Title and description are read back OUT of rendered HTML, so they arrive already escaped
+// ("Eberly &amp; Collard"). Escaping them again produced "&amp;amp;" — a literal "&amp;" on
+// the page — across 808 share cards. Decode to plain text first, then escape exactly once.
+const decode = s => String(s == null ? '' : s)
+  .replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"')
+  .replace(/&#0*39;|&apos;/g, "'").replace(/&nbsp;/g, ' ')
+  .replace(/&#(\d+);/g, (_, d) => String.fromCharCode(+d))
+  .replace(/&amp;/g, '&');
+const attr = s => decode(s)
   .replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
 const files = walk(ROOT);
@@ -121,12 +129,13 @@ for (const abs of files) {
 
   // Anchor to canonical when present, otherwise to </title>, otherwise <head>.
   let next;
+  const insertAfter = re => html.replace(re, m => `${m}\n${block}`);
   if (/<link\s+rel=["']canonical["'][^>]*>/i.test(html)) {
-    next = html.replace(/(<link\s+rel=["']canonical["'][^>]*>)/i, `$1\n${block}`);
+    next = insertAfter(/<link\s+rel=["']canonical["'][^>]*>/i);
   } else if (/<\/title>/i.test(html)) {
-    next = html.replace(/(<\/title>)/i, `$1\n${block}`);
+    next = insertAfter(/<\/title>/i);
   } else if (/<head[^>]*>/i.test(html)) {
-    next = html.replace(/(<head[^>]*>)/i, `$1\n${block}`);
+    next = insertAfter(/<head[^>]*>/i);
   } else {
     missing.push(`${rel} (no <head>)`);
     skipped++;

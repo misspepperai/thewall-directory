@@ -74,11 +74,19 @@
 </style>
 </head>
 <body>
+<!-- a11y:begin (managed by inject-a11y.mjs) --><style>
+.skip-link{position:absolute;left:-9999px;top:0;z-index:100;padding:12px 18px;background:var(--ink,#0E1B33);color:#fff;font-family:var(--sans,system-ui,sans-serif);font-size:14px;font-weight:600;text-decoration:none}
+.skip-link:focus,.skip-link:focus-visible{left:0}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--cobalt,#1B4FD8);outline-offset:2px}
+@media (prefers-contrast:more){a:focus-visible,button:focus-visible{outline-width:4px}}
+</style>
+<a class="skip-link" href="#main">Skip to main content</a>
+<!-- a11y:end -->
 <nav class="topbar"><div class="wrap topbar-in">
   <a class="wordmark" href=".././">The Wall <small>OPERATIONS ATLAS</small></a>
   <a class="back" href=".././">BROWSE THE ATLAS →</a>
 </div></nav>
-<main class="wrap">
+<main class="wrap" id="main" tabindex="-1">
 <!-- art:begin (managed by inject-art.mjs) --><style>
 .masthead{margin:0 0 26px;border:1px solid var(--stone,#E7E3DA);background:var(--porcelain,#FAF9F6);overflow:hidden}
 .masthead img{display:block;width:100%;height:clamp(150px,20vw,240px);object-fit:cover;object-position:center}
@@ -200,6 +208,12 @@
   <div class="d">August 4, 2026</div>
   <a href="category-leaders-thirty-entities-2026.html">The 30 US software platforms every growth stack still runs through — and which categories they dominate</a>
   <p>The Wall's 30-platform entity reference covers the market-leader software behind US marketing and sales operations. Marketing Automation is the most concentrated pillar; AI Marketing is the least settled.</p>
+</div>
+<!-- The corrections log had no inbound link from anywhere on the site: reachable only by
+     typing the URL, and invisible to a crawler. A directory that publishes a corrections
+     policy has to make the corrections findable, so the newsroom links to it. -->
+<div class="rel"><h2>ALSO</h2>
+<a href="updates/">Index updates and corrections log</a>
 </div>
 </main>
 <footer><div class="wrap">

@@ -6,6 +6,7 @@
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { pillar } from './slugs.mjs';
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
 const SITE = 'https://hitthewall.net';
@@ -14,7 +15,11 @@ const SRC = join(ROOT, 'data', 'paa-consolidated.json');
 
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 80);
-const pillarPage = ps => `../pillars/${ps === 'analytics-attribution' ? 'analytics-attribution' : ps}.html`;
+// The editorial topic slug is resolved to a real discipline, and the ANCHOR TEXT is taken
+// from the destination rather than the source. Rewriting the href alone would have left
+// links reading "Sales Automation pillar" that land on a page titled Automation.
+const pillarPage = ps => `../pillars/${pillar(ps).slug}.html`;
+const pillarName = ps => pillar(ps).name;
 
 const ORG_LD = { '@context': 'https://schema.org', '@type': 'Organization', name: BRAND, url: `${SITE}/`, email: 'support@misspepper.ai' };
 
@@ -88,11 +93,31 @@ ${bodyHTML}
 </html>`;
 }
 
+// Two pairs of harvested PAA questions are the same question asked twice — "what skills ARE
+// NEEDED for marketing automation" / "what skills DO YOU NEED for marketing automation", and
+// the 5-5-5 rule "FOR" / "ON" social media. Both pairs shipped near-identical answers, and one
+// pair shipped a byte-identical meta description. Left alone the two URLs split the same
+// query's signals between them.
+//
+// Both URLs stay published — they are real phrasings people search, and unpublishing a live
+// URL trades a duplicate for a 404. The duplicate self-canonicals to the survivor instead, so
+// the pair consolidates onto one URL while both keep working. Merging the underlying rows in
+// data/paa-consolidated.json is the cleaner long-term fix; this is the correct move for a
+// static host with no redirect layer.
+const DUPLICATE_OF = {
+  'what-skills-do-you-need-for-marketing-automation': 'what-skills-are-needed-for-marketing-automation',
+  'what-is-the-5-5-5-rule-on-social-media': 'what-is-the-5-5-5-rule-for-social-media',
+  // "Is a marketing agency worth it?" and "Is it worth it to hire a marketing agency?" are the
+  // same question with the object moved; the two answers are 432 and 428 characters of the same
+  // argument. ("Is content marketing worth it?" is a different question and stays separate.)
+  'is-it-worth-it-to-hire-a-marketing-agency': 'is-a-marketing-agency-worth-it'
+};
+
 mkdirSync(join(ROOT, 'questions'), { recursive: true });
 
 let count = 0;
 for (const r of rows) {
-  const canonical = `${SITE}/questions/${r.slug}.html`;
+  const canonical = `${SITE}/questions/${DUPLICATE_OF[r.slug] || r.slug}.html`;
   const related = (byPillar[r.pillar] || []).filter(x => x.slug !== r.slug).slice(0, 5);
   const answerHtml = r.a
     .split(/\n\n+/)
@@ -117,11 +142,11 @@ ${answerHtml}
 </div>
 <h2>Why this matters</h2>
 <p>This question shows up regularly in Google's People Also Ask for the "${esc(r.seed)}" query, which is a signal that buyers in this space are asking it constantly during their research phase. The answer above is written from ${BRAND}'s editorial position — we index ${'<strong>2,286 verified US growth-services vendors</strong>'} across ${'<a href="../pillars/">10 pillars</a>'} and see how these questions map to actual buying decisions.</p>
-<p>If you're evaluating vendors in this category, the ${'<a href="' + pillarPage(r.pillarSlug) + '">' + esc(r.pillar) + ' pillar</a>'} page has the full US firm list with rates, team sizes, and headquarters filters.</p>
+<p>If you're evaluating vendors in this category, the ${'<a href="' + pillarPage(r.pillarSlug) + '">' + esc(pillarName(r.pillarSlug)) + ' pillar</a>'} page has the full US firm list with rates, team sizes, and headquarters filters.</p>
 ${related.length ? `<div class="rel"><h3>OTHER ${esc(r.pillar.toUpperCase())} QUESTIONS</h3>
 ${related.map(x => `<a href="${x.slug}.html">${esc(x.q)}</a>`).join('\n')}
 </div>` : ''}
-<p class="meta">Filed under: <a href="${pillarPage(r.pillarSlug)}">${esc(r.pillar)}</a> · <a href="./">All questions</a></p>`;
+<p class="meta">Filed under: <a href="${pillarPage(r.pillarSlug)}">${esc(pillarName(r.pillarSlug))}</a> · <a href="./">All questions</a></p>`;
   writeFileSync(join(ROOT, 'questions', `${r.slug}.html`), shell({
     title: `${r.q} — ${BRAND}`,
     metaDesc: (r.a.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').slice(0, 150) + '…').trim(),

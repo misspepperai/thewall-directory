@@ -281,7 +281,7 @@ ${publishable.map(w => `<li style="border-bottom:1px solid var(--stone);padding:
 `}
 
 <div class="cta">
-  <h3>The two-way deal, in a sentence</h3>
+  <h2>The two-way deal, in a sentence</h2>
   <p style="font-size:14px;color:var(--body);margin-bottom:8px">Send Miss Pepper a client → you keep <strong>20%</strong>. We send you a client → we take <strong>10%</strong>. Your side is bigger on purpose. Both sides pay every month the client stays.</p>
   <a href="../partner.html">READ THE PARTNERSHIP TERMS</a>
 </div>
