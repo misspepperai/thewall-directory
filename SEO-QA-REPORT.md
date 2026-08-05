@@ -16,7 +16,7 @@ invisible in the builder source and only appeared in the output.
 | Broken internal links | **60** | **0** |
 | Pages with a corrupted meta tag | **1,372** | **0** |
 | Duplicate meta descriptions | 52 groups (263 pages) | **0** |
-| Duplicate titles | 2 pairs | 2 pairs — *awaiting a data decision, see below* |
+| Duplicate titles | 2 pairs | **0** |
 | Missing title / description / H1 | 1 | **0** |
 | Multiple H1s | 1 | **0** |
 | Missing canonical | 1 | **0** |
@@ -122,15 +122,20 @@ sentence or separator boundary.
 
 ---
 
-## Open — needs a decision
+## Resolved — duplicate vendor records
 
-### Two duplicate titles, from six duplicate vendor records
+Five companies were listed twice under two domains, producing two byte-identical title pairs.
+Consolidated **by canonical, not by merge** (operator decision, 2026-08-05): no records were
+deleted, both URLs stay live, and the duplicate points search engines at the survivor. The
+duplicate is excluded from `sitemap.xml`, and the breadcrumb leaf and `og:url` follow the canonical
+so nothing on the page contradicts it.
 
-The cannibalization screen found six pairs where one company is listed twice under two domains.
-Two of those pairs produce byte-identical titles. Resolving them means deleting or merging vendor
-records, so they are listed in `CANNIBALIZATION-REPORT.md` for approval rather than actioned here.
+Three further pairs the screen flagged were verified as **different companies that share a name**
+and left alone — including `superpath.co` / `superpath.com`, which was on the merge shortlist until
+the source records showed a content-marketing community and an SEO agency. Detail in
+`CANNIBALIZATION-REPORT.md`.
 
----
+Listing count unchanged at 2,286. Sitemap URLs: 2,584.
 
 ## Advisory — reported, not enforced
 
@@ -157,8 +162,10 @@ All parse. All JSON-LD serialization sites escape `<` as `<` — see the structu
 rather than going stale. `sitemap.html` is the human-readable equivalent. Both were corrected this
 pass to strip `index.html` from directory URLs, which had been disagreeing with the canonicals.
 
-Two `questions/` URLs now canonical to a sibling and are still listed in the sitemap. Harmless but
-untidy — worth excluding on a later pass.
+Canonicalised duplicates are excluded from `sitemap.xml`: a sitemap lists URLs asking to be
+indexed, and those pages are explicitly asking not to be. 2,584 URLs from 2,589 indexable pages —
+the five vendor duplicates. The three canonicalised `questions/` URLs are still listed; the
+questions builder writes its own pages and does not feed this sitemap. Worth aligning on a later pass.
 
 ---
 

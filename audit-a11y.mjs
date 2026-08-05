@@ -93,8 +93,12 @@ for (const abs of files) {
   if (!/<html[^>]*\slang=/i.test(html)) push('noLang');
   if (!/<main[\s>]/i.test(html)) push('noMainLandmark');
 
+  // SC 2.4.2 asks for a descriptive title; duplicate titles are only a defect when both pages
+  // are competing to be indexed. A page that canonicals to a sibling has already conceded.
+  const canonical = (html.match(/<link\s+rel=["']canonical["']\s+href=["']([^"']+)["']/i) || [, ''])[1];
+  const selfCanonical = !canonical || canonical.endsWith(`/${rel}`) || canonical.endsWith(`/${rel.replace(/index\.html$/, '')}`);
   const title = (html.match(/<title>([\s\S]*?)<\/title>/i) || [, ''])[1].trim();
-  if (title) (titles.get(title) || titles.set(title, []).get(title)).push(rel);
+  if (title && selfCanonical) (titles.get(title) || titles.set(title, []).get(title)).push(rel);
 
   // A skip link must be near the top of the document AND point at an element that exists.
   // Matching on a whitelist of target names ("#main", "#content") wrongly failed the two

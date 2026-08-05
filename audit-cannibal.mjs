@@ -66,7 +66,9 @@ for (const abs of walk(ROOT)) {
   const title = (html.match(/<title>([\s\S]*?)<\/title>/i) || [, ''])[1].replace(/\s+/g, ' ').trim();
   const desc = (html.match(/<meta\s+name=["']description["']\s+content=["']([\s\S]*?)["']\s*\/?>/i) || [, ''])[1];
   const h1 = (body.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i) || [, ''])[1].replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
-  pages.push({ rel, tier: tierOf(rel), title, h1, desc,
+  const canonical = (html.match(/<link\s+rel=["']canonical["']\s+href=["']([^"']+)["']/i) || [, ''])[1];
+  const canonRel = canonical.replace(/^https?:\/\/[^/]+\//, '') || rel;
+  pages.push({ rel, canonRel, tier: tierOf(rel), title, h1, desc,
     tTok: tok(title), aTok: tok(`${title} ${h1} ${desc}`) });
 }
 
@@ -98,6 +100,19 @@ let compared = 0;
 // The genuine cannibalization risk in this tier is a DUPLICATE COMPANY — one firm listed
 // twice under two domains, where both pages do target the same brand query. That is checked
 // directly below, on identity rather than vocabulary.
+// Pairs checked against the source records and confirmed to be DIFFERENT COMPANIES that happen
+// to share a name. Without this they flag on every run and the report stops being actionable.
+// Each was verified on name, city, phone and business description before being listed:
+//   agencyelevation.com  "Agency Elevation", Freedom WI   vs elevationweb.org "Elevation", Washington DC
+//   superpath.co         content-marketing community      vs superpath.com    SEO agency, West Bloomfield MI
+//   clay.com             sales data and intelligence      vs clay.global      design studio, San Francisco
+const VERIFIED_DISTINCT = new Set([
+  'c/agencyelevation.com.html|c/elevationweb.org.html',
+  'c/superpath.co.html|c/superpath.com.html',
+  'c/clay.com.html|c/clay.global.html'
+].map(k => k.split('|').sort().join('|')));
+const distinctPair = (a, b) => VERIFIED_DISTINCT.has([a, b].sort().join('|'));
+
 const listings = pages.filter(p => p.tier === 'listing');
 const normName = t => String(t).split('—')[0].toLowerCase()
   .replace(/&[a-z]+;|&#\d+;/g, ' ').replace(/\b(inc|llc|ltd|co|corp|group|agency|studio|media|the)\b/g, ' ')
@@ -116,6 +131,7 @@ for (const [, group] of byName) {
   if (group.length < 2) continue;
   for (let a = 0; a < group.length; a++) for (let b = a + 1; b < group.length; b++) {
     const p = group[a], q = group[b];
+    if (distinctPair(p.rel, q.rel)) continue;
     flagged.push({ severity: 'HIGH', a: p.rel, b: q.rel, tierA: 'listing', tierB: 'listing',
       sameTier: true, reason: 'same company listed under two domains',
       titleJaccard: +jac(p.tTok, q.tTok).toFixed(2), allJaccard: +jac(p.aTok, q.aTok).toFixed(2),
@@ -188,10 +204,21 @@ for (const [, idxs] of byTok) {
   }
 }
 
+// A pair where one page canonicals to the other is resolved, not competing — the whole point of
+// the canonical is to consolidate them. Recorded separately so the fix stays visible.
+const byRel = Object.fromEntries(pages.map(p => [p.rel, p]));
+const isResolved = f => {
+  const a = byRel[f.a], b = byRel[f.b];
+  return !!a && !!b && (a.canonRel === b.rel || b.canonRel === a.rel || a.canonRel === b.canonRel);
+};
+const resolved = flagged.filter(isResolved);
+for (let i = flagged.length - 1; i >= 0; i--) if (isResolved(flagged[i])) flagged.splice(i, 1);
+
 const rank = { HIGH: 0, MEDIUM: 1 };
 flagged.sort((x, y) => rank[x.severity] - rank[y.severity] || y.allJaccard - x.allJaccard);
 
 const report = { scanned: pages.length, pairsCompared: compared, flagged: flagged.length,
+  resolvedByCanonical: resolved.length, resolvedPairs: resolved.map(r => [r.a, r.b]),
   byTier: Object.entries(pages.reduce((a, p) => (a[p.tier] = (a[p.tier] || 0) + 1, a), {})).sort((a, b) => b[1] - a[1]),
   pairs: flagged };
 
@@ -199,6 +226,8 @@ if (JSON_OUT) { console.log(JSON.stringify(report, null, 2)); process.exit(0); }
 
 console.log(`pages scanned  : ${report.scanned} (indexable)`);
 console.log(`pairs screened : ${report.pairsCompared.toLocaleString()} lexical (listings screened by company identity instead — see comment)`);
+console.log(`resolved by canonical : ${report.resolvedByCanonical}`);
+console.log(`verified distinct     : ${VERIFIED_DISTINCT.size} pairs (same name, different companies)`);
 console.log(`flagged        : ${report.flagged}\n`);
 console.log(`tiers: ${report.byTier.map(([t, n]) => `${t} ${n}`).join(' · ')}\n`);
 for (const f of flagged.slice(0, 40)) {

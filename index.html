@@ -939,6 +939,27 @@ function clearFilters() { $('q').value = ''; activeCat = 'All'; for (const k of 
 // produced copy like "an average rate band of Undisclosed" and "Minimum project Undisclosed".
 // Every downstream clause, fact row and meta description keys off has(), so the sentinels are
 // filtered here once rather than at each of the ~30 call sites.
+// Five companies are listed twice under two domains, so both URLs target the same brand query
+// and split its signals (CANNIBALIZATION-REPORT.md). The duplicate self-canonicals to the
+// survivor — the domain carrying the HQ and phone, or the parent of a subdomain — rather than
+// being deleted: both pages stay published and working, while search engines are told which one
+// to index. Reversible; delete an entry and rebuild.
+//
+// Deliberately NOT here: superpath.co/superpath.com, clay.com/clay.global and
+// agencyelevation.com/elevationweb.org are different companies that happen to share a name.
+// Canonicalising any of those pairs would deindex a real listing.
+//
+// This lives in the shared engine so the atlas and the static page cannot disagree about which
+// URL is canonical for a record.
+const CANONICAL_OF = {
+  'flow.ninja': 'flowninja.com',
+  'fun.qck.co': 'qck.co',
+  'getresults.interodigital.com': 'interodigital.com',
+  'victoriousseo.com': 'victorious.com',
+  'elevationb2b.com': 'elevmarketing.com'
+};
+const canonicalDomain = d => CANONICAL_OF[d] || d;
+
 const BLANK = new Set(['undisclosed', 'n/a', 'na', 'none', 'null', '-', '—', 'tbd', 'unknown']);
 const has = v => v !== null && v !== undefined && v !== '' && !BLANK.has(String(v).trim().toLowerCase());
 // site_description and clutch_bio are SCRAPED off the vendor's own site, so they can carry
@@ -1124,7 +1145,7 @@ function injectJSONLD(x) {
   el.textContent = JSON.stringify(ld);
   let can = document.getElementById('canon');
   if (!can) { can = document.createElement('link'); can.rel = 'canonical'; can.id = 'canon'; document.head.appendChild(can); }
-  can.href = `c/${x.domain}.html`;
+  can.href = `c/${canonicalDomain(x.domain)}.html`;
 }
 
 /* ---------- summary + claim (shared by the atlas detail view and the static /c/ page) ----------

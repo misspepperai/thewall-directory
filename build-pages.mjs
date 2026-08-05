@@ -23,8 +23,8 @@ if (start < 0 || end < 0) throw new Error('engine markers not found in index.htm
 const engine = idx.slice(start, end);
 // eslint-disable-next-line no-eval
 const engineExports = new Function('esc', `${engine}
-  return { has, plain, ownWords, ownWordsSrc, nounOf, hqLine, an, subNoun, aboutHTML, quoteHTML, quickFactsHTML, qaPairs, qaHTML, speakables, summaryHTML, claimHTML };`)(esc);
-const { has, plain, ownWords, nounOf, hqLine, an, subNoun, aboutHTML, quoteHTML, quickFactsHTML, qaPairs, qaHTML, speakables, summaryHTML, claimHTML } = engineExports;
+  return { has, plain, CANONICAL_OF, canonicalDomain, ownWords, ownWordsSrc, nounOf, hqLine, an, subNoun, aboutHTML, quoteHTML, quickFactsHTML, qaPairs, qaHTML, speakables, summaryHTML, claimHTML };`)(esc);
+const { has, plain, CANONICAL_OF, canonicalDomain, ownWords, nounOf, hqLine, an, subNoun, aboutHTML, quoteHTML, quickFactsHTML, qaPairs, qaHTML, speakables, summaryHTML, claimHTML } = engineExports;
 
 // ---- speakable composition (Layer 4b, per-record, fact-fed) ----
 // speakables / summaryHTML / claimHTML now come from the shared engine in index.html,
@@ -64,7 +64,7 @@ function jsonld(x, pairs, sp) {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'The Wall', item: `${SITE}/` },
         { '@type': 'ListItem', position: 2, name: x.category, item: `${SITE}/?c=${encodeURIComponent(x.domain)}` },
-        { '@type': 'ListItem', position: 3, name: x.name, item: `${SITE}/c/${x.domain}.html` }
+        { '@type': 'ListItem', position: 3, name: x.name, item: `${SITE}/c/${canonicalDomain(x.domain)}.html` }
       ]
     }
   ];
@@ -124,6 +124,9 @@ function metaDescFor(x) {
   return out.length > 158 ? out.slice(0, 157).replace(/\s+\S*$/, '') + '…' : out;
 }
 
+// CANONICAL_OF / canonicalDomain come from the shared engine in index.html, so the atlas and
+// this page always agree on which URL is canonical for a record.
+
 // ---- static page shell (trimmed atlas design system) ----
 
 function pageHTML(x, pairs, sp, related) {
@@ -149,7 +152,7 @@ function pageHTML(x, pairs, sp, related) {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${esc(titleName(x.name))} — ${esc(x.subcategory)} | The Wall</title>
 <meta name="description" content="${metaDesc}">
-<link rel="canonical" href="${SITE}/c/${esc(x.domain)}.html">
+<link rel="canonical" href="${SITE}/c/${esc(canonicalDomain(x.domain))}.html">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧱</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -305,7 +308,7 @@ const run = async () => {
     const related = rows.filter(r => r.subcategory === x.subcategory && r.domain !== x.domain)
       .sort((a, b) => a.name.localeCompare(b.name, 'en')).slice(0, 6);
     writeFileSync(join(ROOT, 'c', `${x.domain}.html`), pageHTML(x, pairs, sp, related));
-    urls.push(`${SITE}/c/${x.domain}.html`);
+    if (!CANONICAL_OF[x.domain]) urls.push(`${SITE}/c/${x.domain}.html`);
     patches.push({
       domain: x.domain,
       body: {

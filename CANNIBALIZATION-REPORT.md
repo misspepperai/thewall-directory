@@ -20,18 +20,18 @@ All pairs were screened in code. Only the resulting shortlist was judged.
 |---|---|
 | Pages scanned | 2,589 |
 | Pairs screened | 14,777 lexical, plus identity screens on 2,386 grid and listing pages |
-| Flagged | 134 |
-| **Confirmed same-intent** | **9** |
-| Judged distinct (false positives) | 125 |
-| **Fixed this pass** | **3** |
-| **Open — needs your decision** | **6** |
+| Confirmed same-intent | 8 |
+| **Resolved by canonical** | **8** |
+| Verified distinct (same name, different companies) | 3 |
+| Judged distinct (false positives) | 123 |
+| **HIGH severity remaining** | **0** |
 
 Tiers: listing 2,286 · find 84 · question 76 · entity 30 · news 25 · state 21 · core 17 ·
 city 16 · compare 16 · pillar 11 · hub 7
 
 ---
 
-## Fixed — three duplicate questions consolidated
+## Resolved — three duplicate questions consolidated
 
 Each pair is one question asked twice. Both URLs stay published: they are real phrasings people
 search, and unpublishing a live URL trades a duplicate for a 404. The duplicate self-canonicals to
@@ -48,39 +48,47 @@ is the correct move for a static host with no redirect layer.
 
 ---
 
-## Open — six duplicate vendor records
+## Resolved — five duplicate vendor records consolidated by canonical
 
-One company listed twice under two domains. Both pages target the same brand query, so they do
-genuinely compete. **Resolving these means deleting or merging database records, so nothing has
-been changed.** Recommended survivor in bold.
+One company listed twice under two domains. Both URLs targeted the same brand query, splitting its
+signals. Per operator decision (2026-08-05), these were consolidated **by canonical rather than by
+merge** — no records were deleted.
 
-| # | Pair | Evidence they are one company | Recommendation |
+Both pages stay published and working; the duplicate tells search engines to index the survivor
+instead. The survivor is the domain carrying the HQ and phone number, or the parent of a subdomain.
+The duplicate is also excluded from `sitemap.xml`, since a sitemap is a list of URLs asking to be
+indexed and this one is explicitly asking not to be. The breadcrumb leaf and `og:url` follow the
+canonical, so nothing on the page contradicts it.
+
+| # | Duplicate | Canonicals to | Basis |
 |---|---|---|---|
-| 1 | **`flowninja.com`** / `flow.ninja` | Byte-identical titles. `flowninja.com` carries the HQ and phone; `flow.ninja` has neither. | Merge into `flowninja.com` |
-| 2 | **`qck.co`** / `fun.qck.co` | Byte-identical titles. `fun.qck.co` is a subdomain of the other. | Merge into `qck.co` |
-| 3 | **`interodigital.com`** / `getresults.interodigital.com` | Same name, one is a subdomain of the other. | Merge into `interodigital.com` |
-| 4 | **`victorious.com`** / `victoriousseo.com` | Both "Victorious". `victorious.com` carries San Francisco HQ and phone. | Merge into `victorious.com` |
-| 5 | **`elevmarketing.com`** / `elevationb2b.com` | Both "Elevation Marketing". `elevmarketing.com` carries Littleton CO and phone. | Merge into `elevmarketing.com` |
-| 6 | **`superpath.com`** / `superpath.co` | Both "Superpath". `superpath.com` carries HQ and phone. | Merge into `superpath.com` — **verify first**, the two are filed under different subcategories (Content Community vs SEO Agency), which may mean two products rather than two domains. |
+| 1 | `flow.ninja` | `flowninja.com` | identical titles; survivor carries HQ and phone |
+| 2 | `fun.qck.co` | `qck.co` | identical titles; duplicate is a subdomain of the survivor |
+| 3 | `getresults.interodigital.com` | `interodigital.com` | same name; duplicate is a subdomain |
+| 4 | `victoriousseo.com` | `victorious.com` | both "Victorious"; survivor carries San Francisco HQ and phone |
+| 5 | `elevationb2b.com` | `elevmarketing.com` | both "Elevation Marketing"; survivor carries Littleton CO and phone |
 
-Merging costs one listing each: **2,286 → 2,280**.
+The map lives in the shared engine block in `index.html` and is consumed by `build-pages.mjs`, so
+the atlas and the static page cannot disagree about which URL is canonical. Fully reversible:
+delete an entry from `CANONICAL_OF` and rebuild.
 
-If you would rather not remove records, the alternative is a canonical from the weaker domain to
-the stronger. That keeps the count but tells search engines to index only one — most of the SEO
-benefit, none of the data loss. Say which and I will apply it.
+Listing count is unchanged at **2,286**. Sitemap URLs: 2,584.
 
-### Two pairs the screen flagged that are NOT duplicates
+### Three pairs verified as different companies — not duplicates
 
-Checked against source records and rejected — recorded so they are not re-raised:
+Checked against source records on name, city, phone and business description. Recorded in
+`VERIFIED_DISTINCT` in `audit-cannibal.mjs` so they stop flagging on every run.
 
-- `agencyelevation.com` ("Agency Elevation", Freedom WI) and `elevationweb.org` ("Elevation",
-  Washington DC) — different names, cities and phone numbers.
-- `clay.com` ("Clay", sales data and intelligence) and `clay.global` ("Clay", San Francisco design
-  studio) — two companies that share a name.
+| Pair | Why they are distinct |
+|---|---|
+| `agencyelevation.com` / `elevationweb.org` | "Agency Elevation" (Freedom, WI) vs "Elevation" (Washington, DC) — different names, cities and phone numbers |
+| `superpath.co` / `superpath.com` | A content-marketing **community** vs an **SEO agency** for home-services businesses in West Bloomfield, MI — different categories, different listing types, different copy |
+| `clay.com` / `clay.global` | Sales data and intelligence platform vs a San Francisco design studio |
 
----
+`superpath` was flagged for verification in the first draft of this report and the check changed
+the outcome: it was on the merge shortlist, and merging it would have removed a real listing.
 
-## Judged distinct — 125 pairs
+## Judged distinct — 123 pairs
 
 **Comparisons (103).** Pairs sharing one product: `google-ads-vs-meta-ads` and
 `linkedin-ads-vs-meta-ads`. Each targets its own "X vs Y" query. A shared entity is the format, not
