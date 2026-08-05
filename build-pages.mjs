@@ -10,10 +10,9 @@ const SB = 'https://kdvuewhbinmhmrysusbd.supabase.co';
 const KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtkdnVld2hiaW5taG1yeXN1c2JkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM0MzM2NjUsImV4cCI6MjA5OTAwOTY2NX0.8YF8O_iaCp5C9z8gr8dfEPmW7B8fZCcZ4pIRTwxwsPU';
 const SITE = 'https://hitthewall.net';
 const HDRS = { apikey: KEY, Authorization: `Bearer ${KEY}` };
-const COLORS = {
-  'Sales':'#0E1B33','Marketing':'#1B4FD8','SEO':'#16389B','Thought Leadership':'#6E1423','Creative Strategy':'#93202F',
-  'Automation':'#5A6472','Demand Gen':'#43506B','Content Marketing':'#4A6BD8','Social Media Marketing':'#274690','AI Marketing':'#3B4C7A'
-};
+// Per-category accent colours retired 2026-08-04 (STYLE-GUIDE Fix 2): six of the ten
+// were indistinguishable (validator: worst pair dE 5.0 normal vision), so the accent
+// carried no information. Category identity is carried by the mono kicker text instead.
 
 // ---- extract the enrichment engine from index.html (esc defined first; engine references it) ----
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -125,7 +124,6 @@ function claimHTML(x) {
 }
 
 function pageHTML(x, pairs, sp) {
-  const color = COLORS[x.category] || '#1B4FD8';
   const metaDesc = esc(((x.site_description || x.description) + '').slice(0, 158));
   const specRows = [
     ['DOMAIN', x.domain], ['CATEGORY', x.category.toUpperCase()], ['SPECIALTY', x.subcategory.toUpperCase()],
@@ -170,7 +168,7 @@ function pageHTML(x, pairs, sp) {
   .head{display:flex;align-items:center;gap:18px;padding:18px 0 0}
   .logo{width:72px;height:72px;border-radius:13px;border:1px solid var(--stone);background:#fff;object-fit:contain;padding:9px}
   h1{font-family:var(--serif);font-weight:600;font-size:clamp(30px,5vw,42px);letter-spacing:-.02em;line-height:1.03}
-  .sub{font-family:var(--mono);font-size:9.5px;font-weight:600;letter-spacing:.12em;color:${color};margin-top:4px;display:block}
+  .sub{font-family:var(--mono);font-size:9.5px;font-weight:600;letter-spacing:.12em;color:var(--cobalt);margin-top:4px;display:block}
   .desc{margin-top:20px;font-size:16px;line-height:1.7;color:var(--body)}
   .ownquote{margin-top:24px;position:relative;padding:4px 0 4px 24px;border-left:2px solid var(--oxblood)}
   .ownquote p{font-family:var(--serif);font-style:italic;font-weight:500;font-size:18.5px;line-height:1.5}

@@ -454,10 +454,13 @@
 const SUPABASE_URL = 'https://kdvuewhbinmhmrysusbd.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtkdnVld2hiaW5taG1yeXN1c2JkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM0MzM2NjUsImV4cCI6MjA5OTAwOTY2NX0.8YF8O_iaCp5C9z8gr8dfEPmW7B8fZCcZ4pIRTwxwsPU';
 const CATS = ['Sales','Marketing','SEO','Thought Leadership','Creative Strategy','Automation','Demand Gen','Content Marketing','Social Media Marketing','AI Marketing'];
-const COLORS = {
-  'Sales':'#0E1B33','Marketing':'#1B4FD8','SEO':'#16389B','Thought Leadership':'#6E1423','Creative Strategy':'#93202F',
-  'Automation':'#5A6472','Demand Gen':'#43506B','Content Marketing':'#4A6BD8','Social Media Marketing':'#274690','AI Marketing':'#3B4C7A'
-};
+// Per-category accent retired 2026-08-04 (STYLE-GUIDE Fix 2). The previous ten hues were
+// six near-identical blues plus two reds and two greys; the palette validator failed 4 of 5
+// checks with a worst pair at dE 5.0 normal vision — indistinguishable even to full colour
+// vision, so the accent encoded nothing. Category identity is carried by the label text.
+// Kept as a map (rather than removing it) so every call site keeps working unchanged.
+const CAT_ACCENT = '#1B4FD8';
+const COLORS = new Proxy({}, { get: () => CAT_ACCENT });
 const PREVIEW_N = 24;
 
 let all = [], activeCat = 'All';
