@@ -83,7 +83,8 @@ ${bodyHTML}
 </html>`;
 }
 
-const eff = `<div class="eff">EFFECTIVE ${EFFECTIVE} · LAST REVIEWED ${EFFECTIVE}</div>`;
+const human = d => new Date(d + 'T00:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+const eff = `<div class="eff">Effective ${human(EFFECTIVE)}. Last reviewed ${human(EFFECTIVE)}.</div>`;
 
 const PAGES = {
   'about': ['About', 'What The Wall is, who runs it, and how the directory is compiled.', `
@@ -177,7 +178,7 @@ ${eff}
 <p>Directory profiles describe businesses, not private individuals, and are compiled from public sources. Business contact details shown (office phone, office address) are those the business publishes publicly. Businesses may request corrections or removal via the <a href="contact.html">contact page</a>.</p>
 <h2>Your rights</h2>
 <p>To access, correct, or delete information you have sent us, email <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>. ${GA4_ENABLED
-  ? `Analytics were added on ${EFFECTIVE_ANALYTICS}; before that date the site set no cookies at all. Any future change to what we collect will be reflected here first.`
+  ? `Analytics were added on ${human(EFFECTIVE_ANALYTICS)}; before that date the site set no cookies at all. Any future change to what we collect will be reflected here first.`
   : `If analytics are added in the future, this policy will be updated first and the change noted here.`
 }</p>`],
 

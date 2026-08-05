@@ -545,7 +545,7 @@ for (const p of PILLARS) {
     ${stats.reviews ? `<div><b>${stats.reviews.toLocaleString()}</b><span>CLIENT REVIEWS</span></div>` : ''}
   </div>${stats.note ? `<p class="fn">${stats.note}</p>` : ''}`;
   const body = `
-<div class="kicker">DISCIPLINE · SECTOR ${p.no}</div>
+<div class="kicker">DISCIPLINE</div>
 <h1>${esc(p.cat)}</h1>
 <p class="dek">${p.dek}</p>
 <h2>The wall</h2>

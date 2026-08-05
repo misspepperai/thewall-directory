@@ -139,7 +139,7 @@ async function card(spec, outfile) {
     }
   }
 
-  const src = await text({ str: spec.source || 'hitthewall.net · compiled from public sources · no paid placement', font: 'IBM Plex Mono', weight: 400, color: C.body, size: 14, tracking: 0.1, caps: true, width: W - PAD * 2 });
+  const src = await text({ str: spec.source || 'hitthewall.net · no paid placement', font: 'IBM Plex Mono', weight: 400, color: C.body, size: 14, tracking: 0.1, caps: true, width: W - PAD * 2 });
   layers.push({ input: src.buf, left: PAD, top: H - 112 });
 
   mkdirSync(dirname(outfile), { recursive: true });
@@ -161,7 +161,9 @@ async function fetchAll() {
 }
 
 const snap = JSON.parse(readFileSync(join(ROOT, 'data', 'last-snapshot.json'), 'utf8'));
-const SRC = `source · the wall directory · snapshot ${snap.captured_at}`;
+// "source · the wall directory" on a card that is already branded The Wall told the reader
+// nothing. The date is the part that carries information.
+const SRC = `hitthewall.net · updated ${new Date(snap.captured_at + 'T00:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })}`;
 const has = v => v != null && v !== '' && !/^(unknown|undisclosed|n\/?a)$/i.test(String(v).trim());
 const nfmt = n => n.toLocaleString('en-US');
 
@@ -208,7 +210,7 @@ function topCards(rows) {
       kicker: 'By state',
       headline: 'Where US growth vendors actually are.',
       stats: Object.entries(snap.states).sort((a, b) => b[1] - a[1]).slice(0, 4).map(([k, v]) => ({ value: nfmt(v), label: k })),
-      source: `${SRC} · ${states} states represented`
+      source: SRC
     }],
     ['og/cities.png', {
       kicker: 'By city',
@@ -271,7 +273,7 @@ function topCards(rows) {
       kicker: 'Press & media',
       headline: 'Original pricing data on 1,440 US growth agencies, free to cite.',
       stats: [{ value: nfmt(total), label: 'firms indexed' }, { value: nfmt(disclosed), label: 'with published rates' }],
-      source: `${SRC} · attribution requested, not required`
+      source: `${SRC} · free to cite`
     }],
     ['og/about.png', {
       kicker: 'About & method',
@@ -319,7 +321,7 @@ function vendorSpec(x) {
     headline: x.name,
     sub: stats.length ? (hq || undefined) : `${hq ? hq + ' · ' : ''}No engagement data published by this firm.`,
     stats: stats.slice(0, 4),
-    source: `${SRC} · ${x.domain}`
+    source: `${x.domain} · via hitthewall.net`
   };
 }
 

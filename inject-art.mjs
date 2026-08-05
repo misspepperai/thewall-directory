@@ -29,6 +29,9 @@ const WIDTH = 1400;
 const QUALITY = 72;
 
 // art key -> [pages it fronts], and the alt text describing the drawing.
+// No visible caption: labelling every illustration "generated · carries no data" was
+// housekeeping addressed to nobody. The alt text carries the description for screen
+// readers; the AI disclosure lives on ai-policy.html where it belongs.
 const PLACE = {
   home: [['index.html', 'An engraved elevation of a stone wall with a single narrow opening cut through it, light falling through the gap picked out in cobalt.']],
   pillars: [['pillars/index.html', 'Ten horizontal bars of stacked squares sorted longest to shortest against a common baseline, the longest picked out in cobalt.']],
@@ -64,7 +67,6 @@ for (const [key, targets] of Object.entries(PLACE)) {
 const css = `<style>
 .masthead{margin:0 0 26px;border:1px solid var(--stone,#E7E3DA);background:var(--porcelain,#FAF9F6);overflow:hidden}
 .masthead img{display:block;width:100%;height:clamp(150px,20vw,240px);object-fit:cover;object-position:center}
-.masthead figcaption{font-family:var(--mono,ui-monospace,monospace);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--body,#3B4557);padding:8px 12px;border-top:1px solid var(--stone,#E7E3DA)}
 </style>`;
 
 let derived = 0, injected = 0, missingArt = [], missingPage = [];
@@ -92,7 +94,6 @@ for (const [key, targets] of Object.entries(PLACE)) {
     const block = `${BEGIN}${css}
 <figure class="masthead">
   <img src="${href}" alt="${alt}" width="${WIDTH}" height="${Math.round(WIDTH * 1024 / 1536)}" loading="eager" decoding="async">
-  <figcaption>Section illustration · generated · carries no data</figcaption>
 </figure>
 ${END}`;
 

@@ -135,7 +135,7 @@ function pageHTML(x, pairs, sp) {
     ...(has(x.min_project_size) ? [['MIN PROJECT', x.min_project_size]] : []),
     ...(has(x.avg_hourly_rate) ? [['AVG RATE', x.avg_hourly_rate]] : []),
     ...(has(x.phone_number) ? [['PHONE', x.phone_number]] : []),
-    ...(has(x.clutch_rating) ? [['CLUTCH RATING', `${x.clutch_rating}/5${has(x.clutch_reviews) ? ` · ${x.clutch_reviews} REVIEWS` : ''}`]] : []),
+    ...(has(x.clutch_rating) ? [['CLUTCH RATING', `${x.clutch_rating}/5${has(x.clutch_reviews) ? ` · ${x.clutch_reviews} review${Number(x.clutch_reviews) === 1 ? '' : 's'}` : ''}`]] : []),
     ['STATUS', 'LISTED']
   ];
   return `<!DOCTYPE html>
@@ -253,7 +253,7 @@ function pageHTML(x, pairs, sp) {
   ${claimHTML(x)}
 </main>
 <footer><div class="wrap">
-  <span>INDEPENDENT DIRECTORY · COMPILED FROM PUBLIC SOURCES · NOT AN ENDORSEMENT</span>
+  <span>Compiled from public sources. Listings are not endorsements.</span>
   <span><a href="../">ATLAS</a> · <a href="../about.html">ABOUT</a> · <a href="../editorial-policy.html">EDITORIAL</a> · <a href="../privacy.html">PRIVACY</a> · <a href="../terms.html">TERMS</a> · <a href="../contact.html">CONTACT</a></span>
 </div></footer>
 <script src="/nav.js"></script>
@@ -386,7 +386,7 @@ const run = async () => {
 <nav class="topbar"><div class="wrap topbar-in"><a class="wordmark" href="./">The Wall</a><a class="back" href="./">BROWSE THE ATLAS →</a></div></nav>
 <main class="wrap">
 <h1>Site index</h1>
-<p class="sub">ALL ${rows.length} LISTINGS BY SECTOR · <a href="about.html" style="color:var(--cobalt)">ABOUT</a> · <a href="editorial-policy.html" style="color:var(--cobalt)">EDITORIAL POLICY</a></p>
+<p class="sub">All ${rows.length.toLocaleString('en-US')} listings by category · <a href="about.html" style="color:var(--cobalt)">About</a> · <a href="editorial-policy.html" style="color:var(--cobalt)">Editorial policy</a></p>
 ${secHTML}
 </main>
 <footer><div class="wrap"><span>© The Wall · <a href="privacy.html">PRIVACY</a> · <a href="terms.html">TERMS</a> · <a href="contact.html">CONTACT</a></span></div></footer>

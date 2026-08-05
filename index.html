@@ -196,8 +196,9 @@
   .ev-fact .n { font-family: var(--mono); font-weight: 600; font-size: 27px; color: var(--ink); letter-spacing: -.02em; font-feature-settings: 'tnum'; line-height: 1.1; }
   .ev-fact .l { font-size: 13px; line-height: 1.45; color: var(--body); margin-top: 5px; }
   .ev-fact .l b { color: var(--ink); font-weight: 600; }
-  .ev-src { font-family: var(--mono); font-size: 10px; letter-spacing: .1em; color: var(--body); margin-top: 18px; line-height: 1.6; font-feature-settings: 'tnum'; }
-  .ev-src a { color: var(--cobalt); }
+  .ev-src { font-size: 13px; color: var(--chrome); margin-top: 18px; line-height: 1.6; }
+  .ev-src a { color: var(--cobalt); text-decoration: none; }
+  .ev-src a:hover { text-decoration: underline; }
   .rate-chart { margin-top: 2px; }
   .rate-chart h3 { font-family: var(--sans); font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 3px; }
   .rate-chart .sub { font-size: 12px; color: var(--body); margin-bottom: 14px; }
@@ -410,11 +411,9 @@
 <!-- art:begin (managed by inject-art.mjs) --><style>
 .masthead{margin:0 0 26px;border:1px solid var(--stone,#E7E3DA);background:var(--porcelain,#FAF9F6);overflow:hidden}
 .masthead img{display:block;width:100%;height:clamp(150px,20vw,240px);object-fit:cover;object-position:center}
-.masthead figcaption{font-family:var(--mono,ui-monospace,monospace);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--body,#3B4557);padding:8px 12px;border-top:1px solid var(--stone,#E7E3DA)}
 </style>
 <div class="wrap"><figure class="masthead">
   <img src="art/web/home.webp" alt="An engraved elevation of a stone wall with a single narrow opening cut through it, light falling through the gap picked out in cobalt." width="1400" height="933" loading="eager" decoding="async">
-  <figcaption>Section illustration · generated · carries no data</figcaption>
 </figure></div>
 <!-- art:end -->
   <section class="hero wrap">
@@ -458,7 +457,6 @@
 
   <section class="evidence wrap">
     <div>
-      <div class="ev-k">What is on the page, and where it came from</div>
       <div class="ev-facts">
         <div class="ev-fact">
           <div class="n">2,286</div>
@@ -477,11 +475,9 @@
           <div class="l">Paid for placement, ranking, or removal. Listings are <b>alphabetical</b> within category.</div>
         </div>
       </div>
-      <div class="ev-src">
-        SOURCE · THE WALL DIRECTORY, SNAPSHOT 2026-08-04 · COMPILED FROM PUBLIC SOURCES ·
-        METHOD: <a href="editorial-policy.html">EDITORIAL &amp; CORRECTIONS POLICY</a> ·
-        <a href="news/how-the-wall-verifies-listings.html">HOW THE 696 WERE REMOVED</a>
-      </div>
+      <p class="ev-src">Figures updated 4 August 2026.
+        <a href="news/how-the-wall-verifies-listings.html">How the 696 were removed</a> ·
+        <a href="editorial-policy.html">Corrections policy</a></p>
     </div>
 
     <div class="rate-chart">
@@ -497,7 +493,7 @@
       <details>
         <summary>Table view</summary>
         <table>
-          <caption class="sr-only">Hourly rate bands published by 1,440 US growth-services firms, The Wall directory, 2026-08-04.</caption>
+          <caption class="sr-only">Hourly rate bands published by 1,440 US growth-services firms, August 2026.</caption>
           <thead><tr><th scope="col">Rate band</th><th scope="col">Firms</th><th scope="col">Share</th></tr></thead>
           <tbody>
             <tr><td>&lt; $25 / hr</td><td>25</td><td>1.7%</td></tr>
@@ -510,14 +506,10 @@
           </tbody>
         </table>
       </details>
-      <div class="ev-src">SOURCE · THE WALL DIRECTORY, 2026-08-04 · <a href="tools/rate-benchmark.html">CHECK A QUOTE AGAINST THIS</a></div>
+      <p class="ev-src"><a href="tools/rate-benchmark.html">Check a quote against this →</a></p>
     </div>
   </section>
 
-  <div class="wrap meta-rule">
-    <span id="meta-left">INDEX / LOADING…</span>
-    <span>DATA · LIVE FROM POSTGRES · ENRICHED FROM PUBLIC SOURCES</span>
-  </div>
 
   <div class="vendor-strip">
     <div class="wrap">
@@ -578,7 +570,7 @@
 <dialog id="submit-modal">
   <form class="modal-in" id="submit-form">
     <h3>Submit a listing</h3>
-    <p class="note">REVIEWED BEFORE PUBLICATION. NO ENDORSEMENT IMPLIED.</p>
+    <p class="note">Reviewed before publication. Listing is not an endorsement.</p>
     <div class="field"><label>COMPANY NAME</label><input name="name" required maxlength="90"></div>
     <div class="field"><label>WEBSITE URL</label><input name="website" type="url" required placeholder="https://"></div>
     <div class="field"><label>CATEGORY</label><select name="category" id="submit-cat" required></select></div>
@@ -634,8 +626,7 @@
     </div>
   </div>
   <div class="wrap baseline">
-    <span id="foot-meta">COMPILED FROM PUBLIC SOURCES</span>
-    <span>PLATE 001 · VENDOR INDEX</span>
+    <span id="foot-meta">Compiled from public sources. Listings are not endorsements.</span>
   </div>
 </footer>
 
@@ -761,7 +752,7 @@ function setCat(c) {
   activeCat = c;
   if ($('detail').style.display === 'block') closeDetail(true);
   vt(() => { buildDial(); buildStrip(); renderSections(); });
-  const top = document.querySelector('.meta-rule');
+  const top = document.getElementById('sections');
   if (top) top.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
@@ -908,7 +899,6 @@ function renderSections() {
         </section>`
       : '<div class="empty">NO MATCHES. TRY WIDER FILTERS.</div>';
   }
-  $('meta-left').textContent = `INDEX / ${total.toLocaleString()} COMPANIES SHOWN / ${all.length.toLocaleString()} LISTED`;
   $('lede-count').textContent = all.length.toLocaleString();
   el.innerHTML = barHTML + html;
 }
@@ -992,7 +982,7 @@ function buildStandardQA(x) {
         ? `${x.name}${has(x.year_established) ? ` has operated since ${x.year_established}` : ''}${has(x.year_established) && has(x.team_size) ? ' and' : ''}${has(x.team_size) ? ` lists a team size of ${x.team_size}` : ''}. Leadership bios are published on its website.`
         : `Leadership details for ${x.name} are published on its website and professional profiles; this directory does not maintain executive rosters.`],
     [`How current is this ${x.name} profile?`,
-      `This profile was last refreshed ${has(x.enriched_at) ? new Date(x.enriched_at).toISOString().slice(0, 10) : 'recently'} from public sources — ${has(x.clutch_bio) || has(x.clutch_rating) ? `${x.name}'s Clutch listing and website metadata` : `${x.name}'s public website and curated sources`}. The provider site is always authoritative.`],
+      `This profile was last refreshed ${has(x.enriched_at) ? new Date(x.enriched_at).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }) : 'recently'} from public sources — ${has(x.clutch_bio) || has(x.clutch_rating) ? `${x.name}'s Clutch listing and website metadata` : `${x.name}'s public website and curated sources`}. The provider site is always authoritative.`],
     [`How do I contact ${x.name}?`,
       has(x.phone_number)
         ? `${x.name} publicly lists ${x.phone_number}; the inquiry flow at ${x.domain} is the primary channel for new engagements.`
@@ -1140,14 +1130,14 @@ async function openDetail(domain, push = true) {
           ${has(x.min_project_size) ? `<div class="spec-row"><dt>MIN PROJECT</dt><dd>${esc(x.min_project_size)}</dd></div>` : ''}
           ${has(x.avg_hourly_rate) ? `<div class="spec-row"><dt>AVG RATE</dt><dd>${esc(x.avg_hourly_rate)}</dd></div>` : ''}
           ${has(x.phone_number) ? `<div class="spec-row"><dt>PHONE</dt><dd>${esc(x.phone_number)}</dd></div>` : ''}
-          ${has(x.clutch_rating) ? `<div class="spec-row"><dt>CLUTCH RATING</dt><dd>${esc(String(x.clutch_rating))}/5${has(x.clutch_reviews) ? ` · ${esc(String(x.clutch_reviews))} REVIEWS` : ''}</dd></div>` : ''}
+          ${has(x.clutch_rating) ? `<div class="spec-row"><dt>CLUTCH RATING</dt><dd>${esc(String(x.clutch_rating))}/5${has(x.clutch_reviews) ? ` · ${esc(String(x.clutch_reviews))} REVIEW${Number(x.clutch_reviews) === 1 ? '' : 'S'}` : ''}</dd></div>` : ''}
           <div class="spec-row"><dt>STATUS</dt><dd>LISTED</dd></div>
           <div class="spec-row"><dt>PERMALINK</dt><dd><a href="c/${esc(x.domain)}.html" style="color:var(--cobalt);text-decoration:none">STATIC PAGE →</a></dd></div>
         </dl>
       </div>
       ${related.length ? `
       <div class="related-head section-head" style="--sec-c:${color}">
-        <span class="no">CROSS-REF</span><h2>Also in ${esc(x.subcategory)}</h2><span class="cnt">${related.length}</span>
+        <h2>Also in ${esc(x.subcategory)}</h2><span class="cnt">${related.length}</span>
       </div>
       <div class="grid">${related.map(cardHTML).join('')}</div>` : ''}
     `;

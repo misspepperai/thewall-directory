@@ -180,9 +180,9 @@ ${u.metrics.map(m => `<div class="m"><b>${esc(m.value)}</b><span>${esc(m.label)}
   function base(href, prefix) { return href.startsWith('http') ? href : prefix + href.replace(/^\//, ''); }
 
   const body = `
-<div class="kicker">FRESH FEED · MONTHLY STATE OF THE INDEX</div>
+<div class="kicker">STATE OF THE INDEX</div>
 <h1>${esc(u.h)}</h1>
-<div class="byline">BY <b>THE WALL EDITORIAL TEAM</b> · PUBLISHED ${dateFmt(u.date).toUpperCase()}</div>
+<div class="byline">The Wall editorial team · ${dateFmt(u.date)}</div>
 <p class="dek">${esc(u.dek)}</p>
 ${metricsHTML}
 ${u.body}
@@ -207,11 +207,11 @@ const idxLD = [ORG_LD, {
   }
 }];
 const idxBody = `
-<div class="kicker">SECTION / FRESH FEED</div>
+<div class="kicker">BRIEFINGS</div>
 <h1>Fresh Feed</h1>
 <p class="dek">Monthly briefings on what changed in ${BRAND}'s index of US growth vendors — new listings, removals, data updates, and new reference material shipped. First-week-of-the-month cadence. ${UPDATES.length} edition${UPDATES.length === 1 ? '' : 's'} so far.</p>
 ${UPDATES.map(u => `<div class="idx-item">
-  <div class="d">${dateFmt(u.date).toUpperCase()} · THE WALL EDITORIAL TEAM</div>
+  <div class="d">${dateFmt(u.date)}</div>
   <a href="${u.slug}.html">${esc(u.h)}</a>
   <p>${esc(u.dek)}</p>
 </div>`).join('\n')}`;

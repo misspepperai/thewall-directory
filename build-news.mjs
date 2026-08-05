@@ -555,9 +555,9 @@ for (const a of ARTICLES) {
     const t = ARTICLES.find(x => x.slug === s); return t ? `<a href="${s}.html">${esc(t.h)}</a>` : '';
   }).join('')}</div>` : '';
   const body = `
-<div class="kicker">BRIEFING · DATA FROM THE INDEX</div>
+<div class="kicker">BRIEFING</div>
 <h1>${esc(a.h)}</h1>
-<div class="byline">BY <b>THE WALL EDITORIAL TEAM</b> · PUBLISHED ${dateFmt(a.date).toUpperCase()}</div>
+<div class="byline">The Wall editorial team · ${dateFmt(a.date)}</div>
 <p class="dek">${esc(a.dek)}</p>
 ${a.body}
 ${METHOD}
@@ -580,7 +580,7 @@ const idxBody = `
 <h1>Briefings</h1>
 <p class="dek">Original reporting on the US growth-vendor market, computed from the index itself: ${ARTICLES.length ? '2,286' : ''} verified US listings, their published rates, minimums, team sizes, founding years, and geography. No estimates, no sponsored placements.</p>
 ${ARTICLES.map(a => `<div class="idx-item">
-  <div class="d">${dateFmt(a.date).toUpperCase()} · THE WALL EDITORIAL TEAM</div>
+  <div class="d">${dateFmt(a.date)}</div>
   <a href="${a.slug}.html">${esc(a.h)}</a>
   <p>${esc(a.dek)}</p>
 </div>`).join('\n')}`;
