@@ -2,8 +2,8 @@
   "name": "The Wall",
   "niche": "US growth-services vendor directory (marketing, SEO, creative, sales, content, social, automation, demand-gen, AI marketing, thought leadership)",
   "targetUrl": "https://hitthewall.net",
-  "stage": "2-visual",
-  "lastActivity": "2026-08-04T22:45:00Z",
+  "stage": "3-theme",
+  "lastActivity": "2026-08-04T00:00:00Z",
   "pagesBuilt": 2588,
   "buildTarget": "static-html-github-pages",
   "buildType": "retrofit-existing"

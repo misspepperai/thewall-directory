@@ -86,7 +86,7 @@
   .trust-chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
   .trust-chip { display: inline-flex; align-items: center; gap: 6px; font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: .1em; color: var(--body); background: #fff; border: 1px solid var(--stone); border-radius: 20px; padding: 6px 12px; text-transform: uppercase; }
   .trust-chip::before { content: '✓'; color: var(--cobalt); font-weight: 700; }
-  .vendor-strip { background: var(--ink); color: #fff; border-bottom: 2px solid var(--cobalt); }
+  .vendor-strip { background: var(--ink); color: #fff; border-top: 2px solid var(--cobalt); border-bottom: 2px solid var(--cobalt); margin: 26px 0 2px; }
   .vendor-strip .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 10px 24px; flex-wrap: wrap; }
   .vendor-strip .msg { font-family: var(--sans); font-size: 13px; font-weight: 500; letter-spacing: .01em; }
   .vendor-strip .msg strong { color: #fff; font-weight: 600; }
@@ -146,6 +146,33 @@
   .index-row .ct { font-size: 10.5px; color: var(--chrome); font-feature-settings: 'tnum'; }
   .index-row.active .nm { color: var(--row-c, var(--cobalt)); }
   .index-row.active .no { color: var(--row-c, var(--cobalt)); }
+
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+  /* ---------- evidence band (Stage 3: pillar 3, show the work) ---------- */
+  .evidence { border-top: 2px solid var(--ink); border-bottom: 1px solid var(--stone); margin-top: 30px; padding: 26px 0 24px; display: grid; grid-template-columns: minmax(0,1.05fr) minmax(0,1fr); gap: 40px; align-items: start; }
+  .evidence .ev-k { font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: .16em; color: var(--oxblood); text-transform: uppercase; margin-bottom: 14px; }
+  .ev-facts { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 20px 26px; }
+  .ev-fact .n { font-family: var(--mono); font-weight: 600; font-size: 27px; color: var(--ink); letter-spacing: -.02em; font-feature-settings: 'tnum'; line-height: 1.1; }
+  .ev-fact .l { font-size: 13px; line-height: 1.45; color: var(--body); margin-top: 5px; }
+  .ev-fact .l b { color: var(--ink); font-weight: 600; }
+  .ev-src { font-family: var(--mono); font-size: 10px; letter-spacing: .1em; color: var(--body); margin-top: 18px; line-height: 1.6; font-feature-settings: 'tnum'; }
+  .ev-src a { color: var(--cobalt); }
+  .rate-chart { margin-top: 2px; }
+  .rate-chart h3 { font-family: var(--sans); font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 3px; }
+  .rate-chart .sub { font-size: 12px; color: var(--body); margin-bottom: 14px; }
+  .rc-row { display: grid; grid-template-columns: 86px minmax(0,1fr) 62px; align-items: center; gap: 10px; margin-bottom: 5px; }
+  .rc-row .band { font-family: var(--mono); font-size: 10px; letter-spacing: .06em; color: var(--body); text-align: right; font-feature-settings: 'tnum'; }
+  .rc-row .track { height: 15px; background: var(--stone-lt); border-radius: 2px; }
+  .rc-row .bar { height: 15px; border-radius: 0 4px 4px 0; background: var(--cobalt); }
+  .rc-row .val { font-family: var(--mono); font-size: 10.5px; color: var(--body); font-feature-settings: 'tnum'; }
+  .rc-row .val em { font-style: normal; color: var(--chrome); }
+  .rate-chart table { border-collapse: collapse; width: 100%; margin-top: 10px; }
+  .rate-chart th, .rate-chart td { font-family: var(--mono); font-size: 10px; letter-spacing: .05em; text-align: left; padding: 4px 8px 4px 0; border-bottom: 1px solid var(--stone); color: var(--body); font-feature-settings: 'tnum'; }
+  .rate-chart th { color: var(--ink); }
+  .rate-chart td:last-child, .rate-chart th:last-child { text-align: right; }
+  .rate-chart details > summary { font-family: var(--mono); font-size: 9.5px; letter-spacing: .12em; color: var(--cobalt); cursor: pointer; margin-top: 12px; text-transform: uppercase; }
+  @media (max-width: 860px) { .evidence { grid-template-columns: 1fr; gap: 30px; } .ev-facts { gap: 18px 20px; } }
 
   /* ---------- meta rule ---------- */
   .meta-rule { border-top: 1px solid var(--stone); margin-top: 24px; padding: 12px 0 0; display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
@@ -339,13 +366,6 @@
   </div>
 </nav>
 
-<div class="vendor-strip">
-  <div class="wrap">
-    <span class="msg"><strong>Listed vendor?</strong> Send us a client, keep <span class="accent">20%</span>. We send you a client, we take <span class="accent">10%</span>.</span>
-    <a href="partner.html">READ THE TWO-WAY DEAL →</a>
-  </div>
-</div>
-
 <main id="home">
   <section class="hero wrap">
     <div>
@@ -367,9 +387,74 @@
     <div class="dial-holder" id="dial"></div>
   </section>
 
+  <section class="evidence wrap">
+    <div>
+      <div class="ev-k">What is on the page, and where it came from</div>
+      <div class="ev-facts">
+        <div class="ev-fact">
+          <div class="n">2,286</div>
+          <div class="l">US-headquartered firms indexed, each <b>machine-verified live</b> before publication.</div>
+        </div>
+        <div class="ev-fact">
+          <div class="n">696</div>
+          <div class="l">Removed before launch — <b>668</b> headquartered outside the US, <b>28</b> with sites that failed liveness checks. All 696 are blocked from automated re-entry.</div>
+        </div>
+        <div class="ev-fact">
+          <div class="n">1,440</div>
+          <div class="l">Publish an hourly rate band. The other <b>846</b> do not, and we say so rather than estimate.</div>
+        </div>
+        <div class="ev-fact">
+          <div class="n">$0</div>
+          <div class="l">Paid for placement, ranking, or removal. Listings are <b>alphabetical</b> within category.</div>
+        </div>
+      </div>
+      <div class="ev-src">
+        SOURCE · THE WALL DIRECTORY, SNAPSHOT 2026-08-04 · COMPILED FROM PUBLIC SOURCES ·
+        METHOD: <a href="editorial-policy.html">EDITORIAL &amp; CORRECTIONS POLICY</a> ·
+        <a href="news/how-the-wall-verifies-listings.html">HOW THE 696 WERE REMOVED</a>
+      </div>
+    </div>
+
+    <div class="rate-chart">
+      <h3>What US growth vendors charge per hour</h3>
+      <p class="sub">1,440 firms publishing a rate band. <strong>69.5% price between $100 and $199/hr.</strong></p>
+      <div class="rc-row"><span class="band">&lt; $25</span><span class="track"><span class="bar" style="width:4.7%"></span></span><span class="val">25 <em>1.7%</em></span></div>
+      <div class="rc-row"><span class="band">$25–49</span><span class="track"><span class="bar" style="width:13.2%"></span></span><span class="val">70 <em>4.9%</em></span></div>
+      <div class="rc-row"><span class="band">$50–99</span><span class="track"><span class="bar" style="width:29.9%"></span></span><span class="val">159 <em>11.0%</em></span></div>
+      <div class="rc-row"><span class="band">$100–149</span><span class="track"><span class="bar" style="width:88.5%"></span></span><span class="val">470 <em>32.6%</em></span></div>
+      <div class="rc-row"><span class="band">$150–199</span><span class="track"><span class="bar" style="width:100%"></span></span><span class="val">531 <em>36.9%</em></span></div>
+      <div class="rc-row"><span class="band">$200–300</span><span class="track"><span class="bar" style="width:30.7%"></span></span><span class="val">163 <em>11.3%</em></span></div>
+      <div class="rc-row"><span class="band">$300+</span><span class="track"><span class="bar" style="width:4.1%"></span></span><span class="val">22 <em>1.5%</em></span></div>
+      <details>
+        <summary>Table view</summary>
+        <table>
+          <caption class="sr-only">Hourly rate bands published by 1,440 US growth-services firms, The Wall directory, 2026-08-04.</caption>
+          <thead><tr><th scope="col">Rate band</th><th scope="col">Firms</th><th scope="col">Share</th></tr></thead>
+          <tbody>
+            <tr><td>&lt; $25 / hr</td><td>25</td><td>1.7%</td></tr>
+            <tr><td>$25–49 / hr</td><td>70</td><td>4.9%</td></tr>
+            <tr><td>$50–99 / hr</td><td>159</td><td>11.0%</td></tr>
+            <tr><td>$100–149 / hr</td><td>470</td><td>32.6%</td></tr>
+            <tr><td>$150–199 / hr</td><td>531</td><td>36.9%</td></tr>
+            <tr><td>$200–300 / hr</td><td>163</td><td>11.3%</td></tr>
+            <tr><td>$300+ / hr</td><td>22</td><td>1.5%</td></tr>
+          </tbody>
+        </table>
+      </details>
+      <div class="ev-src">SOURCE · THE WALL DIRECTORY, 2026-08-04 · <a href="tools/rate-benchmark.html">CHECK A QUOTE AGAINST THIS</a></div>
+    </div>
+  </section>
+
   <div class="wrap meta-rule">
     <span id="meta-left">INDEX / LOADING…</span>
     <span>DATA · LIVE FROM POSTGRES · ENRICHED FROM PUBLIC SOURCES</span>
+  </div>
+
+  <div class="vendor-strip">
+    <div class="wrap">
+      <span class="msg"><strong>Listed vendor?</strong> Send us a client, keep <span class="accent">20%</span>. We send you a client, we take <span class="accent">10%</span>.</span>
+      <a href="partner.html">READ THE TWO-WAY DEAL →</a>
+    </div>
   </div>
 
   <div class="wrap" id="sections"><div class="empty">LOADING THE ATLAS…</div></div>
