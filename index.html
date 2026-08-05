@@ -660,11 +660,26 @@ async function load() {
       from += 1000;
     }
     all = rows;
-    buildDial(); buildStrip(); buildSubmitCats(); buildFooter();
-    $('q').placeholder = `SEARCH ${all.length.toLocaleString()} ENTRIES…`;
-    $('live-count').textContent = `${all.length.toLocaleString()} LIVE`;
+
+    // Chrome elements are decorated defensively and OUTSIDE the fetch guard.
+    // /nav.js rewrites .topbar-in at body-end, which can remove #live-count before this
+    // runs. Previously that null threw inside the try and the catch reported "could not
+    // load the atlas" — a render error wearing a network error's message, with route()
+    // never reached. The atlas must never depend on optional chrome existing.
+    for (const [id, prop, val] of [
+      ['q', 'placeholder', `SEARCH ${all.length.toLocaleString()} ENTRIES…`],
+      ['live-count', 'textContent', `${all.length.toLocaleString()} LIVE`]
+    ]) {
+      const el = $(id);
+      if (el) el[prop] = val;
+    }
+    for (const fn of [buildDial, buildStrip, buildSubmitCats, buildFooter]) {
+      try { fn(); } catch (e) { console.error('[atlas] chrome build failed:', fn.name, e); }
+    }
+
     route();
   } catch (e) {
+    console.error('[atlas] load failed:', e);
     $('sections').innerHTML = '<div class="empty">COULD NOT LOAD THE ATLAS. REFRESH TO RETRY.</div>';
   }
 }

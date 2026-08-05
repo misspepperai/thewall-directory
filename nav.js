@@ -409,8 +409,16 @@ function wallContext() {
   var wordmark = bar.querySelector('.wordmark');
   var wordmarkHTML = wordmark ? wordmark.outerHTML : '<a class="wordmark" href="' + h('') + '">The Wall <small>OPERATIONS ATLAS</small></a>';
 
+  // Preserve the live-count chip too. The homepage writes #live-count after its Supabase
+  // fetch resolves; this rewrite runs first, so dropping the node used to leave the atlas
+  // writing to null. Keep the element so the count still lands, and so the trust signal
+  // survives on every page that ships one.
+  var live = bar.querySelector('.db-live');
+  var liveHTML = live ? live.outerHTML : '';
+
   var navHTML =
     wordmarkHTML +
+    liveHTML +
     '<button class="nav-toggle" aria-label="Open menu" aria-expanded="false">☰</button>' +
     '<nav class="nav-main">' +
       MENU.map(function (group) {
