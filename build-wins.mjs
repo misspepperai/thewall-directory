@@ -129,6 +129,7 @@ ${ld.map(o => `<script type="application/ld+json">${JSON.stringify(o)}</script>`
   footer span,footer a{font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:var(--chrome);text-decoration:none}
   footer a:hover{color:var(--ink)}
   @media (max-width:640px){.fact{grid-template-columns:1fr}.fact-side{border-right:none;border-bottom:1px solid var(--stone)}.fact-side:last-child{border-bottom:none}.outcome{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important}}
 </style>
 </head>
 <body>

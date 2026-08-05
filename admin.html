@@ -60,7 +60,7 @@
   .empty { font-family:var(--mono); font-size:11px; color:var(--chrome); letter-spacing:.06em; padding:18px 0; }
   .pager { display:flex; gap:10px; align-items:center; margin-top:10px; }
   @media (max-width:640px){ .editor .grid2 { grid-template-columns:1fr; } .row-top { flex-wrap:wrap; } .row-actions { margin-left:0; } }
-</style>
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important}}</style>
 </head>
 <body>
 
