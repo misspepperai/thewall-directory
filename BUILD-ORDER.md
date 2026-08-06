@@ -39,6 +39,7 @@ node check-html.mjs        # inline scripts + JSON-LD parse; catches early <scri
 node audit-seo.mjs         # titles, meta, schema, links, orphans. EXITS 1 ON A BROKEN LINK
 node audit-a11y.mjs        # WCAG 2.1 AA, markup-decidable checks + contrast of real token pairs
 node audit-cannibal.mjs    # structural cannibalization screen (prediction, not observation)
+node audit-aitell.mjs      # AI-tell scan over the written surfaces (news/, hubs/, questions/)
 node check-parity.mjs --all  # atlas detail vs static page, all 2,286 records
 ```
 

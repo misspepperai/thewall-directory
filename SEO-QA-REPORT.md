@@ -183,12 +183,80 @@ comment written to document *that* quoted the tag literally and took the homepag
 `check-html.mjs` parses every inline script and every JSON-LD block on all 2,591 pages.
 **2,591 files, 0 problems.**
 
-## AI-tell audit
+## AI-tell audit (Stage 6d)
 
-Not run this pass. The copy on this site is composed from stored database values by template rather
-than generated prose, so the usual AI tells are not the failure mode here — publishing a
-placeholder as a fact is, and that is defect 5 above. Worth a sample pass over the `news/` and
-`hubs/` long-form pages, which are the only genuinely written surfaces.
+**Scope:** the 112 genuinely written surfaces — `news/` briefings, `hubs/` guides, `questions/`
+answers and the core pages. 30,203 words. Listing pages are excluded: their copy is composed from
+database columns by template, so scoring it as prose measures the template, not the writing.
+
+**Re-run:** `node audit-aitell.mjs`. Patterns from Wikipedia's "Signs of AI writing".
+
+### Result: clean on every content-level tell
+
+| Pattern | Hits |
+|---|---|
+| Promotional language (*boasts, nestled, renowned, world-class*) | 0 |
+| Vague attribution (*experts argue, studies show*) | 0 |
+| Signposting (*let's dive in, here's what you need to know*) | 0 |
+| Negative parallelism (*not just X, but Y*) | 0 |
+| Filler (*in order to, it is important to note*) | 0 |
+| Excessive hedging | 0 |
+| Generic positive conclusions (*the future looks bright*) | 0 |
+| Aphorism formulas (*X is the language of Y*) | 0 |
+| Conversational rhetorical openers (*Honestly? Look,*) | 0 |
+| Persuasive authority tropes (*at its core, what really matters*) | 0 |
+| AI vocabulary (*delve, tapestry, vibrant, intricate*) | 0 |
+| Emoji | 0 |
+| Curly quotation marks | 0 |
+| Copula avoidance (*serves as*) | 1 |
+
+That is an unusually clean sheet, and it makes sense: this copy is built from stored figures rather
+than generated from a topic prompt, so it has nothing to pad with. The failure mode on this site
+was never slop vocabulary — it was publishing a placeholder as a fact (defect 5 above).
+
+### The one real finding: em-dash density
+
+**415 em dashes across 30,203 words — 13.7 per 1,000.** That is high, and the em dash is the single
+most reliable AI tell. Broken down by how it is used:
+
+| Construction | Count | Assessment |
+|---|---|---|
+| Paired parenthetical — *"the editorial standards — no paid inclusion — are unaffected"* | 166 | Standard editorial punctuation. Defensible. |
+| Single appositive — *"status confers zero directory advantage — that's the whole point"* | 226 | The house rhythm: statement, dash, payoff. Consistent, and at this volume it reads as a tic. |
+| Appended clause — *"almost everything an SMB would encounter — but the ceiling matters"* | 24 | The weakest of the three. A comma or a full stop does this better. |
+
+**Not changed, deliberately.** Rewriting 415 instances is a voice change across every written page on
+the site, and that is an editorial call rather than a QA fix. The evidence also does not support
+treating it as proof of machine authorship on its own: the guidance this audit follows is explicit
+that em dashes count as a tell when paired with formulaic sales-y rhythm, and every one of those
+companion patterns scores zero here.
+
+**Recommendation, in priority order:** convert the 24 appended clauses (unambiguous, cheap), then
+decide whether the 226 single appositives are the house voice or a habit. Leave the 166 paired
+parentheticals alone. Roughly a third of the total would bring density to about 9 per 1,000.
+
+### Three scanner false positives, corrected
+
+Recorded because the first numbers were wrong in ways that would mislead anyone re-running this:
+
+- **523 dashes → 415.** The scan counted en dashes inside numeric ranges. `$40–$100/hr` and
+  `11–50 people` are correct typography for a range, not a stylistic tic.
+- **20 curly quotes → 0.** All were right single quotes serving as apostrophes in "The Wall's" and
+  "won't" — correct typography. Only double curly quotation marks are the tell.
+- **1 emoji → 0.** It was `3.1★`. The U+2600-27BF block holds ★ and ✓, which this site uses as
+  rating and status glyphs. Content, not decoration.
+
+Two flagged words were also judged and kept: *"the highest-leverage use of two hours a week"* and
+*"the teams getting real leverage"* are ordinary business English. The AI tell is the verb form
+("leverage our expertise"), which appears nowhere.
+
+### Rule of three — 176 hits, judged not a defect
+
+The scan flags any `X, Y, and Z`. Reading them: 31 are one boilerplate line naming the three filters
+the site actually has (*"rates, team sizes, and headquarters"*), and the rest are factual lists
+(*"Austin, Denver, and Miami"*, *"Florida, Texas, and Illinois"*). These are accurate enumerations,
+not ideas forced into triads to sound comprehensive. The 31 repetitions are a template repeating
+itself, which is worth knowing but is not this pattern.
 
 ## Not covered
 

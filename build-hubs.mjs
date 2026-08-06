@@ -82,7 +82,7 @@ Once the shortlist is real, <a href="../?cat=Marketing">browse the 550 US market
     },
     {
       q: `What is a fractional CMO?`,
-      a: `A fractional CMO is a marketing consultant on a fixed retainer who serves as the company's marketing leader for one or two days a week. It's the standard bridge between "we need real marketing leadership" and "we're ready to hire a full-time CMO" — typically a 6–18 month arrangement.`
+      a: `A fractional CMO is a marketing consultant on a fixed retainer who acts as the company's marketing leader for one or two days a week. It's the standard bridge between "we need real marketing leadership" and "we're ready to hire a full-time CMO" — typically a 6–18 month arrangement.`
     },
     {
       q: `How is a marketing consultant different from a fractional CMO?`,
