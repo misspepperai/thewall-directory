@@ -217,12 +217,12 @@ function renderRows() {
       </div>
       <div class="editor" id="edit-${r.id}">
         <div class="grid2">
-          <div class="field"><label>NAME</label><input id="e-name-${r.id}" value="${esc(r.name)}"></div>
-          <div class="field"><label>SPECIALTY</label><input id="e-sub-${r.id}" value="${esc(r.subcategory)}"></div>
-          <div class="field"><label>CATEGORY</label><select id="e-cat-${r.id}">${CATS.map(c => `<option ${c===r.category?'selected':''}>${esc(c)}</option>`).join('')}</select></div>
-          <div class="field"><label>DOMAIN</label><input id="e-dom-${r.id}" value="${esc(r.domain)}"></div>
+          <div class="field"><label for="e-name-${r.id}">NAME</label><input id="e-name-${r.id}" value="${esc(r.name)}"></div>
+          <div class="field"><label for="e-sub-${r.id}">SPECIALTY</label><input id="e-sub-${r.id}" value="${esc(r.subcategory)}"></div>
+          <div class="field"><label for="e-cat-${r.id}">CATEGORY</label><select id="e-cat-${r.id}">${CATS.map(c => `<option ${c===r.category?'selected':''}>${esc(c)}</option>`).join('')}</select></div>
+          <div class="field"><label for="e-dom-${r.id}">DOMAIN</label><input id="e-dom-${r.id}" value="${esc(r.domain)}"></div>
         </div>
-        <div class="field"><label>DESCRIPTION</label><textarea id="e-desc-${r.id}" rows="2">${esc(r.description)}</textarea></div>
+        <div class="field"><label for="e-desc-${r.id}">DESCRIPTION</label><textarea id="e-desc-${r.id}" rows="2">${esc(r.description)}</textarea></div>
         <div style="margin-top:10px"><button class="btn blue" onclick="saveEdit(${r.id})">SAVE</button></div>
       </div>
     </div>`).join('') || '<div class="empty">NO MATCHES.</div>';

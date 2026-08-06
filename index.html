@@ -145,7 +145,13 @@
   }
   .dial-hub b { display: block; font-size: 12px; font-weight: 600; letter-spacing: .18em; }
   .dial-hub span { display: block; font-size: 12px; margin-top: 4px; font-feature-settings: 'tnum'; color: rgba(255,255,255,.85); }
-  .dial-hub small { display: block; font-size: 7.5px; letter-spacing: .2em; color: rgba(255,255,255,.5); margin-top: 4px; }
+  /* Alpha is .8, not .5. The hub's background switches from --ink to --cobalt when it is
+     active or hovered, and at .5 this 7.5px line measured 2.81:1 against cobalt — an AA
+     failure (1.4.3) that the token-pair contrast audit could not see, because the pair is a
+     translucent white over a state colour rather than two named tokens. At .8 it is 4.84:1
+     on cobalt and 11.96:1 on ink. Any change here must be checked against COBALT, which is
+     the lighter of the two backgrounds and therefore the binding case. */
+  .dial-hub small { display: block; font-size: 7.5px; letter-spacing: .2em; color: rgba(255,255,255,.8); margin-top: 4px; }
   .dial-hub:hover, .dial-hub.active { background: var(--cobalt); }
 
   /* ---------- sector index (mobile) ---------- */
@@ -341,7 +347,9 @@
   .colophon h4 { font-family: var(--mono); font-size: 8.5px; font-weight: 600; letter-spacing: .18em; color: var(--chrome); margin-bottom: 10px; }
   .colophon .brand { font-family: var(--serif); font-weight: 700; font-size: 19px; }
   .colophon p, .colophon a { font-size: 12.5px; line-height: 1.7; color: var(--body); }
-  .colophon a { display: block; text-decoration: none; }
+  /* 12.5px at line-height 1.7 gives a 21.3px tap target; 2.5.8 (AA, WCAG 2.2) wants 24px.
+     The padding buys the height without moving the text, so the footer looks unchanged. */
+  .colophon a { display: block; text-decoration: none; padding: 1.5px 0; }
   .colophon a:hover { color: var(--cobalt); }
   .baseline { border-top: 1px solid var(--stone); padding: 14px 0 26px; display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
   .baseline span { font-family: var(--mono); font-size: 9px; letter-spacing: .12em; color: var(--chrome); font-feature-settings: 'tnum'; }
@@ -793,7 +801,7 @@ function cardHTML(x) {
   const checked = compareSet.has(x.domain) ? ' checked' : '';
   return `<article class="card" style="--card-c:${color}">
     <label class="cmp" onclick="event.stopPropagation()" title="Add to compare (up to 3)">
-      <input type="checkbox" onchange="toggleCompare('${esc(x.domain)}')"${checked}> COMPARE
+      <input type="checkbox" aria-label="Compare ${esc(x.name)}" onchange="toggleCompare('${esc(x.domain)}')"${checked}> COMPARE
     </label>
     <div class="card-body" onclick="openDetail('${esc(x.domain)}')">
       <div class="card-top">
@@ -815,12 +823,17 @@ function cardHTML(x) {
 function filterBarHTML() {
   const states = [...new Set(all.map(x => x.hq_state).filter(Boolean))].sort();
   const opt = (arr, val) => `<option value="">any</option>` + arr.map(v => `<option value="${esc(v)}"${v === val ? ' selected' : ''}>${esc(v)}</option>`).join('');
+  // Every label carries `for` and every select an `id`. A <label> that neither wraps its
+  // control nor names one is a caption: nothing associates it, and a screen reader announces
+  // the field unnamed (1.3.1 / 3.3.2, Level A). These five were missed by the static audit
+  // because the filter bar is rendered by JavaScript and never exists in the HTML on disk —
+  // reading built files cannot see a control that the browser creates at runtime.
   return `<div class="filterbar">
-    <div class="fgroup"><label>RATE</label><select onchange="setFilter('rate',this.value)">${opt(RATE_BANDS, FILTERS.rate)}</select></div>
-    <div class="fgroup"><label>TEAM</label><select onchange="setFilter('team',this.value)">${opt(TEAM_BANDS, FILTERS.team)}</select></div>
-    <div class="fgroup"><label>MIN</label><select onchange="setFilter('min',this.value)">${opt(MIN_BANDS, FILTERS.min)}</select></div>
-    <div class="fgroup"><label>STATE</label><select onchange="setFilter('state',this.value)">${opt(states, FILTERS.state)}</select></div>
-    <div class="fgroup"><label>TYPE</label><select onchange="setFilter('type',this.value)">${opt(LISTING_TYPES, FILTERS.type)}</select></div>
+    <div class="fgroup"><label for="f-rate">RATE</label><select id="f-rate" onchange="setFilter('rate',this.value)">${opt(RATE_BANDS, FILTERS.rate)}</select></div>
+    <div class="fgroup"><label for="f-team">TEAM</label><select id="f-team" onchange="setFilter('team',this.value)">${opt(TEAM_BANDS, FILTERS.team)}</select></div>
+    <div class="fgroup"><label for="f-min">MIN</label><select id="f-min" onchange="setFilter('min',this.value)">${opt(MIN_BANDS, FILTERS.min)}</select></div>
+    <div class="fgroup"><label for="f-state">STATE</label><select id="f-state" onchange="setFilter('state',this.value)">${opt(states, FILTERS.state)}</select></div>
+    <div class="fgroup"><label for="f-type">TYPE</label><select id="f-type" onchange="setFilter('type',this.value)">${opt(LISTING_TYPES, FILTERS.type)}</select></div>
     ${anyFilter() ? '<button class="fclr" onclick="clearAllFilters()">CLEAR FILTERS ✕</button>' : ''}
   </div>`;
 }

@@ -78,7 +78,7 @@ const contrast = PAIRS.map(p => {
 const files = walk(ROOT);
 const F = {
   missingAlt: [], emptyTitleAlt: [], noH1: [], multiH1: [], headingSkip: [],
-  unlabeledInput: [], noLang: [], noSkipLink: [], vagueLink: [], emptyLink: [],
+  unlabeledInput: [], unlabeledInputInScript: [], noLang: [], noSkipLink: [], vagueLink: [], emptyLink: [],
   positiveTabindex: [], badAriaRef: [], dupeTitle: [], noMainLandmark: [], imgNoDims: []
 };
 const titles = new Map();
@@ -130,6 +130,40 @@ for (const abs of files) {
     const id = attrOf(tag, 'id');
     const named = (id && labelFor.has(id)) || attrOf(tag, 'aria-label') || attrOf(tag, 'aria-labelledby') || attrOf(tag, 'title');
     if (!named) push('unlabeledInput', { tag: tag.slice(0, 90) });
+  }
+
+  // The same check again, over the CONTENTS of the inline scripts.
+  //
+  // `body` has scripts stripped, so the loop above only ever sees controls that exist in the
+  // file on disk. The atlas builds its filter bar in JavaScript, and its five <select> elements
+  // were therefore invisible to this audit while being plainly unlabelled in the browser — a
+  // Level A defect that a Lighthouse run caught and this file reported as zero. Reading built
+  // HTML cannot see a control the browser creates at runtime; that is a property of static
+  // analysis, not a bug that got fixed.
+  //
+  // This is a heuristic, not a parse: labels and controls in a template literal are matched
+  // textually, and markup assembled from concatenated fragments will still slip through. It
+  // narrows the blind spot rather than closing it. A browser pass remains the authority.
+  for (const s of html.match(/<script\b[^>]*>[\s\S]*?<\/script>/gi) || []) {
+    // A control wrapped BY a label is named by it and carries no id — the compare checkbox on
+    // every listing card is written that way. Matching only `for=` reported those as unnamed,
+    // so wrapped controls are collected first and skipped. Both spellings of the association
+    // are valid; an audit that knows one of them invents defects.
+    const wrapped = new Set([...s.matchAll(/<label\b[^>]*>[\s\S]*?<\/label>/gi)]
+      .flatMap(m => m[0].match(/<(input|select|textarea)\b[^>]*>/gi) || []));
+    // Ids in a template are interpolated ("e-name-${r.id}"), so both sides are compared with
+    // the interpolation removed — otherwise a correctly associated pair never matches itself.
+    const flat = v => String(v || '').replace(/\$\{[^}]*\}/g, '\u0000');
+    const forAttr = new Set([...s.matchAll(/<label[^>]*\sfor=\\?["']([^"'\\]+)/gi)].map(m => flat(m[1])));
+    for (const tag of s.match(/<(input|select|textarea)\b[^>]*>/gi) || []) {
+      const type = (attrOf(tag, 'type') || '').toLowerCase();
+      if (['hidden', 'submit', 'button', 'reset', 'image'].includes(type)) continue;
+      if (wrapped.has(tag)) continue;
+      const id = flat(attrOf(tag, 'id'));
+      const named = (id && forAttr.has(id)) || attrOf(tag, 'aria-label')
+        || attrOf(tag, 'aria-labelledby') || attrOf(tag, 'title');
+      if (!named) push('unlabeledInputInScript', { tag: tag.slice(0, 90) });
+    }
   }
 
   for (const m of body.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/gi)) {
