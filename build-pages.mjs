@@ -324,21 +324,43 @@ const run = async () => {
   // sitemap.xml + HTML sitemap + robots + .nojekyll
   const today = new Date().toISOString().slice(0, 10);
   const TRUST = ['about','contact','editorial-policy','ai-policy','disclosures','privacy','terms','accessibility'];
-  const NEWS = existsSync(join(ROOT, 'news')) ? readdirSync(join(ROOT, 'news')).filter(f => f.endsWith('.html')) : [];
-  const PILLARS = existsSync(join(ROOT, 'pillars')) ? readdirSync(join(ROOT, 'pillars')).filter(f => f.endsWith('.html')) : [];
-  const HUBS = existsSync(join(ROOT, 'hubs')) ? readdirSync(join(ROOT, 'hubs')).filter(f => f.endsWith('.html')) : [];
-  const ENTITIES = existsSync(join(ROOT, 'entities')) ? readdirSync(join(ROOT, 'entities')).filter(f => f.endsWith('.html')) : [];
-  const TOOLS = existsSync(join(ROOT, 'tools')) ? readdirSync(join(ROOT, 'tools')).filter(f => f.endsWith('.html')) : [];
-  const UPDATES = existsSync(join(ROOT, 'news/updates')) ? readdirSync(join(ROOT, 'news/updates')).filter(f => f.endsWith('.html')) : [];
-  const REPORT = existsSync(join(ROOT, 'report')) ? readdirSync(join(ROOT, 'report')).filter(f => f.endsWith('.html')) : [];
-  const BADGE = existsSync(join(ROOT, 'badge')) ? readdirSync(join(ROOT, 'badge')).filter(f => f.endsWith('.html')) : [];
-  const STATES = existsSync(join(ROOT, 'states')) ? readdirSync(join(ROOT, 'states')).filter(f => f.endsWith('.html')) : [];
-  const CITIES = existsSync(join(ROOT, 'cities')) ? readdirSync(join(ROOT, 'cities')).filter(f => f.endsWith('.html')) : [];
-  const COMPARE = existsSync(join(ROOT, 'compare')) ? readdirSync(join(ROOT, 'compare')).filter(f => f.endsWith('.html')) : [];
-  const QUESTIONS = existsSync(join(ROOT, 'questions')) ? readdirSync(join(ROOT, 'questions')).filter(f => f.endsWith('.html')) : [];
-  const WINS = existsSync(join(ROOT, 'wins')) ? readdirSync(join(ROOT, 'wins')).filter(f => f.endsWith('.html')) : [];
+
+  // A sitemap is a list of URLs asking to be indexed, so a page that canonicals somewhere else
+  // must not appear in one — it would be asking to be indexed and telling Google not to index it
+  // in the same breath. Three questions/ pages shipped that contradiction: build-questions.mjs
+  // owns their DUPLICATE_OF map, but the sitemap is assembled here from a directory listing that
+  // knew nothing about it.
+  //
+  // Rather than copy that map, the canonical is read back out of each built file — the same bytes
+  // the crawler will read. That covers every builder, including ones written later, and it cannot
+  // drift out of sync with a map it does not depend on. The /c/ listing pages are already filtered
+  // by CANONICAL_OF above, where the record is in hand and re-reading 2,286 files would be waste.
+  const selfCanonical = (sub, f) => {
+    const m = readFileSync(join(ROOT, sub, f), 'utf8')
+      .match(/<link\s+rel=["']canonical["']\s+href=["']([^"']+)["']/i);
+    if (!m) return true;                       // no canonical declared: nothing to contradict
+    const own = `${SITE}/${sub}/${f === 'index.html' ? '' : f}`;
+    return m[1].replace(/\/index\.html$/, '/') === own;
+  };
+  const pages = sub => existsSync(join(ROOT, sub))
+    ? readdirSync(join(ROOT, sub)).filter(f => f.endsWith('.html') && selfCanonical(sub, f))
+    : [];
+
+  const NEWS = pages('news');
+  const PILLARS = pages('pillars');
+  const HUBS = pages('hubs');
+  const ENTITIES = pages('entities');
+  const TOOLS = pages('tools');
+  const UPDATES = pages('news/updates');
+  const REPORT = pages('report');
+  const BADGE = pages('badge');
+  const STATES = pages('states');
+  const CITIES = pages('cities');
+  const COMPARE = pages('compare');
+  const QUESTIONS = pages('questions');
+  const WINS = pages('wins');
   const DATA_HAS_INDEX = existsSync(join(ROOT, 'data', 'index.html'));
-  const FIND = existsSync(join(ROOT, 'find')) ? readdirSync(join(ROOT, 'find')).filter(f => f.endsWith('.html')) : [];
+  const FIND = pages('find');
   const PRESS_HAS = existsSync(join(ROOT, 'press.html'));
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
     `<url><loc>${SITE}/</loc><lastmod>${today}</lastmod><changefreq>daily</changefreq></url>\n` +
