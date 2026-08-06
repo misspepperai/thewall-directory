@@ -265,14 +265,14 @@ not yet publicly reachable; it is now.
 
 | Page | Perf | LCP | CLS | Server response | Page weight |
 |---|---|---|---|---|---|
-| Homepage | 93 | 1.24s | 0.012 | 148ms | 939 KB |
+| Homepage | 96 | 1.21s | 0.014 | 161ms | 940 KB |
 | Listing (`c/victorious.com.html`) | 98 | 0.90s | 0.001 | 143ms | 453 KB |
 
 Both clear Core Web Vitals comfortably (LCP under 2.5s, CLS under 0.1). The listing template is the
 one that matters at scale — it is 2,286 of the 2,591 pages. The homepage carries the extra weight
 because it loads the full atlas dataset from Supabase; its four flagged opportunities are minify JS,
 unused JS, cache lifetimes, and image delivery, none of which are worth the risk pre-launch against
-a 93.
+a 96.
 
 **Coverage limits, stated plainly.** Desktop form factor only, two pages. Mobile was not measured:
 the free PageSpeed endpoint is rate-limited to the point of being unusable and then hit its daily

@@ -140,7 +140,8 @@ construction, not by oversight.
 
 | Page | Perf | **A11y** | Best practices | SEO |
 |---|---|---|---|---|
-| Homepage (before fixes) | 93 | **86** | 100 | 100 |
+| Homepage — before fixes | 93 | **86** | 100 | 100 |
+| Homepage — after fixes, re-run live | 96 | **100** | 100 | 100 |
 | Listing page (`c/victorious.com.html`) | 98 | **100** | 100 | 100 |
 
 Desktop form factor, Lighthouse 13.4.0. The homepage is the only page carrying the three defects;
