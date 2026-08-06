@@ -7,8 +7,17 @@
 // is what motivated this file.
 //
 // It drives Chrome over the DevTools Protocol directly — no puppeteer, no lighthouse, no install.
-// Chrome ships in the puppeteer cache; its four NSS dependencies are resolved from a user-space
-// directory via LD_LIBRARY_PATH (see NSS_LIB below), so this needs no root.
+//
+// SETUP (no root needed). Chrome ships in the puppeteer cache but is missing four NSS libraries.
+// Rather than `sudo apt install libnss3`, download the packages and extract them anywhere:
+//
+//   apt-get download libnss3 libnspr4          # no root required
+//   dpkg-deb -x libnss3_*.deb  ./nssroot
+//   dpkg-deb -x libnspr4_*.deb ./nssroot
+//   export THEWALL_NSS_LIB=$PWD/nssroot/usr/lib/x86_64-linux-gnu
+//
+// Then `node audit-browser.mjs`. Without THEWALL_NSS_LIB set, Chrome is launched as-is, which
+// works on any machine where the libraries are installed system-wide.
 //
 //   node audit-browser.mjs            # all criteria, all sample pages
 //   node audit-browser.mjs --json

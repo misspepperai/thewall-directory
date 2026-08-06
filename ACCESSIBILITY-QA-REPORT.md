@@ -149,27 +149,54 @@ the listing template — 2,286 of the 2,591 pages — scored 100 before any of t
 
 ---
 
-## Still outstanding — not claimed as passing
+## Browser-driven criteria — verified 2026-08-06
 
-1. **Focus order matches visual order** (2.4.3) — needs a manual keyboard pass.
-2. **No keyboard traps** (2.1.2) — needs a manual keyboard pass, especially the submit-listing
-   modal and the compare bar.
-3. **Reflow at 200% zoom / 320px** (1.4.10) — the wide data tables in `news/` and `data/` remain
-   the likeliest failure point. Lighthouse ran at desktop width and does not test this.
-4. **Alt text accuracy** (1.1.1) — presence verified on all 2,313 images; correctness is a human
-   judgement.
-5. **Reduced motion** (2.3.3) — the `prefers-reduced-motion` guard is present on all 2,591 pages;
-   confirm visually that it suppresses the transitions.
+`audit-browser.mjs` drives real Chrome over the DevTools Protocol. It settles the four criteria
+that were outstanding because they need a browser. Six pages: homepage, listing, hub, news index,
+data tables, find grid.
 
-Items 1-3 and 5 need a local browser. Puppeteer's Chrome is still missing `libnss3` and installing
-it needs a password this session did not have; the Lighthouse runs above went through a remote
-service instead, which cannot drive a keyboard.
+| Criterion | Result |
+|---|---|
+| **2.4.3** Focus order matches visual order | ✅ pass — 120 tab stops on the homepage, 17-66 elsewhere, no backward jumps |
+| **2.1.2** No keyboard trap | ✅ pass — no page traps focus; the submit-listing modal closes on Escape |
+| **1.4.10** Reflow at 320px | ✅ pass — no horizontal scrolling on any page, including the wide `data/` and `news/` tables |
+| **2.3.3** Reduced motion | ✅ pass — with `prefers-reduced-motion: reduce`, zero elements retain a transition or animation |
+| **2.4.7** Focus visible | ✅ pass — the indicator changes on focus (previously "declared site-wide", now observed) |
 
----
+**One finding, not a failure.** The submit-listing modal does not contain focus: tabbing past its
+last control moves into the page behind it. Escape closes it, so it is not a keyboard trap under
+2.1.2 and it passes. But focus containment is the expected behaviour for a modal dialog (ARIA
+Authoring Practices), and without it a screen-reader user can navigate into content that is
+visually obscured. Worth fixing; not a conformance blocker.
+
+### Two harness corrections worth recording
+
+The first run of this file reported every page as a keyboard trap and gave 6-9 tab stops on pages
+with dozens of links. Both were the harness, not the site:
+
+- **Headless Chrome never focuses the page** unless `Emulation.setFocusEmulationEnabled` is on, so
+  the synthesised Tab keys went nowhere. Tab stops went from 6-9 to 17-120 once enabled.
+- **Consecutive footer links are all bare `<a>` elements.** Identifying focus by selector alone
+  made six ordinary links in a row look like focus stuck on one. Identity now includes the
+  accessible name and position.
+
+It also reported TTFB of 1-3ms and 0KB transferred, which is a cache hit rather than a throttled
+mobile connection; the cache is now disabled explicitly. **Every one of those numbers was wrong in
+the direction of looking either alarming or fine, and none of them were about the site.** A harness
+gets audited before its output is believed.
+
+## Still outstanding
+
+1. **Alt text accuracy** (1.1.1) — presence verified on all 2,313 images; whether each description
+   is *correct* is a human judgement and is deliberately not automated.
+2. **Modal focus containment** — the finding above.
 
 ## Conformance statement
 
-**Still none issued.** Every markup-decidable Level A and AA criterion passes, and the browser pass
-closed the automated half of the gap — but the four criteria above that require a human are exactly
-the ones a conformance claim would rest on. The audit is stronger than it was this morning and it
-still is not a claim.
+**Not issued, and now for one reason rather than five.** Every markup-decidable Level A and AA
+criterion passes, and the four behavioural criteria that needed a browser have been observed
+passing on six representative pages. What remains is alt-text accuracy — a judgement about whether
+2,313 descriptions are *true*, which no tool can assert — plus the modal focus-containment finding.
+
+A conformance claim is defensible once someone reviews a sample of the alt text and signs off.
+That is a human task, and it is the only one left.

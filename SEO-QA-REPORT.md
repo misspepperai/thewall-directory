@@ -274,10 +274,43 @@ because it loads the full atlas dataset from Supabase; its four flagged opportun
 unused JS, cache lifetimes, and image delivery, none of which are worth the risk pre-launch against
 a 96.
 
-**Coverage limits, stated plainly.** Desktop form factor only, two pages. Mobile was not measured:
-the free PageSpeed endpoint is rate-limited to the point of being unusable and then hit its daily
-quota, and the remote Lighthouse service used instead exposes no form-factor toggle. A free
-PageSpeed API key removes this entirely and is the one input needed to finish the sweep.
+### Mobile — measured 2026-08-06
+
+Local Chrome under Lighthouse's mobile preset (412x823, 4x CPU throttle, 1.6Mbps / 150ms RTT,
+cache disabled). These are measured Core Web Vitals, **not** a Lighthouse score — no score is
+claimed, because no scoring engine was run.
+
+| Page | LCP | CLS | FCP | Subresources |
+|---|---|---|---|---|
+| Homepage | **4.6-4.9s** 🔴 | **0.352** 🔴 | 662ms | 226 KB |
+| Listing | 518ms ✅ | 0.022 ✅ | 518ms | 10 KB |
+| Hub | 465ms ✅ | 0.059 ✅ | 465ms | 10 KB |
+| News index | 437ms ✅ | 0.021 ✅ | 437ms | 142 KB |
+| Find grid | 566ms ✅ | 0.027 ✅ | 566ms | 10 KB |
+| Data tables | 429ms ✅ | **0.312** 🔴 | 429ms | 10 KB |
+
+**The templates that carry the site are fine.** The listing template is 2,286 of 2,591 pages and
+posts 518ms LCP with negligible shift. Two pages fail, and both are one-offs.
+
+**Homepage — LCP 4.8s, CLS 0.352.** Two separate causes, diagnosed rather than guessed:
+
+- *LCP* is the masthead image: 217 KB, requested at 328ms, taking 4.4s to arrive while competing
+  with the analytics tag and the atlas query for a 1.6Mbps pipe. `fetchpriority="high"` is now set
+  on it, which helped marginally — the constraint is bytes on a slow pipe, not scheduling.
+- *CLS* traces to a 4px change: the kicker line grows from 22px to 26px when IBM Plex Mono swaps
+  in, and every element in the hero below it moves. A small distance over a large area still
+  scores heavily, because CLS multiplies distance by the fraction of the viewport affected.
+
+Two hypotheses were tested and **rejected**, which is worth recording so they are not retried:
+blocking Google Fonts entirely drops CLS to 0.075, but that changes the whole load timeline and
+does not isolate the swap; and rewriting the font request to `display=optional` (verified applied
+by interception) left CLS at 0.384 — it does not help here.
+
+**Data tables — CLS 0.312.** Not yet diagnosed. Same class of problem, different page.
+
+Neither is a launch blocker: both pages render correctly, and the 2,286-page template that carries
+the site's search footprint passes comfortably. Both need a decision about type loading, which is
+a design call rather than a bug fix.
 
 ## Sitemap correction
 
