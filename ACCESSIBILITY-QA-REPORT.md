@@ -30,8 +30,8 @@ strength of this document alone.
 | Text contrast | 1.4.3 AA | all pairs pass | all pairs pass |
 | Images with intrinsic dimensions | 1.4.10 / CLS | 2,286 without | **0** |
 
-Remaining flag: 2 duplicate page titles (2.4.2), caused by two duplicate vendor records. Tracked in
-`CANNIBALIZATION-REPORT.md` — it needs a data decision, not a markup fix.
+Remaining markup flags: **none.** The two duplicate page titles (2.4.2) cleared once the duplicate
+vendor records were consolidated by canonical (`CANNIBALIZATION-REPORT.md`).
 
 ---
 
@@ -113,26 +113,62 @@ ever adjusted, re-run this check before shipping.
 
 ---
 
-## Outstanding — needs a human at a browser
+## Browser pass — run 2026-08-05, and it found three real defects
 
-These cannot be settled from markup and are **not** claimed as passing:
+The five criteria below were listed as outstanding because they need a browser. A Lighthouse 13
+run against the live site closed part of that gap and, more importantly, **caught three genuine
+defects that this audit had reported as zero.** They are recorded here because the reason it
+missed them matters more than the fixes.
 
-1. **Focus order matches visual order** (2.4.3) — keyboard pass required.
-2. **No keyboard traps** (2.1.2) — keyboard pass required, especially the submit-listing modal
-   and the compare bar.
-3. **Reflow at 200% zoom / 320px** (1.4.10) — browser at width required. The wide data tables in
-   `news/` and `data/` are the likeliest failure point.
-4. **Alt text accuracy** (1.1.1) — presence is verified on all 2,313 images; whether each
-   description is *correct* is a human judgement.
+| Defect | Criterion | Why static analysis could not see it |
+|---|---|---|
+| 5 unlabelled `<select>` in the atlas filter bar | 1.3.1 / 3.3.2 **A** | The filter bar is built by JavaScript. It does not exist in the HTML on disk. |
+| 5 unlabelled controls in the admin row editor | 1.3.1 / 3.3.2 **A** | Same — rendered at runtime from a template literal. |
+| `.dial-hub small` at 2.81:1 | 1.4.3 **AA** | The pair is translucent white over a *state* colour (`--cobalt` on hover/active), not two named tokens, so a token-pair matrix never formed it. |
+| 34 footer tap targets at 21.3px | 2.5.8 AA (**WCAG 2.2**) | Requires layout. Outside the 2.1 bar; fixed anyway (one line of padding). |
+
+All four are fixed. `audit-a11y.mjs` now also scans inline script bodies, so runtime-built markup
+is no longer a silent gap — it understands wrapping labels as well as `for`-linked ones and
+normalises interpolated ids. It is a heuristic and is commented as one: markup assembled from
+concatenated fragments will still slip past it.
+
+**The lesson worth keeping:** a clean static audit is not evidence of an accessible page. It is
+evidence about the bytes on disk. Anything the browser constructs is outside its reach by
+construction, not by oversight.
+
+### Lighthouse category scores
+
+| Page | Perf | **A11y** | Best practices | SEO |
+|---|---|---|---|---|
+| Homepage (before fixes) | 93 | **86** | 100 | 100 |
+| Listing page (`c/victorious.com.html`) | 98 | **100** | 100 | 100 |
+
+Desktop form factor, Lighthouse 13.4.0. The homepage is the only page carrying the three defects;
+the listing template — 2,286 of the 2,591 pages — scored 100 before any of this.
+
+---
+
+## Still outstanding — not claimed as passing
+
+1. **Focus order matches visual order** (2.4.3) — needs a manual keyboard pass.
+2. **No keyboard traps** (2.1.2) — needs a manual keyboard pass, especially the submit-listing
+   modal and the compare bar.
+3. **Reflow at 200% zoom / 320px** (1.4.10) — the wide data tables in `news/` and `data/` remain
+   the likeliest failure point. Lighthouse ran at desktop width and does not test this.
+4. **Alt text accuracy** (1.1.1) — presence verified on all 2,313 images; correctness is a human
+   judgement.
 5. **Reduced motion** (2.3.3) — the `prefers-reduced-motion` guard is present on all 2,591 pages;
-   confirm visually that it actually suppresses the transitions.
+   confirm visually that it suppresses the transitions.
 
-Browser-based verification was not possible in this environment: Puppeteer's Chrome is missing
-`libnss3`. Installing it would let items 1-3 and 5 be automated.
+Items 1-3 and 5 need a local browser. Puppeteer's Chrome is still missing `libnss3` and installing
+it needs a password this session did not have; the Lighthouse runs above went through a remote
+service instead, which cannot drive a keyboard.
 
 ---
 
 ## Conformance statement
 
-**None is issued.** The markup-level Level A and AA criteria testable from static HTML all pass,
-but five criteria above remain unverified. A conformance claim requires those to be checked first.
+**Still none issued.** Every markup-decidable Level A and AA criterion passes, and the browser pass
+closed the automated half of the gap — but the four criteria above that require a human are exactly
+the ones a conformance claim would rest on. The audit is stronger than it was this morning and it
+still is not a claim.

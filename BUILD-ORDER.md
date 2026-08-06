@@ -52,3 +52,14 @@ node inject-a11y.mjs      # skip-to-content link + focus styles, all 2,591 pages
 ```
 
 Reports: `SEO-QA-REPORT.md`, `ACCESSIBILITY-QA-REPORT.md`, `CANNIBALIZATION-REPORT.md`.
+
+## What the on-disk checks cannot see
+
+Every check above reads built HTML. That is the right default — it tests the bytes that ship rather
+than the builders' intent — but it is blind to anything the browser constructs. A Lighthouse run on
+2026-08-05 found three real accessibility defects while `audit-a11y.mjs` reported zero, because the
+atlas builds its filter bar in JavaScript and the failing contrast pair only exists in a hover state.
+
+`audit-a11y.mjs` now scans inline script bodies too, which narrows the gap. It does not close it.
+Before any future launch, run a real browser against the homepage and the admin console — those are
+the two pages with meaningful runtime-built markup.

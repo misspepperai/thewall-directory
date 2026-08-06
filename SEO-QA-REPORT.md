@@ -258,6 +258,44 @@ the site actually has (*"rates, team sizes, and headquarters"*), and the rest ar
 not ideas forced into triads to sound comprehensive. The 31 repetitions are a template repeating
 itself, which is worth knowing but is not this pattern.
 
+## Performance — measured 2026-08-05
+
+Lighthouse 13.4.0 against the live site. This was skipped in the first pass because the site was
+not yet publicly reachable; it is now.
+
+| Page | Perf | LCP | CLS | Server response | Page weight |
+|---|---|---|---|---|---|
+| Homepage | 93 | 1.24s | 0.012 | 148ms | 939 KB |
+| Listing (`c/victorious.com.html`) | 98 | 0.90s | 0.001 | 143ms | 453 KB |
+
+Both clear Core Web Vitals comfortably (LCP under 2.5s, CLS under 0.1). The listing template is the
+one that matters at scale — it is 2,286 of the 2,591 pages. The homepage carries the extra weight
+because it loads the full atlas dataset from Supabase; its four flagged opportunities are minify JS,
+unused JS, cache lifetimes, and image delivery, none of which are worth the risk pre-launch against
+a 93.
+
+**Coverage limits, stated plainly.** Desktop form factor only, two pages. Mobile was not measured:
+the free PageSpeed endpoint is rate-limited to the point of being unusable and then hit its daily
+quota, and the remote Lighthouse service used instead exposes no form-factor toggle. A free
+PageSpeed API key removes this entirely and is the one input needed to finish the sweep.
+
+## Sitemap correction
+
+Three `questions/` URLs were listed in `sitemap.xml` while their pages canonical elsewhere — asking
+to be indexed and declining to be indexed at once. `build-pages.mjs` now reads the canonical back
+out of each built file and drops any page that points somewhere else, which covers every builder
+rather than copying `build-questions.mjs`'s map. Sitemap: 2,584 to 2,581 URLs. All 2,591 files are
+still built and served.
+
+## Submission
+
+- **IndexNow:** 2,581 URLs accepted, HTTP 200, 2026-08-05. Key file verified reachable. Covers Bing,
+  Yandex, Seznam and Naver. This was overdue — the previous run predated the canonical
+  consolidation, the 1,372 corrected meta tags and the 808 corrected titles, so those engines held
+  a stale copy of the site until now.
+- **Google Search Console:** property connected and verified 2026-08-04 (operator). Google does not
+  participate in IndexNow, so the sitemap is its only discovery signal besides links.
+
 ## Not covered
 
-Search Console, analytics, backlinks and press distribution are out of scope by instruction.
+Analytics, backlinks and press distribution are out of scope by instruction.
