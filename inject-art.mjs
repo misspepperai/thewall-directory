@@ -93,7 +93,12 @@ for (const [key, targets] of Object.entries(PLACE)) {
     const href = '../'.repeat(depth) + webRel;
     const block = `${BEGIN}${css}
 <figure class="masthead">
-  <img src="${href}" alt="${alt}" width="${WIDTH}" height="${Math.round(WIDTH * 1024 / 1536)}" loading="eager" decoding="async">
+  <!-- fetchpriority="high": the masthead is the LCP element on every page that has one, and a
+       browser cannot know that early enough on its own. Measured on throttled mobile, the
+       homepage image began at 328ms and took 4.4s to arrive while competing with the analytics
+       tag and the atlas query for a 1.6Mbps pipe. decoding is "sync" for the same reason — an
+       async decode can land after the frame that would otherwise have painted it. -->
+  <img src="${href}" alt="${alt}" width="${WIDTH}" height="${Math.round(WIDTH * 1024 / 1536)}" loading="eager" fetchpriority="high" decoding="sync">
 </figure>
 ${END}`;
 

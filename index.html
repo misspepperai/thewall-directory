@@ -448,7 +448,12 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .masthead img{display:block;width:100%;height:clamp(150px,20vw,240px);object-fit:cover;object-position:center}
 </style>
 <div class="wrap"><figure class="masthead">
-  <img src="art/web/home.webp" alt="An engraved elevation of a stone wall with a single narrow opening cut through it, light falling through the gap picked out in cobalt." width="1400" height="933" loading="eager" decoding="async">
+  <!-- fetchpriority="high": the masthead is the LCP element on every page that has one, and a
+       browser cannot know that early enough on its own. Measured on throttled mobile, the
+       homepage image began at 328ms and took 4.4s to arrive while competing with the analytics
+       tag and the atlas query for a 1.6Mbps pipe. decoding is "sync" for the same reason — an
+       async decode can land after the frame that would otherwise have painted it. -->
+  <img src="art/web/home.webp" alt="An engraved elevation of a stone wall with a single narrow opening cut through it, light falling through the gap picked out in cobalt." width="1400" height="933" loading="eager" fetchpriority="high" decoding="sync">
 </figure></div>
 <!-- art:end -->
   <section class="hero wrap">
