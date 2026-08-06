@@ -61,5 +61,13 @@ than the builders' intent — but it is blind to anything the browser constructs
 atlas builds its filter bar in JavaScript and the failing contrast pair only exists in a hover state.
 
 `audit-a11y.mjs` now scans inline script bodies too, which narrows the gap. It does not close it.
-Before any future launch, run a real browser against the homepage and the admin console — those are
-the two pages with meaningful runtime-built markup.
+`audit-browser.mjs` is the answer to the rest — it drives real Chrome:
+
+```bash
+export THEWALL_NSS_LIB=/path/to/nssroot/usr/lib/x86_64-linux-gnu   # see the file header
+node audit-browser.mjs        # focus order, keyboard traps, reflow @320px, reduced motion,
+                              # focus visible, and mobile Core Web Vitals. Exits 1 on a finding.
+```
+
+It needs no root and no npm install: Chrome comes from the puppeteer cache and its four NSS
+libraries are extracted from the Ubuntu .deb into a user directory.

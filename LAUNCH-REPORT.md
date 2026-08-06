@@ -75,13 +75,13 @@ holding a stale copy until now.
 
 Three things are **not** verified, and none should be described as passing:
 
-1. **Mobile performance was never measured.** Desktop only, two pages. The free PageSpeed endpoint
-   is rate-limited to unusable and then hit its daily quota; the remote Lighthouse service used
-   instead exposes no form-factor toggle. A free PageSpeed API key removes this in one step.
-2. **Four WCAG criteria still need a human** — focus order (2.4.3), keyboard traps (2.1.2), reflow
-   at 200% / 320px (1.4.10), alt-text accuracy (1.1.1), plus a visual confirmation of reduced
-   motion (2.3.3). Puppeteer's Chrome is missing `libnss3` and installing it needs a password.
-   **No conformance statement is issued.**
+1. **Two pages fail mobile Core Web Vitals.** Homepage (LCP 4.8s, CLS 0.352) and `data/`
+   (CLS 0.312). Every other template passes comfortably — the listing template, 2,286 of the
+   2,591 pages, posts 518ms LCP and 0.022 CLS. Causes are diagnosed in `SEO-QA-REPORT.md`; the
+   fix is a decision about type loading, not a bug fix.
+2. **One WCAG criterion still needs a human** — alt-text accuracy (1.1.1). The four behavioural
+   criteria that needed a browser now pass, verified by `audit-browser.mjs` on six pages.
+   **No conformance statement is issued yet**, but it is one sign-off away rather than five.
 3. **Cannibalization is a structural prediction, not an observation.** The site has no ranking
    history. Live detection is post-launch monitoring against Search Console data.
 
@@ -96,7 +96,8 @@ not made unilaterally.
 
 1. **Confirm the sitemap is submitted in Search Console** — the property is verified, but Google
    does not participate in IndexNow, so the sitemap is its only discovery signal besides links.
-2. **Add a free PageSpeed API key** (`sonic setup`) to finish the mobile sweep.
-3. **`sudo apt install libnss3`** to unblock the browser-driven accessibility criteria.
+2. **Decide the type-loading strategy** — the one open item behind both Core Web Vitals failures.
+3. **Sample the alt text** and sign off, which is all that stands between here and a defensible
+   WCAG 2.1 AA conformance statement.
 4. **Post-launch monitoring** — cannibalization becomes observable once Search Console has query
    data. Re-run `audit-cannibal.mjs` against real rankings rather than structure.
